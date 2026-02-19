@@ -16,8 +16,8 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Calvin Carlo",
-    role: "Head Teacher",
+    name: "James Mwangi",
+    role: "Dean of studies",
     image: "/images/clients/01.jpg",
     content:
       "Since implementing UltimateCBE, managing student assessments across all three pathways has become effortless. Competency tracking and automated report card generation have eliminated hours of manual paperwork every term.",
@@ -25,8 +25,8 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "Christa Smith",
-    role: "Academic Director",
+    name: "Grace Achieng",
+    role: "Principal",
     image: "/images/clients/02.jpg",
     content:
       "The live dashboards have completely transformed how we monitor student progress. What used to take our team weeks to compile now updates in real time, and the accuracy of our CBE reports has improved dramatically.",
@@ -34,8 +34,8 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 3,
-    name: "Jemina Clone",
-    role: "School Administrator",
+    name: "David Kariuki",
+    role: "School administrator",
     image: "/images/clients/03.jpg",
     content:
       "Coordinating between teachers, parents, and administrators was our biggest challenge. UltimateCBE connected everyone on one platform, eliminating data gaps and bringing our entire school community closer to each student's learning journey.",
