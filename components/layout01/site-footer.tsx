@@ -76,12 +76,12 @@ export default function SiteFooter({
   className,
 }: FooterProps) {
   return (
-    <footer className={cn("bg-background w-full sm:px-21 px-8", className)}>
+    <footer className={cn("bg-primary w-full sm:px-21 px-8", className)}>
       <div className="flex item-center justify-center">
         <div className="max-w-container mx-auto">
           <div
             data-slot="footer"
-            className="bg-background text-foreground pt-12 pb-4"
+            className="text-background pt-12 pb-4"
           >
             <div
               data-slot="footer-content"
@@ -90,7 +90,7 @@ export default function SiteFooter({
               <div data-slot="footer-column" className="col-span-2 sm:col-span-3 md:col-span-1 flex flex-col gap-0 sm:gap-2">
                 <div className="flex items-center gap-4">
                   <Image
-                    src="/ultimate-cbe.svg"
+                    src="/ultimate-cbe-light.svg"
                     className="w-28 h-12"
                     alt=""
                     width={28}
@@ -105,7 +105,7 @@ export default function SiteFooter({
                     <a
                       key={linkIndex}
                       href={link.href}
-                      className="text-muted-foreground text-sm"
+                      className="text-background/50 text-sm"
                     >
                       {link.text}
                     </a>
@@ -115,7 +115,7 @@ export default function SiteFooter({
             </div>
             <div
               data-slot="footer-bottom"
-              className="border-border dark:border-border/15 text-muted-foreground mt-8 flex flex-col items-center justify-between gap-4 border-t pt-4 text-xs sm:flex-row"
+              className="border-border dark:border-border/15 text-background/50 mt-8 flex flex-col items-center justify-between gap-4 border-t pt-4 text-xs sm:flex-row"
             >
               <div>{copyright}</div>
               <div className="flex items-center gap-4">
