@@ -84,13 +84,13 @@ function Sparkline() {
     >
       <defs>
         <linearGradient id="spark-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#e89c1c" stopOpacity="0.6" />
+          <stop offset="0%" stopColor="#ed1c24" stopOpacity="0.6" />
           <stop offset="100%" stopColor="#ececec" stopOpacity="0" />
         </linearGradient>
       </defs>
       <path
         d="M0 34 C10 32 14 20 22 18 C30 16 34 28 42 22 C50 16 54 8 62 6 C70 4 74 14 80 10"
-        stroke="#e89c1c"
+        stroke="#ed1c24"
         strokeWidth="2"
         fill="none"
         strokeLinecap="round"
@@ -251,7 +251,7 @@ export default function SiteHero() {
           >
             {/* Spinning orb */}
             <div
-              className="absolute top-1/2 left-1/2 w-[420px] h-[420px] rounded-full opacity-55 z-0 [background:conic-gradient(from_180deg,#7c3aed,#E89C1C,#3b82f6,#7c3aed)] [animation:spin_12s_linear_infinite]"
+              className="absolute top-1/2 left-1/2 w-[420px] h-[420px] rounded-full opacity-55 z-0 [background:conic-gradient(from_180deg,#7c3aed,#ed1c24,#3b82f6,#7c3aed)] [animation:spin_12s_linear_infinite]"
               style={{ transform: "translate(-50%, -50%)" }}
             />
             {/* Orb inner mask */}
@@ -279,7 +279,7 @@ export default function SiteHero() {
               <div className="flex items-center gap-[5px] text-[10px] uppercase tracking-[.08em] text-[rgba(255,255,255,0.55)] mb-1.5">
                 <Users size={11} /> Total Students
               </div>
-              <div className="text-[28px] font-bold text-[#e89c1c] leading-none">
+              <div className="text-[28px] font-bold text-[#ed1c24] leading-none">
                 <AnimatedCounter target={1365} />
               </div>
               <div className="flex justify-between items-center mt-2 text-[11px] text-[rgba(255,255,255,0.6)]">
@@ -293,7 +293,7 @@ export default function SiteHero() {
               <div className="flex items-center gap-[5px] text-[10px] uppercase tracking-[.08em] text-[rgba(255,255,255,0.55)] mb-1.5">
                 <Briefcase size={11} /> Active Teachers
               </div>
-              <div className="text-[22px] font-bold text-[#e89c1c] leading-none">
+              <div className="text-[22px] font-bold text-[#ed1c24] leading-none">
                 <AnimatedCounter target={37} />
               </div>
               <div className="flex justify-between items-center mt-2 text-[11px] text-[rgba(255,255,255,0.6)]">
@@ -320,7 +320,7 @@ export default function SiteHero() {
                         onClick={() => setActiveTab(tab)}
                         className={`rev-tab text-xs bg-transparent border-none p-0 cursor-pointer font-[inherit] transition-colors duration-150 ${
                           activeTab === tab
-                            ? "active text-[#E89C1C] font-bold underline underline-offset-[3px]"
+                            ? "active text-[#ed1c24] font-bold underline underline-offset-[3px]"
                             : "text-[#9ca3af] font-medium"
                         }`}
                       >
