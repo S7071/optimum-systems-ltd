@@ -134,6 +134,9 @@ export default function SiteNavbar() {
 
         {/* Right Buttons */}
         <div className="hidden lg:flex items-center space-x-2">
+          <Button variant="outline" className="gap-4 rounded-full">
+            SignIn
+          </Button>
           <Button variant="default" className="gap-4 rounded-full">
             Request a Demo
           </Button>

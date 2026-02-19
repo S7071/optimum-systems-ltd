@@ -53,9 +53,10 @@ export default function SiteFeatures() {
         <div className="mx-auto max-w-2xl text-center pb-12">
           <h3 className="text-2xl font-semibold md:text-3xl">What We Offer</h3>
           <p className="mt-4 text-muted-foreground">
-            Streamline your business operations with powerful ERP solutions
-            designed to enhance efficiency, drive growth, and deliver real-time
-            insights across your organization.
+            Transform education management with Kenya&apos;s leading CBE
+            Assessment platform — purpose-built to enhance learning outcomes,
+            ensure KNEC compliance, and deliver real-time insights across every
+            classroom.
           </p>
         </div>
 
@@ -103,14 +104,16 @@ export default function SiteFeatures() {
 
             <Card className="absolute -bottom-10 right-0 w-60 shadow-lg md:w-80">
               <CardContent className="p-6">
-                <h5 className="text-lg font-semibold">Helpcenter Software</h5>
+                <h5 className="text-lg font-semibold">
+                  UltimateCBE Assessment ERP
+                </h5>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Your digital transformation journey with dedicated support at
-                  every stage.
+                  Your digital CBE transformation journey — with dedicated
+                  support at every stage.
                 </p>
 
                 <div className="mt-4 flex justify-between text-sm text-muted-foreground">
-                  <span>Project Status</span>
+                  <span>Implementation Progress</span>
                   <span>84%</span>
                 </div>
 
@@ -122,22 +125,22 @@ export default function SiteFeatures() {
           {/* Text Content */}
           <div>
             <h4 className="text-2xl font-semibold md:text-3xl">
-              Manage all your business <br /> operations on one integrated
-              platform
+              Manage All Your School&apos;s Assessment Operations on One
+              Integrated Platform
             </h4>
             <p className="mt-4 text-muted-foreground">
-              Optimum ERP brings together finance, inventory, procurement,
-              sales, and reporting into a unified system. Streamline your
+              UltimateCBE brings together competency tracking, student
+              enrollment, continuous assessment, reporting, and parent
+              engagement into a unified system. Streamline your school
               workflows, gain real-time insights, and make data-driven decisions
-              with our comprehensive enterprise resource planning solution
-              designed for growing businesses.
+              with our comprehensive CBE assessment solution designed for Kenyan
+              schools.
             </p>
 
             <div className="mt-6">
               <Button asChild variant="link" className="p-0 text-primary">
                 <Link href="#">
-                  Find Out More
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  Book A Demo <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -162,22 +165,24 @@ export default function SiteFeatures() {
           {/* Text */}
           <div className="order-2 md:order-1">
             <h4 className="text-2xl font-medium">
-              Stay Informed With Real-Time Notifications
+              Stay Informed With Real-Time Assessment Insights
             </h4>
 
             <p className="mt-4 text-muted-foreground">
-              Never miss critical business updates with intelligent alerts and
-              notifications. Our ERP system monitors your key processes and
-              automatically notifies stakeholders about important events,
-              approvals needed, inventory levels, and financial
-              thresholds—keeping your team aligned and responsive.
+              Never miss critical academic updates with intelligent alerts and
+              live dashboards. UltimateCBE monitors student competency levels,
+              attendance, grade submissions, and approval workflows —
+              automatically notifying teachers, parents, and administrators
+              about important events, assessment deadlines, and student
+              performance thresholds, keeping your entire school aligned and
+              responsive.
             </p>
 
             <ul className="mt-6 space-y-3 text-muted-foreground">
               {[
-                "Comprehensive Business Intelligence & Analytics",
-                "Scalable Solutions Backed by Expert Support",
-                "Customizable Dashboards to Match Your Workflow",
+                "Comprehensive Competency Mapping & CBE Analytics",
+                "Scalable Solutions Backed by KNEC-Aligned Standards",
+                "Customizable Dashboards for Admins, Teachers & Parents",
               ].map((item, index) => (
                 <li key={index} className="flex items-center">
                   <CheckCircle className="mr-3 h-5 w-5 text-primary" />

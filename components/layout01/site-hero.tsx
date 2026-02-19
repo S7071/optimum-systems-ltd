@@ -104,41 +104,6 @@ function Sparkline() {
   );
 }
 
-// ─── BackgroundLines ──────────────────────────────────────────────────────────
-function BackgroundLines() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 600 600"
-      fill="none"
-      className="absolute top-0 right-0 w-[55%] max-w-[640px] opacity-[0.18] pointer-events-none z-0"
-    >
-      {Array.from({ length: 18 }).map((_, i) => (
-        <line
-          key={`v${i}`}
-          x1={i * 34}
-          y1={0}
-          x2={i * 34}
-          y2={600}
-          stroke="white"
-          strokeWidth="0.7"
-        />
-      ))}
-      {Array.from({ length: 18 }).map((_, i) => (
-        <line
-          key={`h${i}`}
-          x1={0}
-          y1={i * 34}
-          x2={600}
-          y2={i * 34}
-          stroke="white"
-          strokeWidth="0.7"
-        />
-      ))}
-    </svg>
-  );
-}
-
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function SiteHero() {
   const [activeTab, setActiveTab] = useState<RevenueTab>("Daily");
@@ -208,7 +173,7 @@ export default function SiteHero() {
       `}</style>
 
       {/* ── Root ── */}
-      <section className="hero-root w-full bg-[#191e3e] min-h-screen relative overflow-hidden py-20">
+      <section className="hero-root w-full bg-[#191e3e] min-h-screen relative overflow-hidden py-8 sm:py-20">
         <Image
           src="/images/cbe/bg-lines.webp"
           alt=""
@@ -240,7 +205,7 @@ export default function SiteHero() {
             <h1 className="text-[clamp(40px,5vw,68px)] leading-[1.04] font-light tracking-[-0.02em] mb-5">
               Competency-Based Assessment{" "}
               <strong className="font-bold">ERP</strong> for{" "}
-              <strong className="font-bold">Modern Schools</strong>
+              <strong className="font-bold">Senior Schools</strong>
             </h1>
 
             {/* Subtext */}
