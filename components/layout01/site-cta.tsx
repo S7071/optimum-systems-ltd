@@ -106,7 +106,7 @@ export default function SiteCTA() {
       </div>
 
       {/* Gradient Background Layer */}
-      <div className="absolute bottom-0 left-0 right-0 h-4/5 sm:h-2/3 bg-gradient-to-b from-blue-500 to-primary" />
+      <div className="absolute bottom-0 left-0 right-0 h-4/5 sm:h-2/3 bg-gradient-to-b from-[#201e82] to-primary" />
     </section>
   );
 }
