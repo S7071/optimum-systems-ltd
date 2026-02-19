@@ -5,7 +5,7 @@ import SiteNavbar from "@/components/layout01/site-navbar";
 // import { SitePartner } from "@/components/site-partners";
 import SiteTestimonials from "@/components/layout01/site-testimonials";
 import SiteApp from "@/components/layout01/site-app";
-import SiteHero from "@/components/layout01/site-hero";
+import SiteHero from "@/components/layout02/site-hero";
 
 export default function Home() {
   return (
