@@ -4,7 +4,7 @@ import SiteFooter from "@/components/layout01/site-footer";
 import SiteNavbar from "@/components/layout01/site-navbar";
 // import { SitePartner } from "@/components/site-partners";
 import SiteTestimonials from "@/components/layout01/site-testimonials";
-import SiteApp from "@/components/site-app";
+import SiteApp from "@/components/layout01/site-app";
 import SiteHero from "@/components/layout01/site-hero";
 
 export default function Home() {
