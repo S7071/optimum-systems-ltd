@@ -55,7 +55,7 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function SiteTestimonials() {
   return (
-    <section className="relative py-16 md:py-24 bg-background px-6 sm:px-48">
+    <section className="relative py-16 md:py-24 bg-background px-6 sm:px-30">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="max-w-2xl mx-auto text-center mb-12">

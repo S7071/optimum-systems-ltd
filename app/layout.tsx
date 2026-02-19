@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Home | Optimum Systems Ltd",
+  title: "Home - Optimum Systems Ltd",
   description: "",
 };
 

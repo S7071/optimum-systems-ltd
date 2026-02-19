@@ -9,7 +9,7 @@ import { JSX } from "react";
 
 export default function SiteApp(): JSX.Element {
   return (
-    <section className="relative py-16 md:py-24 px-6 sm:px-48">
+    <section className="relative py-16 md:py-24 px-6 sm:px-30">
       <div className="container relative mx-auto px-4">
         <div className="grid grid-cols-1 items-center md:grid-cols-12 gap-10">
           {/* Illustration */}

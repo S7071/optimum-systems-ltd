@@ -23,21 +23,21 @@ type FeatureItem = {
 
 const features: FeatureItem[] = [
   {
-    title: "Streamline Operations",
+    title: "Competency-Based Assessment",
     description:
-      "Automate tasks and manage your entire business from one integrated cloud-based ERP platform.",
+      "Auto-aligned to CBE goals & KNEC standards with precision competency tracking.",
     icon: Workflow,
   },
   {
-    title: " Scale With Confidence",
+    title: "Live Dashboards & Insights",
     description:
-      "Customizable ERP that grows with you - from 50 to 100,000 users across multiple locations.",
+      "Real-time insights for students, parents & teachers with interactive visuals.",
     icon: TrendingUp,
   },
   {
-    title: "Expert Implementation",
+    title: "Secure & Seamless Integration",
     description:
-      "Expert ERP implementation and support across education, finance, manufacturing, and retail.",
+      "Works seamlessly with NEMIS & existing school systems for unified operations.",
     icon: Award,
   },
 ];
