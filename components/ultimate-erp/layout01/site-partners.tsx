@@ -5,33 +5,49 @@ export function SitePartner() {
       <div className="container relative">
         <div className="grid md:grid-cols-6 grid-cols-2 justify-center gap-7.5">
           <div className="mx-auto py-4">
-            <img src="images/clients/amazon.svg" className="h-6" alt="" />
-          </div>
-
-          <div className="mx-auto py-4">
-            <img src="images/clients/google.svg" className="h-6" alt="" />
-          </div>
-
-          <div className="mx-auto py-4">
-            <img src="images/clients/lenovo.svg" className="h-6" alt="" />
-          </div>
-
-          <div className="mx-auto py-4">
-            <img src="images/clients/paypal.svg" className="h-6" alt="" />
-          </div>
-
-          <div className="mx-auto py-4">
             <img
-              src="images/clients/shopify.svg"
-              className="h-6"
+              src="images/cbe/clients/slider-logos-1.svg"
+              className="h-10"
               alt=""
             />
           </div>
 
           <div className="mx-auto py-4">
             <img
-              src="images/clients/spotify.svg"
-              className="h-6"
+              src="images/cbe/clients/slider-logos-2.svg"
+              className="h-10"
+              alt=""
+            />
+          </div>
+
+          <div className="mx-auto py-4">
+            <img
+              src="images/cbe/clients/slider-logos-3.svg"
+              className="h-10"
+              alt=""
+            />
+          </div>
+
+          <div className="mx-auto py-4">
+            <img
+              src="images/cbe/clients/slider-logos-4.svg"
+              className="h-10"
+              alt=""
+            />
+          </div>
+
+          <div className="mx-auto py-4">
+            <img
+              src="images/cbe/clients/slider-logos-5.svg"
+              className="h-10"
+              alt=""
+            />
+          </div>
+
+          <div className="mx-auto py-4">
+            <img
+              src="images/cbe/clients/slider-logos-6.svg"
+              className="h-10"
               alt=""
             />
           </div>

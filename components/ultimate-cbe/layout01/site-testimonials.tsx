@@ -60,7 +60,7 @@ export default function SiteTestimonials() {
         {/* Section Header */}
         <div className="max-w-2xl mx-auto text-center mb-12">
           <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">
-            What Our Schools Say
+            What Our Clients Say
           </h3>
           <p className="mt-4 text-muted-foreground">
             See how UltimateCBE Assessment ERP has transformed education
@@ -75,7 +75,7 @@ export default function SiteTestimonials() {
             <div key={testimonial.id} className="flex flex-col items-center">
               <Card className="relative w-full rounded-2xl shadow-sm">
                 <CardContent className="p-6 text-center">
-                  <Quote className="w-10 h-10 mx-auto text-primary mb-4" />
+                  <Quote className="w-10 h-10 mx-auto text-primary-cbe-800 mb-4" />
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     “{testimonial.content}”
                   </p>

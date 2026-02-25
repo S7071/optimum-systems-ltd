@@ -49,26 +49,24 @@ export default function SiteFooter({
     {
       title: "Resources",
       links: [
-        { text: "Blogs & Articles", href: "#" },
-        { text: "Documentations", href: "#" },
-        { text: "Open Source Tooling", href: "#" },
-        { text: "Help Center", href: "#" },
+        { text: "Blogs & Articles", href: "/ultimate-cbe/blogs" },
+        { text: "Help Center", href: "/ultimate-cbe/help-center" },
         { text: "System Status", href: "#" },
-        { text: "Release Notes", href: "#" }, // "/change-logs"
+        { text: "Release Notes", href: "/ultimate-cbe/changelog" },
       ],
     },
     {
       title: "Engage with us",
       links: [
         { text: "We're Hiring.", href: "#" },
-        { text: "Contact Sales", href: "#" },
-        { text: "Contact Support", href: "#" },
+        { text: "Contact Sales", href: "/ultimate-cbe/contact-us" },
+        { text: "Contact Support", href: "/ultimate-cbe/contact-us" },
         { text: "Follow on X", href: "#" },
         { text: "Community Forums", href: "#" },
       ],
     },
   ],
-  copyright = "© 2026 SSO GROUP KE | OPTIMUM SYSTEMS LTD. All rights reserved",
+  copyright = "© 2026 SSO GROUP KE All rights reserved",
   policies = [
     { text: "Privacy Policy", href: "/privacy-policy" },
     { text: "Terms of Service", href: "/terms-of-service" },
@@ -76,12 +74,12 @@ export default function SiteFooter({
   className,
 }: FooterProps) {
   return (
-    <footer className={cn("bg-primary w-full sm:px-21 px-8", className)}>
+    <footer className={cn("bg-primary-cbe-500 w-full sm:px-21 px-8", className)}>
       <div className="flex item-center justify-center">
         <div className="max-w-container mx-auto">
           <div
             data-slot="footer"
-            className="text-background pt-12 pb-4"
+            className="text-primary-foreground pt-12 pb-4"
           >
             <div
               data-slot="footer-content"
@@ -105,7 +103,7 @@ export default function SiteFooter({
                     <a
                       key={linkIndex}
                       href={link.href}
-                      className="text-background/50 text-sm"
+                      className="text-muted/60 text-sm"
                     >
                       {link.text}
                     </a>
@@ -115,10 +113,10 @@ export default function SiteFooter({
             </div>
             <div
               data-slot="footer-bottom"
-              className="border-border dark:border-border/15 text-background/50 mt-8 flex flex-col items-center justify-between gap-4 border-t pt-4 text-xs sm:flex-row"
+              className="border-border dark:border-border/15 text-muted/60 mt-8 flex flex-col items-center justify-between gap-4 border-t pt-4 text-xs sm:flex-row"
             >
-              <div>{copyright}</div>
-              <div className="flex items-center gap-4">
+              <div className="text-muted/60">{copyright}</div>
+              <div className="flex items-center gap-4 text-muted/60">
                 {policies.map((policy, index) => (
                   <a key={index} href={policy.href}>
                     {policy.text}

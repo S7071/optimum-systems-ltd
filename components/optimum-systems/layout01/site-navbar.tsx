@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -36,14 +35,6 @@ const SOLUTIONS: MenuItem[] = [
   { title: "Bank Integration", href: "#" },
   { title: "Mobile Bank Integration", href: "#" },
   { title: "Level Based Academic ERP", href: "#" },
-  // {
-  //   title: "AI Tools",
-  //   href: "/index-ai",
-  //   badge: {
-  //     label: "Dark",
-  //     className: "bg-slate-900 text-white dark:bg-white dark:text-black",
-  //   },
-  // },
   { title: "Management Dashboard", href: "#" },
   { title: "AI & Financial Reports", href: "/index-seo" },
   { title: "CBET", href: "#" },
@@ -96,7 +87,7 @@ function ListItem({ title, href = "#", badge }: MenuItem) {
 export default function SiteNavbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background px-6 sm:px-30">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-20 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
@@ -126,7 +117,23 @@ export default function SiteNavbar() {
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-              <NavDropdown title="Solutions" items={SOLUTIONS} />
+              {/* For Teachers */}
+              {/* For School Leaders */}
+              {/* Products */}
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/" className="px-4 py-2 text-sm font-medium">
+                    For Teachers
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/" className="px-4 py-2 text-sm font-medium">
+                    For School Leaders
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
               <NavDropdown title="Products" items={PRODUCTS} />
             </NavigationMenuList>
           </NavigationMenu>
@@ -134,10 +141,10 @@ export default function SiteNavbar() {
 
         {/* Right Buttons */}
         <div className="hidden lg:flex items-center space-x-2">
-          <Button variant="outline" className="gap-4 rounded-full">
+          <Button variant="outline" className="gap-4">
             Sign In
           </Button>
-          <Button variant="default" className="gap-4 rounded-full">
+          <Button variant="default" className="gap-4">
             Request a Demo
           </Button>
         </div>

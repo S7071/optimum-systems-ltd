@@ -12,8 +12,8 @@ import {
 } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import { Progress } from "../ui/progress";
 
 type FeatureItem = {
   title: string;
@@ -72,8 +72,8 @@ export default function SiteFeatures() {
               >
                 <CardContent className="flex flex-col items-center p-8 text-center">
                   <div className="relative flex items-center justify-center">
-                    <Hexagon className="h-24 w-24 text-primary/10" />
-                    <Icon className="absolute h-8 w-8 text-primary" />
+                    <Hexagon className="h-24 w-24 text-primary-cbe-100" />
+                    <Icon className="absolute h-8 w-8 text-primary-cbe-800" />
                   </div>
 
                   <h4 className="mt-6 text-xl font-medium">{feature.title}</h4>
@@ -138,7 +138,7 @@ export default function SiteFeatures() {
             </p>
 
             <div className="mt-6">
-              <Button asChild variant="link" className="p-0 text-primary">
+              <Button asChild variant="link" className="p-0 text-primary-cbe-800">
                 <Link href="#">
                   Book A Demo <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -185,14 +185,14 @@ export default function SiteFeatures() {
                 "Customizable Dashboards for Admins, Teachers & Parents",
               ].map((item, index) => (
                 <li key={index} className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-primary" />
+                  <CheckCircle className="mr-3 h-5 w-5 text-primary-cbe-800" />
                   {item}
                 </li>
               ))}
             </ul>
 
             <div className="mt-6">
-              <Button asChild variant="link" className="p-0 text-primary">
+              <Button asChild variant="link" className="p-0 text-primary-cbe-800">
                 <Link href="/">
                   Find Out More
                   <ArrowRight className="ml-2 h-4 w-4" />

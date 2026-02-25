@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-export default function SiteCTA() {
+export default function SiteDemo() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -37,7 +37,7 @@ export default function SiteCTA() {
                   <DialogTrigger asChild>
                     <Button
                       size="icon"
-                      className="h-20 w-20 rounded-full shadow-xl bg-white text-primary hover:bg-gray-100 dark:bg-slate-900 dark:text-white"
+                      className="h-20 w-20 rounded-full shadow-xl bg-background text-primary-cbe-800 hover:bg-primary-cbe-50"
                       aria-label="Play video"
                     >
                       <Play className="h-8 w-8" />
@@ -106,7 +106,7 @@ export default function SiteCTA() {
       </div>
 
       {/* Gradient Background Layer */}
-      <div className="absolute bottom-0 left-0 right-0 h-4/5 sm:h-2/3 bg-gradient-to-b from-[#201e82] to-primary" />
+      <div className="absolute bottom-0 left-0 right-0 h-4/5 sm:h-2/3 bg-gradient-to-b from-primary-cbe-400 to-primary-cbe-700" />
     </section>
   );
 }
