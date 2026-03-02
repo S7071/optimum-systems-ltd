@@ -91,14 +91,14 @@ export default function SiteNavbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="/ultimate-cbe.svg"
+            src="/logo.svg"
             alt="Logo"
             width={140}
             height={32}
             className="dark:hidden"
           />
           <Image
-            src="/ultimate-cbe.svg"
+            src="/logo.svg"
             alt="Logo"
             width={140}
             height={32}
@@ -123,18 +123,19 @@ export default function SiteNavbar() {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/" className="px-4 py-2 text-sm font-medium">
-                    For Teachers
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/" className="px-4 py-2 text-sm font-medium">
-                    For School Leaders
+                    About Us
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavDropdown title="Products" items={PRODUCTS} />
+              <NavDropdown title="Solutions" items={SOLUTIONS} />
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/" className="px-4 py-2 text-sm font-medium">
+                    Contact Us
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>

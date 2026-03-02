@@ -9,6 +9,7 @@ export function proxy(req: NextRequest) {
 
   // Allow the canonical path
   if (pathname.startsWith('/ultimate-cbe')) return NextResponse.next()
+  if (pathname.startsWith('/')) return NextResponse.next()
 
   // Exclude common static/next internals and API routes so they continue to work
   // Adjust these rules if you want to include/exclude more paths
@@ -23,7 +24,7 @@ export function proxy(req: NextRequest) {
 
   // preserve search params when redirecting
   const target = req.nextUrl.clone()
-  target.pathname = '/ultimate-cbe'
+  target.pathname = '/'
   // Optionally preserve original path in a query param:
   // target.searchParams.set('from', pathname + req.nextUrl.search)
 
