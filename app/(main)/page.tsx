@@ -1,14 +1,14 @@
 import SiteNavbar from "@/components/optimum-systems/layout01/site-navbar";
 import SiteHero from "@/components/optimum-systems/layout01/site-hero";
 import SiteFooter from "@/components/optimum-systems/layout01/site-footer";
-import SiteSolutions from "@/components/optimum-systems/layout01/site-solutions";
-import SiteLogos from "@/components/optimum-systems/layout01/site-logos";
+import SiteLogos from "@/components/optimum-systems/layout02/site-logos";
 import SiteStats from "@/components/optimum-systems/layout01/site-stats";
-import SiteFeatures from "@/components/optimum-systems/layout01/site-features";
+import SiteFeatures from "@/components/optimum-systems/layout02/site-features";
 import SiteTestimonials from "@/components/optimum-systems/layout01/site-testimonials";
 import SiteCta from "@/components/optimum-systems/layout01/site-cta";
 import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
+import SiteMainFeature from "@/components/optimum-systems/layout01/site-main-feature";
 
 export default function Home() {
   return (
@@ -16,10 +16,10 @@ export default function Home() {
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
-      <SiteSolutions />
       <SiteLogos />
-      <SiteStats />
+      <SiteMainFeature />
       <SiteFeatures />
+      <SiteStats />
       <SiteTestimonials />
       <SiteFaq />
       <SiteCta />
