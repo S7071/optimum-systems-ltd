@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 /* eslint-disable @next/next/no-img-element */
 export default function SiteCta() {
   return (
-    <section className="py-32 w-full px-6 sm:px-30 bg-muted">
+    <section className="py-32 w-full px-6 sm:px-30 bg-background">
       <div className="container">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           <div className="h-[250px] sm:h-[350px] overflow-hidden rounded-xl bg-primary-cbe-500 text-white md:col-span-2">

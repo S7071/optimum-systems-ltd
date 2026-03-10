@@ -1,5 +1,33 @@
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+
 /* eslint-disable @next/next/no-img-element */
 export default function SiteTestimonials() {
+  interface testimony {
+    statement: string;
+    avator: string;
+    name: string;
+    position: string;
+    logo: string;
+  }
+  const testimonies: testimony[] = [
+    {
+      statement:
+        "Optimum's ERP has completely transformed how we manage fees, payroll, and student records. Everything is now in one place — it&apos;s simplified our operations tenfold and the support team is always responsive.",
+      avator: "/images/clients/01.jpg",
+      name: "Dr. Jane Mutua",
+      position: "Principal, Trukana University College",
+      logo: "/images/clients/tuc.png",
+    },
+    {
+      statement:
+        "Since deploying the Optimum system, we've eliminated manual errors in our financial reporting and our audit processes are now seamless. It integrates perfectly across all our departments.",
+      avator: "/images/clients/02.jpg",
+      name: "Mr. Peter Omondi",
+      position:
+        "Finance Officer, Gatundu South Technical and Vocational College",
+      logo: "/images/clients/gatundu-south-technical-and-vocational-college.png",
+    },
+  ];
   return (
     <section className="py-16 sm:py-32 w-full px-6 sm:px-30 bg-background">
       <div className="container flex flex-col gap-6">
@@ -17,88 +45,46 @@ export default function SiteTestimonials() {
           </div>
         </div>
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="flex h-full flex-col justify-between gap-8 rounded-2xl bg-muted p-6">
-            <div className="flex flex-col gap-6">
-              <p className="text-lg leading-relaxed font-medium text-foreground">
-                Optimum&apos;s ERP has completely transformed how we manage
-                fees, payroll, and student records. Everything is now in one
-                place — it&apos;s simplified our operations tenfold and the
-                support team is always responsive.
-              </p>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span
-                  data-slot="avatar"
-                  data-size="default"
-                  className="after:rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6 after:border-border group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten size-10 rounded-xl bg-background/50"
-                >
-                  <img
-                    data-slot="avatar-image"
-                    className="rounded-full aspect-square size-full object-cover"
-                    alt="Sarah Williams"
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp"
-                  />
-                </span>
-                <div className="flex flex-col gap-0.5">
-                  <div className="text-sm font-medium text-foreground">
-                    Dr. Jane Mutua
+          {testimonies.map((card, idx) => {
+            return (
+              <div
+                key={idx}
+                className="flex h-full flex-col justify-between gap-8 rounded-2xl bg-muted p-4 sm:p-6"
+              >
+                <div className="flex flex-col gap-6">
+                  <p className="text-l leading-relaxed font-normal text-foreground">
+                    {card.statement}
+                  </p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Avatar size="default">
+                      <AvatarImage
+                        className="rounded-full aspect-square size-full object-cover"
+                        alt={card.name}
+                        src={card.avator}
+                      />
+                    </Avatar>
+                    <div className="flex flex-col gap-0.5">
+                      <div className="text-sm font-medium text-foreground">
+                        {card.name}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {card.position}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-sm text-muted-foreground">
-                    Principal, Kamwenja Teachers Training College
+                  <div className="w-14 h-14">
+                    <img
+                      className="h-full object-contain object-center opacity-80"
+                      alt={card.name}
+                      src={card.logo}
+                    />
                   </div>
                 </div>
               </div>
-              <div className="w-24">
-                <img
-                  className="w-full object-contain object-center opacity-80"
-                  alt=""
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-1.svg"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex h-full flex-col justify-between gap-8 rounded-2xl bg-muted p-6">
-            <div className="flex flex-col gap-6">
-              <p className="text-lg leading-relaxed font-medium text-foreground">
-                Since deploying the Optimum system, we&apos;ve eliminated manual
-                errors in our financial reporting and our audit processes are
-                now seamless. It integrates perfectly across all our
-                departments.
-              </p>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span
-                  data-slot="avatar"
-                  data-size="default"
-                  className="after:rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6 after:border-border group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten size-10 rounded-xl bg-background/50"
-                >
-                  <img
-                    data-slot="avatar-image"
-                    className="rounded-full aspect-square size-full object-cover"
-                    alt="Mr. Peter Omondi"
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-2.webp"
-                  />
-                </span>
-                <div className="flex flex-col gap-0.5">
-                  <div className="text-sm font-medium text-foreground">
-                    Mr. Peter Omondi
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    Finance Officer, Kisii National Polytechnic
-                  </div>
-                </div>
-              </div>
-              <div className="w-24">
-                <img
-                  className="w-full object-contain object-center opacity-80"
-                  alt=""
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-2.svg"
-                />
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
           <a

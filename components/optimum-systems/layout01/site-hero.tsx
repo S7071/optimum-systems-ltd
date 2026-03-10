@@ -10,53 +10,20 @@ function LogoCard(key: number, product: string): JSX.Element {
       className="size-22 rounded-xl border border-background/20 bg-background/100 shadow-xl"
     >
       <div className="h-full w-full p-4 flex items-center justify-center">
-        <img alt="Integration" className="h-10 w-30" src={product} />
+        <img alt="Integration" className="h-26 w-26" src={product} />
       </div>
     </div>
   );
 }
 export default function SiteHero() {
-  
-  // -------------------
-  // Ndakala Logos
-  // -------------------
-  //   "/images/cbe/logo-icon-dark.svg",
-  //   "/images/365/logo-icon-dark.svg",
-  //   "/images/erp/logo-icon-dark.svg",
-  //   "/images/pos/logo-icon-dark.svg",
-  //   "/images/hms/logo-icon-dark.svg",
-  //   "/images/cbe/logo-icon-dark.svg",
-  //   "/images/365/logo-icon-dark.svg",
-  //   "/images/erp/logo-icon-dark.svg",
-  //   "/images/pos/logo-icon-dark.svg",
-  //   "/images/hms/logo-icon-dark.svg",
-  //   "/images/365/logo-icon-dark.svg",
-  //   "/images/erp/logo-icon-dark.svg",
-  
-  // -------------------
-  // Abno Logos
-  // -------------------
-  //   "https://www.abnosoftwares.com/assets/images/product-offer7.png",
-  //   "https://www.abnosoftwares.com/assets/images/product-offer8.png",
-  //   "https://www.abnosoftwares.com/assets/images/product-offer1.png",
-  //   "https://www.abnosoftwares.com/assets/images/Edubridge-Logo.png",
-  //   "https://www.abnosoftwares.com/assets/images/nuru365.png",
-  //   "https://www.abnosoftwares.com/assets/images/product-offer6.png",
-  //   "https://www.abnosoftwares.com/assets/images/lango_kuu.png",
-  //   "https://www.abnosoftwares.com/assets/images/CBET-Logo.png",
-  //   "https://www.abnosoftwares.com/assets/images/mFaili.png",
-  //   "https://www.abnosoftwares.com/assets/images/lybhub-logo.png",
-  //   "https://www.abnosoftwares.com/assets/images/soma-lms-logo.png",
-  //   "https://www.abnosoftwares.com/assets/images/Bespoke.svg",
-  
   const products: string[] = [
-    "/images/parent/products/g1.svg",
-    "/images/parent/products/g2.svg",
-    "/images/parent/products/g3.svg",
-    "/images/parent/products/g4.svg",
-    "/images/parent/products/g5.svg",
-    "/images/parent/products/g6.svg",
-    "/images/parent/products/g7.svg",
+    "/logos/pre-approved/erp-dark-icon.svg",
+    "/logos/pre-approved/cbe-dark-icon.svg",
+    "/logos/pre-approved/cms-dark-icon.svg",
+    "/logos/pre-approved/hms-dark-icon.svg",
+    "/logos/pre-approved/mfg-dark-icon.svg",
+    "/logos/pre-approved/pos-dark-icon.svg",
+    "/logos/pre-approved/sc-dark-icon.svg",
     "/images/parent/products/g8.svg",
     "/images/parent/products/g9.svg",
     "/images/parent/products/g10.svg",
@@ -77,7 +44,7 @@ export default function SiteHero() {
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-cbe-900/35 via-[rgba(0, 0, 0, 0.62)] to-primary-cbe-900/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-cbe-900/30 via-[rgba(0, 0, 0, 0.62)] to-primary-cbe-900/60" />
         </div>
       </div>
       <div className="relative">

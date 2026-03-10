@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { BadgeCheck, Facebook, Twitter } from "lucide-react";
+import { ArrowRight, BadgeCheck, Facebook, Twitter } from "lucide-react";
 
 export default function SiteFooter() {
   return (
@@ -71,13 +71,16 @@ export default function SiteFooter() {
               <h3 className="mb-4 font-bold">Company</h3>
               <ul className="space-y-4 text-secondary/60">
                 <li className="hover:text-secondary/90">
-                  <a href="#">About Optimum ERP Systems Ltd</a>
+                  <a href="#">About Optimum Systems Ltd</a>
                 </li>
                 <li className="hover:text-secondary/90">
                   <a href="#">Company Profile</a>
                 </li>
                 <li className="hover:text-secondary/90">
                   <a href="#">Our Vision & Mission</a>
+                </li>
+                <li className="hover:text-secondary/90">
+                  <a href="#">Our Team</a>
                 </li>
                 <li className="hover:text-secondary/90">
                   <a href="#">Success Stories</a>
@@ -108,8 +111,9 @@ export default function SiteFooter() {
                 <li className="hover:text-secondary/90">
                   <a href="#">Ultimate Conference</a>
                 </li>
-                <li className="hover:text-secondary/90">
-                  <a href="#">Ultimate POS</a>
+                <li className="hover:text-secondary/90 flex flex-row gap-2 items-center justify-start">
+                  <a href="#">Explore More</a>
+                  <ArrowRight size={18} />
                 </li>
               </ul>
             </div>
@@ -159,9 +163,11 @@ export default function SiteFooter() {
                 </li>
               </div>
               <li>
-                <p className="text-secondary/60">
-                  © 2026 SSO GROUP KE. All rights reserved.
-                </p>
+                <a href="https://ssogroup.co.ke">
+                  <p className="text-secondary/60">
+                    © 2026 SSO GROUP KE. All rights reserved.
+                  </p>
+                </a>
               </li>
             </ul>
             <ul className="flex items-center justify-center gap-2 sm:gap-4 lg:justify-start">

@@ -3,8 +3,6 @@
 import { useState, useMemo, MouseEventHandler, ReactNode } from "react";
 import { Star, GitPullRequest, ChevronDown } from "lucide-react";
 
-// ─── Data ────────────────────────────────────────────────────────────────────
-
 const CATEGORIES = [
   "All",
   "Finance Management",
@@ -20,7 +18,6 @@ const CATEGORIES = [
   "Appointment Scheduling System",
   "Electronic Health Record Systems",
 ];
-
 const INDUSTRY = [
   "All",
   "Education",
@@ -38,7 +35,6 @@ const INDUSTRY = [
   "Entertainment",
   "Transport & Logistics",
 ];
-
 interface projectType {
   id: number;
   name: string;
@@ -48,7 +44,6 @@ interface projectType {
   industry: string;
   tags: string[];
 }
-
 const PROJECTS: projectType[] = [
   {
     id: 1,
@@ -318,11 +313,7 @@ const PROJECTS: projectType[] = [
     ],
   },
 ];
-
 const PAGE_SIZE = 6;
-
-// ─── Sub-components ───────────────────────────────────────────────────────────
-
 function Badge({
   children,
   active,
@@ -404,7 +395,13 @@ function ProjectCard({
   );
 }
 
-function EmptyState({ category, industry }: { category: string; industry: string }) {
+function EmptyState({
+  category,
+  industry,
+}: {
+  category: string;
+  industry: string;
+}) {
   return (
     <div className="col-span-full flex flex-col items-center justify-center py-16 text-center gap-2">
       <p className="text-muted-foreground text-sm">
@@ -443,7 +440,8 @@ export default function SiteFeatures() {
     return PROJECTS.filter((p) => {
       const categoryMatch =
         activeCategory === "All" || p.tags.includes(activeCategory);
-      const roleMatch = activeIndustry === "All" || p.industry === activeIndustry;
+      const roleMatch =
+        activeIndustry === "All" || p.industry === activeIndustry;
       return categoryMatch && roleMatch;
     });
   }, [activeCategory, activeIndustry]);
@@ -455,9 +453,18 @@ export default function SiteFeatures() {
     <section className="bg-muted py-16 sm:py-32 w-full px-6 sm:px-30">
       <div className="container">
         <h1 className="text-center text-2xl font-semibold sm:text-4xl text-pretty">
-          Explore Solutions Based on your needs
+          Explore Products Based on your needs
         </h1>
+        <div className="w-full flex items-center justify-center mt-6">
 
+        <p className="max-w-l text-center text-muted-foreground">
+          Esse nostrud ullamco occaecat labore ut deserunt voluptate velit enim
+          excepteur aliqua eiusmod ex pariatur. Sunt nulla nostrud quis
+          cupidatat eu commodo sunt cupidatat veniam. Laborum adipisicing
+          commodo adipisicing eu quis esse. Eiusmod aute excepteur reprehenderit
+          non aliqua excepteur nostrud nisi nulla in quis.
+        </p>
+        </div>
         <div className="mt-10">
           {/* ── Filter bar ─────────────────────────────────────────────── */}
           <div className="flex flex-wrap items-center justify-between gap-4">
@@ -483,7 +490,9 @@ export default function SiteFeatures() {
                 aria-expanded={dropdownOpen}
                 className="hidden sm:flex border-input dark:bg-input/30 dark:hover:bg-input/50 focus-visible:border-ring focus-visible:ring-ring/50 gap-1.5 rounded-md border py-2 pr-2 pl-2.5 text-sm shadow-xs transition-[color,box-shadow] focus-visible:ring-3 h-9 flex w-fit items-center justify-between whitespace-nowrap outline-none bg-background md:min-w-32"
               >
-                <span>{activeIndustry === "All" ? "All Industries" : activeIndustry}</span>
+                <span>
+                  {activeIndustry === "All" ? "All Industries" : activeIndustry}
+                </span>
                 <ChevronDown
                   className={`text-muted-foreground size-4 pointer-events-none transition-transform duration-200 ${
                     dropdownOpen ? "rotate-180" : ""

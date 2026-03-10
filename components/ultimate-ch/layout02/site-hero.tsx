@@ -8,13 +8,13 @@ export default function SiteHero() {
         <div className="container flex w-full flex-col justify-between px-10 lg:flex-row">
           <div className="flex w-full flex-col gap-8">
             <a href="#" className="text-2xl font-semibold tracking-tighter">
-              Shadcn Blocks
+              Blocks
             </a>
             <h1 className="bg-re relative z-20 text-6xl font-semibold tracking-tighter md:text-8xl">
-              The Blocks Built With Shadcn &amp; Tailwind.
+              The Blocks Built With NextJs &amp; Tailwind.
             </h1>
             <p className="max-w-2xl tracking-tight text-muted-foreground md:text-xl">
-              Finely crafted components built with React, Tailwind and Shadcn
+              Finely crafted components built with React, Tailwind and NextJs
               UI. Developers can copy and paste these blocks directly into their
               project.
             </p>
@@ -55,7 +55,7 @@ export default function SiteHero() {
                 </p>
                 <div className="flex flex-col items-center justify-center">
                   <h2 className="text-center text-6xl font-semibold tracking-tight text-background">
-                    Shadcn <br />
+                    NextJs <br />
                     Carousal
                   </h2>
                   <div className="mt-2 h-1 w-6 rounded-full bg-background"></div>
@@ -116,7 +116,7 @@ export default function SiteHero() {
                 </p>
                 <div className="flex flex-col items-center justify-center">
                   <h2 className="text-center text-6xl font-semibold tracking-tight text-background">
-                    Shadcn <br />
+                    NextJs <br />
                     Carousal
                   </h2>
                   <div className="mt-2 h-1 w-6 rounded-full bg-background"></div>

@@ -138,6 +138,12 @@
   --sidebar-ring: oklch(0.553 0.013 58.071);
 }
 
+[data-radix-navigation-menu-content] {
+  left: 0 !important;
+  width: 100vw !important;
+  transform: none !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

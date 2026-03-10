@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useEffect } from "react";
-import { BadgeCheck, Play, Star } from "lucide-react";
+import { Play, Star } from "lucide-react";
 import { Button } from "../../ui/button";
 import Image from "next/image";
 
@@ -57,14 +58,14 @@ export default function SiteHero() {
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-7"
           }`}
         >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-[rgba(255,255,255,0.07)] border border-[rgba(255,255,255,0.15)] rounded-full py-[5px] pr-[14px] pl-2 mb-6 text-[13px] font-medium">
-            <BadgeCheck size={12} color="#3b82f6" fill="#3b82f6" />
-            <span className="text-[12px] font-bold leading-none text-white">
-              #1
-            </span>
+          <div className="inline-flex items-center gap-2 bg-primary-cbe-800 rounded-full py-[5px] pr-[14px] pl-2 mb-6 text-[13px] font-medium">
+            <img
+              alt="UltimateCBE"
+              className="h-8 w-8"
+              src="/logos/pre-approved/cbe-light-icon.svg"
+            />
             <span className="text-[10px] leading-[1.2] text-[rgba(255,255,255,0.7)] uppercase tracking-[.04em]">
-              Kenyan Certified CBE Assessment ERP
+              Ultimate CBE ERP
             </span>
           </div>
 

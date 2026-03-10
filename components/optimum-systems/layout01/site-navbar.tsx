@@ -37,7 +37,7 @@ interface MenuItem {
    DATA (Refactored Structure)
 ------------------------------ */
 
-const SOLUTIONS: MenuItem[] = [
+const solutions: MenuItem[] = [
   {
     title: "Ultimate CBE Assessment ERP",
     href: "/solutions/asm",
@@ -94,45 +94,37 @@ const SHOP_FOR = [
   },
 ];
 
-const PRODUCTS: MenuItem[] = [
+const sectorsWeServe: MenuItem[] = [
   {
-    title: "College/University ERP System",
-    href: "#",
+    title: "Academic Institutions",
+    href: "/sectors#academic-institutions",
     description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
   },
   {
-    title: "Micro-Finance Institution ERP System",
-    href: "#",
+    title: "SACCOs & Microfinance",
+    href: "/sectors#saccos-micofincance",
     description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
   },
   {
-    title: "Building Sacco ERP System",
-    href: "#",
+    title: "Enterprises & NGOs",
+    href: "/sectors#enterprises-ngos",
     description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
   },
   {
-    title: "Sacco ERP System",
-    href: "#",
+    title: "Government & Parastatals",
+    href: "/sectors#gorvenment-parastatals",
+    description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
+  },
+];
+const company: MenuItem[] = [
+  {
+    title: "About Optimus System Ltd",
+    href: "/company",
     description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
   },
   {
-    title: "Distributor/Retailer ERP System",
-    href: "#",
-    description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
-  },
-  {
-    title: "Manufacturing ERP System",
-    href: "#",
-    description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
-  },
-  {
-    title: "School ERP System",
-    href: "#",
-    description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
-  },
-  {
-    title: "Construction Firm ERP System",
-    href: "#",
+    title: "Careers",
+    href: "/company/careers",
     description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
   },
 ];
@@ -190,7 +182,7 @@ export function SolutionsMenuItem() {
             </p>
 
             <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-              {SOLUTIONS.map((item) => (
+              {solutions.map((item) => (
                 <NavigationMenuLink key={item.href} asChild>
                   <a
                     href={item.href}
@@ -264,7 +256,6 @@ export default function SiteNavbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background px-6 sm:px-30">
       <div className="container flex h-20 items-center justify-between">
-        {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
             src="/logo.svg"
@@ -282,7 +273,6 @@ export default function SiteNavbar() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex">
           <NavigationMenu>
             <NavigationMenuList>
@@ -296,28 +286,28 @@ export default function SiteNavbar() {
               {SolutionsMenuItem()}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/" className="px-4 py-2 text-sm font-medium">
+                  <Link href="/sectors" className="px-4 py-2 text-sm font-medium">
                     Sectors We Serve
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/" className="px-4 py-2 text-sm font-medium">
+                  <Link href="/company" className="px-4 py-2 text-sm font-medium">
                     About Us
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/" className="px-4 py-2 text-sm font-medium">
+                  <Link href="/careers" className="px-4 py-2 text-sm font-medium">
                     Careers
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/" className="px-4 py-2 text-sm font-medium">
+                  <Link href="/contact-us" className="px-4 py-2 text-sm font-medium">
                     Contact Us
                   </Link>
                 </NavigationMenuLink>
@@ -344,8 +334,9 @@ export default function SiteNavbar() {
             <SheetTitle></SheetTitle>
             <SheetContent side="right" className="w-80 p-0">
               <ScrollArea className="h-full p-6">
-                <MobileNavSection title="Solutions" items={SOLUTIONS} />
-                <MobileNavSection title="Products" items={PRODUCTS} />
+                <MobileNavSection title="Solutions" items={solutions} />
+                <MobileNavSection title="Sectors We Serve" items={sectorsWeServe} />
+                <MobileNavSection title="Company" items={company} />
               </ScrollArea>
             </SheetContent>
           </Sheet>

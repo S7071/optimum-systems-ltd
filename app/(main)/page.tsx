@@ -9,10 +9,12 @@ import SiteCta from "@/components/optimum-systems/layout01/site-cta";
 import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import SiteMainFeature from "@/components/optimum-systems/layout01/site-main-feature";
+import HelpDeskButton from "@/components/optimum-systems/layout01/site-help-banner";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen items-start justify-start bg-zinc-50 font-sans dark:bg-black">
+      <HelpDeskButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />

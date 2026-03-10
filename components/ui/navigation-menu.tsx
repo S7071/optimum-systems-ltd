@@ -18,7 +18,7 @@ function NavigationMenu({
       data-slot="navigation-menu"
       data-viewport={viewport}
       className={cn(
-        "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center",
+        "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center w-full",
         className
       )}
       {...props}
@@ -28,6 +28,30 @@ function NavigationMenu({
     </NavigationMenuPrimitive.Root>
   )
 }
+
+// function NavigationMenu({
+//   className,
+//   children,
+//   viewport = true,
+//   ...props
+// }: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
+//   viewport?: boolean
+// }) {
+//   return (
+//     <NavigationMenuPrimitive.Root
+//       data-slot="navigation-menu"
+//       data-viewport={viewport}
+//       className={cn(
+//         "group/navigation-menu relative flex w-full items-center justify-between", // ← w-full
+//         className
+//       )}
+//       {...props}
+//     >
+//       {children}
+//       {viewport && <NavigationMenuViewport />}
+//     </NavigationMenuPrimitive.Root>
+//   )
+// }
 
 function NavigationMenuList({
   className,
@@ -82,6 +106,26 @@ function NavigationMenuTrigger({
   )
 }
 
+
+// function NavigationMenuContent({
+//   className,
+//   ...props
+// }: React.ComponentProps<typeof NavigationMenuPrimitive.Content>) {
+//   return (
+//     <NavigationMenuPrimitive.Content
+//       data-slot="navigation-menu-content"
+//       className={cn(
+//         // Remove md:w-auto — replace with w-full so it fills the viewport
+//         "top-0 left-0 w-full p-2 pr-2.5 md:absolute md:w-full",
+//         "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52",
+//         "**:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none",
+//         className
+//       )}
+//       {...props}
+//     />
+//   )
+// }
+
 function NavigationMenuContent({
   className,
   ...props
@@ -98,6 +142,25 @@ function NavigationMenuContent({
     />
   )
 }
+
+// function NavigationMenuViewport({
+//   className,
+//   ...props
+// }: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
+//   return (
+//     <div className={cn("absolute left-0 top-full w-full")}> {/* ← full width, anchored left */}
+//       <NavigationMenuPrimitive.Viewport
+//         data-slot="navigation-menu-viewport"
+//         className={cn(
+//           "bg-popover text-popover-foreground relative mt-1.5 w-full overflow-hidden rounded-none border-y shadow-lg", // ← rounded-none, border-y only
+//           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+//           className
+//         )}
+//         {...props}
+//       />
+//     </div>
+//   )
+// }
 
 function NavigationMenuViewport({
   className,

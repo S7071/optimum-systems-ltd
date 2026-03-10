@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -8,6 +9,7 @@ import {
   Receipt,
   Users,
 } from "lucide-react";
+import Image from "next/image";
 
 /* eslint-disable @next/next/no-img-element */
 export default function SiteMainFeature() {
@@ -15,6 +17,26 @@ export default function SiteMainFeature() {
     <section className="py-16 sm:py-32 w-full bg-background px-6 sm:px-30">
       <div className="container flex flex-col items-center gap-10 md:gap-16">
         <div className="flex flex-col gap-5 items-center">
+          <Badge
+            variant="secondary"
+            className="bg-primary-cbe-100 text-primary-cbe-800 text-xs font-bold rounded-full h-10 px-5 py-0.5 gap-3"
+          >
+            <Image
+              src="/ultimate-erp-dark.svg"
+              alt="Logo"
+              width={20}
+              height={20}
+              className="dark:hidden"
+            />
+            <Image
+              src="/ultimate-erp.svg"
+              alt="Logo"
+              width={32}
+              height={32}
+              className="hidden dark:block"
+            />
+            UltimateERP
+          </Badge>
           <h2 className="max-w-full text-center text-2xl sm:text-4xl font-semibold text-pretty">
             One Powerful System. Every Module You Need.
           </h2>
@@ -91,20 +113,20 @@ export default function SiteMainFeature() {
                   ></path>
                 </clipPath>
               </defs>
-              <g clip-path="url(#path0)" mask="url(#safariPunch)">
+              <g clipPath="url(#path0)" mask="url(#safariPunch)">
                 <path
                   d="M0 52H1202V741C1202 747.627 1196.63 753 1190 753H12C5.37258 753 0 747.627 0 741V52Z"
                   className="fill-[#E5E5E5] dark:fill-[#404040]"
                 ></path>
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M0 12C0 5.37258 5.37258 0 12 0H1190C1196.63 0 1202 5.37258 1202 12V52H0L0 12Z"
                   className="fill-[#E5E5E5] dark:fill-[#404040]"
                 ></path>
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M1.06738 12C1.06738 5.92487 5.99225 1 12.0674 1H1189.93C1196.01 1 1200.93 5.92487 1200.93 12V51H1.06738V12Z"
                   className="fill-white dark:fill-[#262626]"
                 ></path>
@@ -141,8 +163,8 @@ export default function SiteMainFeature() {
                     x="580"
                     y="30"
                     fill="#A3A3A3"
-                    font-size="12"
-                    font-family="Arial, sans-serif"
+                    fontSize="12"
+                    fontFamily="Arial, sans-serif"
                   >
                     https://www.ssogroup.co.ke
                   </text>

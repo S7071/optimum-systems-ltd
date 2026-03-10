@@ -1,305 +1,176 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowRightIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function SiteFeatures() {
+  const router = useRouter();
+  interface featureCard {
+    id: number;
+    banner: string;
+    name: string;
+    alias: string;
+    description: string;
+    icon: string;
+    href: string;
+  }
+  const featureCards: featureCard[] = [
+    {
+      id: 0,
+      banner: "/placeholder-aspect-video-1.svg",
+      name: "Ultimate CBE Assessment ERP",
+      alias: "UltimateCBE",
+      description:
+        "A complete Competency-Based Education management system for TVETs and polytechnics — covering student registration, unit tracking, assessments, and KNQA-compliant reporting.",
+      icon: "/logos/pre-approved/cbe-dark-icon.svg",
+      href: "/ultimate-cbe",
+    },
+    {
+      id: 1,
+      banner: "/placeholder-aspect-video-1.svg",
+      name: "Ultimate Supply Chain ERP",
+      alias: "UltimateSCM",
+      description:
+        "End-to-end procurement, inventory, and logistics management. Track suppliers, purchase orders, stock movement, and deliveries in real time across all your branches.",
+      icon: "/logos/pre-approved/sc-dark-icon.svg",
+      href: "/ultimate-scm",
+    },
+    {
+      id: 2,
+      banner: "/placeholder-aspect-video-1.svg",
+      name: "Ultimate Manufacturing ERP",
+      alias: "UltimateMFG",
+      description:
+        "Streamline your entire production cycle — from raw material planning and work-in-progress tracking to finished goods management and quality control.",
+      icon: "/logos/pre-approved/mfg-dark-icon.svg",
+      href: "/ultimate-mfg",
+    },
+    {
+      id: 3,
+      banner: "/placeholder-aspect-video-1.svg",
+      name: "Ultimate Hotel ERP",
+      alias: "UltimateHMS",
+      description:
+        "A fully integrated hospitality management system covering reservations, front desk, housekeeping, restaurant POS, billing, and guest experience management.",
+      icon: "/logos/pre-approved/hms-dark-icon.svg",
+      href: "/ultimate-hms",
+    },
+    {
+      id: 4,
+      banner: "/placeholder-aspect-video-1.svg",
+      name: "Ultimate POS",
+      alias: "UltimatePOS",
+      description:
+        "A fast, reliable point-of-sale system for retail and service businesses. Manage sales, stock, receipts, and daily reports from a single, easy-to-use interface.",
+      icon: "/logos/pre-approved/pos-dark-icon.svg",
+      href: "/ultimate-pos",
+    },
+    {
+      id: 5,
+      banner: "/placeholder-aspect-video-1.svg",
+      name: "Ultimate Conference",
+      alias: "UltimateCMS",
+      description:
+        "Seamlessly manage venue bookings, event scheduling, attendee registration, billing, and post-event reporting for conference centres and event facilities.",
+      icon: "/logos/pre-approved/cms-dark-icon.svg",
+      href: "/ultimate-cms",
+    },
+  ];
+
   return (
-    <section className="py-16 sm:py-32 w-full px-6 sm:px-30">
+    <section className="py-16 sm:py-32 w-full px-6 sm:px-30 bg-primary-cbe-500 text-white">
       <div className="container">
         <div className="mx-auto mb-16 flex max-w-[47.5rem] flex-col gap-4 text-center">
           <h2 className="text-2xl sm:text-4xl font-semibold text-pretty">
-            Purpose-Built ERP Solutions for Every Industry
+            Purpose-Built ERP Products for Every Industry
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-secondary/60">
             From hospitality and manufacturing to retail and conferencing —
             every Optimum product is built specifically for its industry, fully
             integrated, and tested across real Kenyan businesses.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <a href="#" className="group block">
-            <div
-              data-slot="card"
-              data-size="default"
-              className="ring-foreground/10 text-card-foreground group/card flex flex-col gap-6 overflow-hidden rounded-xl py-6 text-sm shadow-xs ring-1 has-[&gt;img:first-child]:pt-0 data-[size=sm]:gap-4 data-[size=sm]:py-4 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl h-full bg-muted transition-all duration-200 hover:shadow-lg"
-            >
-              <div
-                data-slot="card-content"
-                className="px-6 group-data-[size=sm]/card:px-4"
-              >
-                <div className="relative mb-4">
-                  <div className="relative w-[100%] pb-[56.25%]">
-                    <div
-                      data-slot="aspect-ratio"
-                      className="overflow-hidden rounded-md absolute inset-0"
-                    >
-                      <img
-                        src="/placeholder-aspect-video-1.svg"
-                        alt="card-image"
-                        className="block size-full object-cover object-center"
-                      />
+          {featureCards.map((card) => {
+            return (
+              <Card key={card.id} className="py-0">
+                <CardContent className="px-0">
+                  <div className="relative">
+                    <div className="relative w-[100%] pb-[56.25%]">
+                      <div
+                        data-slot="aspect-ratio"
+                        className="overflow-hidden rounded-tl-md rounded-tr-md absolute inset-0"
+                      >
+                        <img
+                          src={card.banner}
+                          alt="card-image"
+                          className="block size-full object-cover object-center"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div
-                    data-slot="card-title"
-                    className="group-data-[size=sm]/card:text-sm flex gap-2 text-lg font-medium text-foreground flex items-center justify-start"
-                  >
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold text-white bg-blue-600">
-                      CBE
-                    </span>
-                    Ultimate CBE ERP
-                  </div>
-                  <div
-                    data-slot="card-description"
-                    className="text-muted-foreground text-sm leading-relaxed"
-                  >
-                    A complete Competency-Based Education management system for
-                    TVETs and polytechnics — covering student registration, unit
-                    tracking, assessments, and KNQA-compliant reporting.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" className="group block">
-            <div
-              data-slot="card"
-              data-size="default"
-              className="ring-foreground/10 text-card-foreground group/card flex flex-col gap-6 overflow-hidden rounded-xl py-6 text-sm shadow-xs ring-1 has-[&gt;img:first-child]:pt-0 data-[size=sm]:gap-4 data-[size=sm]:py-4 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl h-full bg-muted transition-all duration-200 hover:shadow-lg"
-            >
-              <div
-                data-slot="card-content"
-                className="px-6 group-data-[size=sm]/card:px-4"
-              >
-                <div className="relative mb-4">
-                  <div className="relative w-[100%] pb-[56.25%]">
-                    <div
-                      data-slot="aspect-ratio"
-                      className="overflow-hidden rounded-md absolute inset-0"
-                    >
-                      <img
-                        src="/placeholder-aspect-video-1.svg"
-                        alt="card-image"
-                        className="block size-full object-cover object-center"
-                      />
+                  <div className="flex flex-col gap-4 p-4 sm:p-6">
+                    <CardTitle className="flex items-center justify-start gap-4">
+                      <div className="rounded-sm w-12 h-12 flex items-center justify-center bg-muted border">
+                        <img
+                          alt={card.alias}
+                          className="h-8 w-8"
+                          src={card.icon}
+                        />
+                      </div>
+                      <div className="flex flex-col items-start justify-start gap-0.5">
+                        <span className="line-clamp-1 leading-relaxed">{card.name}</span>
+                        <span className="text-sm leading-relaxed line-clamp-1 text-muted-foreground">
+                          {card.alias}
+                        </span>
+                      </div>
+                    </CardTitle>
+                    <CardDescription className="text-sm leading-relaxed line-clamp-3">
+                      {card.description}
+                    </CardDescription>
+                    <div className="w-full flex flex-row justify-end items-center mt-6 gap-2">
+                      <Button
+                        variant="default"
+                        onClick={() => {
+                          router.push(`${card.href}/schedule-demo`);
+                        }}
+                      >
+                        Book a Demo
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="gap-2"
+                        onClick={() => {
+                          router.push(card.href);
+                        }}
+                      >
+                        Explore
+                        <ArrowRightIcon />
+                      </Button>
                     </div>
                   </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div
-                    data-slot="card-title"
-                    className="group-data-[size=sm]/card:text-sm flex gap-2 text-lg font-medium text-foreground flex items-center justify-start"
-                  >
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold text-white bg-amber-500">
-                      SC
-                    </span>
-                    Ultimate Supply Chain ERP
-                  </div>
-                  <div
-                    data-slot="card-description"
-                    className="text-muted-foreground text-sm leading-relaxed"
-                  >
-                    End-to-end procurement, inventory, and logistics management.
-                    Track suppliers, purchase orders, stock movement, and
-                    deliveries in real time across all your branches.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" className="group block">
-            <div
-              data-slot="card"
-              data-size="default"
-              className="ring-foreground/10 text-card-foreground group/card flex flex-col gap-6 overflow-hidden rounded-xl py-6 text-sm shadow-xs ring-1 has-[&gt;img:first-child]:pt-0 data-[size=sm]:gap-4 data-[size=sm]:py-4 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl h-full bg-muted transition-all duration-200 hover:shadow-lg"
-            >
-              <div
-                data-slot="card-content"
-                className="px-6 group-data-[size=sm]/card:px-4"
-              >
-                <div className="relative mb-4">
-                  <div className="relative w-[100%] pb-[56.25%]">
-                    <div
-                      data-slot="aspect-ratio"
-                      className="overflow-hidden rounded-md absolute inset-0"
-                    >
-                      <img
-                        src="/placeholder-aspect-video-1.svg"
-                        alt="card-image"
-                        className="block size-full object-cover object-center"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div
-                    data-slot="card-title"
-                    className="group-data-[size=sm]/card:text-sm flex gap-2 text-lg font-medium text-foreground flex items-center justify-start"
-                  >
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold text-white bg-rose-600">
-                      Man
-                    </span>
-                    Ultimate Manufacturing ERP
-                  </div>
-                  <div
-                    data-slot="card-description"
-                    className="text-muted-foreground text-sm leading-relaxed"
-                  >
-                    Streamline your entire production cycle — from raw material
-                    planning and work-in-progress tracking to finished goods
-                    management and quality control.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" className="group block">
-            <div
-              data-slot="card"
-              data-size="default"
-              className="ring-foreground/10 text-card-foreground group/card flex flex-col gap-6 overflow-hidden rounded-xl py-6 text-sm shadow-xs ring-1 has-[&gt;img:first-child]:pt-0 data-[size=sm]:gap-4 data-[size=sm]:py-4 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl h-full bg-muted transition-all duration-200 hover:shadow-lg"
-            >
-              <div
-                data-slot="card-content"
-                className="px-6 group-data-[size=sm]/card:px-4"
-              >
-                <div className="relative mb-4">
-                  <div className="relative w-[100%] pb-[56.25%]">
-                    <div
-                      data-slot="aspect-ratio"
-                      className="overflow-hidden rounded-md absolute inset-0"
-                    >
-                      <img
-                        src="/placeholder-aspect-video-1.svg"
-                        alt="card-image"
-                        className="block size-full object-cover object-center"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div
-                    data-slot="card-title"
-                    className="group-data-[size=sm]/card:text-sm flex gap-2 text-lg font-medium text-foreground flex items-center justify-start"
-                  >
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold text-white bg-violet-600">
-                      Htl
-                    </span>
-                    Ultimate Hotel ERP
-                  </div>
-                  <div
-                    data-slot="card-description"
-                    className="text-muted-foreground text-sm leading-relaxed"
-                  >
-                    A fully integrated hospitality management system covering
-                    reservations, front desk, housekeeping, restaurant POS,
-                    billing, and guest experience management.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" className="group block">
-            <div
-              data-slot="card"
-              data-size="default"
-              className="ring-foreground/10 text-card-foreground group/card flex flex-col gap-6 overflow-hidden rounded-xl py-6 text-sm shadow-xs ring-1 has-[&gt;img:first-child]:pt-0 data-[size=sm]:gap-4 data-[size=sm]:py-4 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl h-full bg-muted transition-all duration-200 hover:shadow-lg"
-            >
-              <div
-                data-slot="card-content"
-                className="px-6 group-data-[size=sm]/card:px-4"
-              >
-                <div className="relative mb-4">
-                  <div
-                    data-radix-aspect-ratio-wrapper=""
-                    className="relative w-[100%] pb-[56.25%]"
-                  >
-                    <div
-                      data-slot="aspect-ratio"
-                      className="overflow-hidden rounded-md absolute inset-0"
-                    >
-                      <img
-                        src="/placeholder-aspect-video-1.svg"
-                        alt="card-image"
-                        className="block size-full object-cover object-center"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div
-                    data-slot="card-title"
-                    className="group-data-[size=sm]/card:text-sm flex gap-2 text-lg font-medium text-foreground flex items-center justify-start"
-                  >
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold text-white bg-rose-400">
-                      POS
-                    </span>
-                    Ultimate POS
-                  </div>
-                  <div
-                    data-slot="card-description"
-                    className="text-muted-foreground text-sm leading-relaxed"
-                  >
-                    A fast, reliable point-of-sale system for retail and service
-                    businesses. Manage sales, stock, receipts, and daily reports
-                    from a single, easy-to-use interface.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" className="group block">
-            <div
-              data-slot="card"
-              data-size="default"
-              className="ring-foreground/10 text-card-foreground group/card flex flex-col gap-6 overflow-hidden rounded-xl py-6 text-sm shadow-xs ring-1 has-[&gt;img:first-child]:pt-0 data-[size=sm]:gap-4 data-[size=sm]:py-4 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl h-full bg-muted transition-all duration-200 hover:shadow-lg"
-            >
-              <div
-                data-slot="card-content"
-                className="px-6 group-data-[size=sm]/card:px-4"
-              >
-                <div className="relative mb-4">
-                  <div className="relative w-[100%] pb-[56.25%]">
-                    <div
-                      data-slot="aspect-ratio"
-                      className="overflow-hidden rounded-md absolute inset-0"
-                    >
-                      <img
-                        src="/placeholder-aspect-video-1.svg"
-                        alt="card-image"
-                        className="block size-full object-cover object-center"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div
-                    data-slot="card-title"
-                    className="group-data-[size=sm]/card:text-sm flex gap-2 text-lg font-medium text-foreground flex items-center justify-start"
-                  >
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold text-white bg-violet-400">
-                      Con
-                    </span>
-                    Ultimate Conference
-                  </div>
-                  <div
-                    data-slot="card-description"
-                    className="text-muted-foreground text-sm leading-relaxed"
-                  >
-                    Seamlessly manage venue bookings, event scheduling, attendee
-                    registration, billing, and post-event reporting for
-                    conference centres and event facilities.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
         <div className="flex flex-col mt-20 items-center">
-          <Button variant="default" size="lg">
-            Explore All Our Solutions
+          <Button
+            variant="default"
+            size="lg"
+            onClick={() => {
+              router.push("/products");
+            }}
+          >
+            Explore All Our Products
             <ArrowRight />
           </Button>
         </div>
