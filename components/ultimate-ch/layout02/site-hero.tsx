@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 /* eslint-disable @next/next/no-img-element */
 export default function SiteHero() {
   return (
-    <section className="bg-background py-16 px-6 sm:px-30">
-      <div className="relative container flex flex-col items-center px-0!">
+    <section className="bg-background py-16 px-6 sm:px-30 w-full">
+      <div className="relative container flex flex-col items-center">
         <div className="container flex w-full flex-col justify-between px-10 lg:flex-row">
           <div className="flex w-full flex-col gap-8">
             <a href="#" className="text-2xl font-semibold tracking-tighter">
@@ -13,7 +13,7 @@ export default function SiteHero() {
             <h1 className="bg-re relative z-20 text-6xl font-semibold tracking-tighter md:text-8xl">
               The Blocks Built With NextJs &amp; Tailwind.
             </h1>
-            <p className="max-w-2xl tracking-tight text-muted-foreground md:text-xl">
+            <p className="max-w-xl tracking-tight text-muted-foreground md:text-xl">
               Finely crafted components built with React, Tailwind and NextJs
               UI. Developers can copy and paste these blocks directly into their
               project.
@@ -30,8 +30,8 @@ export default function SiteHero() {
         </div>
         <div className="flex w-full flex-col justify-between pr-10 md:mt-10 md:flex-row">
           <div className="relative group h-160 w-120 p-4">
-            <div className="absolute top-4 -left-25 h-[1.5px] w-[115%] bg-muted"></div>
-            <div className="absolute bottom-4 -left-25 h-[1.5px] w-[115%] bg-muted"></div>
+            <div className="absolute top-4 -left-25 h-[1.5px] w-[100%] bg-muted"></div>
+            <div className="absolute bottom-4 -left-25 h-[1.5px] w-[100%] bg-muted"></div>
             <div className="absolute -top-25 left-4 h-[130%] w-[1.5px] bg-muted"></div>
             <div className="absolute -top-25 right-4 h-[130%] w-[1.5px] bg-muted"></div>
             <div className="absolute top-[12.5px] left-[12.5px] z-10 size-2 rounded-full bg-foreground"></div>
@@ -91,8 +91,8 @@ export default function SiteHero() {
             </div>
           </div>
           <div className="relative group h-160 w-120 p-4 lg:-mt-60">
-            <div className="absolute top-4 -left-25 h-[1.5px] w-[115%] bg-muted"></div>
-            <div className="absolute bottom-4 -left-25 h-[1.5px] w-[115%] bg-muted"></div>
+            <div className="absolute top-4 -left-25 h-[1.5px] w-[100%] bg-muted"></div>
+            <div className="absolute bottom-4 -left-25 h-[1.5px] w-[100%] bg-muted"></div>
             <div className="absolute -top-25 left-4 h-[130%] w-[1.5px] bg-muted"></div>
             <div className="absolute -top-25 right-4 h-[130%] w-[1.5px] bg-muted"></div>
             <div className="absolute top-[12.5px] left-[12.5px] z-10 size-2 rounded-full bg-foreground"></div>
@@ -136,9 +136,9 @@ export default function SiteHero() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="lucide lucide-chevron-up transition-all ease-in-out group-hover:-translate-y-2"
                     aria-hidden="true"
                   >

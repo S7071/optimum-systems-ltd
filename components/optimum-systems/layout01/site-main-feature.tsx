@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { LucideIcon } from "@/lib/utils";
 import {
   ArrowRight,
   BadgeCheck,
@@ -13,6 +14,36 @@ import Image from "next/image";
 
 /* eslint-disable @next/next/no-img-element */
 export default function SiteMainFeature() {
+  interface pointProp {
+    icon: LucideIcon;
+    point: string;
+  }
+  const points: pointProp[] = [
+    {
+      icon: Receipt,
+      point: "Finance & Accounts (Budgets, Receipts, Ledgers)",
+    },
+    {
+      icon: BoxesIcon,
+      point: "Inventory & Procurement (Stores, Assets, Suppliers)",
+    },
+    {
+      icon: Users,
+      point: "HR & Payroll (Staff, Leave, Statutory Deductions)",
+    },
+    {
+      icon: ChartColumnStacked,
+      point: "Reports & Analytics (Dashboards, Audit Trails, Exports)",
+    },
+    {
+      icon: BadgeCheck,
+      point: "Compliance & Controls (Roles, Policies, Controls)",
+    },
+    {
+      icon: BadgeDollarSign,
+      point: "Fee Collection (Invoicing, Payments, Reconciliation)",
+    },
+  ];
   return (
     <section className="py-16 sm:py-32 w-full bg-background px-6 sm:px-30">
       <div className="container flex flex-col items-center gap-10 md:gap-16">
@@ -47,30 +78,19 @@ export default function SiteMainFeature() {
           </p>
         </div>
         <ul className="mx-auto grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2">
-          <li className="flex gap-2">
-            <Receipt className="mt-1 size-4 shrink-0" size={4} />
-            <h3>Finance & Accounts (Budgets, Receipts, Ledgers)</h3>
-          </li>
-          <li className="flex gap-2">
-            <BoxesIcon className="mt-1 size-4 shrink-0" size={4} />
-            <h3>Inventory & Procurement (Stores, Assets, Suppliers)</h3>
-          </li>
-          <li className="flex gap-2">
-            <Users className="mt-1 size-4 shrink-0" size={4} />
-            <h3>HR & Payroll (Staff, Leave, Statutory Deductions)</h3>
-          </li>
-          <li className="flex gap-2">
-            <ChartColumnStacked className="mt-1 size-4 shrink-0" size={4} />
-            <h3>Reports & Analytics (Dashboards, Audit Trails, Exports)</h3>
-          </li>
-          <li className="flex gap-2">
-            <BadgeCheck className="mt-1 size-4 shrink-0" size={4} />
-            <h3>Compliance & Controls (Roles, Policies, Controls)</h3>
-          </li>
-          <li className="flex gap-2">
-            <BadgeDollarSign className="mt-1 size-4 shrink-0" size={4} />
-            <h3>Fee Collection (Invoicing, Payments, Reconciliation)</h3>
-          </li>
+          {points.map((card, idx) => {
+            return (
+              <li key={idx} className="flex gap-5 sm:gap-2 items-center">
+                <div className="w-16 h-12 sm:w-12 rounded-full bg-primary-cbe-100 flex flex-row items-center justify-center">
+                  <card.icon
+                    className="size-5 shrink-0 text-primary-cbe-800"
+                    size={4}
+                  />
+                </div>
+                <h3 className="font-normal text-primary-cbe-900 text-sm">{card.point}</h3>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="mx-auto w-full max-w-5xl">

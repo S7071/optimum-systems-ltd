@@ -1,42 +1,41 @@
+import { LucideIcon } from "@/lib/utils";
 import { ChartLine, HeartPlus, ServerCog, ShieldCheck } from "lucide-react";
-import { JSX } from "react";
 
 export default function SiteStats() {
   interface statCard {
     id: number;
     title: string;
     description: string;
-    icon: JSX.Element;
+    icon: LucideIcon;
   }
-  const statIconClassName = "size-8 sm:size-6";
   const stats: statCard[] = [
     {
       id: 0,
       title: "Cloud & On-Premise Deployment",
       description:
         "Flexible hosting options — deploy on the cloud or on your own servers based on your institution&apos;s needs and infrastructure.",
-      icon: <ServerCog className={statIconClassName} />,
+      icon: ServerCog,
     },
     {
       id: 1,
       title: "24/7 Dedicated Support",
       description:
         "Round-the-clock technical assistance, system monitoring, and expert helpdesk support whenever you need it.",
-      icon: <HeartPlus className={statIconClassName} />,
+      icon: HeartPlus,
     },
     {
       id: 2,
       title: "Real-Time Reporting & Analytics",
       description:
         "Generate instant financial, academic, and operational reports with powerful dashboards built for decision-makers.",
-      icon: <ChartLine className={statIconClassName} />,
+      icon: ChartLine,
     },
     {
       id: 3,
       title: "Secure & Reliable Systems",
       description:
         "Bank-grade data security with role-based access controls, audit trails, and automatic backups to keep your data safe.",
-      icon: <ShieldCheck className={statIconClassName} />,
+      icon: ShieldCheck,
     },
   ];
   return (
@@ -98,16 +97,16 @@ export default function SiteStats() {
               return (
                 <div
                   key={card.id}
-                  className="flex items-start gap-5 rounded-lg border border-border bg-muted p-4 sm:flex-col sm:p-6"
+                  className="flex items-start gap-5 rounded-lg border border-border bg-primary-cbe-100 p-4 sm:flex-col sm:p-6"
                 >
-                  <div className="size-12 rounded-full sm:bg-background flex items-center justify-center">
-                    {card.icon}
+                  <div className="size-12 rounded-full sm:bg-primary-cbe-50 flex items-center justify-center">
+                    <card.icon className="size-8 sm:size-6 text-primary-cbe-800" />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <p className="font-semibold text-foreground sm:text-base">
+                    <p className="font-semibold text-primary-cbe-800 sm:text-base">
                       {card.title}
                     </p>
-                    <p className="text-muted-foreground sm:text-sm">
+                    <p className="text-primary-cbe-800/60 sm:text-sm">
                       {card.description}
                     </p>
                   </div>

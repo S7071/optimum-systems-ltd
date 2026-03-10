@@ -127,7 +127,9 @@ export default function SiteFeatures() {
                         />
                       </div>
                       <div className="flex flex-col items-start justify-start gap-0.5">
-                        <span className="line-clamp-1 leading-relaxed">{card.name}</span>
+                        <span className="line-clamp-1 leading-relaxed">
+                          {card.name}
+                        </span>
                         <span className="text-sm leading-relaxed line-clamp-1 text-muted-foreground">
                           {card.alias}
                         </span>
@@ -137,24 +139,15 @@ export default function SiteFeatures() {
                       {card.description}
                     </CardDescription>
                     <div className="w-full flex flex-row justify-end items-center mt-6 gap-2">
-                      <Button
-                        variant="default"
-                        onClick={() => {
-                          router.push(`${card.href}/schedule-demo`);
-                        }}
-                      >
-                        Book a Demo
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="gap-2"
-                        onClick={() => {
-                          router.push(card.href);
-                        }}
-                      >
-                        Explore
-                        <ArrowRightIcon />
-                      </Button>
+                      <a href={`${card.href}/schedule-demo`}>
+                        <Button variant="default">Book a Demo</Button>
+                      </a>
+                      <a href={card.href}>
+                        <Button variant="outline" className="gap-2">
+                          Explore
+                          <ArrowRightIcon />
+                        </Button>
+                      </a>
                     </div>
                   </div>
                 </CardContent>

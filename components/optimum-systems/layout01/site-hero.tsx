@@ -52,8 +52,8 @@ export default function SiteHero() {
           <div className="z-20 w-full shrink-0 bg-transparent py-16 sm:py-32 md:-mx-4 md:w-1/2 md:bg-transparent md:px-4">
             <div className="flex flex-col items-start text-left">
               <div className="max-w-xl">
-                <h1 className="my-6 text-4xl font-bold text-pretty lg:text-6xl text-background">
-                  Enterprise ERP Solutions Built for Africa
+                <h1 className="my-6 text-4xl font-bold text-pretty lg:text-5xl text-background">
+                  Enterprise Solutions Built for Africa
                 </h1>
                 <p className="text-background/80 mb-10">
                   Kenya&apos;s leading developer of enterprise resource planning
