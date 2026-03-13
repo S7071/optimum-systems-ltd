@@ -22,41 +22,79 @@ export default function SiteLogos() {
 
   const logos: logoType[] = [
     {
-      href: "ultimate-cbe",
-      alt: "UltimateCBE",
-      src: "/logos/pre-approved/cbe-dark-logo.png",
+      href: "#",
+      alt: "Chesta Teachers Training College",
+      src: "/images/clients/chesta-teachers-training-college.png",
     },
     {
-      href: "ultimate-cms",
-      alt: "UltimateCMS",
-      src: "/logos/pre-approved/cms-dark-logo.png",
+      href: "#",
+      alt: "Gatanga Technical And Vocational College",
+      src: "/images/clients/gatanga-technical-and-vocational-college.png",
     },
     {
-      href: "ultimate-erp",
-      alt: "UltimateERP",
-      src: "/logos/pre-approved/erp-dark-logo.png",
+      href: "#",
+      alt: "Gatundu South Technical And Vocational College",
+      src: "/images/clients/gatundu-south-technical-and-vocational-college.png",
     },
     {
-      href: "ultimate-hms",
-      alt: "UltimateHMS",
-      src: "/logos/pre-approved/hms-dark-logo.png",
+      href: "#",
+      alt: "Kaiboi National Polytechnic",
+      src: "/images/clients/kaiboi-national-polytechnic.png",
     },
     {
-      href: "ultimate-mfg",
-      alt: "UltimateMFG",
-      src: "/logos/pre-approved/mfg-dark-logo.png",
+      href: "#",
+      alt: "Kandara Technical And Vocational College",
+      src: "/images/clients/kandara-technical-and-vocational-college.png",
     },
     {
-      href: "/ultimate-pos",
-      alt: "UltimatePOS",
-      src: "/logos/pre-approved/pos-dark-logo.png",
+      href: "#",
+      alt: "Thika Technical Training Institute",
+      src: "/images/clients/thika-technical-training-institute.png",
     },
     {
-      href: "/ultimate-scm",
-      alt: "UltimateSCM",
-      src: "/logos/pre-approved/sc-dark-logo.png",
-    }
+      href: "#",
+      alt: "Thogoto Teachers Training College",
+      src: "/images/clients/thogoto-teachers-training-college.png",
+    },
   ];
+
+  // const logos: logoType[] = [
+  //   {
+  //     href: "ultimate-cbe",
+  //     alt: "UltimateCBE",
+  //     src: "/logos/pre-approved/cbe-dark-logo.png",
+  //   },
+  //   {
+  //     href: "ultimate-cms",
+  //     alt: "UltimateCMS",
+  //     src: "/logos/pre-approved/cms-dark-logo.png",
+  //   },
+  //   {
+  //     href: "ultimate-erp",
+  //     alt: "UltimateERP",
+  //     src: "/logos/pre-approved/erp-dark-logo.png",
+  //   },
+  //   {
+  //     href: "ultimate-hms",
+  //     alt: "UltimateHMS",
+  //     src: "/logos/pre-approved/hms-dark-logo.png",
+  //   },
+  //   {
+  //     href: "ultimate-mfg",
+  //     alt: "UltimateMFG",
+  //     src: "/logos/pre-approved/mfg-dark-logo.png",
+  //   },
+  //   {
+  //     href: "/ultimate-pos",
+  //     alt: "UltimatePOS",
+  //     src: "/logos/pre-approved/pos-dark-logo.png",
+  //   },
+  //   {
+  //     href: "/ultimate-scm",
+  //     alt: "UltimateSCM",
+  //     src: "/logos/pre-approved/sc-dark-logo.png",
+  //   }
+  // ];
 
   return (
     <section className="overflow-hidden bg-background pt-4 sm:pt-8 dark:bg-muted w-full">

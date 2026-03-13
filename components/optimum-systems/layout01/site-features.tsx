@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useMemo, MouseEventHandler, ReactNode } from "react";
-import { Star, GitPullRequest, ChevronDown } from "lucide-react";
+import { Star, GitPullRequest, Search } from "lucide-react";
+
+// ─── Constants ────────────────────────────────────────────────────────────────
 
 const CATEGORIES = [
   "All",
@@ -18,6 +20,7 @@ const CATEGORIES = [
   "Appointment Scheduling System",
   "Electronic Health Record Systems",
 ];
+
 const INDUSTRY = [
   "All",
   "Education",
@@ -35,7 +38,30 @@ const INDUSTRY = [
   "Entertainment",
   "Transport & Logistics",
 ];
-interface projectType {
+
+const INDUSTRY_BADGE_STYLES: Record<string, string> = {
+  Education:
+    "bg-blue-50 text-blue-700 border-blue-100 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-900",
+  Healthcare:
+    "bg-green-50 text-green-700 border-green-100 dark:bg-green-950 dark:text-green-300 dark:border-green-900",
+  Retail:
+    "bg-purple-50 text-purple-700 border-purple-100 dark:bg-purple-950 dark:text-purple-300 dark:border-purple-900",
+  "Government & Parastatals":
+    "bg-orange-50 text-orange-700 border-orange-100 dark:bg-orange-950 dark:text-orange-300 dark:border-orange-900",
+  Manufacturing:
+    "bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700",
+  Corporate:
+    "bg-sky-50 text-sky-700 border-sky-100 dark:bg-sky-950 dark:text-sky-300 dark:border-sky-900",
+  SACCOs:
+    "bg-teal-50 text-teal-700 border-teal-100 dark:bg-teal-950 dark:text-teal-300 dark:border-teal-900",
+};
+
+const DEFAULT_BADGE =
+  "bg-muted text-muted-foreground border-border";
+
+type SortMode = "stars" | "pulls" | "alpha";
+
+interface ProjectType {
   id: number;
   name: string;
   description: string;
@@ -44,7 +70,8 @@ interface projectType {
   industry: string;
   tags: string[];
 }
-const PROJECTS: projectType[] = [
+
+const PROJECTS: ProjectType[] = [
   {
     id: 1,
     name: "UltimateERP",
@@ -313,8 +340,13 @@ const PROJECTS: projectType[] = [
     ],
   },
 ];
+
 const PAGE_SIZE = 6;
-function Badge({
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+/** Category filter chip */
+function CategoryChip({
   children,
   active,
   onClick,
@@ -327,12 +359,12 @@ function Badge({
     <span
       onClick={onClick}
       className={[
-        "inline-flex items-center justify-center h-9 px-5 py-0.5 text-xs font-medium",
-        "rounded-full border transition-all cursor-pointer whitespace-nowrap shrink-0",
-        "focus-visible:ring-2 focus-visible:ring-ring/50 select-none",
+        "inline-flex items-center justify-center h-9 px-4 text-xs font-medium",
+        "rounded-full border transition-all cursor-pointer whitespace-nowrap shrink-0 select-none",
+        "focus-visible:ring-2 focus-visible:ring-ring/50",
         active
-          ? "bg-primary text-primary-foreground border-transparent"
-          : "bg-background border-border text-foreground hover:bg-muted",
+          ? "bg-primary-cbe-800 text-white border-transparent"
+          : "bg-background border-border text-foreground hover:border-[#1B3FA0] hover:text-[#1B3FA0] hover:bg-blue-50 dark:hover:bg-blue-950",
       ].join(" ")}
     >
       {children}
@@ -340,54 +372,101 @@ function Badge({
   );
 }
 
-function RoleBadge({ role }: { role: ReactNode }) {
+/** Industry inline chip (smaller, below categories) */
+function IndustryChip({
+  children,
+  active,
+  onClick,
+}: {
+  children: ReactNode;
+  active: boolean;
+  onClick: MouseEventHandler;
+}) {
   return (
-    <span className="inline-flex items-center justify-center h-5 px-2 py-0.5 text-xs font-medium rounded-full border border-border text-foreground bg-background">
-      {role}
+    <span
+      onClick={onClick}
+      className={[
+        "inline-flex items-center justify-center h-7 px-3 text-xs font-medium",
+        "rounded-full border transition-all cursor-pointer whitespace-nowrap shrink-0 select-none",
+        active
+          ? "bg-blue-50 border-blue-200 text-[#1B3FA0] font-semibold dark:bg-blue-950 dark:border-blue-800 dark:text-blue-300"
+          : "bg-muted border-border text-muted-foreground hover:border-[#1B3FA0] hover:text-[#1B3FA0]",
+      ].join(" ")}
+    >
+      {children}
     </span>
   );
 }
 
-function ProjectCard({
-  description,
-  tags,
-  industry,
-  pulls,
-  name,
-  stars,
-}: projectType) {
+/** Coloured industry badge on each card */
+function IndustryBadge({ industry }: { industry: string }) {
+  const styles = INDUSTRY_BADGE_STYLES[industry] ?? DEFAULT_BADGE;
+  return (
+    <span
+      className={`inline-flex items-center h-5 px-2 text-[11px] font-semibold rounded-full border ${styles}`}
+    >
+      {industry}
+    </span>
+  );
+}
+
+/** Star rating pill */
+function StarRating({ value }: { value: number }) {
+  return (
+    <span className="inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-950 px-2 py-0.5 rounded-full shrink-0">
+      <Star
+        className="size-3 fill-amber-500 text-amber-500"
+        aria-hidden="true"
+      />
+      <span className="text-xs font-bold text-amber-800 dark:text-amber-300">
+        {value}
+      </span>
+    </span>
+  );
+}
+
+/** Product card */
+function ProjectCard({ name, description, tags, industry, stars, pulls }: ProjectType) {
+  const visibleTags = tags.slice(0, 3);
+  const overflowCount = tags.length - visibleTags.length;
+
   return (
     <a
       href="#"
-      className="flex flex-col justify-between gap-8 rounded-lg border border-border bg-background p-5 hover:border-primary/50 hover:shadow-sm transition-all"
+      className="flex flex-col justify-between gap-6 rounded-xl border border-border bg-background p-5 hover:border-blue-200 dark:hover:border-blue-800 hover:bg-muted/40 transition-all"
     >
-      <div>
-        <div className="flex items-center justify-between gap-2">
-          <h3 className="text-lg font-medium truncate">{name}</h3>
-          <span className="flex items-center gap-1 text-sm shrink-0">
-            <Star
-              className="size-4 fill-yellow-500 text-yellow-500"
-              aria-hidden="true"
-            />
-            {stars}
-          </span>
+      {/* Top */}
+      <div className="flex flex-col gap-3">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="text-sm font-semibold leading-snug">{name}</h3>
+          <StarRating value={stars} />
         </div>
-        <p className="mt-2 text-muted-foreground text-sm">{description}</p>
-        <div className="mt-3 flex flex-wrap gap-1">
-          {tags.map((tag) => (
+        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+          {description}
+        </p>
+        {/* Tags — capped at 3 + overflow badge */}
+        <div className="flex flex-wrap gap-1">
+          {visibleTags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center h-4 px-1.5 text-[10px] font-medium rounded-sm bg-muted text-muted-foreground"
+              className="inline-flex items-center h-5 px-2 text-[10px] font-medium rounded-md bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-900 text-[#1B3FA0] dark:text-blue-300"
             >
               {tag}
             </span>
           ))}
+          {overflowCount > 0 && (
+            <span className="inline-flex items-center h-5 px-2 text-[10px] font-medium rounded-md bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-900 text-[#1B3FA0] dark:text-blue-300">
+              +{overflowCount}
+            </span>
+          )}
         </div>
       </div>
-      <div className="flex items-center justify-between gap-2">
-        <RoleBadge role={industry} />
-        <span className="flex items-center gap-1 text-sm text-muted-foreground">
-          <GitPullRequest className="size-4" aria-hidden="true" />
+
+      {/* Footer */}
+      <div className="flex items-center justify-between gap-2 pt-3 border-t border-border">
+        <IndustryBadge industry={industry} />
+        <span className="flex items-center gap-1 text-xs text-muted-foreground">
+          <GitPullRequest className="size-3.5" aria-hidden="true" />
           {pulls}
         </span>
       </div>
@@ -395,6 +474,7 @@ function ProjectCard({
   );
 }
 
+/** Empty state */
 function EmptyState({
   category,
   industry,
@@ -406,11 +486,11 @@ function EmptyState({
     <div className="col-span-full flex flex-col items-center justify-center py-16 text-center gap-2">
       <p className="text-muted-foreground text-sm">
         No product found
-        {category !== "All" ? ` containing ${category}` : ""}
-        {industry !== "All" ? ` in ${industry} industry` : ""}.
+        {category !== "All" ? ` in "${category}"` : ""}
+        {industry !== "All" ? ` for the ${industry} industry` : ""}.
       </p>
       <p className="text-muted-foreground/60 text-xs">
-        Try selecting a different filter.
+        Try selecting a different filter or clearing your search.
       </p>
     </div>
   );
@@ -420,160 +500,198 @@ function EmptyState({
 
 export default function SiteFeatures() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [activeIndustry, setActiveRole] = useState("All");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeIndustry, setActiveIndustry] = useState("All");
+  const [search, setSearch] = useState("");
+  const [sortMode, setSortMode] = useState<SortMode>("stars");
   const [showAll, setShowAll] = useState(false);
 
-  // Reset pagination whenever filters change
+  const uniqueIndustries = useMemo(
+    () => Array.from(new Set(PROJECTS.map((p) => p.industry))),
+    []
+  );
+
   const handleCategoryChange = (cat: string) => {
     setActiveCategory(cat);
     setShowAll(false);
   };
 
-  const handleRoleChange = (role: string) => {
-    setActiveRole(role);
-    setDropdownOpen(false);
+  const handleIndustryChange = (ind: string) => {
+    setActiveIndustry(ind);
     setShowAll(false);
   };
 
   const filtered = useMemo(() => {
-    return PROJECTS.filter((p) => {
-      const categoryMatch =
+    const results = PROJECTS.filter((p) => {
+      const matchCat =
         activeCategory === "All" || p.tags.includes(activeCategory);
-      const roleMatch =
+      const matchInd =
         activeIndustry === "All" || p.industry === activeIndustry;
-      return categoryMatch && roleMatch;
+      const matchSearch =
+        !search ||
+        p.name.toLowerCase().includes(search.toLowerCase()) ||
+        p.description.toLowerCase().includes(search.toLowerCase());
+      return matchCat && matchInd && matchSearch;
     });
-  }, [activeCategory, activeIndustry]);
+
+    if (sortMode === "stars") results.sort((a, b) => b.stars - a.stars);
+    else if (sortMode === "pulls") results.sort((a, b) => b.pulls - a.pulls);
+    else results.sort((a, b) => a.name.localeCompare(b.name));
+
+    return results;
+  }, [activeCategory, activeIndustry, search, sortMode]);
 
   const displayed = showAll ? filtered : filtered.slice(0, PAGE_SIZE);
   const hasMore = filtered.length > PAGE_SIZE;
 
   return (
-    <section className="bg-muted py-16 sm:py-32 w-full px-6 sm:px-30">
-      <div className="container">
-        <h1 className="text-center text-2xl font-semibold sm:text-4xl text-pretty">
-          Explore Products Based on your needs
-        </h1>
-        <div className="w-full flex items-center justify-center mt-6">
+    <section className="bg-muted py-16 sm:py-24 w-full px-6 sm:px-12">
+      <div className="container mx-auto max-w-7xl">
 
-        <p className="max-w-l text-center text-muted-foreground">
-          Esse nostrud ullamco occaecat labore ut deserunt voluptate velit enim
-          excepteur aliqua eiusmod ex pariatur. Sunt nulla nostrud quis
-          cupidatat eu commodo sunt cupidatat veniam. Laborum adipisicing
-          commodo adipisicing eu quis esse. Eiusmod aute excepteur reprehenderit
-          non aliqua excepteur nostrud nisi nulla in quis.
-        </p>
-        </div>
-        <div className="mt-10">
-          {/* ── Filter bar ─────────────────────────────────────────────── */}
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            {/* Category badge strip */}
-            <div className="-mx-8 flex items-center gap-2 flex-wrap px-8 [scrollbar-width:none]">
-              {CATEGORIES.map((cat) => (
-                <Badge
-                  key={cat}
-                  active={activeCategory === cat}
-                  onClick={() => handleCategoryChange(cat)}
-                >
-                  {cat}
-                </Badge>
-              ))}
-            </div>
+        {/* ── Hero banner ──────────────────────────────────────────────── */}
+        <div className="relative overflow-hidden rounded-2xl bg-primary-cbe-500 px-8 py-10 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          {/* Decorative circles */}
+          <div className="absolute -right-10 -top-10 size-48 rounded-full bg-white/5 pointer-events-none" />
+          <div className="absolute right-16 -bottom-14 size-36 rounded-full bg-white/5 pointer-events-none" />
 
-            {/* Role dropdown */}
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setDropdownOpen((v) => !v)}
-                aria-haspopup="listbox"
-                aria-expanded={dropdownOpen}
-                className="hidden sm:flex border-input dark:bg-input/30 dark:hover:bg-input/50 focus-visible:border-ring focus-visible:ring-ring/50 gap-1.5 rounded-md border py-2 pr-2 pl-2.5 text-sm shadow-xs transition-[color,box-shadow] focus-visible:ring-3 h-9 flex w-fit items-center justify-between whitespace-nowrap outline-none bg-background md:min-w-32"
-              >
-                <span>
-                  {activeIndustry === "All" ? "All Industries" : activeIndustry}
-                </span>
-                <ChevronDown
-                  className={`text-muted-foreground size-4 pointer-events-none transition-transform duration-200 ${
-                    dropdownOpen ? "rotate-180" : ""
-                  }`}
-                  aria-hidden="true"
-                />
-              </button>
-
-              {dropdownOpen && (
-                <>
-                  {/* Backdrop to close on outside click */}
-                  <div
-                    className="fixed inset-0 z-10"
-                    onClick={() => setDropdownOpen(false)}
-                    aria-hidden="true"
-                  />
-                  <ul
-                    role="listbox"
-                    className="absolute right-0 z-20 mt-1 min-w-full overflow-hidden rounded-md border border-border bg-background shadow-md"
-                  >
-                    {INDUSTRY.map((industry) => (
-                      <li
-                        key={industry}
-                        role="option"
-                        aria-selected={activeIndustry === industry}
-                        onClick={() => handleRoleChange(industry)}
-                        className={`px-3 py-2 text-sm cursor-pointer transition-colors ${
-                          activeIndustry === industry
-                            ? "bg-primary text-primary-foreground"
-                            : "hover:bg-muted text-foreground"
-                        }`}
-                      >
-                        {industry === "All" ? "All Industries" : industry}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
+          <div className="relative z-10 max-w-xl">
+            <h1 className="text-2xl sm:text-3xl font-semibold text-white leading-snug mb-2">
+              Explore Products Based on Your Needs
+            </h1>
+            <p className="text-sm text-white/70 leading-relaxed">
+              Browse Optimum System&apos;s full suite — from ERP and health records
+              to biometrics and retail management.
+            </p>
           </div>
 
-          {/* ── Result count ───────────────────────────────────────────── */}
-          <p className="mt-4 text-xs text-muted-foreground">
+          {/* Stats */}
+          <div className="relative z-10 flex gap-8 shrink-0">
+            {[
+              { num: PROJECTS.length, label: "Products" },
+              { num: uniqueIndustries.length, label: "Industries" },
+              { num: CATEGORIES.length - 1, label: "Categories" },
+            ].map(({ num, label }) => (
+              <div key={label} className="text-center">
+                <p className="text-2xl font-bold text-white">{num}</p>
+                <p className="text-xs text-white/60 uppercase tracking-wider mt-0.5">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Controls ────────────────────────────────────────────────── */}
+        <div className="mb-6 space-y-4">
+
+          {/* Search + Sort row */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            {/* Search */}
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Search by name or keyword…"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setShowAll(false);
+                }}
+                className="w-full h-9 pl-9 pr-3 text-sm rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground outline-none focus:border-[#1B3FA0] focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all"
+              />
+            </div>
+
+            {/* Sort */}
+            <select
+              value={sortMode}
+              onChange={(e) => setSortMode(e.target.value as SortMode)}
+              className="h-9 px-3 text-sm rounded-md border border-border bg-background text-foreground outline-none cursor-pointer focus:border-[#1B3FA0] transition-all"
+            >
+              <option value="stars">Top Rated</option>
+              <option value="pulls">Most Forked</option>
+              <option value="alpha">A – Z</option>
+            </select>
+          </div>
+
+          {/* Category chips */}
+          <div className="flex flex-wrap gap-2">
+            {CATEGORIES.map((cat) => (
+              <CategoryChip
+                key={cat}
+                active={activeCategory === cat}
+                onClick={() => handleCategoryChange(cat)}
+              >
+                {cat}
+              </CategoryChip>
+            ))}
+          </div>
+
+          {/* Industry chips */}
+          <div className="flex items-center flex-wrap gap-2">
+            <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground mr-1">
+              Industry
+            </span>
+            {["All", ...uniqueIndustries].map((ind) => (
+              <IndustryChip
+                key={ind}
+                active={activeIndustry === ind}
+                onClick={() => handleIndustryChange(ind)}
+              >
+                {ind === "All" ? "All Industries" : ind}
+              </IndustryChip>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Results count ───────────────────────────────────────────── */}
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-border">
+          <p className="text-xs text-muted-foreground">
             {filtered.length === 0
               ? "No results"
-              : `Showing ${displayed.length} of ${filtered.length} project${filtered.length !== 1 ? "s" : ""}`}
+              : `Showing ${displayed.length} of ${filtered.length} product${filtered.length !== 1 ? "s" : ""}`}
           </p>
+        </div>
 
-          {/* ── Project grid ───────────────────────────────────────────── */}
-          <div className="mt-4 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {displayed.length === 0 ? (
-              <EmptyState category={activeCategory} industry={activeIndustry} />
-            ) : (
-              displayed.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  description={project.description}
-                  pulls={project.pulls}
-                  name={project.name}
-                  stars={project.stars}
-                  industry={project.industry}
-                  tags={project.tags}
-                  id={project.id}
-                />
-              ))
-            )}
-          </div>
-
-          {/* ── Show more / less ───────────────────────────────────────── */}
-          {hasMore && (
-            <div className="mt-10 flex justify-center">
-              <button
-                type="button"
-                onClick={() => setShowAll((v) => !v)}
-                className="focus-visible:border-ring focus-visible:ring-ring/50 rounded-md border bg-clip-padding text-sm font-medium focus-visible:ring-3 inline-flex items-center justify-center whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 outline-none border-border bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 shadow-xs h-9 gap-1.5 px-4"
-              >
-                {showAll ? "Show Less" : `Show All (${filtered.length})`}
-              </button>
-            </div>
+        {/* ── Product grid ────────────────────────────────────────────── */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {displayed.length === 0 ? (
+            <EmptyState category={activeCategory} industry={activeIndustry} />
+          ) : (
+            displayed.map((project) => (
+              <ProjectCard key={project.id} {...project} />
+            ))
           )}
         </div>
+
+        {/* ── Show more / less ────────────────────────────────────────── */}
+        {hasMore && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              className="h-10 px-8 rounded-md border border-border bg-background text-sm font-medium text-foreground hover:bg-muted transition-all outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+            >
+              {showAll ? "Show Less" : `Show All (${filtered.length})`}
+            </button>
+          </div>
+        )}
+
+        {/* ── CTAs ────────────────────────────────────────────────────── */}
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href="/about"
+            className="h-10 px-6 rounded-md border border-blue-200 dark:border-blue-800 text-sm font-medium text-[#1B3FA0] dark:text-blue-300 bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900 transition-all inline-flex items-center"
+          >
+            Learn About Optimum
+          </a>
+          <a
+            href="/demo"
+            className="h-10 px-6 rounded-md text-sm font-semibold text-white bg-[#C81E1E] hover:bg-[#A81717] active:scale-[0.98] transition-all inline-flex items-center gap-1.5"
+          >
+            Request a Demo
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
       </div>
     </section>
   );

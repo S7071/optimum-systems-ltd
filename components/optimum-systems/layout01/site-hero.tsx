@@ -1,97 +1,350 @@
 /* eslint-disable @next/next/no-img-element */
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { JSX } from "react";
+import { ArrowRight, Play } from "lucide-react";
 
-function LogoCard(key: number, product: string): JSX.Element {
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface Product {
+  src: string;
+  label: string;     // e.g. "Ultimate"
+  name: string;      // e.g. "CBE"
+  desc: string;      // e.g. "SACCO & Banking"
+  accent?: boolean;  // highlights the featured card
+}
+
+interface Stat {
+  value: string;
+  suffix: string;
+  label: string;
+}
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const PRODUCTS: Product[] = [
+  {
+    src: "/logos/approved/erp-dark-icon.svg",
+    label: "Ultimate",
+    name: "ERP",
+    desc: "Resource Mgmt",
+    accent: true,
+  },
+  {
+    src: "/logos/approved/cbe-dark-icon.svg",
+    label: "Ultimate",
+    name: "CBE",
+    desc: "Education",
+  },
+  {
+    src: "/logos/approved/cms-dark-icon.svg",
+    label: "Ultimate",
+    name: "CMS",
+    desc: "Conference Mgmt",
+  },
+  {
+    src: "/logos/approved/hms-dark-icon.svg",
+    label: "Ultimate",
+    name: "HMS",
+    desc: "Hotel Mgmt",
+  },
+  {
+    src: "/logos/approved/mfg-dark-icon.svg",
+    label: "Ultimate",
+    name: "MFG",
+    desc: "Manufacturing",
+  },
+  {
+    src: "/logos/approved/pos-dark-icon.svg",
+    label: "Ultimate",
+    name: "POS",
+    desc: "Point of Sale",
+  },
+  {
+    src: "/logos/approved/sc-dark-icon.svg",
+    label: "Ultimate",
+    name: "SCM",
+    desc: "Supply Chain",
+  },
+];
+
+const STATS: Stat[] = [
+  { value: "160", suffix: "+", label: "Organizations" },
+  { value: "15",  suffix: "+", label: "Years Active"  },
+  { value: "8",   suffix: "",  label: "ERP Modules"   },
+];
+
+const TRUSTED_ORGS = [
+  "Thika Technical Training Institution",
+  "TUC",
+  "Chesta Teachers Training College",
+  "Gatanga Technical and Vocational College",
+  "Thogoto Teachers Training College",
+];
+
+const TRUST_AVATARS = ["KU", "SB", "MP", "KE", "+"];
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function ProductCard({ product }: { product: Product }) {
   return (
     <div
-      key={key}
-      className="size-22 rounded-xl border border-background/20 bg-background/100 shadow-xl"
+      className={[
+        "flex items-center gap-3 rounded-xl border p-3 cursor-pointer",
+        "transition-all duration-200 hover:-translate-y-px",
+        product.accent
+          ? "bg-red-500/10 border-red-500/25 hover:bg-red-500/18 hover:border-red-500/40"
+          : "bg-white/5 border-white/8 hover:bg-white/10 hover:border-white/18",
+      ].join(" ")}
     >
-      <div className="h-full w-full p-4 flex items-center justify-center">
-        <img alt="Integration" className="h-26 w-26" src={product} />
+      {/* icon wrapper */}
+      <div className="size-9 rounded-lg bg-primary-cbe-50 flex items-center justify-center flex-shrink-0 p-1.5">
+        <img
+          src={product.src}
+          alt={product.name}
+          className="w-full h-full object-contain"
+        />
+      </div>
+
+      {/* text */}
+      <div className="flex flex-col gap-0.5 min-w-0">
+        <span className="text-[10px] font-medium uppercase tracking-widest text-white/35 leading-none">
+          {product.label}
+        </span>
+        <span className="text-sm font-bold text-white leading-tight">
+          {product.name}
+        </span>
+        <span className="text-[11px] text-white/40 leading-tight truncate hidden sm:flex">
+          {product.desc}
+        </span>
       </div>
     </div>
   );
 }
-export default function SiteHero() {
-  const products: string[] = [
-    "/logos/pre-approved/erp-dark-icon.svg",
-    "/logos/pre-approved/cbe-dark-icon.svg",
-    "/logos/pre-approved/cms-dark-icon.svg",
-    "/logos/pre-approved/hms-dark-icon.svg",
-    "/logos/pre-approved/mfg-dark-icon.svg",
-    "/logos/pre-approved/pos-dark-icon.svg",
-    "/logos/pre-approved/sc-dark-icon.svg",
-    "/images/parent/products/g8.svg",
-    "/images/parent/products/g9.svg",
-    "/images/parent/products/g10.svg",
-    "/images/parent/products/g11.svg",
-    "/images/parent/products/g12.svg",
-  ];
+
+function StatBlock({ stat }: { stat: Stat }) {
   return (
-    <section className="relative overflow-hidden w-full px-6 sm:px-30">
-      <div className="absolute inset-x-0 top-0 flex h-full w-full items-center justify-center opacity-100">
+    <div className="flex flex-col gap-1 px-5 py-3 border-r border-white/10 last:border-r-0 bg-white/[0.03] hover:bg-white/[0.06] transition-colors items-center justify-center">
+      <span className="font-bold text-white text-2xl leading-none tabular-nums">
+        {stat.value}
+        <sup className="text-red-500 text-base">{stat.suffix}</sup>
+      </span>
+      <span className="uppercase tracking-widest text-white/50 sm:text-[11px] text-[7px] text-center">
+        {stat.label}
+      </span>
+    </div>
+  );
+}
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+
+export default function SiteHero() {
+  return (
+    <section className="relative flex flex-col min-h-screen overflow-hidden w-full">
+
+      {/* ── Background photo ── */}
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/parent/hero.jpg"
           alt="background"
           fill
-          className="object-cover opacity-100"
+          className="object-cover object-center"
           priority
         />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-cbe-900/30 via-[rgba(0, 0, 0, 0.62)] to-primary-cbe-900/60" />
-        </div>
       </div>
-      <div className="relative">
-        <div className="relative container flex flex-col items-center justify-between md:flex-row md:items-center md:-space-x-26">
-          <div className="z-20 w-full shrink-0 bg-transparent py-16 sm:py-32 md:-mx-4 md:w-1/2 md:bg-transparent md:px-4">
-            <div className="flex flex-col items-start text-left">
-              <div className="max-w-xl">
-                <h1 className="my-6 text-4xl font-bold text-pretty lg:text-5xl text-background">
-                  Enterprise Solutions Built for Africa
-                </h1>
-                <p className="text-background/80 mb-10">
-                  Kenya&apos;s leading developer of enterprise resource planning
-                  software — from academic institutions and SACCOs to
-                  manufacturers and microfinance organizations. Fully
-                  customizable, scalable, and backed by 15+ years of proven
-                  results.
+
+      {/*
+        ── Directional gradient overlay ──
+        Heavy dark-blue on the LEFT so text is legible;
+        fades to near-transparent on the RIGHT so the photo breathes.
+        A separate bottom vignette anchors the scene.
+        Using inline style for the multi-stop gradient Tailwind can't express.
+      */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background: `
+            linear-gradient(
+              to right,
+              rgba(9,24,56,0.97)  0%,
+              rgba(9,24,56,0.93) 30%,
+              rgba(9,24,56,0.55) 52%,
+              rgba(9,24,56,0.18) 70%,
+              rgba(9,24,56,0.04) 100%
+            ),
+            linear-gradient(
+              to top,
+              rgba(9,24,56,0.65) 0%,
+              transparent 38%
+            )
+          `,
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Subtle red tint over photo side */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 80% at 80% 50%, rgba(215,43,43,0.07), transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* ── Main content grid ── */}
+      <div className="relative z-20 flex-1 flex flex-col">
+        <div className="flex-1 container px-6 sm:px-20 lg:px-30 py-16 sm:py-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12 lg:gap-16 w-full">
+
+          {/* ── LEFT: Copy ── */}
+          <div className="flex flex-col gap-7 md:max-w-full shrink-0">
+
+            {/* Pill badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1.5 w-fit">
+              <span className="size-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_theme(colors.red.500)]" />
+              <span className="text-[11px] font-medium uppercase tracking-widest text-white/70">
+                Kenya&apos;s #1 ERP Platform
+              </span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.06] text-white">
+              Enterprise Solutions<br />
+              Built for{" "}
+              <span className="text-red-500 relative inline-block">
+                Africa
+                {/* underline accent */}
+                <span
+                  className="absolute left-0 -bottom-1 h-0.5 w-full rounded-full"
+                  style={{
+                    background: "linear-gradient(to right, #D72B2B, transparent)",
+                  }}
+                />
+              </span>
+            </h1>
+
+            {/* Body */}
+            <p className="text-white/65 text-base leading-relaxed max-w-[440px]">
+              Kenya&apos;s leading developer of enterprise resource planning
+              software — from academic institutions and SACCOs to manufacturers
+              and microfinance organizations. Fully customizable, scalable, and
+              backed by 15+ years of proven results.
+            </p>
+
+            {/* Stats row */}
+            <div className="flex w-fit overflow-hidden rounded-xl border border-white/10">
+              {STATS.map((stat) => (
+                <StatBlock key={stat.label} stat={stat} />
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex items-center gap-2 md:gap-4">
+              <Button
+                variant="default"
+                size="lg"
+              >
+                Explore ERP Solutions
+                <ArrowRight className="size-4" />
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                className="h-12 gap-2 border-white/20 bg-transparent text-white/75 hover:bg-white/5 hover:border-white/40 hover:text-white transition-all duration-200 md:flex hidden"
+              >
+                <Play className="size-3.5 fill-current" />
+                Watch Demo
+              </Button>
+            </div>
+          </div>
+
+          {/* ── RIGHT: Frosted product panel ── */}
+          <div className="w-fit flex justify-end">
+            <div
+              className="w-full max-w-[420px] rounded-2xl border border-white/10 p-6 flex flex-col gap-5"
+              style={{
+                background: "rgba(9, 24, 56, 0.70)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                boxShadow: "0 24px 64px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.07)",
+              }}
+            >
+              {/* Panel header */}
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-white/35">
+                  Our Product Suite
+                </span>
+                <span className="text-[11px] font-semibold tracking-wide uppercase text-red-400 bg-red-500/12 border border-red-500/25 rounded px-2 py-0.5">
+                  {PRODUCTS.length} Modules
+                </span>
+              </div>
+
+              {/* 2-column product grid */}
+              <div className="grid grid-cols-2 gap-2">
+                {PRODUCTS.map((product) => (
+                  <ProductCard key={product.name} product={product} />
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-white/8 -mx-1" />
+
+              {/* Trust footer */}
+              <div className="flex items-center gap-3">
+                {/* Avatar stack */}
+                <div className="flex">
+                  {TRUST_AVATARS.map((initials, i) => (
+                    <span
+                      key={initials}
+                      className="size-7 rounded-full border-2 border-[rgba(9,24,56,0.9)] flex items-center justify-center text-[10px] font-bold text-white"
+                      style={{
+                        marginLeft: i === 0 ? 0 : "-7px",
+                        zIndex: TRUST_AVATARS.length - i,
+                        background: ["#1A4596","#D72B2B","#14a08c","#7C3AED","#D97706"][i],
+                      }}
+                    >
+                      {initials}
+                    </span>
+                  ))}
+                </div>
+
+                <p className="text-[13px] text-white/55 leading-snug">
+                  Trusted by{" "}
+                  <strong className="text-white font-medium">
+                    160+ organizations
+                  </strong>
+                  <br />
+                  across Kenya &amp; East Africa
                 </p>
-                <Button variant="default" size="lg" className="h-12">
-                  Explore Our ERP Solutions
-                </Button>
+
+                {/* Arrow nudge */}
+                <div className="ml-auto size-8 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-white/35 hover:bg-white/5 hover:text-white transition-all duration-200 cursor-pointer flex-shrink-0">
+                  <ArrowRight className="size-3.5" />
+                </div>
               </div>
             </div>
           </div>
-          <div>
-            <div className="flex -translate-x-10 flex-col gap-8 pt-12 pb-8 sm:-translate-x-0 md:gap-16 md:py-32">
-              <div className="flex gap-x-6 even:translate-x-22">
-                {products
-                  .slice(0, products.length / 3)
-                  .map((product, i) => LogoCard(i, product))}
-              </div>
-              <div className="flex gap-x-6 even:translate-x-22">
-                {products
-                  .slice(products.length / 3, products.length / 3 + 4)
-                  .map((product, i) => LogoCard(i, product))}
-              </div>
-              <div className="flex gap-x-6 even:translate-x-22">
-                {products
-                  .slice(products.length / 3 + 4)
-                  .map((product, i) => LogoCard(i, product))}
-              </div>
-              <p className="text-background/80 mb-10">
-                Trusted by 160+ Organizations Across Kenya
-              </p>
-            </div>
+
+        </div>
+
+        {/* ── Bottom trust bar ── */}
+        <div className="relative z-20 border-t border-white/8 px-6 sm:px-10 lg:px-16 py-4 sm:flex hidden items-center gap-8 flex-wrap">
+          <span className="text-[11px] uppercase tracking-widest text-white/30 whitespace-nowrap flex-shrink-0">
+            Trusted by
+          </span>
+          <div className="flex items-center gap-7 flex-wrap">
+            {TRUSTED_ORGS.map((org) => (
+              <span
+                key={org}
+                className="text-[13px] font-bold uppercase tracking-wide text-white/30 hover:text-white/60 transition-colors duration-200 cursor-default whitespace-nowrap"
+              >
+                {org}
+              </span>
+            ))}
           </div>
         </div>
       </div>
+
     </section>
   );
 }
