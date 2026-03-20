@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import BadgePill from "@/components/ui/badge-pill";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -67,18 +69,13 @@ function StatCard({
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex aspect-square flex-col justify-between gap-8 overflow-hidden rounded-2xl p-8 transition-all duration-300 hover:shadow-xl"
-      style={{
-        background: hovered
-          ? "linear-gradient(135deg, #0c1845 0%, #1a3a8f 100%)"
-          : "linear-gradient(135deg, #0f1f5c 0%, #1a3a8f 100%)",
-        transform: hovered ? "translateY(-6px)" : "translateY(0)",
-        boxShadow: hovered
-          ? "0 24px 64px rgba(15,31,92,0.35)"
-          : "0 6px 32px rgba(15,31,92,0.18)",
-        transition:
-          "transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
-      }}
+      className={cn(
+        "group relative flex aspect-square flex-col justify-between gap-8 overflow-hidden rounded-xl p-8 transition-all duration-300 hover:shadow-xl",
+        "transition-[transform,box-shadow,background] duration-300 ease-in-out",
+        "bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800",
+        "hover:-translate-y-[6px]",
+        "hover:shadow-primary-cbe-100",
+      )}
     >
       {/* Background image — subtle watermark */}
       <div
@@ -250,33 +247,17 @@ export default function SiteTestimonials() {
     <section className="w-full bg-background bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat">
       <div className="container flex flex-col gap-6 px-6 sm:px-30 w-full bg-gradient-to-t from-muted/40 to-transparent via-background/85 py-16 sm:py-32">
         {/* ── Section header ──────────────────────────────────────────────────── */}
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div className="flex flex-col gap-4">
-            {/* Red pill label */}
-            <div className="flex items-center gap-3">
-              <div
-                className="h-[3px] w-8 rounded-full"
-                style={{ background: "#e8245c" }}
-              />
-              <span
-                className="text-xs font-semibold uppercase tracking-widest"
-                style={{ color: "#e8245c" }}
-              >
-                Client Stories
-              </span>
-            </div>
-
-            <h2 className="text-2xl font-semibold tracking-tight md:text-4xl">
-              What Our Clients Think
-            </h2>
-
-            <p className="text-md text-muted-foreground md:text-lg max-w-xl">
-              Trusted by over{" "}
-              <strong className="text-foreground">160 institutions</strong>{" "}
-              across Kenya — here&apos;s what they have to say about working
-              with Optimum.
-            </p>
-          </div>
+        <div className="flex flex-col items-center gap-3 text-center mb-12">
+          <BadgePill label="Client Stories" centered={true} />
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-900 mb-4">
+            What Our <span className="text-primary-cta">Clients</span> Think
+          </h3>
+          <p className="max-w-md text-muted-foreground leading-relaxed">
+            Trusted by over{" "}
+            <strong className="text-foreground">160 institutions</strong> across
+            Kenya — here&apos;s what they have to say about working with
+            Optimum.
+          </p>
         </div>
 
         {/* ── Testimonial cards ───────────────────────────────────────────────── */}
@@ -287,13 +268,19 @@ export default function SiteTestimonials() {
               <div
                 key={idx}
                 onClick={() => setActiveIdx(idx)}
-                className="relative flex h-full cursor-pointer flex-col justify-between gap-8 overflow-hidden rounded-2xl p-4 sm:p-6 transition-all duration-400"
+                className={cn(
+                  "relative flex h-full cursor-pointer flex-col justify-between gap-8 overflow-hidden rounded-2xl p-4 sm:p-6 transition-all duration-400",
+                  isActive
+                    ? "bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
+                    : "bg-white",
+                  isActive
+                    ? "shadow-[0_20px_60px_rgba(15,31,92,0.02)]"
+                    : "shadow-[0_2px_12px_rgba(0,0,0,0.04)]",
+                  isActive
+                    ? "none"
+                    : "border-[1.5px] bolder-solid border-[#e5e7eb]",
+                )}
                 style={{
-                  background: isActive ? "#0f1f5c" : "white",
-                  border: isActive ? "none" : "1.5px solid #e5e7eb",
-                  boxShadow: isActive
-                    ? "0 20px 60px rgba(15,31,92,0.22)"
-                    : "0 2px 12px rgba(0,0,0,0.04)",
                   transition: "all 0.4s ease",
                 }}
               >

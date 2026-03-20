@@ -1,269 +1,379 @@
-/* eslint-disable @next/next/no-img-element */
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play } from "lucide-react";
+import Image from "next/image";
+
+const AVATARS = [
+  { label: "KE", bg: "#1240a0", color: "white" },
+  { label: "TZ", bg: "#2a5abf", color: "white" },
+  { label: "UG", bg: "#4a7ad0", color: "white" },
+  { label: "+", bg: "#e8ecf5", color: "#526280" },
+] as const;
+
+const STATS = [
+  { value: "99.9%", label: "System Uptime" },
+  { value: "$2.1B", label: "Processed / Year" },
+  { value: "4.2×",  label: "Average ROI" },
+] as const;
+
+const ORDERS = [
+  { id: "#ORD-8812", route: "Nairobi → Lagos",    status: "Delivered",  color: "#22e080",  bg: "rgba(34,224,128,0.10)",  border: "rgba(34,224,128,0.28)" },
+  { id: "#ORD-8811", route: "Mombasa → Dubai",    status: "In Transit", color: "#f59e42",  bg: "rgba(245,158,66,0.10)",  border: "rgba(245,158,66,0.28)" },
+  { id: "#ORD-8809", route: "Kampala → EU",        status: "Delivered",  color: "#22e080",  bg: "rgba(34,224,128,0.10)",  border: "rgba(34,224,128,0.28)" },
+] as const;
+
 export default function SiteHero() {
   return (
-    <section className="bg-background py-12 md:py-20 w-full sm:px-30 px-6">
-      <div className="container">
-        <div className="flex flex-col items-center gap-20 lg:flex-row lg:items-start">
-          <div className="max-w-[28.125rem]">
-            <h1 className="text-6xl font-medium text-foreground lg:text-7xl">
-              We make it effortless for you
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Say goodbye to manual bookings and free up your time to focus on
-              your business or simply enjoy the extra freedom.
-            </p>
-            <div className="mt-11 flex gap-5">
-              <a
-                href="#"
-                data-slot="button"
-                data-variant="default"
-                data-size="default"
-                className="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 border border-transparent bg-clip-padding focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*='size-'])]:size-4 items-center justify-center whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none shrink-0 [&amp;_svg]:shrink-0 outline-none group/button select-none bg-primary text-primary-foreground hover:bg-primary/80 gap-1.5 in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 group block h-fit w-fit rounded-full px-7 py-6 text-base leading-none font-bold"
-              >
-                <span
-                  data-text="Try for Free"
-                  className="text-red relative inline-block origin-[50%_0%] p-0 transition-all [transform-style:preserve-3d] group-hover:[transform:rotateX(90deg)] before:absolute before:top-full before:left-0 before:h-full before:w-full before:origin-[50%_0%] before:[transform:rotateX(-90deg)] before:p-0 before:text-center before:content-[attr(data-text)]"
-                >
-                  Try for Free
-                </span>
-              </a>
-              <a
-                href="#"
-                data-slot="button"
-                data-variant="secondary"
-                data-size="default"
-                className="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 border border-transparent bg-clip-padding focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*='size-'])]:size-4 items-center justify-center whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none shrink-0 [&amp;_svg]:shrink-0 outline-none group/button select-none bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground gap-1.5 in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 group block h-fit w-fit rounded-full px-7 py-6 text-base leading-none font-bold"
-              >
-                <span
-                  data-text="Contact us"
-                  className="text-red relative inline-block origin-[50%_0%] p-0 transition-all [transform-style:preserve-3d] group-hover:[transform:rotateX(90deg)] before:absolute before:top-full before:left-0 before:h-full before:w-full before:origin-[50%_0%] before:[transform:rotateX(-90deg)] before:p-0 before:text-center before:content-[attr(data-text)]"
-                >
-                  Contact us
-                </span>
-              </a>
-            </div>
-            <div className="border-muted2 mt-12 flex gap-14 border-t">
-              <div className="mt-8">
-                <div className="relative flex -space-x-5">
-                  <span
-                    data-slot="avatar"
-                    data-size="default"
-                    className="size-8 after:rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6 after:border-border group/avatar flex shrink-0 select-none after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten border-muted2 relative h-14 w-14 rounded-full border-2"
-                  >
-                    <img
-                      data-slot="avatar-image"
-                      className="rounded-full aspect-square size-full object-cover"
-                      alt=""
-                      src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-1.webp"
-                    />
-                  </span>
-                  <span
-                    data-slot="avatar"
-                    data-size="default"
-                    className="size-8 after:rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6 after:border-border group/avatar flex shrink-0 select-none after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten border-muted2 relative h-14 w-14 rounded-full border-2"
-                  >
-                    <img
-                      data-slot="avatar-image"
-                      className="rounded-full aspect-square size-full object-cover"
-                      alt=""
-                      src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-2.webp"
-                    />
-                  </span>
-                  <span
-                    data-slot="avatar"
-                    data-size="default"
-                    className="size-8 after:rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6 after:border-border group/avatar flex shrink-0 select-none after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten border-muted2 relative h-14 w-14 rounded-full border-2"
-                  >
-                    <img
-                      data-slot="avatar-image"
-                      className="rounded-full aspect-square size-full object-cover"
-                      alt=""
-                      src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-3.webp"
-                    />
-                  </span>
-                  <div className="border-muted2 relative flex h-14 w-14 shrink-0 rounded-full border-2 bg-background">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-plus m-auto size-4 fill-slate-900"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14"></path>
-                      <path d="M12 5v14"></path>
-                    </svg>
-                  </div>
-                </div>
-                <div className="mt-4 flex flex-wrap items-center gap-4">
-                  <div className="text-5xl font-medium text-foreground/60">
-                    97K
-                  </div>
-                  <div className="max-w-28 text-base leading-tight font-light text-foreground/60">
-                    Users across the globe
-                  </div>
-                </div>
-              </div>
-              <div className="border-muted2 mt-8 border-l pl-12">
-                <button
-                  data-slot="button"
-                  data-variant="outline"
-                  data-size="icon"
-                  className="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 bg-clip-padding text-sm font-medium focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*='size-'])]:size-4 items-center justify-center whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none shrink-0 [&amp;_svg]:shrink-0 outline-none group/button select-none bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 aria-expanded:bg-muted aria-expanded:text-foreground shadow-xs size-9 group flex h-14 w-14 rounded-full border border-primary transition hover:scale-110"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-play m-auto size-3.5 fill-primary transition"
-                    aria-hidden="true"
-                  >
-                    <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
-                  </svg>
-                </button>
-                <p className="mt-4 max-w-28 text-base leading-tight font-light text-foreground/60">
-                  Watch promo video
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="mx-auto">
-            <div className="grid grid-cols-[4.8rem_5.625rem_10.75rem] grid-rows-[9.3rem_8.68rem_1.125rem_3.875rem] gap-[0.625rem] sm:grid-cols-[5.3rem_6.25rem_12rem] sm:grid-rows-[10.3rem_9.625rem_1.25rem_4.3rem] sm:gap-[0.8rem] xl:grid-cols-[8.5rem_10rem_19.3rem] xl:grid-rows-[16.625rem_15.5rem_1.375rem_6.9rem] xl:gap-[1.25rem]">
-              <div className="col-[2/-1] overflow-hidden rounded-3xl bg-blue-200">
-                <img
-                  alt=""
-                  className="size-full object-cover object-center"
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
+    <>
+      <style>{`
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(18px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInHero {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes pulseDot {
+          0%, 100% { opacity: 1; }
+          50%       { opacity: 0.35; }
+        }
+        @keyframes countUp {
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes hubRing {
+          0%, 100% { opacity: .2; }
+          50%       { opacity: .55; }
+        }
+        @keyframes flowAnim {
+          to { stroke-dashoffset: -20; }
+        }
+        @keyframes orderFade {
+          from { opacity: 0; transform: translateY(4px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-left  { animation: slideUp 0.55s ease both; }
+        .hero-right { animation: fadeInHero 0.7s 0.15s ease both; opacity: 0; }
+        .stat-card  { animation: countUp 0.5s ease both; }
+        .stat-card:nth-child(1) { animation-delay: 0.6s; }
+        .stat-card:nth-child(2) { animation-delay: 0.75s; }
+        .pulse-dot  { animation: pulseDot 2s infinite; }
+        .live-dot   { animation: pulseDot 1.5s infinite; }
+        .hub-pulse  { animation: hubRing 3s ease-in-out infinite; }
+        .flow-in    { stroke-dasharray: 6 4; animation: flowAnim 2s linear infinite; }
+        .flow-out   { stroke-dasharray: 6 4; animation: flowAnim 1.75s linear infinite; }
+        .flow-delay { stroke-dasharray: 6 4; animation: flowAnim 2.3s linear infinite; }
+        .order-item { animation: orderFade 0.4s ease both; }
+        .order-item:nth-child(1) { animation-delay: 0.8s; }
+        .order-item:nth-child(2) { animation-delay: 0.95s; }
+        .order-item:nth-child(3) { animation-delay: 1.1s; }
+      `}</style>
+
+      {/* ── Hero ── */}
+      <section className="w-full bg-primary-cbe-50">
+        <div className="grid lg:grid-cols-2 items-stretch w-full">
+
+          {/* ── Left panel ── */}
+          <div className="hero-left px-6 sm:px-30 py-14 flex flex-col justify-center gap-7 max-w-full shrink-0">
+
+            {/* Eyebrow badge */}
+            <div className="inline-flex items-center gap-3 w-fit">
+              <div className="size-10 rounded-lg bg-background flex items-center justify-center flex-shrink-0 p-1.5 border border-primary-cbe-100">
+                <Image
+                  src="/logos/approved/sc-dark-icon.svg"
+                  alt="UltimateSCM"
+                  width={10}
+                  height={10}
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <div className="col-[1/2] row-[1/2] self-end">
-                <svg
-                  className="w-[4.375rem] fill-muted-foreground xl:w-[8rem]"
-                  viewBox="0 0 131 174"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M123.385 5.96661C123.548 6.77895 123.021 7.56919 122.209 7.73166C115.896 8.99415 109.63 9.96037 103.486 10.9077C99.0811 11.5869 94.7393 12.2564 90.4886 13.0183C80.1979 14.8631 70.1037 17.2952 59.8744 21.8151C41.5635 29.906 25.0024 41.8876 14.0337 58.7365C8.37592 67.4273 4.29836 78.5442 3.60483 89.504C2.91206 100.452 5.59556 111.123 13.2956 119.15C17.2013 123.222 22.165 126.554 27.7033 129.043C26.3041 123.491 25.7088 117.6 26.1196 111.355C27.0927 96.5641 39.1649 88.8778 52.0447 87.6439C64.8739 86.4148 79.2577 91.4779 85.4762 102.943C88.8209 109.11 89.0032 115.236 86.7021 120.549C84.4187 125.822 79.7615 130.137 73.7 132.917C63.9444 137.39 51.9845 138.282 40.6769 136.184C37.8771 135.664 35.1075 134.96 32.412 134.076C37.8412 148.683 49.141 160.796 61.9724 170.755C62.6268 171.263 62.7456 172.205 62.2377 172.86C61.7298 173.514 60.7875 173.633 60.133 173.125C46.4556 162.51 34.1037 149.186 28.7723 132.754C22.0105 130.053 15.8772 126.176 11.1305 121.227C2.69861 112.436 -0.119486 100.855 0.610818 89.3145C1.34036 77.7856 5.61055 66.1764 11.5195 57.0997C22.8909 39.6323 39.9827 27.3247 58.6619 19.071C69.1997 14.4148 79.5552 11.9305 89.9592 10.0654C94.3905 9.27105 98.7725 8.59677 103.176 7.91915C109.222 6.98883 115.309 6.05221 121.62 4.78992C122.433 4.62745 123.223 5.15427 123.385 5.96661ZM31.2114 130.479C34.4288 131.674 37.7946 132.598 41.2243 133.234C52.0581 135.245 63.3684 134.354 72.4495 130.19C77.9974 127.646 82.0229 123.805 83.9492 119.357C85.8579 114.95 85.7769 109.79 82.8391 104.373C77.3783 94.3052 64.3988 89.4741 52.3308 90.6302C40.3135 91.7815 29.9547 98.7598 29.1131 111.552C28.6714 118.266 29.4591 124.568 31.2114 130.479Z"
-                  ></path>
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M114.056 1.72566C114.207 0.911209 114.99 0.373802 115.805 0.525328C115.89 0.541148 116.012 0.563426 116.166 0.591592C117.344 0.806885 120.403 1.36614 123.271 2.01411C124.885 2.37873 126.488 2.78252 127.676 3.18084C128.255 3.37485 128.823 3.59596 129.256 3.84814C129.46 3.96696 129.753 4.15933 129.988 4.44833C130.241 4.75995 130.578 5.40289 130.28 6.16935C129.856 7.25995 128.921 8.03458 128.094 8.58288C127.232 9.15452 126.215 9.65136 125.335 10.0779L125.264 10.1127C124.363 10.5492 123.633 10.9033 123.11 11.2487C122.902 11.386 122.778 11.4897 122.71 11.5572C122.597 12.2744 121.977 12.8231 121.228 12.8231C120.4 12.8231 119.728 12.1516 119.728 11.3231C119.728 10.6196 120.043 10.064 120.366 9.67844C120.683 9.29947 121.082 8.99272 121.457 8.745C122.152 8.28613 123.048 7.85224 123.862 7.45814C123.917 7.43145 123.972 7.40493 124.026 7.3786C124.936 6.93764 125.77 6.52466 126.436 6.08262C126.489 6.04781 126.539 6.01368 126.587 5.98025C125.557 5.64496 124.135 5.28497 122.61 4.94034C119.811 4.30799 116.823 3.76151 115.632 3.54375C115.473 3.5147 115.346 3.49149 115.256 3.47472C114.442 3.32319 113.904 2.54011 114.056 1.72566ZM127.788 6.46672C127.788 6.46675 127.785 6.46476 127.779 6.46068C127.785 6.46465 127.788 6.46669 127.788 6.46672Z"
-                  ></path>
-                </svg>
-              </div>
-              <div className="col-[1/3] overflow-hidden rounded-3xl bg-muted">
-                <div className="p-5 xl:p-7">
-                  <div className="flex gap-7">
-                    <div className="text-4xl leading-none text-foreground xl:text-7xl">
-                      99%
+              <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
+                Ultimate SCM ERP
+              </span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.18] text-primary-cbe-800 tracking-[-1px]">
+              Ultimate
+              <br />
+              <span className="text-primary-cbe-500 font-bold">Supply Chain</span>{" "}ERP
+              <br />
+              Built for scale
+            </h1>
+
+            {/* Subtext */}
+            <p className="text-primary-cbe-800 text-base leading-relaxed max-w-[340px] sm:max-w-[440px]">
+              Automate procurement, unify warehouse operations, and gain real-time
+              visibility across every node — from raw material sourcing to last-mile
+              delivery.
+            </p>
+
+            {/* Bottom stats row */}
+            <div className="flex gap-0 pt-5 border-t border-[#edf0f8]">
+              {STATS.map((stat, i) => (
+                <div key={i} className="flex items-stretch gap-0">
+                  {i > 0 && <div className="w-px mr-6 bg-[#edf0f8]" />}
+                  <div className={i < 2 ? "pr-6" : ""}>
+                    <div className="text-2xl font-extrabold leading-none text-[#0a1938]">
+                      {stat.value}
                     </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-signal h-9 w-9 stroke-foreground xl:h-14 xl:w-14"
-                      aria-hidden="true"
-                    >
-                      <path d="M2 20h.01"></path>
-                      <path d="M7 20v-4"></path>
-                      <path d="M12 20v-8"></path>
-                      <path d="M17 20V8"></path>
-                      <path d="M22 4v16"></path>
-                    </svg>
+                    <div className="text-xs mt-1 text-[#94a3be]">{stat.label}</div>
                   </div>
-                  <p className="mt-3 text-xs text-foreground md:text-sm xl:mt-7 xl:text-xl">
-                    Crystal-clear{" "}
-                    <span className="font-bold text-foreground/60">
-                      voice and video
-                    </span>{" "}
-                    calls with no background noise
-                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex gap-2.5 items-center flex-wrap">
+              <Button variant="default" size="lg">
+                Book a Demo
+                <ArrowRight size={4} />
+              </Button>
+              <Button variant="ghost" size="lg">
+                <Play className="size-3.5 fill-current text-primary-cbe-800 hidden sm:block" />
+                Watch Overview
+              </Button>
+            </div>
+
+            {/* Social proof avatars */}
+            <div className="flex items-center">
+              {AVATARS.map((av, i) => (
+                <div
+                  key={i}
+                  className={[
+                    "w-8 h-8 rounded-full flex items-center justify-center",
+                    "text-xs font-bold flex-shrink-0 border-2 border-white relative",
+                    i > 0 ? "-ml-2" : "",
+                  ].join(" ")}
+                  style={{ background: av.bg, color: av.color, zIndex: 5 - i }}
+                >
+                  {av.label}
+                </div>
+              ))}
+              <span className="ml-3 text-xs text-[#6a7b9a]">
+                Trusted by{" "}
+                <strong className="text-[#0a1938] font-bold">2,400+ enterprises</strong>{" "}
+                across Africa
+              </span>
+            </div>
+          </div>
+
+          {/* ── Right panel ── */}
+          <div className="hero-right relative flex flex-col gap-3.5 p-6 overflow-hidden bg-[#0a1938]">
+
+            {/* Dot-grid background */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none opacity-30"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <pattern id="hero-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                  <circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.18)" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hero-dots)" />
+            </svg>
+
+            {/* ── Panel header ── */}
+            <div className="relative z-10 flex justify-between items-center">
+              <div className="flex items-center gap-2.5">
+                {/* Mini network icon */}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                  <circle cx="2" cy="8" r="1.5" fill="rgba(255,255,255,0.3)" />
+                  <circle cx="8" cy="4" r="1.5" fill="rgba(255,255,255,0.3)" />
+                  <circle cx="8" cy="12" r="1.5" fill="rgba(255,255,255,0.3)" />
+                  <circle cx="14" cy="8" r="1.5" fill="rgba(255,255,255,0.3)" />
+                  <line x1="3.4" y1="7.2" x2="6.6" y2="4.8" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+                  <line x1="3.4" y1="8.8" x2="6.6" y2="11.2" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+                  <line x1="9.4" y1="4.8" x2="12.6" y2="7.2" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+                  <line x1="9.4" y1="11.2" x2="12.6" y2="8.8" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+                </svg>
+                <span className="text-[11px] font-medium uppercase text-white/30 tracking-[2px]">
+                  Live Supply Chain Map
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-[11px] text-white/20">1,284 orders today</span>
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[rgba(34,224,128,0.10)] border border-[rgba(34,224,128,0.25)]">
+                  <div className="live-dot w-1.5 h-1.5 rounded-full bg-[#22e080]" />
+                  <span className="text-[11px] font-semibold text-[#22e080]">Live</span>
                 </div>
               </div>
-              <div className="col-[2/3] row-[-3/-1] flex h-full w-full items-center justify-center overflow-hidden rounded-3xl bg-muted">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-audio-lines mx-auto size-16 stroke-foreground xl:size-27"
-                  aria-hidden="true"
-                >
-                  <path d="M2 10v3"></path>
-                  <path d="M6 6v11"></path>
-                  <path d="M10 3v18"></path>
-                  <path d="M14 8v7"></path>
-                  <path d="M18 5v13"></path>
-                  <path d="M22 10v3"></path>
-                </svg>
-              </div>
-              <div className="relative col-[3/4] row-[2/4] rounded-3xl bg-muted">
-                <div className="h-full w-full overflow-hidden rounded-3xl">
-                  <img
-                    alt=""
-                    className="size-full object-cover object-center"
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg"
+            </div>
+
+            {/* ── Supply chain flow diagram ── */}
+            <svg
+              viewBox="0 0 560 295"
+              xmlns="http://www.w3.org/2000/svg"
+              className="relative z-10 w-full flex-1 min-h-[190px]"
+            >
+              <defs>
+                <marker id="arw-blue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="rgba(80,140,220,0.6)" />
+                </marker>
+                <marker id="arw-red" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="rgba(229,53,40,0.65)" />
+                </marker>
+                <marker id="arw-amber" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="rgba(245,158,66,0.65)" />
+                </marker>
+              </defs>
+
+              {/* ── Supplier A (y=16, h=68, center_y=50) ── */}
+              <rect x="10" y="16" width="120" height="68" rx="9" fill="rgba(18,55,140,0.45)" stroke="rgba(80,130,220,0.3)" strokeWidth=".8" />
+              <line x1="14" y1="23" x2="14" y2="76" stroke="#4a80e8" strokeWidth="3.5" strokeLinecap="round" />
+              <circle cx="116" cy="25" r="4" fill="#22e080" />
+              <text x="25" y="38" fill="rgba(255,255,255,0.92)" fontSize="11" fontWeight="600" fontFamily="system-ui">Supplier A</text>
+              <text x="25" y="53" fill="rgba(140,180,255,0.75)" fontSize="11" fontFamily="system-ui">240 units / day</text>
+              <text x="25" y="66" fill="rgba(255,255,255,0.28)" fontSize="11" fontFamily="system-ui">Mombasa, KE</text>
+
+              {/* ── Supplier B (y=113, h=68, center_y=147) ── */}
+              <rect x="10" y="113" width="120" height="68" rx="9" fill="rgba(18,55,140,0.45)" stroke="rgba(80,130,220,0.3)" strokeWidth=".8" />
+              <line x1="14" y1="120" x2="14" y2="173" stroke="#4a80e8" strokeWidth="3.5" strokeLinecap="round" />
+              <circle cx="116" cy="122" r="4" fill="#22e080" />
+              <text x="25" y="135" fill="rgba(255,255,255,0.92)" fontSize="11" fontWeight="600" fontFamily="system-ui">Supplier B</text>
+              <text x="25" y="150" fill="rgba(140,180,255,0.75)" fontSize="11" fontFamily="system-ui">180 units / day</text>
+              <text x="25" y="163" fill="rgba(255,255,255,0.28)" fontSize="11" fontFamily="system-ui">Dar es Salaam, TZ</text>
+
+              {/* ── Supplier C (y=210, h=68, center_y=244) — amber = delayed ── */}
+              <rect x="10" y="210" width="120" height="68" rx="9" fill="rgba(18,55,140,0.45)" stroke="rgba(245,158,66,0.35)" strokeWidth=".8" />
+              <line x1="14" y1="217" x2="14" y2="270" stroke="#f59e42" strokeWidth="3.5" strokeLinecap="round" />
+              <circle cx="116" cy="219" r="4" fill="#f59e42" />
+              <text x="25" y="232" fill="rgba(255,255,255,0.92)" fontSize="11" fontWeight="600" fontFamily="system-ui">Supplier C</text>
+              <text x="25" y="247" fill="rgba(140,180,255,0.75)" fontSize="11" fontFamily="system-ui">320 units / day</text>
+              <text x="25" y="260" fill="rgba(245,158,66,0.85)" fontSize="11" fontFamily="system-ui">Delay: 2hr Kampala</text>
+
+              {/* ── Central Hub — pulse ring ── */}
+              <rect className="hub-pulse" x="193" y="85" width="162" height="124" rx="14" fill="none" stroke="rgba(229,53,40,0.5)" strokeWidth="7" />
+              {/* ── Central Hub — card ── */}
+              <rect x="200" y="92" width="148" height="110" rx="10" fill="rgba(229,53,40,0.14)" stroke="rgba(229,53,40,0.7)" strokeWidth="1.2" />
+              <text x="274" y="115" textAnchor="middle" fill="white" fontSize="13" fontWeight="700" fontFamily="system-ui">Central Hub</text>
+              <text x="274" y="131" textAnchor="middle" fill="rgba(255,255,255,0.65)" fontSize="11" fontFamily="system-ui">Nairobi Warehouse</text>
+              <line x1="208" y1="141" x2="340" y2="141" stroke="rgba(229,53,40,0.28)" strokeWidth=".8" />
+              <text x="234" y="160" textAnchor="middle" fill="white" fontSize="14" fontWeight="800" fontFamily="system-ui">14.2K</text>
+              <text x="234" y="175" textAnchor="middle" fill="rgba(229,100,90,0.8)" fontSize="11" fontFamily="system-ui">Active SKUs</text>
+              <text x="318" y="160" textAnchor="middle" fill="white" fontSize="14" fontWeight="800" fontFamily="system-ui">94%</text>
+              <text x="318" y="175" textAnchor="middle" fill="rgba(229,100,90,0.8)" fontSize="11" fontFamily="system-ui">Utilization</text>
+              <rect x="208" y="184" width="132" height="4" rx="2" fill="rgba(255,255,255,0.12)" />
+              <rect x="208" y="184" width="124" height="4" rx="2" fill="rgba(229,53,40,0.65)" />
+
+              {/* ── Distribution: Retail East (y=16, h=60, center_y=46) ── */}
+              <rect x="440" y="16" width="112" height="60" rx="9" fill="rgba(18,70,150,0.42)" stroke="rgba(34,224,128,0.28)" strokeWidth=".8" />
+              <line x1="444" y1="23" x2="444" y2="68" stroke="#22e080" strokeWidth="3.5" strokeLinecap="round" />
+              <circle cx="544" cy="25" r="4" fill="#22e080" />
+              <text x="455" y="38" fill="rgba(255,255,255,0.92)" fontSize="11" fontWeight="600" fontFamily="system-ui">Retail East</text>
+              <text x="455" y="53" fill="rgba(140,180,255,0.72)" fontSize="11" fontFamily="system-ui">KE · TZ · UG</text>
+              <text x="455" y="67" fill="rgba(34,224,128,0.7)" fontSize="11" fontFamily="system-ui">412 active stores</text>
+
+              {/* ── Distribution: Wholesale West (y=117, h=60, center_y=147) ── */}
+              <rect x="440" y="117" width="112" height="60" rx="9" fill="rgba(18,70,150,0.42)" stroke="rgba(34,224,128,0.28)" strokeWidth=".8" />
+              <line x1="444" y1="124" x2="444" y2="169" stroke="#22e080" strokeWidth="3.5" strokeLinecap="round" />
+              <circle cx="544" cy="126" r="4" fill="#22e080" />
+              <text x="455" y="139" fill="rgba(255,255,255,0.92)" fontSize="11" fontWeight="600" fontFamily="system-ui">Wholesale W.</text>
+              <text x="455" y="154" fill="rgba(140,180,255,0.72)" fontSize="11" fontFamily="system-ui">NG · GH · SN</text>
+              <text x="455" y="168" fill="rgba(34,224,128,0.7)" fontSize="11" fontFamily="system-ui">89 distributors</text>
+
+              {/* ── Distribution: Export Global (y=218, h=60, center_y=248) ── */}
+              <rect x="440" y="218" width="112" height="60" rx="9" fill="rgba(18,70,150,0.42)" stroke="rgba(124,154,232,0.3)" strokeWidth=".8" />
+              <line x1="444" y1="225" x2="444" y2="270" stroke="#7c9ae8" strokeWidth="3.5" strokeLinecap="round" />
+              <circle cx="544" cy="227" r="4" fill="#7c9ae8" />
+              <text x="455" y="240" fill="rgba(255,255,255,0.92)" fontSize="11" fontWeight="600" fontFamily="system-ui">Export Global</text>
+              <text x="455" y="255" fill="rgba(140,180,255,0.72)" fontSize="11" fontFamily="system-ui">EU · MENA · APAC</text>
+              <text x="455" y="269" fill="rgba(255,255,255,0.28)" fontSize="11" fontFamily="system-ui">24 countries</text>
+
+              {/* ── Bezier connectors: Suppliers → Hub ── */}
+              <path className="flow-in" d="M 130 50 C 166 50, 166 147, 200 147" fill="none" stroke="rgba(80,140,220,0.45)" strokeWidth="1.5" markerEnd="url(#arw-blue)" />
+              <path className="flow-in" d="M 130 147 C 165 147, 165 147, 200 147" fill="none" stroke="rgba(80,140,220,0.45)" strokeWidth="1.5" markerEnd="url(#arw-blue)" />
+              <path className="flow-delay" d="M 130 244 C 166 244, 166 147, 200 147" fill="none" stroke="rgba(245,158,66,0.45)" strokeWidth="1.5" markerEnd="url(#arw-amber)" />
+
+              {/* ── Bezier connectors: Hub → Distribution ── */}
+              <path className="flow-out" d="M 348 147 C 394 147, 394 46, 440 46" fill="none" stroke="rgba(229,53,40,0.5)" strokeWidth="1.5" markerEnd="url(#arw-red)" />
+              <path className="flow-out" d="M 348 147 C 394 147, 394 147, 440 147" fill="none" stroke="rgba(229,53,40,0.5)" strokeWidth="1.5" markerEnd="url(#arw-red)" />
+              <path className="flow-out" d="M 348 147 C 394 147, 394 248, 440 248" fill="none" stroke="rgba(229,53,40,0.5)" strokeWidth="1.5" markerEnd="url(#arw-red)" />
+            </svg>
+
+            {/* ── Bottom row: 2 metric cards + live order stream ── */}
+            <div className="relative z-10 grid grid-cols-[1fr_1fr_1.45fr] gap-2.5">
+
+              {/* Orders Today */}
+              <div className="stat-card rounded-xl p-3 bg-white/[0.055] border border-white/[0.09] flex-col justify-between sm:flex hidden">
+                <div className="text-white/30 mb-1.5 uppercase text-[11px] tracking-[1.2px]">
+                  Orders Today
+                </div>
+                <div className="text-[22px] font-extrabold text-white leading-none tracking-tight mb-1">
+                  1,284
+                </div>
+                {/* Mini sparkline */}
+                <svg viewBox="0 0 80 22" className="w-full block my-1">
+                  <polyline
+                    points="0,18 12,16 24,12 36,9 48,12 62,6 80,3"
+                    fill="none"
+                    stroke="#22e080"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
-                </div>
-                <svg
-                  className="absolute -right-10 -bottom-20 w-12 rotate-45 fill-muted-foreground xl:-right-14 xl:-bottom-24 xl:w-16"
-                  viewBox="0 0 90 184"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M82.3024 182.601C81.9706 183.654 80.8475 184.239 79.794 183.908C61.988 178.3 44.3459 170.161 28.8638 159.628C27.9867 159.032 27.0952 158.433 26.1953 157.829C19.3285 153.217 11.9733 148.278 6.79983 141.399C1.60997 134.499 0.117312 128.254 1.83895 122.43C2.6984 119.522 4.32632 116.846 6.49378 114.34C5.35517 113.106 4.35358 111.733 3.52901 110.202C0.650361 104.857 -0.218529 98.5344 0.0443264 92.3589C0.307769 86.1696 1.71314 79.9869 3.52802 74.7987C6.69986 65.7313 12.4429 58.6702 19.6577 53.195C12.3683 47.5787 9.48814 39.1289 10.8726 29.8393C12.4961 18.9454 20.6761 11.4583 29.4427 6.62192C30.6367 5.96323 31.853 5.36019 33.0898 4.81414C32.6941 4.2623 32.3003 3.71906 31.9081 3.18775C31.2521 2.29908 31.4407 1.04688 32.3294 0.390874C33.218 -0.265116 34.4702 -0.0765027 35.1262 0.812169C35.7502 1.65741 36.3517 2.49315 36.9405 3.3212C40.0542 2.27675 43.2795 1.57898 46.5911 1.24683C46.6891 1.237 46.7946 1.226 46.9069 1.2143C47.9181 1.10892 49.4784 0.946293 50.9907 1.06971C52.6143 1.20221 54.7929 1.707 56.0859 3.59542C57.7733 6.05985 57.6463 9.09276 56.7901 11.555C55.9341 14.0168 54.2062 16.3578 52.0068 17.5835C49.5695 18.9417 47.2092 19.1616 45.0203 18.356C42.9436 17.5916 41.279 15.9963 39.9217 14.2581C38.3955 12.3034 36.9096 10.2152 35.4536 8.1518C34.067 8.73156 32.7065 9.38967 31.3749 10.1243C23.0707 14.7056 16.1837 21.3381 14.8289 30.4289C13.5775 38.8256 16.3089 46.1012 23.1133 50.7625C25.3554 49.2979 27.7094 47.964 30.1477 46.7504C38.4925 42.5968 47.3718 40.5021 56.4215 39.4065L56.6665 39.3768C62.6119 38.6565 70.4082 37.7119 76.8537 39.8042C78.4687 40.3284 80.1229 41.2783 81.2992 42.6776C82.5177 44.1272 83.2123 46.067 82.7269 48.2956C82.2241 50.6043 80.7223 52.4194 79.1373 53.7643C77.5359 55.1229 75.6762 56.1504 74.1276 56.8586C66.8292 60.1963 58.4963 61.2743 50.803 61.3583C41.5426 61.4595 31.7569 60.2088 23.2355 55.5241C15.9695 60.7389 10.3301 67.4678 7.30368 76.1195C5.59322 81.0092 4.28448 86.8017 4.04071 92.5291C3.79633 98.2704 4.62711 103.806 7.05067 108.305C7.66677 109.449 8.41725 110.498 9.28332 111.46C10.7025 110.137 12.2604 108.858 13.9176 107.613C19.0542 103.753 25.1603 101.362 30.9 99.1141C31.9728 98.6939 33.0328 98.2788 34.0713 97.86C44.8345 93.5196 54.5514 90.7828 66.1479 90.2536C73.0985 89.9364 80.1661 91.5085 85.7372 96.3378C87.9729 98.2757 89.3101 100.449 89.7945 102.77C90.2767 105.08 89.8719 107.333 88.9817 109.369C87.2323 113.37 83.5007 116.81 79.8943 119.046C67.1806 126.927 52.1165 127.684 38.0675 125.998C32.5974 125.342 25.6204 124.358 19.2411 122.116C15.756 120.891 12.3561 119.258 9.45526 117.031C7.61589 119.173 6.33377 121.335 5.67485 123.564C4.42421 127.794 5.29376 132.742 9.99659 138.995C14.7347 145.295 21.485 149.836 28.4179 154.501C29.3147 155.104 30.2147 155.71 31.1137 156.321C46.2316 166.606 63.5108 174.586 80.9955 180.092C82.049 180.424 82.6341 181.547 82.3024 182.601ZM12.2732 114.144C14.6418 115.885 17.4723 117.254 20.5675 118.342C26.4986 120.427 33.0943 121.373 38.544 122.027C52.2124 123.667 66.1958 122.831 77.7867 115.646C81.015 113.645 84.0131 110.748 85.3166 107.767C85.9528 106.311 86.1552 104.911 85.8789 103.587C85.6048 102.274 84.8178 100.834 83.1172 99.3603C78.5409 95.3933 72.5898 93.9638 66.3302 94.2495C55.3243 94.7517 46.0648 97.3365 35.5673 101.57C34.451 102.02 33.3389 102.457 32.2355 102.89C26.491 105.145 20.9813 107.309 16.3204 110.811C14.835 111.927 13.4829 113.036 12.2732 114.144ZM27.0739 52.996C34.3044 56.4253 42.561 57.4481 50.7594 57.3586C58.1681 57.2777 65.8758 56.2339 72.4641 53.2209C73.8174 52.6021 75.3239 51.754 76.5494 50.7142C77.7911 49.6606 78.5768 48.5544 78.8186 47.4444C79.0025 46.5997 78.7792 45.8962 78.2372 45.2514C77.6531 44.5565 76.7044 43.9612 75.6187 43.6087C70.0866 41.8129 63.1142 42.6254 56.9023 43.3775C48.1375 44.4386 39.7384 46.4448 31.9301 50.3313C30.2579 51.1636 28.6366 52.0507 27.0739 52.996ZM39.3592 6.74785C40.562 8.44837 41.77 10.1257 43.0745 11.7963C44.2391 13.2879 45.3417 14.2119 46.4019 14.6021C47.3499 14.9511 48.4962 14.9607 50.0597 14.0894C51.2263 13.4392 52.4054 11.9857 53.012 10.2413C53.6183 8.4975 53.5095 6.91275 52.7854 5.85524C52.5467 5.5067 51.9551 5.16172 50.6653 5.05646C49.547 4.9652 48.3598 5.08681 47.3096 5.19439C47.2017 5.20545 47.0952 5.21636 46.9903 5.22687C44.3846 5.48822 41.8363 5.99839 39.3592 6.74785Z"
-                  ></path>
                 </svg>
+                <div className="text-[11px] text-[#22e080]">↑ 12% vs yesterday</div>
               </div>
-              <div className="col-[-2/-1] row-[-1/-2]">
-                <div className="flex w-full items-center gap-3">
-                  <div className="h-12 w-12 shrink-0 rounded-full bg-muted"></div>
-                  <div className="flex w-full flex-col gap-1">
-                    <div className="h-6 w-[70%] rounded-lg bg-muted"></div>
-                    <div className="h-3 w-[40%] rounded-lg bg-muted"></div>
-                  </div>
+
+              {/* On-Time Delivery */}
+              <div className="stat-card rounded-xl p-3 bg-white/[0.055] border border-white/[0.09] flex-col justify-between sm:flex hidden">
+                <div className="text-white/30 mb-1.5 uppercase text-[11px] tracking-[1.2px]">
+                  On-Time Delivery
                 </div>
-                <div className="mt-3 flex w-full items-center gap-3">
-                  <div className="h-12 w-12 shrink-0 rounded-full bg-muted"></div>
-                  <div className="flex w-full flex-col gap-1">
-                    <div className="h-6 w-[70%] rounded-lg bg-muted"></div>
-                    <div className="h-3 w-[40%] rounded-lg bg-muted"></div>
-                  </div>
+                <div className="text-[22px] font-extrabold text-white leading-none tracking-tight mb-1">
+                  98.3%
+                </div>
+                {/* Progress bar */}
+                <div className="h-[4px] rounded-full bg-white/10 my-1 overflow-hidden">
+                  <div className="h-full rounded-full bg-[#22e080]" style={{ width: "98.3%" }} />
+                </div>
+                <div className="text-[11px] text-[#22e080]">↑ 2.1pp this month</div>
+              </div>
+
+              {/* Live order stream */}
+              <div className="rounded-xl p-3 bg-white/[0.055] border border-white/[0.09] flex-col justify-between sm:flex hidden">
+                <div className="flex justify-between items-center mb-2.5">
+                  <span className="text-white/30 uppercase text-[11px] tracking-[1.2px]">
+                    Order Stream
+                  </span>
+                  <span className="text-[11px] font-semibold text-[#22e080] flex items-center gap-1">
+                    <span className="live-dot inline-block w-1.5 h-1.5 rounded-full bg-[#22e080]" />
+                    Live
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  {ORDERS.map((order, i) => (
+                    <div
+                      key={i}
+                      className="order-item flex items-center justify-between gap-2"
+                    >
+                      <div>
+                        <div className="text-[11px] font-semibold text-white/85">
+                          {order.id}
+                        </div>
+                        <div className="text-[11px] text-white/30">{order.route}</div>
+                      </div>
+                      <div
+                        className="text-[11px] font-semibold px-1.5 py-0.5 rounded-[5px] whitespace-nowrap border"
+                        style={{
+                          color: order.color,
+                          background: order.bg,
+                          borderColor: order.border,
+                        }}
+                      >
+                        {order.status}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
+
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

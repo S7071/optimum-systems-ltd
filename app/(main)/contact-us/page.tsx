@@ -1,7 +1,7 @@
 import SiteFooter from "@/components/optimum-systems/layout01/site-footer";
 import SiteNavbar from "@/components/optimum-systems/layout01/site-navbar";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
-import SiteContact from "@/components/ultimate-cbe/layout01/site-contact";
+import SiteContact from "@/components/optimum-systems/layout01/site-contact";
 
 export default function Home() {
   return (

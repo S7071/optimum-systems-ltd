@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Badge } from "@/components/ui/badge";
 import { ArrowRight, ChevronDown, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import BadgePill from "@/components/ui/badge-pill";
 
 type Category = "all" | "general" | "platform" | "billing" | "support";
 
@@ -105,29 +105,27 @@ export default function SiteFaq() {
   return (
     <section className="w-full">
       {/* ── Hero ── */}
-      <div className="relative overflow-hidden bg-primary-cbe-600 px-6 py-16 text-center sm:py-24">
+      <div className="relative overflow-hidden bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-6 py-16 text-center sm:py-24">
         {/* Decorative radial overlays */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-[10%] top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary-cbe-500 opacity-30 blur-3xl" />
           <div className="absolute right-[10%] top-0 h-72 w-72 rounded-full bg-red-500 opacity-10 blur-3xl" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-2xl">
-          <Badge className="mb-5 bg-white/10 text-white border-white/20 hover:bg-white/10">
-            FAQs
-          </Badge>
+        <div className="relative z-10 mx-auto max-w-2xl flex flex-col gap-3 items-center">
+          <BadgePill label="FAQ" centered={true} />
 
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-white mb-4">
             Common Questions & <span className="text-red-500">Answers</span>
           </h1>
 
-          <p className="mt-4 text-base text-white/65 sm:text-lg">
+          <p className="text-base text-white/65 sm:text-lg max-w-xl">
             Find out all the essential details about our platform and how it can
             serve your needs.
           </p>
 
           {/* Search */}
-          <div className="mt-8 flex overflow-hidden rounded-xl shadow-xl">
+          <div className="mt-8 flex overflow-hidden rounded-xl shadow-xl w-full">
             <div className="relative flex-1">
               <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
               <input
@@ -161,7 +159,7 @@ export default function SiteFaq() {
       </div>
 
       {/* ── Main content ── */}
-      <div className="bg-muted px-6 py-14 sm:px-10">
+      <div className="bg-primary-cbe-50 px-6 py-14 sm:px-10">
         <div className="mx-auto max-w-3xl">
           {/* Category tabs */}
           <div className="mb-8 flex flex-wrap gap-2">
@@ -264,7 +262,7 @@ export default function SiteFaq() {
           )}
 
           {/* ── CTA Banner ── */}
-          <div className="relative mt-14 overflow-hidden rounded-2xl bg-primary-cbe-600 px-8 py-10 sm:flex sm:items-center sm:justify-between">
+          <div className="relative mt-14 overflow-hidden rounded-2xl bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-8 py-10 sm:flex sm:items-center sm:justify-between">
             {/* Decorative circle */}
             <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/5" />
 

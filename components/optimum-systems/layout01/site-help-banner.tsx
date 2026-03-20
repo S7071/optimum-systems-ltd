@@ -3,8 +3,6 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 interface HelpOption {
   icon: React.ReactNode;
   label: string;
@@ -13,7 +11,7 @@ interface HelpOption {
   color: string;
 }
 
-// ─── Icons (inline SVG – zero external deps) ──────────────────────────────────
+// ─── Icons ────────────────────────────────────────────────────────────────────
 
 const PhoneIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" width={18} height={18}>
@@ -65,18 +63,15 @@ export default function HelpDeskButton() {
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Mount animation
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 300);
     return () => clearTimeout(t);
   }, []);
 
-  // Scroll visibility logic
   const handleScroll = useCallback(() => {
     const scrolledFromTop = window.scrollY + window.innerHeight;
     const totalHeight = document.documentElement.scrollHeight;
-    const distanceFromBottom = totalHeight - scrolledFromTop;
-    setIsVisible(distanceFromBottom > 200);
+    setIsVisible(totalHeight - scrolledFromTop > 200);
   }, []);
 
   useEffect(() => {
@@ -85,15 +80,12 @@ export default function HelpDeskButton() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
         isOpen &&
-        panelRef.current &&
-        !panelRef.current.contains(e.target as Node) &&
-        buttonRef.current &&
-        !buttonRef.current.contains(e.target as Node)
+        panelRef.current && !panelRef.current.contains(e.target as Node) &&
+        buttonRef.current && !buttonRef.current.contains(e.target as Node)
       ) {
         setIsOpen(false);
       }
@@ -102,7 +94,6 @@ export default function HelpDeskButton() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Close on Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) setIsOpen(false);
@@ -120,15 +111,15 @@ export default function HelpDeskButton() {
     {
       icon: <PhoneIcon />,
       label: "Call Us",
-      description: "+254 722 844 862",
-      action: () => { window.location.href = "tel:+254722844862"; },
+      description: "+254 723 550 664",
+      action: () => { window.location.href = "tel:+254723550664"; },
       color: "#1a237e",
     },
     {
       icon: <WhatsAppIcon />,
       label: "WhatsApp",
       description: "Chat with support",
-      action: () => { window.open("https://wa.me/254722844862", "_blank"); },
+      action: () => { window.open("https://wa.me/254723550664", "_blank"); },
       color: "#25D366",
     },
     {
@@ -151,343 +142,187 @@ export default function HelpDeskButton() {
 
   return (
     <>
-      {/* ── Styles ─────────────────────────────────────────────────────────── */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
-
-        .hdb-root {
-          position: fixed;
-          bottom: 28px;
-          right: 28px;
-          z-index: 9999;
-          font-family: 'DM Sans', sans-serif;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          gap: 12px;
-        }
-
-        /* ── Panel ── */
-        .hdb-panel {
-          width: 300px;
-          background: #fff;
-          border-radius: 20px;
-          box-shadow:
-            0 24px 64px rgba(0,0,0,0.14),
-            0 4px 16px rgba(0,0,0,0.08),
-            0 0 0 1px rgba(0,0,0,0.04);
-          overflow: hidden;
-          transform-origin: bottom right;
-          transition:
-            opacity 220ms cubic-bezier(0.4,0,0.2,1),
-            transform 260ms cubic-bezier(0.34,1.56,0.64,1);
-        }
-        .hdb-panel[data-open="false"] {
-          opacity: 0;
-          transform: scale(0.88) translateY(12px);
-          pointer-events: none;
-        }
-        .hdb-panel[data-open="true"] {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-        }
-
-        /* ── Panel header ── */
-        .hdb-header {
-          background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-          padding: 20px 20px 24px;
-          position: relative;
-        }
-        .hdb-header-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: rgba(255,255,255,0.15);
-          border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 100px;
-          padding: 3px 10px 3px 6px;
-          margin-bottom: 12px;
-        }
-        .hdb-header-dot {
-          width: 7px; height: 7px;
-          background: #4ade80;
-          border-radius: 50%;
-          box-shadow: 0 0 0 2px rgba(74,222,128,0.3);
-          animation: hdb-pulse 2s ease-in-out infinite;
-        }
         @keyframes hdb-pulse {
           0%, 100% { box-shadow: 0 0 0 2px rgba(74,222,128,0.3); }
-          50% { box-shadow: 0 0 0 5px rgba(74,222,128,0.1); }
+          50%       { box-shadow: 0 0 0 5px rgba(74,222,128,0.1); }
         }
-        .hdb-header-badge span {
-          color: rgba(255,255,255,0.9);
-          font-size: 11px;
-          font-weight: 500;
-          letter-spacing: 0.3px;
-        }
-        .hdb-header h3 {
-          color: #fff;
-          font-size: 17px;
-          font-weight: 600;
-          margin: 0 0 4px;
-          line-height: 1.3;
-        }
-        .hdb-header p {
-          color: rgba(255,255,255,0.65);
-          font-size: 12.5px;
-          margin: 0;
-          line-height: 1.5;
-        }
-        .hdb-wave {
-          position: absolute;
-          bottom: -1px; left: 0; right: 0;
-          height: 20px;
-          background: #fff;
-          clip-path: ellipse(55% 100% at 50% 100%);
-        }
-
-        /* ── Options list ── */
-        .hdb-options {
-          padding: 8px 12px 12px;
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-
-        .hdb-option {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 10px 12px;
-          border-radius: 12px;
-          border: none;
-          background: transparent;
-          cursor: pointer;
-          width: 100%;
-          text-align: left;
-          transition: background 150ms ease, transform 150ms ease;
-        }
-        .hdb-option:hover {
-          background: #f5f6fa;
-          transform: translateX(2px);
-        }
-        .hdb-option:active { transform: translateX(2px) scale(0.98); }
-
-        .hdb-option-icon {
-          width: 38px; height: 38px;
-          border-radius: 10px;
-          display: flex; align-items: center; justify-content: center;
-          flex-shrink: 0;
-          transition: transform 150ms ease;
-        }
-        .hdb-option:hover .hdb-option-icon { transform: scale(1.08); }
-
-        .hdb-option-text { flex: 1; min-width: 0; }
-        .hdb-option-label {
-          font-size: 13.5px;
-          font-weight: 600;
-          color: #1a1a2e;
-          display: block;
-          margin-bottom: 1px;
-        }
-        .hdb-option-desc {
-          font-size: 11.5px;
-          color: #8892a4;
-          display: block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .hdb-option-arrow {
-          color: #c8cdd8;
-          flex-shrink: 0;
-          transition: transform 150ms ease, color 150ms ease;
-        }
-        .hdb-option:hover .hdb-option-arrow {
-          color: #8892a4;
-          transform: translateX(2px);
-        }
-
-        /* ── Panel footer ── */
-        .hdb-footer {
-          padding: 10px 16px 14px;
-          text-align: center;
-          border-top: 1px solid #f0f1f5;
-        }
-        .hdb-footer span {
-          font-size: 11px;
-          color: #b0b7c3;
-          letter-spacing: 0.2px;
-        }
-        .hdb-footer a {
-          color: #1a237e;
-          text-decoration: none;
-          font-weight: 600;
-        }
-        .hdb-footer a:hover { text-decoration: underline; }
-
-        /* ── FAB button ── */
-        .hdb-fab {
-          width: 56px; height: 56px;
-          border-radius: 18px;
-          background: linear-gradient(145deg, #e53935 0%, #c62828 100%);
-          border: none;
-          cursor: pointer;
-          display: flex; align-items: center; justify-content: center;
-          color: #fff;
-          position: relative;
-          transition:
-            transform 200ms cubic-bezier(0.34,1.56,0.64,1),
-            box-shadow 200ms ease;
-        }
-        .hdb-fab:hover {
-          transform: scale(1.08) translateY(-1px);
-          box-shadow:
-            0 12px 32px rgba(229,57,53,0.1),
-            0 4px 12px rgba(0,0,0,0.01);
-        }
-        .hdb-fab:active { transform: scale(0.96); }
-
-        .hdb-fab-icon {
-          position: absolute;
-          transition: opacity 200ms ease, transform 200ms ease;
-        }
-        .hdb-fab-icon-open { opacity: 0; transform: rotate(-45deg) scale(0.7); }
-        .hdb-fab-icon-close { opacity: 0; transform: rotate(45deg) scale(0.7); }
-        .hdb-fab[data-open="false"] .hdb-fab-icon-open { opacity: 1; transform: rotate(0) scale(1); }
-        .hdb-fab[data-open="true"] .hdb-fab-icon-close { opacity: 1; transform: rotate(0) scale(1); }
-
-        /* ── Notification badge ── */
-        .hdb-badge {
-          position: absolute;
-          top: -5px; right: -5px;
-          width: 18px; height: 18px;
-          background: #4ade80;
-          border-radius: 50%;
-          border: 2.5px solid #fff;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 9px;
-          font-weight: 700;
-          color: #166534;
-          transition: transform 200ms cubic-bezier(0.34,1.56,0.64,1), opacity 200ms;
-        }
-        .hdb-badge[data-hidden="true"] {
-          transform: scale(0);
-          opacity: 0;
-        }
-
-        /* ── Wrapper visibility transition ── */
-        .hdb-wrapper {
-          transition: opacity 300ms ease, transform 300ms cubic-bezier(0.34,1.56,0.64,1);
-        }
-        .hdb-wrapper[data-visible="false"] {
-          opacity: 0;
-          transform: translateY(16px) scale(0.9);
-          pointer-events: none;
-        }
-        .hdb-wrapper[data-visible="true"] {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
+        .hdb-pulse-dot { animation: hdb-pulse 2s ease-in-out infinite; }
       `}</style>
 
-      {/* ── Markup ──────────────────────────────────────────────────────────── */}
-      <div
-        className="hdb-root"
-        role="complementary"
-        aria-label="Help desk"
-      >
+      {/*
+        ── Root: fixed, sized exactly to the FAB (56×56 = w-14 h-14).
+           This is the ONLY element that occupies space on the page.
+           The panel floats outside this box via absolute positioning,
+           so it can NEVER block clicks on underlying page elements.
+      */}
+      <div className="fixed bottom-7 right-7 z-[9999] w-14 h-14">
+
+        {/*
+          ── Panel: absolutely positioned above the FAB.
+             `bottom-[calc(100%+12px)]` places it 12px above the FAB top edge.
+             `right-0` aligns it to the right edge of the FAB.
+             Because it's `absolute` it has zero effect on page layout.
+             `pointer-events-none` + `invisible` when closed = zero hit-testing.
+        */}
         <div
-          className="hdb-wrapper"
-          data-visible={shouldRender ? "true" : "false"}
+          ref={panelRef}
+          className={[
+            "absolute bottom-[calc(100%+12px)] right-0",
+            "w-[300px] bg-white rounded-[20px] overflow-hidden origin-bottom-right",
+            "shadow-[0_24px_64px_rgba(0,0,0,0.14),0_4px_16px_rgba(0,0,0,0.08),0_0_0_1px_rgba(0,0,0,0.04)]",
+            "transition-[opacity,transform,visibility]",
+            isOpen
+              ? "opacity-100 scale-100 translate-y-0 pointer-events-auto visible"
+              : "opacity-0 scale-[0.88] translate-y-3 pointer-events-none invisible",
+          ].join(" ")}
+          style={{
+            transitionDuration: "220ms, 260ms, 0ms",
+            transitionTimingFunction:
+              "cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.34,1.56,0.64,1), linear",
+          }}
+          role="dialog"
+          aria-modal="false"
+          aria-label="Contact support options"
         >
-          <div className="hdb-root" style={{ position: "relative", bottom: "auto", right: "auto" }}>
-            {/* Panel */}
-            <div
-              ref={panelRef}
-              className="hdb-panel"
-              data-open={isOpen ? "true" : "false"}
-              role="dialog"
-              aria-modal="false"
-              aria-label="Contact support options"
-            >
-              {/* Header */}
-              <div className="hdb-header">
-                <div className="hdb-header-badge">
-                  <span className="hdb-header-dot" />
-                  <span>Support team online</span>
-                </div>
-                <h3>How can we help you?</h3>
-                <p>Our team typically responds within minutes.</p>
-                <div className="hdb-wave" />
-              </div>
-
-              {/* Options */}
-              <div className="hdb-options" role="list">
-                {helpOptions.map((opt) => (
-                  <button
-                    key={opt.label}
-                    className="hdb-option"
-                    onClick={opt.action}
-                    role="listitem"
-                    aria-label={`${opt.label}: ${opt.description}`}
-                  >
-                    <div
-                      className="hdb-option-icon"
-                      style={{ background: `${opt.color}18`, color: opt.color }}
-                    >
-                      {opt.icon}
-                    </div>
-                    <div className="hdb-option-text">
-                      <span className="hdb-option-label">{opt.label}</span>
-                      <span className="hdb-option-desc">{opt.description}</span>
-                    </div>
-                    <svg className="hdb-option-arrow" width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                ))}
-              </div>
-
-              {/* Footer */}
-              <div className="hdb-footer">
-                <span>
-                  Powered by{" "}
-                  <a href="https://optimumsystems.co.ke" target="_blank" rel="noopener noreferrer">
-                    Optimum ERP
-                  </a>
-                </span>
-              </div>
+          {/* Header */}
+          <div className="relative px-5 pt-5 pb-6 bg-gradient-to-br from-[#1a237e] to-[#283593]">
+            <div className="inline-flex items-center gap-1.5 bg-white/15 border border-white/20 rounded-full py-[3px] pr-[10px] pl-[6px] mb-3">
+              <span className="hdb-pulse-dot w-[7px] h-[7px] bg-[#4ade80] rounded-full" />
+              <span className="text-white/90 text-[11px] font-medium tracking-[0.3px]">
+                Support team online
+              </span>
             </div>
+            <h3 className="text-white text-[17px] font-semibold mb-1 leading-[1.3] m-0">
+              How can we help you?
+            </h3>
+            <p className="text-white/65 text-[12.5px] m-0 leading-[1.5]">
+              Our team typically responds within minutes.
+            </p>
+            <div className="absolute -bottom-px left-0 right-0 h-5 bg-white [clip-path:ellipse(55%_100%_at_50%_100%)]" />
+          </div>
 
-            {/* FAB */}
-            <button
-              ref={buttonRef}
-              className="hdb-fab"
-              data-open={isOpen ? "true" : "false"}
-              onClick={handleOpen}
-              aria-expanded={isOpen}
-              aria-label={isOpen ? "Close help desk" : "Open help desk"}
-            >
-              <span className="hdb-fab-icon hdb-fab-icon-open" aria-hidden>
-                <HeadsetIcon />
-              </span>
-              <span className="hdb-fab-icon hdb-fab-icon-close" aria-hidden>
-                <CloseIcon />
-              </span>
-
-              {/* Unread dot */}
-              <span
-                className="hdb-badge"
-                data-hidden={!hasUnread ? "true" : "false"}
-                aria-label="1 new message"
+          {/* Options */}
+          <div className="px-3 pt-2 pb-3 flex flex-col gap-1" role="list">
+            {helpOptions.map((opt) => (
+              <button
+                key={opt.label}
+                className={[
+                  "group flex items-center gap-3 px-3 py-2.5 rounded-xl",
+                  "border-0 bg-transparent cursor-pointer w-full text-left",
+                  "transition-all duration-150 ease-in-out",
+                  "hover:bg-[#f5f6fa] hover:translate-x-0.5",
+                  "active:translate-x-0.5 active:scale-[0.98]",
+                ].join(" ")}
+                onClick={opt.action}
+                role="listitem"
+                aria-label={`${opt.label}: ${opt.description}`}
               >
-                1
-              </span>
-            </button>
+                <div
+                  className="w-[38px] h-[38px] rounded-[10px] flex items-center justify-center shrink-0 transition-transform duration-150 group-hover:scale-[1.08]"
+                  style={{ background: `${opt.color}18`, color: opt.color }}
+                >
+                  {opt.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="block text-[13.5px] font-semibold text-[#1a1a2e] mb-[1px]">
+                    {opt.label}
+                  </span>
+                  <span className="block text-[11.5px] text-[#8892a4] whitespace-nowrap overflow-hidden text-ellipsis">
+                    {opt.description}
+                  </span>
+                </div>
+                <svg
+                  className="shrink-0 text-[#c8cdd8] transition-all duration-150 group-hover:text-[#8892a4] group-hover:translate-x-0.5"
+                  width={14} height={14} viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            ))}
+          </div>
+
+          {/* Footer */}
+          <div className="px-4 pt-2.5 pb-3.5 text-center border-t border-[#f0f1f5]">
+            <span className="text-[11px] text-[#b0b7c3] tracking-[0.2px]">
+              Powered by{" "}
+              <a
+                href="https://optimumsystems.co.ke"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#1a237e] no-underline font-semibold hover:underline"
+              >
+                Optimum Systems Ltd
+              </a>
+            </span>
           </div>
         </div>
+
+        {/*
+          ── FAB: fills the 56×56 root exactly. Always the only interactive
+             element at this position. Scroll hide/show via opacity + scale
+             on the button itself — no wrapper needed.
+        */}
+        <button
+          ref={buttonRef}
+          className={[
+            "w-14 h-14 rounded-[18px] border-0 cursor-pointer",
+            "flex items-center justify-center text-white relative",
+            "bg-[linear-gradient(145deg,#e53935,#c62828)]",
+            "transition-[transform,box-shadow,opacity] duration-300",
+            "hover:scale-[1.08] hover:-translate-y-px",
+            "hover:shadow-[0_12px_32px_rgba(229,57,53,0.45),0_4px_12px_rgba(0,0,0,0.15)]",
+            "active:scale-[0.96]",
+            shouldRender
+              ? "opacity-100 scale-100 pointer-events-auto"
+              : "opacity-0 scale-90 pointer-events-none",
+          ].join(" ")}
+          style={{ transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}
+          onClick={handleOpen}
+          aria-expanded={isOpen}
+          aria-label={isOpen ? "Close help desk" : "Open help desk"}
+        >
+          {/* Headset icon — shown when closed */}
+          <span
+            className={[
+              "absolute transition-all duration-200",
+              isOpen ? "opacity-0 scale-[0.7] -rotate-45" : "opacity-100 scale-100 rotate-0",
+            ].join(" ")}
+            aria-hidden
+          >
+            <HeadsetIcon />
+          </span>
+
+          {/* Close icon — shown when open */}
+          <span
+            className={[
+              "absolute transition-all duration-200",
+              isOpen ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-[0.7] rotate-45",
+            ].join(" ")}
+            aria-hidden
+          >
+            <CloseIcon />
+          </span>
+
+          {/* Unread badge */}
+          <span
+            className={[
+              "absolute -top-[5px] -right-[5px]",
+              "w-[18px] h-[18px] bg-[#4ade80] rounded-full",
+              "border-[2.5px] border-white",
+              "flex items-center justify-center",
+              "text-[9px] font-bold text-[#166534]",
+              "transition-all duration-200",
+              hasUnread ? "scale-100 opacity-100" : "scale-0 opacity-0",
+            ].join(" ")}
+            style={{ transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}
+            aria-label="1 new message"
+          >
+            1
+          </span>
+        </button>
+
       </div>
     </>
   );

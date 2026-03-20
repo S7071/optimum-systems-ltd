@@ -33,12 +33,31 @@ function XIcon() {
 }
 
 const NAV_COMPANY = [
-  "About Optimum Systems Ltd",
-  "Company Profile",
-  "Our Vision & Mission",
-  "Our Team",
-  "Success Stories",
-  "Careers",
+  {
+    label: "About Optimum Systems Ltd",
+    href: "/company",
+  },
+  {
+    label: "Company Profile",
+    href: "/company/company-profile",
+  },
+  {
+    label: "Our Vision & Mission",
+    href: "/company",
+  },
+  {
+    label: "Our Team",
+    href: "/company/team",
+  },
+  {
+    label: "Success Stories",
+    href: "/company/success-stories",
+  },
+  {
+    label: "Careers",
+    href: "/company/careers",
+  },
+  ,
 ];
 
 const NAV_PRODUCTS = [
@@ -57,11 +76,30 @@ const NAV_SOLUTIONS = [
 ];
 
 const NAV_RESOURCES = [
-  "Blog & Insights",
-  "Implementation Guide",
-  "Case Studies",
-  "System Documentation",
-  "Support Center",
+  {
+    label: "Blog & Insights",
+    href: "/resources/blogs",
+  },
+  {
+    label: "Implementation Guide",
+    href: "#",
+  },
+  {
+    label: "Case Studies",
+    href: "#",
+  },
+  {
+    label: "System Documentation",
+    href: "#",
+  },
+  {
+    label: "Support Center",
+    href: "/help-center",
+  },
+  {
+    label: "Change Logs",
+    href: "/changelog",
+  },
 ];
 
 const FEATURES = [
@@ -73,13 +111,11 @@ const FEATURES = [
 
 export default function SiteFooter() {
   return (
-    <section className="bg-primary-cbe-700 text-primary-foreground py-8 w-full px-6 sm:px-30">
+    <section className="bg-primary-cbe-600 text-primary-foreground py-8 w-full px-6 sm:px-30">
       <div className="container">
         <footer>
-
           {/* ── CTA band ── */}
           <div className="mb-14 flex flex-col justify-between gap-11 md:items-start xl:flex-row xl:items-center xl:gap-6">
-
             <div className="flex-1">
               {/* Eyebrow label — new */}
               <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-red-500">
@@ -120,9 +156,7 @@ export default function SiteFooter() {
 
             {/* Feature card — updated with top accent + label */}
             <div className="flex-2 flex flex-row justify-end">
-              <div
-                className="relative flex flex-col justify-between gap-0 rounded-xl bg-white/5 border border-white/10 p-6 shadow-lg overflow-hidden"
-              >
+              <div className="relative flex flex-col justify-between gap-0 rounded-xl bg-gradient-to-tr from-primary-cbe-800/40 via-primary-cbe-500/40 to-primary-cbe-800/40 border border-white/10 p-6 shadow-lg overflow-hidden">
                 {/* Red top-edge accent strip */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-red-500/70" />
 
@@ -148,7 +182,6 @@ export default function SiteFooter() {
 
           {/* ── Nav columns ── */}
           <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-12 lg:grid-cols-4">
-
             {/* Company */}
             <div>
               {/* Column header — de-emphasised, all-caps micro style */}
@@ -157,12 +190,12 @@ export default function SiteFooter() {
               </h3>
               <ul className="space-y-1 text-secondary/55">
                 {NAV_COMPANY.map((item) => (
-                  <li key={item}>
+                  <li key={item?.label}>
                     <a
-                      href="#"
+                      href={item?.href}
                       className="block py-1 text-sm transition-all duration-150 hover:text-white hover:pl-2"
                     >
-                      {item}
+                      {item?.label}
                     </a>
                   </li>
                 ))}
@@ -224,12 +257,12 @@ export default function SiteFooter() {
               </h3>
               <ul className="space-y-1 text-secondary/55">
                 {NAV_RESOURCES.map((item) => (
-                  <li key={item}>
+                  <li key={item.label}>
                     <a
-                      href="#"
+                      href={item.href}
                       className="block py-1 text-sm transition-all duration-150 hover:text-white hover:pl-2"
                     >
-                      {item}
+                      {item.label}
                     </a>
                   </li>
                 ))}
@@ -239,7 +272,6 @@ export default function SiteFooter() {
 
           {/* ── Bottom bar ── */}
           <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 text-sm font-medium text-secondary/40 lg:flex-row lg:items-center">
-
             {/* Legal links + copyright */}
             <ul className="flex sm:flex-row flex-col items-start sm:items-center gap-4 lg:justify-start">
               <div className="flex flex-row gap-5">
@@ -259,7 +291,10 @@ export default function SiteFooter() {
               <div className="hidden sm:block h-3 w-px bg-white/15" />
 
               <li>
-                <a href="https://ssogroup.co.ke" className="text-secondary/25 hover:text-secondary/50 transition-colors">
+                <a
+                  href="https://ssogroup.co.ke"
+                  className="text-secondary/25 hover:text-secondary/50 transition-colors"
+                >
                   © 2026 SSO GROUP KE. All rights reserved.
                 </a>
               </li>
@@ -292,7 +327,6 @@ export default function SiteFooter() {
               </li>
             </ul>
           </div>
-
         </footer>
       </div>
     </section>

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import BadgePill from "@/components/ui/badge-pill";
 import { Button } from "@/components/ui/button";
 import { cn, LucideIcon } from "@/lib/utils";
 import {
@@ -25,7 +26,7 @@ export default function SiteStats() {
   const stats: Stat[] = [
     { value: "160+", label: "Institutions Served" },
     { value: "15+", label: "Years of Experience" },
-    { value: "47", label: "Counties Covered" },
+    { value: "40+", label: "Counties Covered" },
   ];
 
   const cards: StatCard[] = [
@@ -67,15 +68,10 @@ export default function SiteStats() {
           <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
             <div className="flex flex-col items-center gap-3 text-center lg:items-start lg:text-left">
               {/* Eyebrow pill */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary-cbe-500/20 bg-primary-cbe-500/8 px-3.5 py-1.5 mb-1">
-                <span className="size-1.5 rounded-full bg-primary-cta" />
-                <span className="text-[11px] font-medium uppercase tracking-widest text-primary-cbe-500">
-                  ERP Platform
-                </span>
-              </div>
+              <BadgePill label="ERP Platform" centered={false} />
 
-              <h1 className="mb-3 text-2xl sm:text-4xl font-bold text-pretty leading-tight tracking-tight">
-                Automate, Manage &amp; Grow Your Institution Today
+              <h1 className="mb-3 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-800">
+                Automate, Manage &amp; Grow Your{" "}<span className="text-primary-cta">Institution</span>{" "}Today
               </h1>
 
               <p className="text-muted-foreground leading-relaxed">
@@ -123,20 +119,13 @@ export default function SiteStats() {
 
           {/* ── RIGHT COLUMN — Feature cards ── */}
           <div className="grid gap-3 text-left sm:grid-cols-2">
-            {cards.map((card, i) => (
+            {cards.map((card) => (
               <div
                 key={card.id}
-                className={cn(
-                  "group relative flex flex-col gap-4 overflow-hidden rounded-2xl border p-6 transition-all duration-300",
-                  "hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-cbe-500/20",
-                  // Alternate very slightly between two navy shades for depth
-                  i % 2 === 0
-                    ? "bg-primary-cbe-500 border-primary-cbe-600"
-                    : "bg-primary-cbe-600 border-primary-cbe-700",
-                )}
+                className="group relative flex flex-col gap-4 overflow-hidden rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-cbe-50/20 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
               >
                 {/* Icon */}
-                <div className="size-11 rounded-xl bg-white/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary-cta/25">
+                <div className="size-11 rounded-sm bg-white/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-white/25">
                   <card.icon className="size-5 text-white" />
                 </div>
 

@@ -10,6 +10,7 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
+import BadgePill from "@/components/ui/badge-pill";
 
 interface FeatureCard {
   id: number;
@@ -103,13 +104,9 @@ export default function SiteFeatures() {
 
   return (
     <section className="w-full">
-
       {/* ── Hero Header ─────────────────────────────────────────────── */}
       <div
-        className="relative overflow-hidden px-6 py-16 sm:py-24 text-center"
-        style={{
-          background: "linear-gradient(135deg, #0e2655 0%, #1a3a6b 60%, #1e4a8a 100%)",
-        }}
+        className="relative overflow-hidden px-6 py-16 sm:py-24 text-center bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
       >
         {/* Decorative blobs */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
@@ -126,38 +123,18 @@ export default function SiteFeatures() {
           </svg>
         </div>
 
-        <div className="relative z-10 mx-auto flex max-w-[47.5rem] flex-col items-center gap-5">
+        <div className="relative z-10 mx-auto flex max-w-[47.5rem] flex-col items-center gap-3">
           {/* Brand pill */}
-          <div
-            className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5"
-            style={{
-              background: "rgba(230,51,41,0.15)",
-              borderColor: "rgba(230,51,41,0.3)",
-            }}
-          >
-            <span
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ background: "#e63329" }}
-            />
-            <span
-              className="text-xs font-semibold uppercase text-[#f59b97]"
-            >
-              Optimum System Ltd
-            </span>
-          </div>
+          <BadgePill label="Optimum System Ltd" centered={true} />
 
           {/* Headline */}
-          <h2
-            className="text-balance text-3xl font-extrabold leading-tight text-white sm:text-5xl"
-          >
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-white mb-4">
             Purpose-Built ERP Products for{" "}
-            <span style={{ color: "#e63329" }}>Every Industry</span>
+            <span className="text-primary-cta">Every Industry</span>
           </h2>
 
           {/* Sub-copy */}
-          <p
-            className="text-sm leading-relaxed sm:text-base text-[#ffffff99]"
-          >
+          <p className="text-sm leading-relaxed sm:text-base text-[#ffffff99]">
             From hospitality and manufacturing to retail and conferencing —
             every Optimum product is built specifically for its industry, fully
             integrated, and tested across real Kenyan businesses.
@@ -166,7 +143,7 @@ export default function SiteFeatures() {
       </div>
 
       {/* ── Cards Grid ──────────────────────────────────────────────── */}
-      <div className="bg-[#f7f9fc] px-6 py-14 sm:px-10 sm:py-20">
+      <div className="bg-primary-cbe-50 px-6 py-14 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {featureCards.map((card) => (
@@ -175,7 +152,6 @@ export default function SiteFeatures() {
                 className="group overflow-hidden border border-[#e8edf5] py-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[#1a3a6b] hover:shadow-[0_20px_48px_rgba(26,58,107,0.02)]"
               >
                 <CardContent className="px-0 pb-0">
-
                   {/* ── Banner ── */}
                   <div className="relative w-full pb-[56.25%]">
                     {/* Category badge — sits over the banner */}
@@ -202,14 +178,13 @@ export default function SiteFeatures() {
                       <img
                         src={card.banner}
                         alt={card.name}
-                        className="block size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                        className="block size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] brightness-98"
                       />
                     </div>
                   </div>
 
                   {/* ── Body ── */}
                   <div className="flex flex-col gap-3 p-5">
-
                     {/* Icon + Name + Alias */}
                     <CardTitle className="flex items-center justify-start gap-3">
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border bg-white shadow-sm">
@@ -220,9 +195,7 @@ export default function SiteFeatures() {
                         />
                       </div>
                       <div className="flex min-w-0 flex-col gap-0.5">
-                        <span
-                          className="line-clamp-1 text-[15px] font-bold leading-snug text-gray-900"
-                        >
+                        <span className="line-clamp-1 text-[15px] font-bold leading-snug text-gray-900">
                           {card.name}
                         </span>
                         <span
@@ -238,9 +211,7 @@ export default function SiteFeatures() {
                     <hr className="border-[#f0f2f6]" />
 
                     {/* Description */}
-                    <CardDescription
-                      className="line-clamp-2 text-sm leading-relaxed text-gray-500"
-                    >
+                    <CardDescription className="line-clamp-2 text-sm leading-relaxed text-gray-500">
                       {card.description}
                     </CardDescription>
 
@@ -273,16 +244,11 @@ export default function SiteFeatures() {
 
           {/* ── Bottom CTA ───────────────────────────────────────── */}
           <div className="mt-16 flex flex-col items-center gap-10">
-            <Button
-              size="lg"
-              onClick={() => router.push("/products")}
-            >
+            <Button size="lg" onClick={() => router.push("/products")}>
               Explore All Our Products
               <ArrowRight className="ml-1 h-4 w-4" />
             </Button>
-            <p
-              className="text-xs text-gray-400"
-            >
+            <p className="text-xs text-gray-400">
               Need a custom solution?{" "}
               <a
                 href="/contact"

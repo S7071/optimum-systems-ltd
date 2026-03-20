@@ -548,7 +548,7 @@ export default function SiteFeatures() {
       <div className="container mx-auto max-w-7xl">
 
         {/* ── Hero banner ──────────────────────────────────────────────── */}
-        <div className="relative overflow-hidden rounded-2xl bg-primary-cbe-500 px-8 py-10 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-8 py-10 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           {/* Decorative circles */}
           <div className="absolute -right-10 -top-10 size-48 rounded-full bg-white/5 pointer-events-none" />
           <div className="absolute right-16 -bottom-14 size-36 rounded-full bg-white/5 pointer-events-none" />

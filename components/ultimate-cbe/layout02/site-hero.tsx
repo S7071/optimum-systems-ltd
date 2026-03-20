@@ -1,31 +1,103 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useEffect } from "react";
-import { Play, Star } from "lucide-react";
+import { Play, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "../../ui/button";
 import Image from "next/image";
 
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface Stat {
+  value: string;
+  suffix?: string;
+  label: string;
+}
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const STATS: Stat[] = [
+  { value: "500", suffix: "+", label: "Kenyan schools" },
+  { value: "4.6", label: "Avg. rating" },
+  { value: "KNEC", label: "Syllabus aligned" },
+];
+
+const PLATFORM_FEATURES = [
+  "Automated CBE Grading",
+  "Student Progress Tracking",
+  "Parent Portals",
+  "KNEC Reporting",
+  "Staff Management",
+];
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
 function StarRating({ rating }: { rating: number }) {
+  const full = Math.floor(rating);
+  const frac = rating - full;
+  const empty = 5 - Math.ceil(rating);
+
   return (
     <span
       className="inline-flex items-center gap-px"
       aria-label={`${rating} out of 5 stars`}
     >
-      {[1, 2, 3, 4].map((i) => (
-        <Star key={i} size={12} fill="#f5c518" color="#f5c518" />
+      {Array.from({ length: full }).map((_, i) => (
+        <svg
+          key={`f${i}`}
+          className="size-3"
+          viewBox="0 0 14 14"
+          fill="#F5A623"
+        >
+          <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.436.59 3.439L7 8.885l-3.09 1.625L4.5 7.07 2 4.635l3.455-.505L7 1z" />
+        </svg>
       ))}
-      <span className="relative inline-flex">
-        <Star size={12} fill="none" color="#f5c518" />
-        <span className="absolute top-0 left-0 overflow-hidden w-1/2">
-          <Star size={12} fill="#f5c518" color="#f5c518" />
+      {frac > 0 && (
+        <span className="relative inline-flex">
+          <svg className="size-3" viewBox="0 0 14 14" fill="#E0E0E0">
+            <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.436.59 3.439L7 8.885l-3.09 1.625L4.5 7.07 2 4.635l3.455-.505L7 1z" />
+          </svg>
+          <span
+            className="absolute inset-0 overflow-hidden"
+            style={{ width: `${frac * 100}%` }}
+          >
+            <svg className="size-3" viewBox="0 0 14 14" fill="#F5A623">
+              <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.436.59 3.439L7 8.885l-3.09 1.625L4.5 7.07 2 4.635l3.455-.505L7 1z" />
+            </svg>
+          </span>
         </span>
-      </span>
+      )}
+      {Array.from({ length: empty }).map((_, i) => (
+        <svg
+          key={`e${i}`}
+          className="size-3"
+          viewBox="0 0 14 14"
+          fill="#E0E0E0"
+        >
+          <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.436.59 3.439L7 8.885l-3.09 1.625L4.5 7.07 2 4.635l3.455-.505L7 1z" />
+        </svg>
+      ))}
     </span>
   );
 }
 
+function StatBlock({ stat }: { stat: Stat }) {
+  return (
+    <div className="flex flex-col gap-1 px-5 py-3 border-r border-primary-cbe-800/12 last:border-r-0 hover:bg-primary-cbe-800/[0.04] transition-colors items-center justify-center">
+      <span className="font-bold text-primary-cbe-800 text-2xl leading-none tabular-nums">
+        {stat.value}
+        {stat.suffix && (
+          <sup className="text-red-600 text-sm">{stat.suffix}</sup>
+        )}
+      </span>
+      <span className="uppercase tracking-widest text-slate-400 text-[10px] text-center whitespace-nowrap">
+        {stat.label}
+      </span>
+    </div>
+  );
+}
+
 // ─── Main Component ───────────────────────────────────────────────────────────
+
 export default function SiteHero() {
   const [visible, setVisible] = useState(false);
 
@@ -35,79 +107,169 @@ export default function SiteHero() {
   }, []);
 
   return (
-    <section className="hero-root w-full bg-black min-h-screen relative overflow-hidden py-8 sm:py-20">
-      <Image
-        src="/images/cbe/bg-lines.webp"
-        alt=""
-        fill
-        className="object-cover opacity-[0.48] pointer-events-none z-0"
-        aria-hidden="true"
-      />
-      <Image
-        src="/images/cbe/hero.jpg"
-        alt=""
-        fill
-        className="object-cover opacity-[0.38] pointer-events-none z-0"
-        aria-hidden="true"
-      />
-
-      {/* ── Body grid ── */}
-      <div className="max-[900px]:grid-cols-1 items-center gap-10 px-12 max-[900px]:px-6 pt-8 sm:pt-30 pb-20 max-[900px]:pb-[60px] relative z-[1] max-w-[1400px] mx-auto">
+    <section className="relative flex flex-col w-full overflow-hidden bg-primary-cbe-50">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-64px)] max-h-[760px]">
+        {/* ── LEFT: White content panel ── */}
         <div
-          className={`text-white transition-[opacity,transform] duration-700 ease-out ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-7"
-          }`}
+          className={[
+            "relative z-10 flex flex-col justify-center",
+            "px-6 lg:px-30 py-16 gap-7",
+            "transition-[opacity,transform] duration-700 ease-out",
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-7",
+          ].join(" ")}
         >
-          <div className="inline-flex items-center gap-2 bg-primary-cbe-800 rounded-full py-[5px] pr-[14px] pl-2 mb-6 text-[13px] font-medium">
-            <img
-              alt="UltimateCBE"
-              className="h-8 w-8"
-              src="/logos/pre-approved/cbe-light-icon.svg"
-            />
-            <span className="text-[10px] leading-[1.2] text-[rgba(255,255,255,0.7)] uppercase tracking-[.04em]">
-              Ultimate CBE ERP
+          {/* Logo + product badge */}
+          <div className="inline-flex items-center gap-3 w-fit">
+            <div className="size-10 rounded-lg bg-background flex items-center justify-center flex-shrink-0 p-1.5 border border-primary-cbe-100">
+              <Image
+                src="/logos/approved/cbe-dark-icon.svg"
+                alt="UltimateCBE"
+                width={10}
+                height={10}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
+              Ultimate CBE ASSESSMENT ERP
             </span>
           </div>
 
-          {/* Heading */}
-          <h1 className="text-[clamp(40px,5vw,68px)] leading-[1.04] font-light tracking-[-0.02em] mb-5">
-            Competency-Based Assessment{" "}
-            <strong className="font-bold">ERP</strong> for{" "}
-            <strong className="font-bold">Senior Schools</strong>
+          {/* Headline */}
+          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.18] text-primary-cbe-800 tracking-[-1px]">
+            Competency Based ERP
+            <br />
+            for{" "}
+            <span className="text-primary-cbe-500 font-bold">
+              Senior Schools
+            </span>
           </h1>
 
           {/* Subtext */}
-          <p className="text-base font-normal leading-[1.6] text-[rgba(255,255,255,0.75)] max-w-[760px] mb-10">
+          <p className="text-primary-cbe-800 text-base leading-relaxed max-w-[340px] sm:max-w-[440px]">
             Manage Grades 10–12 seamlessly with UltimateCBE — Kenya&apos;s most
-            advanced CBE-aligned platform with real-time insights, automated
-            grading, and KNEC syllabus integration. Completely built for your
-            school.
+            advanced CBE-aligned platform with real-time insights,{" "}
+            <strong className="text-primary-cbe-500 font-semibold">
+              automated grading
+            </strong>
+            , and{" "}
+            <strong className="text-primary-cbe-500 font-semibold">
+              KNEC syllabus integration
+            </strong>
+            . Completely built for your school.
           </p>
 
-          {/* CTA row */}
-          <div className="flex items-center flex-wrap gap-4">
-            <Button className="inline-flex items-center gap-2 py-[28px] px-9">
-              Get Started,&nbsp;
-              <span className="font-light">Book a demo</span>
+          {/* Stat strip */}
+          <div className="flex w-fit overflow-hidden rounded-xl border border-primary-cbe-800/12 bg-[#F7F8FA]">
+            {STATS.map((stat) => (
+              <StatBlock key={stat.label} stat={stat} />
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div className="flex items-center gap-3 flex-wrap">
+            {/* Primary — red action */}
+            <Button variant="default" size="lg">
+              Book a Demo
+              <ArrowRight className="size-4" />
             </Button>
 
-            <button
-              type="button"
-              aria-label="Watch demo video"
-              className="w-14 h-14 rounded-full [border:2px_solid_rgba(255,255,255,0.5)] bg-transparent flex items-center justify-center text-white flex-shrink-0 cursor-pointer transition-all duration-200 hover:border-white hover:bg-[rgba(255,255,255,0.1)] hover:scale-[1.06]"
-            >
-              <Play size={20} fill="white" />
-            </button>
+            {/* Ghost — secondary / video */}
+            <Button variant="ghost" size="lg">
+              <span className="size-7 rounded-full bg-primary-cbe-800 flex items-center justify-center flex-shrink-0">
+                <Play size={10} fill="white" color="white" className="ml-px" />
+              </span>
+              Watch Overview
+            </Button>
+          </div>
 
-            <div className="text-[13px] leading-[1.55] text-[rgba(255,255,255,0.8)]">
-              Trusted by <strong className="text-white font-bold">500+</strong>{" "}
-              kenyan schools
-              <div className="flex items-center gap-1 mt-[3px] text-[13px] text-white font-semibold">
-                Rated 4.6&nbsp;
-                <StarRating rating={4.6} />
-              </div>
+          {/* Rating social proof */}
+          <div className="flex items-center gap-2 pt-1">
+            <StarRating rating={4.6} />
+            <span className="text-[13px] text-slate-500">
+              <strong className="text-slate-700 font-medium">Rated 4.6</strong>{" "}
+              · trusted by{" "}
+              <strong className="text-slate-700 font-medium">500+</strong>{" "}
+              Kenyan schools
+            </span>
+          </div>
+        </div>
+        {/* ── RIGHT: Photo ── */}
+        <div className="relative overflow-hidden hidden md:block">
+          {/* Background texture from original */}
+          <Image
+            src="/images/cbe/bg-lines.webp"
+            alt=""
+            fill
+            className="object-cover opacity-30 pointer-events-none z-0"
+            aria-hidden="true"
+          />
+
+          {/* Hero photo */}
+          <Image
+            src="/images/cbe/hero.jpg"
+            alt="Teacher working with students on CBE curriculum"
+            fill
+            className="object-cover object-center z-[1]"
+            priority
+          />
+
+          {/*
+            Left-edge bleed — softens the hard cut between
+            white left panel and photo.
+          */}
+          <div
+            className="absolute inset-0 z-[2] pointer-events-none"
+            style={{
+              background: `
+                linear-gradient(to right, rgba(255,255,255,0.15) 0%, transparent 25%),
+                linear-gradient(135deg, rgba(11,61,145,0.15) 0%, transparent 55%)
+              `,
+            }}
+            aria-hidden="true"
+          />
+
+          {/* KNEC tag — top-right */}
+          <div className="absolute top-8 right-8 z-10 bg-primary-cbe-800 text-white text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full flex items-center gap-2">
+            <CheckCircle2 className="size-3" />
+            KNEC Aligned
+          </div>
+
+          {/* Floating activity badge — bottom-left */}
+          <div
+            className="absolute bottom-10 left-6 z-10 bg-white rounded-xl px-4 py-3 flex items-center gap-3 min-w-[230px]"
+            style={{
+              boxShadow:
+                "0 8px 32px rgba(11,61,145,0.15), 0 2px 8px rgba(0,0,0,0.06)",
+            }}
+          >
+            <div className="size-10 rounded-lg bg-[#E8F0FC] flex items-center justify-center flex-shrink-0">
+              <CheckCircle2 className="size-5 text-primary-cbe-800" />
+            </div>
+            <div>
+              <p className="text-[13px] font-medium text-slate-800 leading-tight">
+                Auto-grading enabled
+              </p>
+              <p className="text-xs text-slate-400 mt-0.5">
+                47 assessments processed today
+              </p>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="relative z-20 bg-primary-cbe-500 px-6 sm:px-10 lg:px-16 py-4 flex items-center gap-6 flex-wrap">
+        <span className="text-xs uppercase tracking-widest text-white/60 whitespace-nowrap flex-shrink-0">
+          Platform includes:
+        </span>
+        <div className="flex items-center gap-3 flex-wrap">
+          {PLATFORM_FEATURES.map((feature) => (
+            <span
+              key={feature}
+              className="flex items-center gap-2 bg-white/8 border border-white/12 rounded-full px-3.5 py-1 text-xs text-white/80 whitespace-nowrap"
+            >
+              <span className="size-1.5 rounded-full bg-[#7AAFF5] flex-shrink-0" />
+              {feature}
+            </span>
+          ))}
         </div>
       </div>
     </section>

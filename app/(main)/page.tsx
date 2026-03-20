@@ -8,6 +8,7 @@ import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import SiteMainFeature from "@/components/optimum-systems/layout01/site-main-feature";
 import HelpDeskButton from "@/components/optimum-systems/layout01/site-help-banner";
+import IndustrySection from "@/components/optimum-systems/layout01/section-industry";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <SiteHero />
       <SiteMainFeature />
       <SiteFeatures />
+      <IndustrySection />
       <SiteStats />
       <SiteTestimonials />
       <SiteFaq />

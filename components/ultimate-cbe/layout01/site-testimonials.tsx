@@ -2,22 +2,27 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Star, Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Star, Quote, ArrowRight } from "lucide-react";
+import BadgePill from "@/components/ui/badge-pill";
 
 type Testimonial = {
   id: number;
   name: string;
   role: string;
+  school: string;
   image: string;
   content: string;
   rating: number;
+  featured?: boolean;
 };
 
 const testimonials: Testimonial[] = [
   {
     id: 1,
     name: "James Mwangi",
-    role: "Dean of studies",
+    role: "Dean of Studies",
+    school: "Nairobi Academy",
     image: "/images/clients/01.jpg",
     content:
       "Since implementing UltimateCBE, managing student assessments across all three pathways has become effortless. Competency tracking and automated report card generation have eliminated hours of manual paperwork every term.",
@@ -27,15 +32,18 @@ const testimonials: Testimonial[] = [
     id: 2,
     name: "Grace Achieng",
     role: "Principal",
+    school: "St. Mary's Girls School",
     image: "/images/clients/02.jpg",
     content:
       "The live dashboards have completely transformed how we monitor student progress. What used to take our team weeks to compile now updates in real time, and the accuracy of our CBE reports has improved dramatically.",
     rating: 5,
+    featured: true,
   },
   {
     id: 3,
     name: "David Kariuki",
-    role: "School administrator",
+    role: "School Administrator",
+    school: "Moi Forces Academy",
     image: "/images/clients/03.jpg",
     content:
       "Coordinating between teachers, parents, and administrators was our biggest challenge. UltimateCBE connected everyone on one platform, eliminating data gaps and bringing our entire school community closer to each student's learning journey.",
@@ -43,11 +51,17 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+const stats = [
+  { value: "200+", label: "Schools onboarded" },
+  { value: "98%", label: "Satisfaction rate" },
+  { value: "40hrs", label: "Saved per term" },
+];
+
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex items-center justify-center gap-1 mt-3 text-amber-500">
+    <div className="flex items-center gap-1 mt-4">
       {Array.from({ length: rating }).map((_, index) => (
-        <Star key={index} className="w-4 h-4 fill-current" />
+        <Star key={index} className="w-4 h-4 fill-amber-400 text-amber-400" />
       ))}
     </div>
   );
@@ -55,55 +69,120 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function SiteTestimonials() {
   return (
-    <section className="relative py-16 md:py-24 bg-background px-6 sm:px-30">
-      <div className="container mx-auto px-4">
+    <section className="w-full py-16 md:py-24 bg-primary-cbe-50 px-6 sm:px-30 overflow-hidden">
+      {/* Top brand stripe */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-cbe-800 via-primary-cbe-800 to-[#CC0000]" />
+
+      <div className="container flex flex-col gap-10 items-center max-w-full">
         {/* Section Header */}
-        <div className="max-w-2xl mx-auto text-center mb-12">
-          <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">
-            What Our Clients Say
+        <div className="w-full mx-auto text-center flex items-center flex-col gap-3">
+          <BadgePill label="Client stories" centered={true} />
+          <h3 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-primary-cbe-800 mb-4">
+            What Our <span className="text-primary-cta">Clients</span> Say
           </h3>
-          <p className="mt-4 text-muted-foreground">
+          <p className="text-primary-cbe-800/60 leading-relaxed max-w-2xl">
             See how UltimateCBE Assessment ERP has transformed education
             management for schools across Kenya — streamlining assessments,
             empowering teachers, and driving student excellence.
           </p>
         </div>
-
-        {/* Testimonials Grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="flex flex-col items-center">
-              <Card className="relative w-full rounded-2xl shadow-sm">
-                <CardContent className="p-6 text-center">
-                  <Quote className="w-10 h-10 mx-auto text-primary-cbe-800 mb-4" />
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    “{testimonial.content}”
-                  </p>
-                  <StarRating rating={testimonial.rating} />
-                </CardContent>
-              </Card>
-
-              {/* User Info */}
-              <div className="mt-6 flex flex-col items-center">
-                <Avatar className="w-14 h-14 shadow-md">
-                  <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                  <AvatarFallback>
-                    {testimonial.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
-
-                <h6 className="mt-3 font-semibold text-sm">
-                  {testimonial.name}
-                </h6>
-                <span className="text-xs text-muted-foreground">
-                  {testimonial.role}
-                </span>
+        {/* Social proof stats */}
+        <div className="flex justify-center items-stretch gap-10 mb-14 flex-wrap">
+          {stats.map((stat, i) => (
+            <div key={stat.label}>
+              <div className="text-center">
+                <p className="text-3xl font-extrabold text-primary-cbe-800">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-xs font-medium text-primary-cbe-800/60">
+                  {stat.label}
+                </p>
               </div>
+              {i < stats.length - 1 && (
+                <div
+                  key={`sep-${i}`}
+                  className="w-px self-stretch bg-[#d0dce9]"
+                />
+              )}
             </div>
           ))}
+        </div>
+        {/* Testimonials Grid */}
+        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.id} className="relative flex flex-col">
+              {/* Featured badge */}
+              {testimonial.featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <span className="bg-primary-cbe-500 text-white text-[10px] font-semibold tracking-[1.5px] uppercase px-4 py-1 rounded-full whitespace-nowrap">
+                    Most helpful
+                  </span>
+                </div>
+              )}
+
+              <Card
+                className={[
+                  "w-full rounded-2xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg",
+                  testimonial.featured
+                    ? "border-primary-cbe-500 border shadow-md"
+                    : "border border-[#e0e8f4] shadow-sm hover:border-primary-cbe-500",
+                ].join(" ")}
+              >
+                <CardContent className="p-7 flex flex-col h-full">
+                  {/* Quote icon box */}
+                  <div className="w-9 h-9 rounded-lg bg-primary-cbe-50 flex items-center justify-center mb-5 shrink-0">
+                    <Quote className="w-4 h-4 text-primary-cbe-500" />
+                  </div>
+
+                  {/* Quote text */}
+                  <p className="text-sm leading-relaxed text-foreground/75 italic flex-1">
+                    &quot;{testimonial.content}&quot;
+                  </p>
+
+                  <StarRating rating={testimonial.rating} />
+
+                  {/* Divider */}
+                  <div className="my-5 border-t border-[#e0e8f4]" />
+
+                  {/* Author — inside card */}
+                  <div className="flex items-center gap-3">
+                    <Avatar className="w-11 h-11 border-2 border-[#e0e8f4] shrink-0">
+                      <AvatarImage
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                      />
+                      <AvatarFallback className="bg-[#c8d8ee] text-primary-cbe-800 text-sm font-semibold">
+                        {testimonial.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
+                      </AvatarFallback>
+                    </Avatar>
+
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-[#1a2a45] truncate">
+                        {testimonial.name}
+                      </p>
+                      <p className="flex items-center gap-1.5 text-xs text-muted-foreground mt-0.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#CC0000] shrink-0" />
+                        {testimonial.role}
+                      </p>
+                      <p className="text-xs font-medium text-primary-cbe-800 mt-0.5 truncate">
+                        {testimonial.school}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
+        {/* CTA */}
+        <div className="mt-14 flex justify-center">
+          <Button variant="default" size="lg">
+            Read more success stories
+            <ArrowRight className="w-4 h-4" />
+          </Button>
         </div>
       </div>
     </section>

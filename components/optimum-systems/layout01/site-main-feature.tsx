@@ -1,4 +1,7 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
+import BadgePill from "@/components/ui/badge-pill";
 import { Button } from "@/components/ui/button";
 import { LucideIcon } from "@/lib/utils";
 import {
@@ -11,9 +14,11 @@ import {
   Users,
   Play,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 /* eslint-disable @next/next/no-img-element */
 export default function SiteMainFeature() {
+  const router = useRouter();
   // ── Feature cards ────────────────────────────────────────────────
   interface FeatureCard {
     icon: LucideIcon;
@@ -71,10 +76,8 @@ export default function SiteMainFeature() {
   return (
     <section className="w-full bg-background bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat overflow-hidden">
       <div className="container flex flex-col items-center pt-16 sm:pt-32">
-
         {/* ── Hero Copy ─────────────────────────────────────────── */}
-        <div className="flex flex-col gap-5 items-center px-6 sm:px-30 text-center">
-
+        <div className="flex flex-col gap-3 items-center px-6 sm:px-30 text-center">
           {/* Badge with animated pulse dot */}
           <Badge
             variant="outline"
@@ -89,14 +92,12 @@ export default function SiteMainFeature() {
           </Badge>
 
           {/* Headline with red gradient accent */}
-          <h2 className="max-w-2xl text-center text-2xl sm:text-4xl font-semibold text-pretty leading-tight tracking-tight">
+          <h2 className="max-w-2xl text-center text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight mb-4">
             One Powerful System.{" "}
-            <span className="bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">
-              Every Module You Need.
-            </span>
+            <span className="text-primary-cta">Every Module You Need.</span>
           </h2>
 
-          <p className="max-w-xl text-center text-muted-foreground">
+          <p className="max-w-xl text-muted-foreground leading-relaxed">
             UltimateERP brings all your institutional operations into a single,
             fully integrated platform. See how your departments connect, track
             data flows, and manage everything from one intelligent dashboard.
@@ -105,11 +106,13 @@ export default function SiteMainFeature() {
 
         {/* ── Main content block ─────────────────────────────────── */}
         <div className="flex flex-col gap-10 md:gap-16 items-center bg-gradient-to-t from-background to-transparent via-background px-6 sm:px-30 w-full py-10 sm:py-16">
-
           {/* Stats strip */}
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-0 rounded-xl border border-border bg-background shadow-sm px-8 py-4 md:divide-x divide-border">
             {stats.map((stat, idx) => (
-              <div key={idx} className="flex flex-col items-center px-8 py-1 gap-0.5">
+              <div
+                key={idx}
+                className="flex flex-col items-center px-8 py-1 gap-0.5"
+              >
                 <span className="font-bold text-xl sm:text-2xl text-primary-cbe-900 dark:text-white leading-none">
                   {/* Highlight the number, colour the suffix in red */}
                   {stat.value.replace(/[^0-9.]/g, "")}
@@ -126,9 +129,9 @@ export default function SiteMainFeature() {
 
           {/* Dashboard mockup */}
           <div className="mx-auto w-full max-w-5xl">
-            <div className="relative inline-block w-full align-middle leading-none aspect-[1203/753] shadow-2xl shadow-primary-cbe-100 dark:shadow-primary-cbe-950 rounded-xl">
+            <div className="relative inline-block w-full align-middle leading-none aspect-[1203/753] shadow-2xl shadow-primary-cbe-50 rounded-xl">
               {/* Glow under frame */}
-              <div className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-primary-cbe-500/20 blur-2xl rounded-full z-0" />
+              <div className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-primary-cbe-50/20 blur-2xl rounded-full z-0" />
 
               {/* Screenshot */}
               <div className="pointer-events-none absolute z-0 overflow-hidden left-[0.0831255%] top-[6.90571%] w-[99.7506%] h-[92.9615%] rounded-tl-none rounded-tr-none rounded-br-[11px] rounded-bl-[11px]">
@@ -181,9 +184,24 @@ export default function SiteMainFeature() {
                     d="M1.06738 12C1.06738 5.92487 5.99225 1 12.0674 1H1189.93C1196.01 1 1200.93 5.92487 1200.93 12V51H1.06738V12Z"
                     className="fill-white dark:fill-[#262626]"
                   />
-                  <circle cx="27" cy="25" r="6" className="fill-[#E5E5E5] dark:fill-[#404040]" />
-                  <circle cx="47" cy="25" r="6" className="fill-[#E5E5E5] dark:fill-[#404040]" />
-                  <circle cx="67" cy="25" r="6" className="fill-[#E5E5E5] dark:fill-[#404040]" />
+                  <circle
+                    cx="27"
+                    cy="25"
+                    r="6"
+                    className="fill-[#E5E5E5] dark:fill-[#404040]"
+                  />
+                  <circle
+                    cx="47"
+                    cy="25"
+                    r="6"
+                    className="fill-[#E5E5E5] dark:fill-[#404040]"
+                  />
+                  <circle
+                    cx="67"
+                    cy="25"
+                    r="6"
+                    className="fill-[#E5E5E5] dark:fill-[#404040]"
+                  />
                   <path
                     d="M286 17C286 13.6863 288.686 11 292 11H946C949.314 11 952 13.6863 952 17V35C952 38.3137 949.314 41 946 41H292C288.686 41 286 38.3137 286 35V17Z"
                     className="fill-[#E5E5E5] dark:fill-[#404040]"
@@ -195,8 +213,14 @@ export default function SiteMainFeature() {
                     />
                   </g>
                   <g className="mix-blend-luminosity">
-                    <text x="580" y="30" fill="#A3A3A3" fontSize="12" fontFamily="Arial, sans-serif">
-                      https://app.ultimateerp.co.ke
+                    <text
+                      x="580"
+                      y="30"
+                      fill="#A3A3A3"
+                      fontSize="12"
+                      fontFamily="Arial, sans-serif"
+                    >
+                      https://ssogroup.co.ke
                     </text>
                   </g>
                 </g>
@@ -206,7 +230,14 @@ export default function SiteMainFeature() {
 
           {/* CTA buttons */}
           <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="default" size="lg" className="gap-2">
+            <Button
+              variant="default"
+              size="lg"
+              className="gap-2"
+              onClick={() => {
+                router.push("/ultimate-erp");
+              }}
+            >
               Explore UltimateERP
               <ArrowRight className="size-4" />
             </Button>
@@ -218,17 +249,15 @@ export default function SiteMainFeature() {
         </div>
 
         {/* ── Features Section ──────────────────────────────────── */}
-        <div className="w-full bg-muted/40 border-t border-border px-6 sm:px-16 py-16 sm:py-24">
+        <div className="w-full bg-primary-cbe-50 border-t border-border px-6 sm:px-16 py-16 sm:py-24">
           {/* Section header */}
           <div className="flex flex-col items-center gap-3 text-center mb-12">
-            <span className="text-xs font-bold tracking-widest uppercase text-red-600">
-              What&apos;s Included
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-semibold text-primary-cbe-900 dark:text-white tracking-tight">
-              Six Modules. One Unified Platform.
+            <BadgePill label="What's Included" centered={true} />
+            <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-900 mb-4">
+              Six Modules, <span className="text-primary-cta">One</span> Unified Platform.
             </h3>
-            <p className="max-w-md text-muted-foreground text-sm">
-              Every department stays in sync — from payroll to procurement —
+            <p className="max-w-md text-muted-foreground leading-relaxed">
+              Every department stays in sync — from payroll to procurement
               through a single source of truth.
             </p>
           </div>
@@ -261,7 +290,6 @@ export default function SiteMainFeature() {
             ))}
           </ul>
         </div>
-
       </div>
     </section>
   );
