@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { Play, ArrowRight, Check, TrendingUp } from "lucide-react";
+import React, { useState } from "react";
+import { Play, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,20 +11,27 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-const FEATURES = [
-  "CBC Competency Tracking",
-  "Instant Report Cards",
-  "Parent Engagement",
-  "Admin Analytics",
-] as const;
+interface tagProp {
+  label: string;
+};
 
-const STATS = [
-  { value: "200+", label: "Schools onboarded" },
-  { value: "50k+", label: "Students managed" },
-  { value: "99.8%", label: "System uptime" },
-] as const;
+interface  statProp {
+  label: string;
+  value: string;
+};
 
-export default function SiteDemo() {
+interface prop {
+  title: React.ReactElement;
+  description: string;
+  tags: tagProp[];
+  videoSrc: string;
+  videoTitle: string;
+  cards: React.ReactElement[];
+  stats: statProp[];
+  mockupSrc: string;
+};
+
+export default function SiteDemo(prop: prop) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -37,29 +44,20 @@ export default function SiteDemo() {
           {/* ── Left column: copy ── */}
           <div className="flex flex-col gap-6">
             {/* Heading */}
-            <h2 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-white">
-              Get A Powerful Start
-              <br />
-              With <span className="text-primary-cta">UltimateCBE</span>
-              <br />
-              ERP Today
-            </h2>
+            {prop.title}
             {/* Body copy */}
-            <p className="max-w-md text-base leading-relaxed text-white/65">
-              Built specifically for Kenya&apos;s CBC curriculum. Track student
-              competencies, generate instant report cards, engage parents in
-              real time, and give teachers the tools they need to focus on what
-              matters most: teaching.
+            <p className="max-w-md text-base leading-relaxed text-white/65 line-clamp-4">
+              {prop.description}
             </p>
             {/* Feature pills */}
             <div className="flex flex-wrap gap-2">
-              {FEATURES.map((feat) => (
+              {prop.tags.map((tag) => (
                 <span
-                  key={feat}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.07] px-3 py-1.5 text-sm text-white/80"
+                  key={tag.label}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.07] px-3 py-1.5 text-sm text-white/80 line-clamp-1"
                 >
                   <Check className="h-3.5 w-3.5 flex-shrink-0 text-green-400" />
-                  {feat}
+                  {tag.label}
                 </span>
               ))}
             </div>
@@ -84,14 +82,14 @@ export default function SiteDemo() {
                   </Button>
                 </DialogTrigger>
                 <DialogTitle className="sr-only">
-                  Optimum ERP System – Product Walkthrough
+                  {prop.videoTitle}
                 </DialogTitle>
                 <DialogContent className="max-w-4xl overflow-hidden p-0">
                   <div className="aspect-video w-full">
                     <iframe
                       className="h-full w-full"
-                      src="https://www.youtube.com/embed/Da1hUqzoiAo?autoplay=1"
-                      title="Optimum ERP System Video"
+                      src={prop.videoSrc}
+                      title={prop.videoTitle}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
@@ -101,12 +99,12 @@ export default function SiteDemo() {
             </div>
             {/* Social proof stats */}
             <div className="flex gap-8 border-t border-white/10 pt-8">
-              {STATS.map((stat) => (
+              {prop.stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col gap-1">
-                  <span className="text-2xl font-bold text-white">
+                  <span className="text-2xl font-bold text-white line-clamp-1">
                     {stat.value}
                   </span>
-                  <span className="text-xs text-white/50">{stat.label}</span>
+                  <span className="text-xs text-white/50 line-clamp-1">{stat.label}</span>
                 </div>
               ))}
             </div>
@@ -114,8 +112,8 @@ export default function SiteDemo() {
           {/* ── Right column: mockup + floating cards ── */}
           <div className="relative">
             <Image
-              src="/images/cta.png"
-              alt="UltimateCBE Admin Dashboard Preview"
+              src={prop.mockupSrc}
+              alt={prop.videoTitle}
               width={1200}
               height={700}
               priority
@@ -123,53 +121,7 @@ export default function SiteDemo() {
             />
 
             {/* Floating card — Monthly Revenue (top-right) */}
-            <div className="absolute -right-4 -top-4 hidden min-w-[168px] items-center gap-3 rounded-sm bg-white p-2 shadow-lg md:flex">
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-sm bg-blue-50">
-                <TrendingUp size={4.5} className="size-4.5 text-primary-cbe-700" />
-              </div>
-              <div className="pr-5 flex flex-col gap-1">
-                <p className="text-xs text-primary-cbe-800/40">
-                  Monthly Revenue
-                </p>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-sm font-bold text-primary-cbe-800 leading-tight">
-                    KES 48,575
-                  </span>
-                  <span className="rounded-full bg-green-50 px-1.5 py-0.5 text-[9px] text-green-600">
-                    +3.84%
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating card — Active Teachers (bottom-left) */}
-            <div className="absolute -bottom-4 -left-4 hidden min-w-[188px] items-center gap-3 rounded-sm bg-white p-2 shadow-xl md:flex">
-              {/* Stacked avatars */}
-              <div className="flex flex-shrink-0 -space-x-2">
-                {(
-                  [
-                    { initials: "AN", bg: "bg-primary-cbe-700" },
-                    { initials: "BK", bg: "bg-red-500" },
-                    { initials: "CM", bg: "bg-violet-600" },
-                  ] as const
-                ).map(({ initials, bg }) => (
-                  <span
-                    key={initials}
-                    className={`flex h-7 w-7 items-center justify-center rounded-full border-2 border-white text-[9px] font-semibold text-white ${bg}`}
-                  >
-                    {initials}
-                  </span>
-                ))}
-              </div>
-              <div className="pr-5 flex flex-col gap-1">
-                <p className="text-sm font-bold text-primary-cbe-800 leading-tight">
-                  Teachers active now
-                </p>
-                <p className="text-xs text-primary-cbe-800/40">
-                  16 of 16 online today
-                </p>
-              </div>
-            </div>
+            {prop.cards.map((card) => card)}
           </div>
         </div>
       </div>

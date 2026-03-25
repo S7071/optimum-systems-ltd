@@ -112,7 +112,7 @@ const FEATURES = [
 export default function SiteFooter() {
   return (
     <section className="bg-primary-cbe-600 text-primary-foreground py-8 w-full px-6 sm:px-30">
-      <div className="container">
+      <div className="">
         <footer>
           {/* ── CTA band ── */}
           <div className="mb-14 flex flex-col justify-between gap-11 md:items-start xl:flex-row xl:items-center xl:gap-6">

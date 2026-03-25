@@ -1,78 +1,96 @@
 // components/HMSStatsSection.tsx
 import BadgePill from "@/components/ui/badge-pill";
 import { Button } from "@/components/ui/button";
-import { BarChart3, Clock, ShieldCheck, Users } from "lucide-react";
+import { LucideIcon } from "@/lib/utils";
 import * as React from "react";
 
-type StatItem = {
-  value: string;
-  description: string;
-  icon: React.ElementType;
-  accent?: boolean;
-};
+// type StatItem = {
+//   value: string;
+//   description: string;
+//   icon: React.ElementType;
+//   accent?: boolean;
+// };
 
-type InsightItem = {
-  title: string;
-  subtitle: string;
-};
+// type InsightItem = {
+//   title: string;
+//   subtitle: string;
+// };
 
-const stats: StatItem[] = [
-  {
-    value: "150+",
-    description: "Institutions successfully deployed across East Africa",
-    icon: Users,
-  },
-  {
-    value: "98%",
-    description: "Uptime guarantee on cloud-hosted deployments",
-    icon: ShieldCheck,
-    accent: true,
-  },
-  {
-    value: "50%",
-    description: "Reduction in admin workload reported by clients",
-    icon: Clock,
-  },
-  {
-    value: "24/7",
-    description: "Local Kenyan support team always available",
-    icon: BarChart3,
-  },
-];
+// const stats: StatItem[] = [
+//   {
+//     value: "150+",
+//     description: "Institutions successfully deployed across East Africa",
+//     icon: Users,
+//   },
+//   {
+//     value: "98%",
+//     description: "Uptime guarantee on cloud-hosted deployments",
+//     icon: ShieldCheck,
+//     accent: true,
+//   },
+//   {
+//     value: "50%",
+//     description: "Reduction in admin workload reported by clients",
+//     icon: Clock,
+//   },
+//   {
+//     value: "24/7",
+//     description: "Local Kenyan support team always available",
+//     icon: BarChart3,
+//   },
+// ];
 
-const insightItems: InsightItem[] = [
-  {
-    title: "Comprehensive Occupancy & Revenue Analytics",
-    subtitle:
-      "Live dashboards showing occupancy rates, ADR, RevPAR, and collection status",
-  },
-  {
-    title: "Seamless Solutions Backed by M-PESA & Bank Standards",
-    subtitle:
-      "Fully compliant billing with integrated M-PESA, card, and bank transfer reconciliation",
-  },
-  {
-    title: "Configurable Workflows for Admins, Receptionists & Porters",
-    subtitle:
-      "Role-based access ensures every team member only sees exactly what they need",
-  },
-];
+// const insightItems: InsightItem[] = [
+//   {
+//     title: "Comprehensive Occupancy & Revenue Analytics",
+//     subtitle:
+//       "Live dashboards showing occupancy rates, ADR, RevPAR, and collection status",
+//   },
+//   {
+//     title: "Seamless Solutions Backed by M-PESA & Bank Standards",
+//     subtitle:
+//       "Fully compliant billing with integrated M-PESA, card, and bank transfer reconciliation",
+//   },
+//   {
+//     title: "Configurable Workflows for Admins, Receptionists & Porters",
+//     subtitle:
+//       "Role-based access ensures every team member only sees exactly what they need",
+//   },
+// ];
 
-function InsightPill({ title, subtitle }: InsightItem) {
+function InsightPill({ label, description }: bulletPointProp) {
   return (
     <div className="flex items-start gap-3.5 rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 transition-colors hover:border-blue-400/30 hover:bg-white/[0.08]">
       <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#E01E37]" />
       <div>
-        <p className="text-[13.5px] font-semibold text-white line-clamp-1">{title}</p>
-        <p className="mt-0.5 text-[12px] text-white/45 line-clamp-1">{subtitle}</p>
+        <p className="text-[13.5px] font-semibold text-white line-clamp-1">{label}</p>
+        <p className="mt-0.5 text-[12px] text-white/45 line-clamp-2">{description}</p>
       </div>
     </div>
   );
 }
 
-/* ─── Component ─────────────────────────────────────────────────────────── */
+interface bulletPointProp {
+  label: string;
+  description: string;
+}
 
-export default function StatsSection() {
+interface statCardProp {
+  value: string;
+  description: string;
+  icon: LucideIcon;
+  accent: boolean;
+};
+
+interface prop {
+  eyebrow: string;
+  title: React.ReactElement;
+  description: string;
+  bulletPoints: bulletPointProp[],
+  statCards: statCardProp[];
+};
+
+export default function StatsSection(prop: prop) {
   return (
     <section
       className="relative overflow-hidden px-6 py-24 sm:px-30 md:py-32 w-full bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
@@ -96,23 +114,16 @@ export default function StatsSection() {
       <div className="container relative z-10 mx-auto w-full px-4">
         <div className="grid items-center gap-16 md:grid-cols-2">
           <div className="flex flex-col gap-3">
-            <BadgePill label="Intelligent Alerting" centered={false} />
+            <BadgePill label={prop.eyebrow} centered={false} />
 
-            <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-white">
-              Stay Informed With{" "}
-              <span className="text-primary-cta">Real-Time</span> Assessment
-              Insights
-            </h3>
+            {prop.title}
 
-            <p className="mt-4 text-[16px] font-light leading-relaxed text-white/65">
-              Never miss a critical academic update. UltimateCBE monitors
-              student competency levels, attendance, grade submissions, and key
-              deadlines — automatically notifying every stakeholder when action
-              is required.
+            <p className="mt-4 text-[16px] font-light leading-relaxed text-white/65 line-clamp-3">
+              {prop.description}
             </p>
 
             <div className="mt-8 flex flex-col gap-3">
-              {insightItems.map((item, i) => (
+              {prop.bulletPoints.map((item, i) => (
                 <InsightPill key={i} {...item} />
               ))}
             </div>
@@ -126,7 +137,7 @@ export default function StatsSection() {
 
           {/* Stat cards grid */}
           <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat, i) => {
+            {prop.statCards.map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <div
@@ -145,11 +156,11 @@ export default function StatsSection() {
                       stat.accent ? "text-white/80" : "text-white/45"
                     }`}
                   />
-                  <p className="text-[32px] font-extrabold leading-none tracking-tight text-white">
+                  <p className="text-[32px] font-extrabold leading-none tracking-tight text-white line-clamp-1">
                     {stat.value}
                   </p>
                   <p
-                    className={`mt-2 text-[12.5px] leading-snug ${
+                    className={`mt-2 text-[12.5px] leading-snug line-clamp-2 ${
                       stat.accent ? "text-white/75" : "text-white/50"
                     }`}
                   >

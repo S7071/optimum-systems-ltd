@@ -142,7 +142,7 @@ export default function SiteHero() {
   return (
     <section className="relative flex flex-col min-h-screen overflow-hidden w-full">
       {/* ── Background photo ── */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-primary-cbe-800">
         <Image
           src="/images/parent/hero.jpg"
           alt="background"
@@ -203,9 +203,9 @@ export default function SiteHero() {
           {/* ── LEFT: Copy ── */}
           <div className="flex flex-col gap-7 md:max-w-full shrink-0">
             {/* Pill badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1.5 w-fit">
-              <span className="size-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_theme(colors.red.500)]" />
-              <span className="text-[11px] font-medium uppercase tracking-widest text-white/70">
+            <div className="inline-flex items-center gap-2 bg-[rgba(26,52,148,0.3)] border border-[rgba(43,79,216,0.4)] rounded-full px-3 py-1.5 mb-8 w-fit">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F03333] shadow-[0_0_8px_#F03333] animate-pulse shrink-0" />
+              <span className="text-[#93AAFF] text-xs font-medium">
                 Kenya&apos;s #1 ERP Platform
               </span>
             </div>

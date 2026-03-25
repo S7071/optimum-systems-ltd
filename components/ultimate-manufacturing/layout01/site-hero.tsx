@@ -329,8 +329,6 @@ export default function SiteHero() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap');
-
         .hero-scene::before {
           content:''; position:absolute; inset:0; pointer-events:none; z-index:1;
           background-image:
@@ -392,7 +390,7 @@ export default function SiteHero() {
         }
       `}</style>
 
-      <div className="w-full overflow-hidden bg-[rgba(21,20,62,0.97)] text-white">
+      <div className="w-full overflow-hidden bg-primary-cbe-500 text-white">
         {/* ── Hero ── */}
         <section className="w-full bg-primary-cbe-50">
           <div className="grid lg:grid-cols-2 items-stretch w-full">
@@ -486,13 +484,13 @@ export default function SiteHero() {
             {/* ══════════════════════════════════════════════════════════════════
                 RIGHT: Production Console — fully redesigned
             ══════════════════════════════════════════════════════════════════ */}
-            <div className="hidden lg:flex items-stretch justify-center bg-primary-cbe-800 relative overflow-hidden">
+            <div className="hidden lg:flex items-stretch justify-center bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 border-primary-cbe-500 relative overflow-hidden">
               {/* Left edge fade */}
               {/* <div className="absolute inset-y-0 left-0 w-12 bg-[linear-gradient(to_right,#07152e,transparent)] pointer-events-none z-10" /> */}
 
               <div className="pi relative z-20 flex w-full max-w-[600px] flex-col py-8 px-5">
                 {/* ── Console chrome ── */}
-                <div className="flex h-9 items-center gap-2 px-3 mb-3 rounded-t-lg bg-[rgba(3,12,30,0.9)] border border-[rgba(55,138,221,0.14)]">
+                <div className="flex h-9 items-center gap-2 px-3 mb-3 rounded-t-lg bg-primary-cbe-800 border border-[rgba(55,138,221,0.14)]">
                   {["#E24B4A", "#EF9F27", "#4ecca3"].map((c, i) => (
                     <div
                       key={i}
@@ -500,7 +498,7 @@ export default function SiteHero() {
                       style={{ background: c }}
                     />
                   ))}
-                  <span className="ml-1.5 text-[10px] tracking-[0.06em] text-[rgba(133,183,235,0.3)]">
+                  <span className="ml-1.5 text-[10px] tracking-[0.06em] text-white/60">
                     ultimate-erp · production-floor · nairobi-plant
                   </span>
                   <div className="ml-auto flex items-center gap-2">
@@ -508,7 +506,7 @@ export default function SiteHero() {
                     <span className="text-[10px] tracking-[0.08em] text-[#4ecca3] font-medium">
                       LIVE
                     </span>
-                    <span className="ml-1 text-[10px] text-[rgba(133,183,235,0.28)]">
+                    <span className="ml-1 text-[10px] text-white/60">
                       {time}
                     </span>
                   </div>
@@ -524,7 +522,7 @@ export default function SiteHero() {
                         className={`relative px-3.5 py-2 text-[11px] font-medium tracking-wide transition-colors duration-150 ${
                           activeTab === i
                             ? "text-[#60a5fa] console-tab-active"
-                            : "text-[rgba(133,183,235,0.38)] hover:text-[rgba(133,183,235,0.65)]"
+                            : "text-white/60 hover:text-[rgba(133,183,235,0.65)]"
                         }`}
                       >
                         {tab}
@@ -532,13 +530,13 @@ export default function SiteHero() {
                     ),
                   )}
                   <div className="ml-auto flex items-center gap-1.5 pb-1.5">
-                    <span className="text-[9px] uppercase tracking-widest text-[rgba(133,183,235,0.3)]">
+                    <span className="text-[9px] uppercase tracking-widest text-white/40">
                       Shift A
                     </span>
                     <span className="text-[rgba(55,138,221,0.2)] text-[10px]">
                       ·
                     </span>
-                    <span className="text-[9px] text-[rgba(133,183,235,0.3)]">
+                    <span className="text-[9px] text-white/40">
                       07:00 – 15:00
                     </span>
                   </div>
@@ -549,10 +547,10 @@ export default function SiteHero() {
                   {KPIS.map((kpi) => (
                     <div
                       key={kpi.short}
-                      className="flex flex-col rounded-md px-2.5 pt-2.5 pb-2 bg-primary-cbe-50/5 border border-[rgba(55,138,221,0.1)] hover:border-[rgba(55,138,221,0.22)] transition-colors duration-200"
+                      className="flex flex-col rounded-md px-2.5 pt-2.5 pb-2 bg-white/10 border border-[rgba(55,138,221,0.1)] hover:border-[rgba(55,138,221,0.22)] transition-colors duration-200"
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-[8.5px] uppercase tracking-widest text-[rgba(133,183,235,0.38)] font-medium">
+                        <span className="text-[8.5px] uppercase tracking-widest text-white/60 font-medium">
                           {kpi.short}
                         </span>
                         {/* ⚠ Dynamic — colour from kpi.up */}
@@ -566,7 +564,7 @@ export default function SiteHero() {
                       {/* Value */}
                       <div className="text-[1.45rem] font-semibold leading-none tracking-tight text-white mb-1">
                         {kpi.val}
-                        <span className="text-[0.85rem] text-[rgba(181,212,244,0.3)] ml-0.5">
+                        <span className="text-[0.85rem] text-white/60 ml-0.5">
                           {kpi.unit}
                         </span>
                       </div>
@@ -586,7 +584,7 @@ export default function SiteHero() {
                           style={{ stroke: kpi.up ? "#4ecca3" : "#EF9F27" }}
                         />
                       </svg>
-                      <div className="text-[8px] text-[rgba(133,183,235,0.3)] mt-1 truncate">
+                      <div className="text-[8px] text-white/40 mt-1 truncate">
                         {kpi.label}
                       </div>
                     </div>
@@ -594,26 +592,26 @@ export default function SiteHero() {
                 </div>
 
                 {/* ── Throughput area chart ── */}
-                <div className="rounded-md bg-primary-cbe-50/5 border border-[rgba(55,138,221,0.1)] px-3 pt-2.5 pb-2 mb-3">
+                <div className="rounded-md bg-white/10 border border-[rgba(55,138,221,0.1)] px-3 pt-2.5 pb-2 mb-3">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="text-[9px] uppercase tracking-widest font-medium text-[rgba(133,183,235,0.45)]">
+                      <span className="text-[9px] uppercase tracking-widest font-medium text-white/60">
                         Shift Throughput
                       </span>
-                      <span className="text-[9px] text-[rgba(133,183,235,0.3)]">
+                      <span className="text-[9px] text-white/40">
                         vs Target
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-1.5">
                         <div className="h-[2px] w-4 bg-[#378ADD] rounded" />
-                        <span className="text-[8.5px] text-[rgba(133,183,235,0.4)]">
+                        <span className="text-[8.5px] text-white/40">
                           Actual
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <div className="h-[1px] w-4 border-t border-dashed border-[rgba(239,159,39,0.6)]" />
-                        <span className="text-[8.5px] text-[rgba(133,183,235,0.4)]">
+                        <span className="text-[8.5px] text-white/40">
                           Target 820
                         </span>
                       </div>
@@ -735,9 +733,9 @@ export default function SiteHero() {
                 </div>
 
                 {/* ── Machine utilization — horizontal bars ── */}
-                <div className="rounded-md bg-primary-cbe-50/5 border border-[rgba(55,138,221,0.1)] px-3 pt-2.5 pb-2 mb-3">
+                <div className="rounded-md bg-white/10 border border-[rgba(55,138,221,0.1)] px-3 pt-2.5 pb-2 mb-3">
                   <div className="flex items-center justify-between mb-2.5">
-                    <span className="text-[9px] uppercase tracking-widest font-medium text-[rgba(133,183,235,0.45)]">
+                    <span className="text-[9px] uppercase tracking-widest font-medium text-white/60">
                       Machine Utilization
                     </span>
                     <div className="flex items-center gap-3">
@@ -754,7 +752,7 @@ export default function SiteHero() {
                             className="h-[5px] w-[5px] rounded-full"
                             style={{ background: MSTATUS[s].dot }}
                           />
-                          <span className="text-[8px] capitalize text-[rgba(133,183,235,0.3)]">
+                          <span className="text-[8px] capitalize text-white/40">
                             {s}
                           </span>
                         </div>
@@ -782,12 +780,12 @@ export default function SiteHero() {
                           </div>
 
                           {/* Machine ID */}
-                          <span className="w-[34px] shrink-0 text-[9px] font-medium text-[rgba(181,212,244,0.55)]">
+                          <span className="w-[34px] shrink-0 text-[9px] font-medium text-white/60">
                             {m.id}
                           </span>
 
                           {/* Machine name */}
-                          <span className="w-[76px] shrink-0 truncate text-[9px] text-[rgba(133,183,235,0.4)]">
+                          <span className="w-[76px] shrink-0 truncate text-[9px] text-white/40">
                             {m.name}
                           </span>
 
@@ -848,14 +846,14 @@ export default function SiteHero() {
                 </div>
 
                 {/* ── Work Orders ── */}
-                <div className="rounded-md overflow-hidden bg-primary-cbe-50/5 border border-[rgba(55,138,221,0.1)] mb-3">
+                <div className="rounded-md overflow-hidden bg-white/10 border border-[rgba(55,138,221,0.1)] mb-3">
                   {/* Table header */}
-                  <div className="grid grid-cols-[8px_62px_1fr_54px_56px_72px] items-center gap-2 px-3 py-2 bg-[rgba(3,10,28,0.5)] border-b border-[rgba(55,138,221,0.09)]">
+                  <div className="grid grid-cols-[8px_62px_1fr_54px_56px_72px] items-center gap-2 px-3 py-2 bg-primary-cbe-800 border-b border-[rgba(55,138,221,0.09)]">
                     <div />
                     {["WO #", "Part", "Qty", "Progress", "Status"].map((h) => (
                       <span
                         key={h}
-                        className="text-[8.5px] uppercase tracking-widest text-[rgba(133,183,235,0.3)]"
+                        className="text-[8.5px] uppercase tracking-widest text-white/40"
                       >
                         {h}
                       </span>
@@ -885,12 +883,12 @@ export default function SiteHero() {
                         </span>
 
                         {/* Part name */}
-                        <span className="truncate text-[10px] font-light text-[rgba(181,212,244,0.75)]">
+                        <span className="truncate text-[10px] font-light text-white/60">
                           {order.part}
                         </span>
 
                         {/* Qty */}
-                        <span className="text-[9px] text-[rgba(133,183,235,0.45)] tabular-nums">
+                        <span className="text-[9px] text-white/60 tabular-nums">
                           {order.qty.toLocaleString()}
                         </span>
 
@@ -910,7 +908,7 @@ export default function SiteHero() {
                               }}
                             />
                           </div>
-                          <span className="text-[8px] text-[rgba(133,183,235,0.35)] tabular-nums">
+                          <span className="text-[8px] text-white/60 tabular-nums">
                             {order.done}%
                           </span>
                         </div>
@@ -932,17 +930,17 @@ export default function SiteHero() {
                 </div>
 
                 {/* ── Alert footer ── */}
-                <div className="flex items-center gap-2.5 rounded-md bg-[rgba(226,75,74,0.06)] border border-[rgba(226,75,74,0.15)] [border-left:3px_solid_#E24B4A] px-3 py-2">
+                <div className="flex items-center gap-2.5 rounded-md bg-[rgba(226,75,74,0.16)] border border-[rgba(226,75,74,0.15)] [border-left:3px_solid_#E24B4A] px-3 py-2">
                   <div className="blink h-1.5 w-1.5 shrink-0 rounded-full bg-[#E24B4A]" />
                   <div className="flex flex-1 flex-col gap-0.5">
                     <span className="text-[10px] font-medium text-[#F09595] tracking-[0.02em]">
                       MC-03 Press Line — throughput below threshold
                     </span>
-                    <span className="text-[9px] text-[rgba(226,75,74,0.5)]">
+                    <span className="text-[9px] text-[rgba(226,75,74,1.5)]">
                       Auto-routing active · Estimated recovery 14:45
                     </span>
                   </div>
-                  <span className="shrink-0 text-[9.5px] text-[rgba(133,183,235,0.22)] tabular-nums">
+                  <span className="shrink-0 text-[9.5px] text-white/60 tabular-nums">
                     {time}
                   </span>
                 </div>

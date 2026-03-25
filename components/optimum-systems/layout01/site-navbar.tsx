@@ -29,6 +29,7 @@ import {
   Milk,
   ShoppingCart,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface MenuItem {
   title: string;
@@ -408,9 +409,10 @@ export function SolutionsMenuItem() {
 ------------------------------ */
 
 export default function SiteNavbar() {
+  const router = useRouter();
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background px-6 sm:px-30">
-      <div className="container flex h-20 items-center justify-between">
+      <div className="flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <Image
             src="/logo.svg"
@@ -485,7 +487,9 @@ export default function SiteNavbar() {
 
         {/* Right Buttons */}
         <div className="hidden lg:flex items-center space-x-2">
-          <Button variant="outline" className="gap-4">
+          <Button variant="outline" className="gap-4" onClick={() => {
+            router.push("/login");
+          }}>
             Sign In
           </Button>
           <Button variant="default" className="gap-4">

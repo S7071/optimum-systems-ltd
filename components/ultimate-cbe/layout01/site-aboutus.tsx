@@ -30,11 +30,7 @@ const StatItem = ({
   <div className={`px-10 py-10 ${last ? "" : "border-r border-border"}`}>
     <p className="mb-1.5 text-4xl font-bold tracking-tighter text-foreground">
       {value}
-      {suffix && (
-        <em className="not-italic text-primary-cta">
-          {suffix}
-        </em>
-      )}
+      {suffix && <em className="not-italic text-primary-cta">{suffix}</em>}
     </p>
     <p className="text-sm leading-snug text-muted-foreground whitespace-pre-line">
       {label}
@@ -80,20 +76,17 @@ export default function SiteAboutUs() {
       <section className="mx-auto grid max-w-full grid-cols-1 items-center gap-16 md:grid-cols-2 md:gap-20 mb-16 sm:mb-24">
         {/* Copy */}
         <div>
-          <div
-            className="mb-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-primary-cta"
-          >
-            <span
-              className="h-[2px] w-5 rounded-full bg-primary-cta"
-            />
+          <div className="mb-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-primary-cta">
+            <span className="h-[2px] w-5 rounded-full bg-primary-cta" />
             About Optimum System Ltd
           </div>
           <h1 className="mb-6 text-5xl font-bold leading-[1.08] tracking-tighter text-foreground md:text-[52px]">
-            We build software&nbsp;the world creates itself
+            We build ERP that institutions grow into
           </h1>
           <p className="max-w-[380px] text-base leading-relaxed text-muted-foreground">
-            Meet our team, discover our values, and learn how we balance work,
-            life, and everything in between.
+            Meet our team, explore our solutions, and discover how we&apos;re
+            powering Kenya&apos;s digital transformation — one institution at a
+            time.
           </p>
         </div>
 
@@ -128,13 +121,25 @@ export default function SiteAboutUs() {
 
       {/* ── Stats strip ── */}
       <div className="grid grid-cols-2 border-y border-border md:grid-cols-4">
-        <StatItem value="10" suffix="+" label={"Years building\nweb tools"} />
-        <StatItem value="500" suffix="K" label={"Active users\nworldwide"} />
-        <StatItem value="0" label={"Lines of code\nrequired to start"} />
         <StatItem
-          value="98"
+          value="50"
           suffix="%"
-          label={"Customer\nsatisfaction rate"}
+          label={"ICT professionals on our team"}
+        />
+        <StatItem
+          value="186"
+          suffix="+"
+          label={"Institutions successfully served"}
+        />
+        <StatItem
+          value="20"
+          suffix="+"
+          label={"Tailored ERP solutions delivered"}
+        />
+        <StatItem
+          value="Cat"
+          suffix="-1"
+          label={"ICT Authority accreditation — highest level"}
           last
         />
       </div>
@@ -147,50 +152,50 @@ export default function SiteAboutUs() {
             What we believe
           </p>
           <h2 className="mb-5 text-[32px] font-bold leading-[1.15] tracking-tighter text-foreground">
-            Software built for everyone
+            Technology built for African institutions
           </h2>
           <span
             className="mb-5 block h-[2px] w-7 rounded-full"
             style={{ background: "#C8251B" }}
           />
           <p className="text-sm leading-relaxed text-muted-foreground">
-            We think the best tools are the ones you can shape to your own needs
-            — no engineers required.
+            We think the best tools are the ones shaped around your realities —
+            not generic platforms that force institutions to adapt to software.
+            Deep local knowledge. No compromise on security. No per-user
+            licensing fees. Just solutions that work.
           </p>
         </div>
 
         {/* Vision */}
         <div>
-          <p
-            className="mb-5 border-b border-border pb-4 text-xs font-semibold uppercase tracking-widest text-primary-cbe-800"
-          >
+          <p className="mb-5 border-b border-border pb-4 text-xs font-semibold uppercase tracking-widest text-primary-cbe-800">
             Our Vision
           </p>
           <div className="space-y-4 text-[15px] leading-[1.8] text-foreground/80">
             <p>
-              For years, the process of building custom software has remained
-              challenging. Today, visual builders exist, but tailored solutions
-              still require technical expertise and a lot of time. This is a
-              problem for businesses and individuals alike.
+              For too long, East African institutions have relied on fragmented
+              systems, manual processes, and outdated tools that slow operations
+              and drain resources — while compliance demands grow ever more
+              complex.
             </p>
             <p>
-              What if you could create custom software without writing a single
-              line of code? What if you could build your own tools?
+              We saw an opportunity: to build ERP solutions purpose-designed for
+              the realities of Kenyan institutions — from government compliance
+              requirements (IPSAS, TVETA, CDACC, E-Citizen) to M-Pesa
+              integrations and biometric infrastructure.
             </p>
             <p>
-              With our platform, you can. Our tools let you design layouts and
-              create functionality — all without needing to code. We believe
-              that everyone should be able to build their own solutions,
-              regardless of their technical background.
+              Today, Optimum ERP Systems delivers modular, scalable, hybrid
+              software across education, health, finance, agriculture, and
+              enterprise — empowering over 186 institutions to operate with
+              greater efficiency, transparency, and accountability.
             </p>
           </div>
         </div>
 
         {/* Creators */}
         <div>
-          <p
-            className="mb-5 border-b border-border pb-4 text-xs font-semibold uppercase tracking-widest text-primary-cbe-800"
-          >
+          <p className="mb-5 border-b border-border pb-4 text-xs font-semibold uppercase tracking-widest text-primary-cbe-800">
             Our Creators
           </p>
           <div className="space-y-4 text-[15px] leading-[1.8] text-foreground/80">
@@ -198,25 +203,25 @@ export default function SiteAboutUs() {
               <a
                 href="#"
                 className="mr-1 border-b pb-px font-medium transition-colors border-primary-cta text-primary-cta"
-                // onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#0B2FA6")}
-                // onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "rgba(11,47,166,0.25)")}
               >
                 Optimum System Ltd
               </a>
-              has been building web tools for over a decade, focusing on
-              efficiency and user control in every project. We know that the
-              best solutions are the ones that you can create yourself.
+              is a Nairobi-based software company founded by a passionate team
+              of ICT professionals who understood that local institutions
+              deserve world-class technology built for their context.
             </p>
             <p>
-              We initially developed these solutions for our own team, and now
-              everyone can benefit from them too. We are proud to offer a
-              platform that is accessible to all, regardless of technical
-              expertise.
+              With 50+ dedicated specialists in software engineering, systems
+              integration, and client success, we hold Category 1 ICT Authority
+              accreditations — the highest level — in both Systems &
+              Applications and Information Security. We are also registered as
+              both Data Controller and Data Processor under Kenya&apos;s Data
+              Protection Act.
             </p>
             <p>
-              Our team is made up of talented individuals passionate about
-              creating tools that empower users to build their own solutions
-              with ease. We can&apos;t wait to see what you create.
+              Every solution we build reflects our core values: integrity,
+              accountability, excellence, and an unwavering commitment to
+              delivering high ROI for the institutions we serve.
             </p>
           </div>
         </div>
@@ -284,11 +289,9 @@ export default function SiteAboutUs() {
             Learn more
           </a>
           <a
-            href="#"
+            href="/company/team"
             className="inline-flex items-center gap-2 rounded-sm px-6 py-3 text-sm font-medium text-white transition-all hover:-translate-y-px"
             style={{ background: "#C8251B" }}
-            // onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "#A81C14")}
-            // onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "#C8251B")}
           >
             Meet the team
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

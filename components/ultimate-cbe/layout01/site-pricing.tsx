@@ -85,7 +85,7 @@ export default function SitePricing() {
         <BadgePill label="Pricing Plans" centered={true} />
         <h2 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-primary-cbe-800 mb-4">
           Simple, transparent pricing
-          <br className="hidden md:block" /> for every team
+          <br className="hidden md:block" /> for <span className="text-primary-cta">every team</span>
         </h2>
         <p className="text-muted-foreground max-w-md leading-relaxed">
           Choose a plan that scales with your business. No hidden fees, no
