@@ -93,7 +93,7 @@ interface prop {
 export default function StatsSection(prop: prop) {
   return (
     <section
-      className="relative overflow-hidden px-6 py-24 sm:px-30 md:py-32 w-full bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
+      className="relative overflow-hidden px-6 py-24 sm:px-30 md:py-32 w-full bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-400"
     >
       <div
         aria-hidden

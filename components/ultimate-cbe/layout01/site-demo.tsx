@@ -37,7 +37,7 @@ export default function SiteDemo(prop: prop) {
   return (
     <section className="relative py-16 md:py-24 w-full overflow-hidden px-6 sm:px-30">
       {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-300" />
 
       <div className="relative z-10 container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

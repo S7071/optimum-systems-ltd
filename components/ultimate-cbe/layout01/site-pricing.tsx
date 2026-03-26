@@ -83,7 +83,7 @@ export default function SitePricing() {
       {/* ── Hero header ── */}
       <div className="mb-10 w-full text-center gap-3 items-center flex flex-col">
         <BadgePill label="Pricing Plans" centered={true} />
-        <h2 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-primary-cbe-800 mb-4">
+        <h2 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
           Simple, transparent pricing
           <br className="hidden md:block" /> for <span className="text-primary-cta">every team</span>
         </h2>
@@ -193,7 +193,7 @@ export default function SitePricing() {
                     <span
                       className={cn(
                         "text-5xl font-extrabold tracking-tight leading-none",
-                        plan.enterprise ? "text-white" : "text-primary-cbe-800",
+                        plan.enterprise ? "text-white" : "text-primary-cbe-500",
                       )}
                     >
                       {isAnnual && plan.annualPrice !== null
@@ -215,7 +215,7 @@ export default function SitePricing() {
                   <span
                     className={cn(
                       "text-3xl font-extrabold tracking-tight",
-                      plan.enterprise ? "text-white" : "text-primary-cbe-800",
+                      plan.enterprise ? "text-white" : "text-primary-cbe-500",
                     )}
                   >
                     Custom

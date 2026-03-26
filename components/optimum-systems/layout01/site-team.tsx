@@ -266,7 +266,7 @@ export default function SiteTeam() {
           {/* ── HEADER ── */}
           <div className="flex flex-col items-center text-center gap-4">
             <BadgePill label="Our People" centered />
-            <h2 className="text-primary-cbe-800 text-2xl sm:text-4xl font-extrabold leading-tight tracking-tight">
+            <h2 className="text-primary-cbe-500 text-2xl sm:text-4xl font-extrabold leading-tight tracking-tight">
               Meet the <span className="text-primary-cbe-500">Minds Behind</span>
               <br />Optimum ERP
             </h2>

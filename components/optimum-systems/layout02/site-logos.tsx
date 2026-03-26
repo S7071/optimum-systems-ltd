@@ -97,7 +97,7 @@ export default function SiteLogos() {
   // ];
 
   return (
-    <section className="overflow-hidden bg-background pt-4 sm:pt-8 dark:bg-muted w-full">
+    <section className="overflow-hidden bg-primary-cbe-50 pt-4 sm:pt-8 w-full">
       <div className="relative">
         <div className="flex w-full">
           {/* Animate marquee */}

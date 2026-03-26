@@ -66,17 +66,23 @@ export default function SiteMainFeature() {
   ];
 
   // ── Stats strip ──────────────────────────────────────────────────
-  const stats = [
-    { value: "500+", label: "Institutions" },
-    { value: "6", label: "Core Modules" },
-    { value: "99.9%", label: "Uptime SLA" },
-    { value: "24/7", label: "Support" },
+  interface statProp {
+    value: string;
+    preffix: string;
+    suffix: string;
+    label: string;
+  }
+  const stats: statProp[] = [
+    { value: "500", preffix: "", suffix: "+", label: "Institutions" },
+    { value: "30", preffix: "", suffix: "+", label: "Core Modules" },
+    { value: "99.9", preffix: "", suffix: "%", label: "Uptime SLA" },
+    { value: "24", preffix: "/", suffix: "7", label: "Support" },
   ];
 
   return (
-    <section className="w-full bg-background bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat overflow-hidden">
-      <div className="container flex flex-col items-center pt-16 sm:pt-32">
-        {/* ── Hero Copy ─────────────────────────────────────────── */}
+    <section className="w-full bg-primary-cbe-50 bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat overflow-hidden">
+      <div className="flex flex-col items-center pt-16 sm:pt-32">
+        {/* header section */}
         <div className="flex flex-col gap-3 items-center px-6 sm:px-30 text-center">
           {/* Badge with animated pulse dot */}
           <Badge
@@ -92,7 +98,7 @@ export default function SiteMainFeature() {
           </Badge>
 
           {/* Headline with red gradient accent */}
-          <h2 className="max-w-2xl text-center text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight mb-4">
+          <h2 className="max-w-2xl text-center text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight mb-4 text-primary-cbe-500">
             One Powerful System.{" "}
             <span className="text-primary-cta">Every Module You Need.</span>
           </h2>
@@ -105,7 +111,7 @@ export default function SiteMainFeature() {
         </div>
 
         {/* ── Main content block ─────────────────────────────────── */}
-        <div className="flex flex-col gap-10 md:gap-16 items-center bg-gradient-to-t from-background to-transparent via-background px-6 sm:px-30 w-full py-10 sm:py-16">
+        <div className="flex flex-col gap-10 md:gap-16 items-center bg-gradient-to-t from-primary-cbe-50 to-transparent via-primary-cbe-50 px-6 sm:px-30 w-full py-10 sm:py-16">
           {/* Stats strip */}
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-0 rounded-xl border border-border bg-background shadow-sm px-8 py-4 md:divide-x divide-border">
             {stats.map((stat, idx) => (
@@ -113,12 +119,12 @@ export default function SiteMainFeature() {
                 key={idx}
                 className="flex flex-col items-center px-8 py-1 gap-0.5"
               >
-                <span className="font-bold text-xl sm:text-2xl text-primary-cbe-900 dark:text-white leading-none">
+                <span className="font-bold text-xl sm:text-2xl text-primary-cbe-500 dark:text-white leading-none">
                   {/* Highlight the number, colour the suffix in red */}
-                  {stat.value.replace(/[^0-9.]/g, "")}
-                  <span className="text-red-600">
-                    {stat.value.replace(/[0-9.]/g, "")}
-                  </span>
+                  {stat.value}
+                  <span className="text-primary-cta">{stat.preffix}</span>
+                  {stat.value !== "24" ? (<span className="text-primary-cta">{stat.suffix}</span>): (stat.suffix)}
+                  {/* <span className="text-primary-cta">{stat.suffix}</span> */}
                 </span>
                 <span className="text-xs text-muted-foreground font-normal">
                   {stat.label}
@@ -227,34 +233,16 @@ export default function SiteMainFeature() {
               </svg>
             </div>
           </div>
-
-          {/* CTA buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              variant="default"
-              size="lg"
-              className="gap-2"
-              onClick={() => {
-                router.push("/ultimate-erp");
-              }}
-            >
-              Explore UltimateERP
-              <ArrowRight className="size-4" />
-            </Button>
-            <Button variant="outline" size="lg" className="gap-2">
-              <Play className="size-4 fill-current" />
-              Watch Demo
-            </Button>
-          </div>
         </div>
 
         {/* ── Features Section ──────────────────────────────────── */}
         <div className="w-full bg-primary-cbe-50 border-t border-border px-6 sm:px-16 py-16 sm:py-24">
           {/* Section header */}
           <div className="flex flex-col items-center gap-3 text-center mb-12">
-            <BadgePill label="What's Included" centered={true} />
-            <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-900 mb-4">
-              Six Modules, <span className="text-primary-cta">One</span> Unified Platform.
+            <BadgePill label="What Makes Us Standout" centered={true} />
+            <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
+              30+ Modules, <span className="text-primary-cta">One</span> Unified
+              Platform.
             </h3>
             <p className="max-w-md text-muted-foreground leading-relaxed">
               Every department stays in sync — from payroll to procurement
@@ -289,6 +277,24 @@ export default function SiteMainFeature() {
               </li>
             ))}
           </ul>
+
+          <div className="flex flex-wrap justify-center gap-4 mt-20">
+            <Button
+              variant="default"
+              size="lg"
+              className="gap-2"
+              onClick={() => {
+                router.push("/ultimate-erp");
+              }}
+            >
+              Explore UltimateERP
+              <ArrowRight className="size-4" />
+            </Button>
+            <Button variant="outline" size="lg" className="gap-2">
+              <Play className="size-4 fill-current" />
+              Request a Demo
+            </Button>
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
+import { MessageSquare } from "lucide-react";
 import { useEffect, useRef, useState, useCallback } from "react";
 
 interface HelpOption {
@@ -291,7 +292,7 @@ export default function HelpDeskButton() {
             ].join(" ")}
             aria-hidden
           >
-            <HeadsetIcon />
+            <MessageSquare />
           </span>
 
           {/* Close icon — shown when open */}

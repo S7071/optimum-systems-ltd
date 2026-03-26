@@ -59,13 +59,15 @@ function AuthorRow() {
             background: `linear-gradient(135deg, ${BRAND.blue}, ${BRAND.blueMid})`,
           }}
         >
-          JD
+          CT
         </div>
-        <div>
+        <div className="flex flex-col items-start">
           <p className="text-sm font-semibold leading-none text-foreground">
-            Jane Doe
+            Citizen Reporter
           </p>
-          <p className="mt-0.5 text-xs text-muted-foreground">CEO &amp; Cofounder</p>
+          <p className="mt-0.5 text-xs text-muted-foreground">
+            Citizen Media Group
+          </p>
         </div>
       </div>
 
@@ -118,56 +120,7 @@ function HeroImage() {
         }}
       >
         {/* Grid overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)
-            `,
-            backgroundSize: "48px 48px",
-          }}
-        />
-        {/* Radial accents */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 30% 50%, rgba(21,87,192,0.6) 0%, transparent 60%),
-              radial-gradient(ellipse at 75% 30%, rgba(212,43,43,0.25) 0%, transparent 50%)
-            `,
-          }}
-        />
-        {/* Decorative cards */}
-        <div className="relative z-10 grid grid-cols-3 gap-4 px-8 sm:px-12">
-          {[BRAND.red, "rgba(255,255,255,0.3)", BRAND.blueMid].map(
-            (dotColor, i) => (
-              <div
-                key={i}
-                className="rounded-xl p-4 backdrop-blur-md sm:p-5"
-                style={{
-                  background: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                }}
-              >
-                <div
-                  className="mb-2.5 size-6 rounded-lg sm:size-7"
-                  style={{ background: dotColor }}
-                />
-                {[null, null, null].map((_, j) => (
-                  <div
-                    key={j}
-                    className="mb-1.5 h-1.5 rounded last:mb-0"
-                    style={{
-                      background: "rgba(255,255,255,0.15)",
-                      width: j === 2 ? "60%" : "100%",
-                    }}
-                  />
-                ))}
-              </div>
-            )
-          )}
-        </div>
+        <div className="absolute inset-0 bg-[url('https://assets.citizen.digital/131897/conversions/WhatsApp-Image-2024-08-20-at-13.31.54-og_image.webp')]" />
       </div>
     </div>
   );
@@ -193,11 +146,7 @@ function ShareButton({
   );
 }
 
-function TableOfContents({
-  activeId,
-}: {
-  activeId: string;
-}) {
+function TableOfContents({ activeId }: { activeId: string }) {
   const links = [
     { href: "#section-intro", label: "Introduction" },
     { href: "#section-role", label: "The Role of UI Components" },
@@ -299,7 +248,10 @@ function KeyTakeaways() {
       </h3>
       <ul className="flex flex-col gap-2.5">
         {points.map((point, i) => (
-          <li key={i} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+          <li
+            key={i}
+            className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+          >
             <span
               className="mt-2 size-1.5 shrink-0 rounded-full"
               style={{ background: BRAND.blue }}
@@ -508,7 +460,13 @@ function RelatedPosts() {
       title: "Tokens & Theming: A Practical Guide",
       meta: "6 min read · Apr 2025",
       icon: (
-        <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={1.5}>
+        <svg
+          className="size-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth={1.5}
+        >
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
       ),
@@ -519,7 +477,13 @@ function RelatedPosts() {
       title: "Accessibility-First Component Architecture",
       meta: "9 min read · Mar 2025",
       icon: (
-        <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={1.5}>
+        <svg
+          className="size-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth={1.5}
+        >
           <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
         </svg>
       ),
@@ -530,7 +494,13 @@ function RelatedPosts() {
       title: "Optimising React Renders at Scale",
       meta: "11 min read · Feb 2025",
       icon: (
-        <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={1.5}>
+        <svg
+          className="size-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth={1.5}
+        >
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
         </svg>
       ),
@@ -631,7 +601,12 @@ export default function SiteBlogPost() {
   const [activeId, setActiveId] = useState("section-intro");
 
   // IntersectionObserver for TOC active state
-  const sectionIds = ["section-intro", "section-role", "section-types", "section-end"];
+  const sectionIds = [
+    "section-intro",
+    "section-role",
+    "section-types",
+    "section-end",
+  ];
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -643,7 +618,7 @@ export default function SiteBlogPost() {
         ([entry]) => {
           if (entry.isIntersecting) setActiveId(id);
         },
-        { rootMargin: "-20% 0px -60% 0px" }
+        { rootMargin: "-20% 0px -60% 0px" },
       );
       obs.observe(el);
       observers.push(obs);
@@ -654,40 +629,35 @@ export default function SiteBlogPost() {
   }, []);
 
   return (
-    <section className="w-full pb-32">
+    <section className="w-full pb-32 bg-primary-cbe-50">
       {/* Reading progress */}
       <ProgressBar />
 
       {/* ── Hero header ─────────────────────────────────────── */}
-      <div className="bg-muted bg-[url('https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/dot-pattern-2.svg')] bg-[length:3.125rem_3.125rem] bg-repeat">
-        <div className="container flex flex-col items-center py-20 text-center">
-          <CategoryTag />
+      <div className="bg-muted bg-[url('https://assets.citizen.digital/131897/conversions/WhatsApp-Image-2024-08-20-at-13.31.54-og_image.webp')] bg-cover h-150 relative">
+        <div className="absolute bg-[url('https://www.citizen.digital/logo.webp')] bg-cover bg-muted size-15 w-30 top-10 left-10 z-10 rounded-sm"></div>
+      </div>
+      <div className="container flex flex-col items-center py-10 text-center">
+        {/* <CategoryTag /> */}
 
-          <h1 className="mt-6 max-w-[640px] text-[2.4rem] font-semibold leading-[1.12] tracking-tight md:text-5xl lg:text-[3.5rem]">
-            Building Better{" "}
-            <em className="not-italic" style={{ color: BRAND.blue }}>
-              Components
-            </em>
-          </h1>
+        <h1 className="mt-6 max-w-screen text-[2.4rem] font-semibold leading-[1.12] tracking-tight md:text-4xl max-w-[70%] line-clamp-2">
+          <em className="not-italic" style={{ color: BRAND.blue }}>
+            Optimum Computer Systems
+          </em>{" "}
+          launches AI tool to revolutionize financial reporting
+        </h1>
 
-          <p className="mt-5 max-w-[520px] text-lg font-light leading-relaxed text-muted-foreground">
-            The best blog is one that captivates readers with engaging,
-            well-researched content presented in a clear and relatable way.
-          </p>
-
-          <div className="mt-8 w-full max-w-[36rem]">
-            <AuthorRow />
-          </div>
+        <div className="mt-8 w-full max-w-[36rem]">
+          <AuthorRow />
         </div>
       </div>
 
       {/* ── Hero image ──────────────────────────────────────── */}
-      <HeroImage />
+      {/* <HeroImage /> */}
 
       {/* ── Two-column layout ───────────────────────────────── */}
       <div className="container pt-16">
         <div className="relative mx-auto flex w-full max-w-5xl items-start gap-16 lg:gap-20">
-
           {/* Sidebar */}
           <div className="hidden w-52 shrink-0 lg:block">
             <TableOfContents activeId={activeId} />

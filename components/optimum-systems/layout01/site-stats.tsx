@@ -1,9 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import BadgePill from "@/components/ui/badge-pill";
-import { Button } from "@/components/ui/button";
-import { cn, LucideIcon } from "@/lib/utils";
+import { LucideIcon } from "@/lib/utils";
 import {
-  ArrowRight,
   ChartLine,
   HeartPlus,
   ServerCog,
@@ -18,16 +16,6 @@ export default function SiteStats() {
     icon: LucideIcon;
   }
 
-  interface Stat {
-    value: string;
-    label: string;
-  }
-
-  const stats: Stat[] = [
-    { value: "160+", label: "Institutions Served" },
-    { value: "15+", label: "Years of Experience" },
-    { value: "40+", label: "Counties Covered" },
-  ];
 
   const cards: StatCard[] = [
     {
@@ -70,7 +58,7 @@ export default function SiteStats() {
               {/* Eyebrow pill */}
               <BadgePill label="ERP Platform" centered={false} />
 
-              <h1 className="mb-3 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-800">
+              <h1 className="mb-3 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
                 Automate, Manage &amp; Grow Your{" "}<span className="text-primary-cta">Institution</span>{" "}Today
               </h1>
 
@@ -79,41 +67,6 @@ export default function SiteStats() {
                 operations across finance, HR, academics, and more — giving your
                 team the tools to work smarter across every department.
               </p>
-            </div>
-
-            {/* Stats row — unified card */}
-            <div className="mt-10 flex overflow-hidden rounded-xl border border-border bg-card shadow-sm">
-              {stats.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={cn(
-                    "flex flex-1 flex-col gap-1 px-5 py-4 items-center",
-                    i !== stats.length - 1 && "border-r border-border",
-                  )}
-                >
-                  <p className="text-2xl font-bold text-foreground sm:text-3xl">
-                    {stat.value.replace("+", "")}
-                    <span className="text-primary-cta">
-                      {stat.value.includes("+") ? "+" : ""}
-                    </span>
-                  </p>
-                  <p className="text-xs text-muted-foreground sm:text-sm">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-3 justify-center lg:justify-start">
-              <Button variant="default" size="lg">
-                Request a Demo
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-
-              <Button variant="outline" size="lg">
-                Learn More
-              </Button>
             </div>
           </div>
 

@@ -98,7 +98,7 @@ export default function SiteTestimonials(prop: prop) {
         {/* Section Header */}
         <div className="w-full mx-auto text-center flex items-center flex-col gap-3">
           <BadgePill label="Client stories" centered={true} />
-          <h3 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-primary-cbe-800 mb-4">
+          <h3 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
             What Our <span className="text-primary-cta">Clients</span> Say
           </h3>
           <p className="text-primary-cbe-800/60 leading-relaxed max-w-2xl line-clamp-3">
@@ -110,7 +110,7 @@ export default function SiteTestimonials(prop: prop) {
           {prop.stats.map((stat, i) => (
             <div key={stat.label}>
               <div className="text-center">
-                <p className="text-3xl font-extrabold text-primary-cbe-800 line-clamp-1">
+                <p className="text-3xl font-extrabold text-primary-cbe-500 line-clamp-1">
                   {stat.value}
                 </p>
                 <p className="mt-1 text-xs font-medium text-primary-cbe-800/60 line-clamp-1">

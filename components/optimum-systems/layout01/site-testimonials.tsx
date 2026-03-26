@@ -9,153 +9,7 @@ import BadgePill from "@/components/ui/badge-pill";
 
 /* eslint-disable @next/next/no-img-element */
 
-// ─── Count-up hook (triggers when section scrolls into view) ──────────────────
-function useCountUp(target: string, duration = 1800, start = false): string {
-  const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    if (!start) return;
-    const num = parseFloat(target);
-    let startTime: number | null = null;
-
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-      setCount(Math.floor(eased * num));
-      if (progress < 1) requestAnimationFrame(step);
-      else setCount(num);
-    };
-
-    requestAnimationFrame(step);
-  }, [start, target, duration]);
-
-  const suffix = target.includes("%")
-    ? "%"
-    : target.toLowerCase().includes("x")
-      ? "x"
-      : "";
-  return `${count}${suffix}`;
-}
-
-// ─── Individual stat card ─────────────────────────────────────────────────────
-interface StatCardProps {
-  stat: number;
-  suffix: string;
-  label: string;
-  caseTitle: string;
-  href: string;
-  bgImage: string;
-  inView: boolean;
-  delay: number;
-}
-
-function StatCard({
-  stat,
-  suffix,
-  label,
-  caseTitle,
-  href,
-  bgImage,
-  inView,
-  delay,
-}: StatCardProps) {
-  const rawTarget = `${stat}${suffix}`;
-  const display = useCountUp(rawTarget, 1600 + delay, inView);
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <a
-      href={href}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={cn(
-        "group relative flex aspect-square flex-col justify-between gap-8 overflow-hidden rounded-xl p-8 transition-all duration-300 hover:shadow-xl",
-        "transition-[transform,box-shadow,background] duration-300 ease-in-out",
-        "bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800",
-        "hover:-translate-y-[6px]",
-        "hover:shadow-primary-cbe-100",
-      )}
-    >
-      {/* Background image — subtle watermark */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500 group-hover:scale-105"
-        style={{
-          backgroundImage: `url('${bgImage}')`,
-          opacity: hovered ? 0.06 : 0.1,
-        }}
-      />
-
-      {/* Decorative circle overlays */}
-      <div
-        className="pointer-events-none absolute rounded-full"
-        style={{
-          top: -40,
-          right: -40,
-          width: 160,
-          height: 160,
-          background: "rgba(255,255,255,0.04)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute rounded-full"
-        style={{
-          bottom: -20,
-          right: 30,
-          width: 80,
-          height: 80,
-          background: "rgba(232,36,92,0.12)",
-        }}
-      />
-
-      {/* Stat + label */}
-      <div className="relative flex flex-col gap-3">
-        <div
-          className="font-bold tracking-tight text-white transition-colors duration-300"
-          style={{
-            fontSize: "clamp(48px, 5vw, 64px)",
-            lineHeight: 1,
-            letterSpacing: "-2px",
-          }}
-        >
-          {display}
-        </div>
-        <p className="text-sm font-medium text-white/60 transition-colors duration-300">
-          {label}
-        </p>
-      </div>
-
-      {/* Case title + red arrow */}
-      <div
-        className="relative flex flex-col gap-4"
-        style={{
-          borderTop: "1px solid rgba(255,255,255,0.12)",
-          paddingTop: "20px",
-        }}
-      >
-        <div className="flex items-end justify-between gap-3">
-          <p className="text-sm font-semibold leading-tight text-white/80 transition-colors duration-300 flex-1">
-            {caseTitle}
-          </p>
-          <div
-            className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full transition-transform duration-200 group-hover:translate-x-1"
-            style={{ background: "#e8245c" }}
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path
-                d="M3 7h8M7 3l4 4-4 4"
-                stroke="white"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </a>
-  );
-}
 
 // ─── Main section ─────────────────────────────────────────────────────────────
 export default function SiteTestimonials() {
@@ -187,33 +41,44 @@ export default function SiteTestimonials() {
     },
   ];
 
-  const statCards = [
+  interface caseStudy {
+    industry: string;
+    title: string;
+    stat: string;
+    statLabel: string;
+    coverSrc: string;
+    href: string;
+  }
+
+  const statCards: caseStudy[] = [
     {
-      stat: 90,
-      suffix: "%",
-      label: "Reduction in Manual Reporting Errors",
-      caseTitle: "How Rift Valley National Polytechnic Eliminated Paperwork",
-      href: "#",
-      bgImage:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/ivan-bandura-hqnUYXsN5oY-unsplash.jpg",
+      industry: "FINANCE",
+      title:
+        "Optimum Computer Systems launches AI tool to revolutionize financial reporting",
+      stat: "5mins",
+      statLabel: "Average bank reconciliation time, down from 3 days",
+      coverSrc:
+        "https://assets.citizen.digital/131897/conversions/WhatsApp-Image-2024-08-20-at-13.31.54-og_image.webp",
+      href: "/blog",
     },
     {
-      stat: 3,
-      suffix: "x",
-      label: "Faster Fee Collection & Reconciliation",
-      caseTitle: "How Baringo National Polytechnic Streamlined Finance",
+      industry: "ADMINISTRATION",
+      title:
+        "Kenya Technical Trainers College's Journey to Paperless Operations",
+      stat: "50%",
+      statLabel: "Reduction in administrative workload institution-wide",
+      coverSrc:
+        "https://www.kisiipoly.ac.ke/sites/default/files/inline-images/gate.png",
       href: "#",
-      bgImage:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/jeremy-bishop-iEjCQtcsVPY-unsplash.jpg",
     },
     {
-      stat: 100,
-      suffix: "%",
-      label: "On-Time Payroll Processing",
-      caseTitle: "How Meru Teachers College Achieved Zero Payroll Delays",
+      industry: "COMPLIANCE",
+      title: "Meru University Achieves Full IPSAS & TVETA Compliance",
+      stat: "100%",
+      statLabel: "Regulatory audit pass rate since UltimateERP deployment",
+      coverSrc:
+        "https://tuc.ac.ke/wp-content/uploads/2021/10/university-photo-1.jpg",
       href: "#",
-      bgImage:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/kevin-charit-1fL2Q1JcbNc-unsplash.jpg",
     },
   ];
 
@@ -249,7 +114,7 @@ export default function SiteTestimonials() {
         {/* ── Section header ──────────────────────────────────────────────────── */}
         <div className="flex flex-col items-center gap-3 text-center mb-12">
           <BadgePill label="Client Stories" centered={true} />
-          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-900 mb-4">
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
             What Our <span className="text-primary-cta">Clients</span> Think
           </h3>
           <p className="max-w-md text-muted-foreground leading-relaxed">
@@ -388,19 +253,52 @@ export default function SiteTestimonials() {
           ref={statsRef}
           className="grid w-full grid-cols-1 gap-6 md:grid-cols-3"
         >
-          {statCards.map((card, idx) => (
-            <StatCard
-              key={idx}
-              stat={card.stat}
-              suffix={card.suffix}
-              label={card.label}
-              caseTitle={card.caseTitle}
-              href={card.href}
-              bgImage={card.bgImage}
-              inView={statsInView}
-              delay={idx * 200}
-            />
-          ))}
+          {statCards.map((card, idx) => {
+            return (
+              <a
+                key={idx}
+                href={card.href}
+                style={{ backgroundImage: `url('${card.coverSrc}')` }}
+                className="
+                relative min-h-auto w-full overflow-hidden rounded-lg
+                bg-cover bg-center bg-no-repeat p-5
+                transition-all duration-300
+                before:content-[''] before:absolute before:inset-0 before:z-10
+                before:transition-all before:duration-300
+                hover:before:bg-primary-cbe-800/20
+                after:content-[''] after:absolute after:top-0 after:left-0
+                after:z-20 after:w-1 after:h-full after:bg-[#D01F1F]
+                sm:aspect-square md:aspect-auto md:min-h-[30rem] md:max-w-[30rem]
+              "
+              >
+                <div className="relative z-30 flex size-full flex-col justify-between gap-20 md:gap-16">
+                  {/* Top — industry tag + title */}
+                  <div className="flex flex-col gap-2">
+                    <span className="text-xs font-medium tracking-widest uppercase text-white line-clamp-1 bg-primary-cbe-500 w-fit p-2 rounded-xl">
+                      {card.industry}
+                    </span>
+                  </div>
+
+                  {/* Bottom — stat + CTA */}
+                  <div className="flex w-full flex-col gap-5 bg-primary-cbe-500/50 text-primary-cbe-800 p-6 rounded-xl items-end">
+                    <div className="flex flex-col gap-0.5">
+                      <p className="text-white font-bold text-sm sm:text-xl text-pretty leading-tight tracking-tight line-clamp-2">
+                        {card.title}
+                      </p>
+                      <span className="text-sm text-white/80 mt-1 line-clamp-3">
+                        {card.statLabel}
+                      </span>
+                    </div>
+
+                    <Button variant="default" size="sm" className="w-fit">
+                      Read Story
+                      <ArrowRight size={24} />
+                    </Button>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
         </div>
 
         {/* ── CTA footer ──────────────────────────────────────────────────────── */}

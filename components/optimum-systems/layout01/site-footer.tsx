@@ -1,27 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Facebook } from "lucide-react";
 
-// Custom circle-check icon matching the redesign (red tick, subtle ring)
-function CircleCheck() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      className="shrink-0"
-    >
-      <circle cx="8" cy="8" r="7.5" stroke="rgba(255,255,255,0.2)" />
-      <path
-        d="M4.5 8l2.5 2.5 4-5"
-        stroke="#e5341a"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 // X (Twitter) icon — replaces the deprecated bird
 function XIcon() {
@@ -102,86 +81,13 @@ const NAV_RESOURCES = [
   },
 ];
 
-const FEATURES = [
-  "1-on-1 ERP Needs Assessment",
-  "System Demo & Workflow Mapping",
-  "Custom Implementation Proposal",
-  "Local Technical Support Team",
-];
-
 export default function SiteFooter() {
   return (
     <section className="bg-primary-cbe-600 text-primary-foreground py-8 w-full px-6 sm:px-30">
       <div className="">
         <footer>
-          {/* ── CTA band ── */}
-          <div className="mb-14 flex flex-col justify-between gap-11 md:items-start xl:flex-row xl:items-center xl:gap-6">
-            <div className="flex-1">
-              {/* Eyebrow label — new */}
-              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-red-500">
-                All-in-one ERP
-              </p>
-
-              {/* Headline with weight split — updated */}
-              <h1 className="mb-4 text-3xl leading-tight">
-                <span className="font-semibold">Built for Kenya.</span>
-                <br />
-                <span className="font-light text-white/60">
-                  Designed to grow with you.
-                </span>
-              </h1>
-
-              <p className="mb-8 text-md text-secondary/60 max-w-md">
-                Streamline finance, HR, inventory, and operations with a fully
-                compliant, locally supported ERP solution.
-              </p>
-
-              <div className="flex items-center gap-3 flex-wrap">
-                {/* Red primary button — unchanged, already correct */}
-                <Button variant="default" size="default">
-                  Request a Demo
-                </Button>
-
-                {/* Ghost outline button — updated styling */}
-                <Button
-                  variant="outline"
-                  size="default"
-                  className="bg-transparent border-white/20 text-white/75 hover:bg-white/10 hover:border-white/40 hover:text-white"
-                >
-                  Explore Solutions
-                  <ArrowRight size={14} className="ml-1" />
-                </Button>
-              </div>
-            </div>
-
-            {/* Feature card — updated with top accent + label */}
-            <div className="flex-2 flex flex-row justify-end">
-              <div className="relative flex flex-col justify-between gap-0 rounded-xl bg-gradient-to-tr from-primary-cbe-800/40 via-primary-cbe-500/40 to-primary-cbe-800/40 border border-white/10 p-6 shadow-lg overflow-hidden">
-                {/* Red top-edge accent strip */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-red-500/70" />
-
-                {/* "What's included" label — new */}
-                <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-widest text-red-500/80">
-                  What&apos;s included
-                </p>
-
-                <ul className="flex flex-col space-y-0 text-muted-foreground">
-                  {FEATURES.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-center gap-3 py-2.5 border-b border-white/5 last:border-0 text-sm text-secondary/70"
-                    >
-                      <CircleCheck />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
           {/* ── Nav columns ── */}
-          <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-12 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 pt-12 lg:grid-cols-4">
             {/* Company */}
             <div>
               {/* Column header — de-emphasised, all-caps micro style */}

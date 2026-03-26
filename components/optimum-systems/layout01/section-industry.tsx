@@ -27,6 +27,7 @@ interface Industry {
   image: string;
   products: string[];
   icon: LucideIcon;
+  overview: string;
 }
 
 const industries: Industry[] = [
@@ -39,6 +40,8 @@ const industries: Industry[] = [
     products: ["UltimateERP", "BAMS", "QAB System", "Turnstile Gate Control"],
     image: "/industries/higher-edu.jpg",
     icon: GraduationCap,
+    overview:
+      "UltimateERP powers 186+ learning institutions with 30+ modules covering student lifecycle management, finance, HR, biometric attendance, CBET compliance, and real-time executive dashboards — all in a secure hybrid system.",
   },
   {
     id: 2,
@@ -49,6 +52,8 @@ const industries: Industry[] = [
     products: ["Hospital Management System", "MedFlow Drug Tracking"],
     image: "/industries/healthcare.jpg",
     icon: Ambulance,
+    overview:
+      "From MedFlow's end-to-end pharmaceutical tracking across county health facilities, to our cloud-based Hospital Management System — we reduce stockouts, cut patient wait times, and drive accountability across public and private health systems.",
   },
   {
     id: 3,
@@ -59,6 +64,8 @@ const industries: Industry[] = [
     products: ["Lend360", "Retail & Distribution Suite", "NexusTrade"],
     image: "/industries/finre.jpg",
     icon: BriefcaseBusiness,
+    overview:
+      "UltimateERP powers 186+ learning institutions with 30+ modules covering student lifecycle management, finance, HR, biometric attendance, CBET compliance, and real-time executive dashboards — all in a secure hybrid system.",
   },
   {
     id: 4,
@@ -73,6 +80,8 @@ const industries: Industry[] = [
     ],
     image: "/industries/mangri.jpg",
     icon: Factory,
+    overview:
+      "Our Manufacturing ERP, Dairy Management System, and Poultry Farm Management System unify production planning, supply chain, farmer payments, and financials — transforming operations from farm level to finished product distribution.",
   },
   {
     id: 5,
@@ -83,6 +92,8 @@ const industries: Industry[] = [
     products: ["Real Estate Management", "Security Management System"],
     image: "/industries/realestate.jpg",
     icon: HouseHeart,
+    overview:
+      "REMS automates tenant lifecycle management, lease billing, M-Pesa collections, and portfolio analytics, while our Security Management System centralises biometric access control, CCTV integration, guard tracking, and incident response across multi-site facilities.",
   },
   {
     id: 6,
@@ -93,6 +104,8 @@ const industries: Industry[] = [
     products: ["UltimateCBE Assessment ERP", "MedFlow", "FinderApp"],
     image: "/industries/gov.jpg",
     icon: Medal,
+    overview:
+      "MedFlow equips county governments with transparent pharmaceutical supply chain control, while UltimateCBE Assessment ERP supports Kenya's CBC reform by enabling competency-based learning, NEMIS integration, and real-time student progress tracking across Grades 10–12.",
   },
 ];
 
@@ -139,13 +152,7 @@ function IndustryCard({ industry }: { industry: Industry; index: number }) {
           <Separator />
           {/* Description */}
           <div className="line-clamp-2 text-sm leading-relaxed text-gray-500">
-            Pariatur culpa dolore culpa et sit proident reprehenderit excepteur
-            pariatur aute mollit aliqua. Tempor ipsum sunt nulla fugiat
-            reprehenderit mollit commodo dolore nisi eu minim do laborum. Irure
-            ea occaecat deserunt occaecat enim qui in culpa. Sunt nisi irure
-            dolore ex nulla laboris proident aliquip amet. Id esse officia ad
-            eiusmod magna fugiat non officia consequat veniam aliquip qui dolor
-            laboris.
+            {industry.overview}
           </div>
         </div>
       </motion.div>
@@ -218,26 +225,28 @@ function IndustryCard({ industry }: { industry: Industry; index: number }) {
 
 export default function IndustrySection() {
   return (
-    <section id="industries" className="px-6 sm:px-30 py-16 md:py-24 bg-primary-cbe-50 w-full">
-      <div className="space-y-8">
+    <section
+      id="industries"
+      className="px-6 sm:px-30 py-16 md:py-24 bg-primary-cbe-50 w-full"
+    >
+      <div className="space-y-8 flex flex-col items-center">
         {/* ── Header ── */}
         <div className="flex flex-col items-center gap-3 text-center mb-12">
           <BadgePill label="Sectors" centered={true} />
-          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-900 mb-4">
-            Industries We {" "}
-            <span className="text-primary-cta">Serve</span>
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
+            Industries We <span className="text-primary-cta">Serve</span>
           </h3>
           <p className="max-w-xl text-muted-foreground leading-relaxed line-clamp-3">
-            Nulla eu proident incididunt amet consectetur excepteur mollit
-            tempor incididunt eu qui tempor magna. Dolore elit non fugiat nulla
-            magna esse cupidatat pariatur consectetur qui et.
+            From higher education to healthcare, retail to real estate — Optimum
+            delivers purpose-built ERP solutions trusted by 150+ institutions
+            across Kenya&apos;s most dynamic sectors.
           </p>
         </div>
 
         {/* ── Cards grid ──
             gap-px + bg-[#D1D9EE] = 1px hairline separators between all cards
         */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {industries.map((industry, i) => (
             <IndustryCard key={industry.id} industry={industry} index={i} />
           ))}

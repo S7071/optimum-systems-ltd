@@ -74,14 +74,6 @@ const STATS: Stat[] = [
   { value: "8", suffix: "+", label: "ERP Modules" },
 ];
 
-const TRUSTED_ORGS = [
-  "Thika Technical Training Institution",
-  "TUC",
-  "Chesta Teachers Training College",
-  "Gatanga Technical and Vocational College",
-  "Thogoto Teachers Training College",
-];
-
 const TRUST_AVATARS = ["KU", "SB", "MP", "KE", "+"];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -140,7 +132,7 @@ function StatBlock({ stat }: { stat: Stat }) {
 
 export default function SiteHero() {
   return (
-    <section className="relative flex flex-col min-h-screen overflow-hidden w-full">
+    <section className="relative flex flex-col items-center min-h-screen overflow-hidden w-full">
       {/* ── Background photo ── */}
       <div className="absolute inset-0 z-0 bg-primary-cbe-800">
         <Image
@@ -164,26 +156,6 @@ export default function SiteHero() {
           "absolute inset-0 z-10 pointer-events-none",
           "bg-[linear-gradient(to_right,rgba(21,20,62,0.97)_0%,rgba(21,20,62,0.93)_30%,rgba(21,20,62,0.55)_52%,rgba(21,20,62,0.18)_70%,rgba(21,20,62,0.04)_100%),linear-gradient(to_top,rgba(21,20,62,0.65)_0%,transparent_38%)]",
         )}
-        // bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800
-        // rgb(32, 30, 92)
-        // rgb(21, 20, 62)
-        // style={{
-        //   background: `
-        //     linear-gradient(
-        //       to right,
-        //       rgba(9,24,56,0.97)  0%,
-        //       rgba(9,24,56,0.93) 30%,
-        //       rgba(9,24,56,0.55) 52%,
-        //       rgba(9,24,56,0.18) 70%,
-        //       rgba(9,24,56,0.04) 100%
-        //     ),
-        //     linear-gradient(
-        //       to top,
-        //       rgba(9,24,56,0.65) 0%,
-        //       transparent 38%
-        //     )
-        //   `,
-        // }}
         aria-hidden="true"
       />
 
@@ -198,15 +170,15 @@ export default function SiteHero() {
       />
 
       {/* ── Main content grid ── */}
-      <div className="relative z-20 flex-1 flex flex-col">
+      <div className="container relative z-20 flex-1 flex flex-col">
         <div className="flex-1 container px-6 sm:px-20 lg:px-30 py-16 sm:py-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12 lg:gap-16 w-full">
           {/* ── LEFT: Copy ── */}
           <div className="flex flex-col gap-7 md:max-w-full shrink-0">
             {/* Pill badge */}
             <div className="inline-flex items-center gap-2 bg-[rgba(26,52,148,0.3)] border border-[rgba(43,79,216,0.4)] rounded-full px-3 py-1.5 mb-8 w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-[#F03333] shadow-[0_0_8px_#F03333] animate-pulse shrink-0" />
-              <span className="text-[#93AAFF] text-xs font-medium">
-                Kenya&apos;s #1 ERP Platform
+              <span className="text-white text-sm font-medium">
+                Transforming business processes, sustaining growth
               </span>
             </div>
 
@@ -214,9 +186,11 @@ export default function SiteHero() {
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.06] text-white">
               Enterprise Solutions
               <br />
-              Built for{" "}
+              Built for the
+              <br />
+              mordern{" "}
               <span className="text-red-500 relative inline-block">
-                Africa
+                World
                 {/* underline accent */}
                 <span
                   className="absolute left-0 -bottom-1 h-0.5 w-full rounded-full"
@@ -333,23 +307,6 @@ export default function SiteHero() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* ── Bottom trust bar ── */}
-        <div className="relative z-20 border-t border-white/8 px-6 sm:px-10 lg:px-16 py-4 sm:flex hidden items-center gap-8 flex-wrap bg-primary-cbe-500">
-          <span className="text-xs uppercase tracking-widest text-white/60 whitespace-nowrap flex-shrink-0">
-            Trusted by:
-          </span>
-          <div className="flex items-center gap-7 flex-wrap">
-            {TRUSTED_ORGS.map((org) => (
-              <span
-                key={org}
-                className="text-xs font-semibold uppercase tracking-wide text-white/80 hover:text-white transition-colors duration-200 cursor-default whitespace-nowrap"
-              >
-                {org}
-              </span>
-            ))}
           </div>
         </div>
       </div>

@@ -106,7 +106,7 @@ export default function SiteCta() {
               {/* Red eyebrow label */}
               <BadgePill label="Weekly digest" centered={false} />
 
-              <h2 className="mb-4 font-extrabold text-xl sm:text-2xl text-pretty leading-tight tracking-tight">
+              <h2 className="mb-4 font-extrabold text-xl sm:text-2xl text-pretty leading-tight tracking-tight text-primary-cbe-500">
                 Subscribe to our weekly newsletter
               </h2>
               <p className="mb-6 text-sm text-muted-foreground">

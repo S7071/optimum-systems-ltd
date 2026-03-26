@@ -125,7 +125,7 @@ export default function SiteFeatures() {
 
         <div className="relative z-10 mx-auto flex max-w-[47.5rem] flex-col items-center gap-3">
           {/* Brand pill */}
-          <BadgePill label="Optimum System Ltd" centered={true} />
+          <BadgePill label="Optimum ERP Systems Ltd" centered={true} />
 
           {/* Headline */}
           <h2 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-white mb-4">
@@ -153,35 +153,7 @@ export default function SiteFeatures() {
               >
                 <CardContent className="px-0 pb-0">
                   {/* ── Banner ── */}
-                  <div className="relative w-full pb-[56.25%]">
-                    {/* Category badge — sits over the banner */}
-                    <span
-                      className="absolute right-3 top-3 z-10 rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white"
-                      style={{ background: "#1a3a6b" }}
-                    >
-                      {card.category}
-                    </span>
-
-                    {/* Industry tag — bottom-left of banner */}
-                    <span
-                      className="absolute bottom-3 left-3 z-10 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider"
-                      style={{
-                        background: "rgba(255,255,255,0.92)",
-                        color: "#1a3a6b",
-                        backdropFilter: "blur(4px)",
-                      }}
-                    >
-                      {card.tag}
-                    </span>
-
-                    <div className="absolute inset-0 overflow-hidden rounded-tl-md rounded-tr-md">
-                      <img
-                        src={card.banner}
-                        alt={card.name}
-                        className="block size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] brightness-98"
-                      />
-                    </div>
-                  </div>
+                  
 
                   {/* ── Body ── */}
                   <div className="flex flex-col gap-3 p-5">
@@ -195,14 +167,9 @@ export default function SiteFeatures() {
                         />
                       </div>
                       <div className="flex min-w-0 flex-col gap-0.5">
-                        <span className="line-clamp-1 text-[15px] font-bold leading-snug text-gray-900">
-                          {card.name}
-                        </span>
-                        <span
-                          className="text-xs font-semibold leading-none"
-                          style={{ color: "#e63329" }}
-                        >
-                          {card.alias}
+                        <span className="line-clamp-1 text-[15px] font-bold leading-snug text-primary-cbe-500">
+                          <span className="text-primary-cta">{card.name.split(" ")[0]}</span>
+                          {card.name.split(" ")[1]}
                         </span>
                       </div>
                     </CardTitle>
@@ -211,7 +178,7 @@ export default function SiteFeatures() {
                     <hr className="border-[#f0f2f6]" />
 
                     {/* Description */}
-                    <CardDescription className="line-clamp-2 text-sm leading-relaxed text-gray-500">
+                    <CardDescription className="line-clamp-5 text-sm leading-relaxed text-gray-500">
                       {card.description}
                     </CardDescription>
 

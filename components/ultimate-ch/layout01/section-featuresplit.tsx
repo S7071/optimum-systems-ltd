@@ -130,7 +130,7 @@ export default function FeatureSplitSection(prop: prop) {
         <BadgePill label={prop.eyebrow} centered={false} />
 
         {/* Headline */}
-        <h2 className="mb-4 font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-primary-cbe-800">
+        <h2 className="mb-4 font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-primary-cbe-500">
           {prop.titlePrefix === "" ? null : prop.titlePrefix}
           {prop.titlePrefix === "" ? null : <br />}
           {prop.title}

@@ -224,7 +224,7 @@ export default function SiteFeatures() {
           {/* Header */}
           <div className="mx-auto mb-16 max-w-2xl text-center">
             <SectionTag>Platform Capabilities</SectionTag>
-            <h2 className="text-3xl font-extrabold tracking-tight text-[#0B1C3D] md:text-5xl">
+            <h2 className="text-3xl font-extrabold tracking-tight text-primary-cbe-500 md:text-5xl">
               What{" "}
               <span className="text-[#E01E37]">We Offer</span>
             </h2>
@@ -315,7 +315,7 @@ export default function SiteFeatures() {
             {/* Text content */}
             <div>
               <SectionTag>One Platform</SectionTag>
-              <h3 className="text-2xl font-extrabold tracking-tight text-[#0B1C3D] md:text-4xl">
+              <h3 className="text-2xl font-extrabold tracking-tight text-primary-cbe-500 md:text-4xl">
                 Manage All Your School&apos;s Assessment Operations on{" "}
                 <em className="not-italic text-[#E01E37]">
                   One Integrated Platform

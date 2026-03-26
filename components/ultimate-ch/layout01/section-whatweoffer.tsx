@@ -4,134 +4,6 @@ import BadgePill from "@/components/ui/badge-pill";
 import { LucideIcon } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 
-// const CARDS: FeatureCard[] = [
-//   {
-//     title: "Reservations & Front Desk",
-//     description:
-//       "Full-cycle booking management — walk-ins, online reservations, group bookings, and real-time room availability across all room types with instant confirmation.",
-//     linkLabel: "Live Availability →",
-//     icon: (
-//       <svg
-//         viewBox="0 0 24 24"
-//         fill="none"
-//         stroke="#185FA5"
-//         strokeWidth={2}
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//         className="w-[22px] h-[22px]"
-//       >
-//         <rect x="3" y="4" width="18" height="18" rx="2" />
-//         <line x1="16" y1="2" x2="16" y2="6" />
-//         <line x1="8" y1="2" x2="8" y2="6" />
-//         <line x1="3" y1="10" x2="21" y2="10" />
-//       </svg>
-//     ),
-//   },
-//   {
-//     title: "CEO Analytics Dashboard",
-//     description:
-//       "Real-time occupancy rates, revenue per room, billing summaries, and staff performance — all in one executive view accessible from any device, anywhere.",
-//     linkLabel: "Live Insights →",
-//     featured: true,
-//     icon: (
-//       <svg
-//         viewBox="0 0 24 24"
-//         fill="none"
-//         stroke="white"
-//         strokeWidth={2}
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//         className="w-[22px] h-[22px]"
-//       >
-//         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-//       </svg>
-//     ),
-//   },
-//   {
-//     title: "Billing & M-PESA Integration",
-//     description:
-//       "Automated invoicing, split billing, insurance claim processing, and seamless M-PESA & bank integration ensuring zero revenue leakage and faster checkouts.",
-//     linkLabel: "M-PESA Ready →",
-//     icon: (
-//       <svg
-//         viewBox="0 0 24 24"
-//         fill="none"
-//         stroke="#185FA5"
-//         strokeWidth={2}
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//         className="w-[22px] h-[22px]"
-//       >
-//         <line x1="12" y1="1" x2="12" y2="23" />
-//         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-//       </svg>
-//     ),
-//   },
-//   {
-//     title: "Housekeeping & Maintenance",
-//     description:
-//       "Digital task assignment, room status tracking, maintenance request workflows, and real-time updates between front desk and housekeeping teams — no more paper logs.",
-//     linkLabel: "Room Operations →",
-//     icon: (
-//       <svg
-//         viewBox="0 0 24 24"
-//         fill="none"
-//         stroke="#185FA5"
-//         strokeWidth={2}
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//         className="w-[22px] h-[22px]"
-//       >
-//         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-//         <polyline points="9 22 9 12 15 12 15 22" />
-//       </svg>
-//     ),
-//   },
-//   {
-//     title: "Guest Management & CRM",
-//     description:
-//       "Complete guest profiles, stay history, preferences, loyalty tracking, and automated SMS/email reminders — building long-term relationships that drive repeat bookings.",
-//     linkLabel: "Guest Profiles →",
-//     icon: (
-//       <svg
-//         viewBox="0 0 24 24"
-//         fill="none"
-//         stroke="#185FA5"
-//         strokeWidth={2}
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//         className="w-[22px] h-[22px]"
-//       >
-//         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-//         <circle cx="9" cy="7" r="4" />
-//         <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-//         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-//       </svg>
-//     ),
-//   },
-//   {
-//     title: "POS, Restaurant & Conference",
-//     description:
-//       "Integrated point-of-sale for restaurant, bar, and conference facilities — all charges consolidated to guest rooms and tracked against revenue centres automatically.",
-//     linkLabel: "All Departments →",
-//     icon: (
-//       <svg
-//         viewBox="0 0 24 24"
-//         fill="none"
-//         stroke="#185FA5"
-//         strokeWidth={2}
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//         className="w-[22px] h-[22px]"
-//       >
-//         <rect x="2" y="3" width="20" height="14" rx="2" />
-//         <line x1="8" y1="21" x2="16" y2="21" />
-//         <line x1="12" y1="17" x2="12" y2="21" />
-//       </svg>
-//     ),
-//   },
-// ];
-
 function Card(prop: CardProp) {
   return (
     <div
@@ -217,7 +89,7 @@ export default function WhatWeOfferSection(prop: prop) {
     <section className="w-full bg-background bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat overflow-hidden">
       <div className="text-center flex flex-col gap-3 items-center px-6 sm:px-30 pt-16 sm:pt-32">
         <BadgePill label={prop.eyebrow} centered={true} />
-        <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-800">
+        <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
           {prop.title} <span className="text-primary-cta">{prop.titleSuffix}</span>
         </h2>
         <p className="mx-auto max-w-[600px] text-[15px] leading-[1.7] text-primary-cbe-800/60 line-clamp-3">

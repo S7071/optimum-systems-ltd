@@ -6,13 +6,15 @@ import SiteTestimonials from "@/components/ultimate-cbe/layout01/site-testimonia
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
 import SiteCta from "@/components/ultimate-cbe/layout02/site-cta";
-import SitePricing from "@/components/ultimate-cbe/layout01/site-pricing";
 import SiteCaseStudies from "@/components/ultimate-cbe/layout01/site-casestudies";
 import HelpDeskButton from "@/components/optimum-systems/layout01/site-help-banner";
-import WhatWeOfferSection from "@/components/ultimate-ch/layout01/section-whatweoffer";
-import FeatureSplitSection from "@/components/ultimate-ch/layout01/section-featuresplit";
+import WhatWeOfferSection from "@/components/ultimate-ch/layout02/section-whatweoffer";
 import StatsSection from "@/components/ultimate-ch/layout01/section-stats";
-import { Calendar, ChartBarBigIcon, Target, FileEdit, Users2, TimerReset, Users, ShieldCheck, Clock, BarChart3, TrendingUp } from "lucide-react";
+import { Users, ShieldCheck, Clock, BarChart3, TrendingUp } from "lucide-react";
+import WhyUsSections from "@/components/optimum-systems/layout02/section-whyus";
+import IntegrationsSection from "@/components/optimum-systems/layout01/section-integrations";
+import OnlinePresenceSection from "@/components/optimum-systems/layout01/section-online-presence";
+import SiteLogos from "@/components/optimum-systems/layout02/site-logos";
 
 export default function Home() {
   return (
@@ -21,6 +23,8 @@ export default function Home() {
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
+      <SiteLogos />
+      <WhyUsSections />
       <WhatWeOfferSection
         eyebrow="PLATFORM CAPABILITIES"
         title="What"
@@ -28,231 +32,255 @@ export default function Home() {
         description="Transform higher education management with Kenya's leading ERP — purpose-built to streamline student lifecycles, boost institutional efficiency, and deliver real-time control across every department."
         card={[
           {
-            title: "Student Management & Admissions",
+            title: "System Administration",
             description:
               "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
-            icon: Calendar,
+            icon: "Calendar",
             cta: "Student Portal",
             featured: false,
           },
           {
-            title: "CEO's Dashboard",
+            title: "Student Management",
             description:
-              "Real-time enrollment trends, fee collection vs. targets, budget variances, staffing ratios, and debtor/creditor summaries — all in one executive view accessible from any device, anywhere.",
-            icon: ChartBarBigIcon,
-            cta: "Live Insights",
-            featured: true,
+              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
+            icon: "Calendar",
+            cta: "Student Portal",
+            featured: false,
           },
           {
-            title: "Finance & Bank Integration",
+            title: "Student Academics Assessment",
+            description:
+              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
+            icon: "Calendar",
+            cta: "Student Portal",
+            featured: false,
+          },
+          {
+            title: "Student Finance",
+            description:
+              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
+            icon: "Calendar",
+            cta: "Student Portal",
+            featured: false,
+          },
+          {
+            title: "Core Finance and Accounting",
+            description:
+              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
+            icon: "Calendar",
+            cta: "Student Portal",
+            featured: false,
+          },
+          {
+            title: "E-Citizen Integration",
+            description:
+              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
+            icon: "Calendar",
+            cta: "Student Portal",
+            featured: false,
+          },
+          {
+            title: "Timetabling Management",
+            description:
+              "Real-time enrollment trends, fee collection vs. targets, budget variances, staffing ratios, and debtor/creditor summaries — all in one executive view accessible from any device, anywhere.",
+            icon: "ChartBarBigIcon",
+            cta: "Live Insights",
+            featured: false,
+          },
+          {
+            title: "Lecturer Evaluation",
             description:
               "IPSAS-compliant general ledger, automated bank reconciliations completed in under 5 minutes, M-PESA & multi-bank integration, and audit-ready financial reporting ensuring zero revenue leakage.",
-            icon: Target,
+            icon: "Target",
             cta: "Finance Ready",
             featured: false,
           },
           {
-            title: "Academics, Exams & Timetabling",
+            title: "Online Student Voting",
             description:
               "Automated course registration, AI-driven timetabling with conflict detection, CBET-CDACC compliant grading, result computation, and transcript generation — cutting processing time from weeks to hours.",
-            icon: FileEdit,
+            icon: "FileEdit",
             cta: "Academic Tools",
             featured: false,
           },
           {
-            title: "HR, Payroll & Self-Service",
+            title: "Online Student Application",
             description:
               "End-to-end staff onboarding, automated payroll with statutory deductions (NSSF, SHA, Housing Levy), biometric time tracking, and self-service portals for payslips and leave — all in one unified hub.",
-            icon: Users2,
+            icon: "Users2",
             cta: "HR Portal",
             featured: false,
           },
           {
-            title: "Biometric Gate Control & Security",
+            title: "Online Student Clearance",
             description:
               "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: TimerReset,
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Placement",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Library Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Pay As You Eat/Catering Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Health/Clinic Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Hostel and Accommodation Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Human Resources and Payroll Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Procurement & Stores Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Biometric Gate Control System",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Biometric Time and Attendance",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Bank Integration",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "CEO’s Dashboard",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Alumni Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Students Affairs Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "SMS Integration",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Self-Service Portal (For Students and Staff)",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Estate Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Transport/Fleet Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Ticketing Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
+            cta: "Secure Access",
+            featured: false,
+          },
+          {
+            title: "Audit and Risk Management",
+            description:
+              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
+            icon: "TimerReset",
             cta: "Secure Access",
             featured: false,
           },
         ]}
       />
-      <FeatureSplitSection
-        image="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
-        titlePrefix="Manage Every Corner"
-        title="of Your Institution on"
-        titleSuffix="One Integrated Platform"
-        description="UltimateERP brings together student management, finance, HR, procurement, examinations, and campus operations into a single unified system — purpose-built for Kenyan universities, TVETs, and national polytechnics."
-        eyebrow="ALL-IN-ONE SOLUTION"
-        badge="ERP PLATFORM"
-        bulletPoints={[
-          {
-            label:
-              "Reduce administrative workload by up to 50% through end-to-end process automation",
-          },
-          {
-            label:
-              "Make data-driven decisions with real-time enrollment, finance, and staffing analytics",
-          },
-          {
-            label:
-              "Ensure full regulatory compliance — IPSAS, CBET-CDACC, TVETA, KNEC, and E-Citizen ready",
-          },
-        ]}
-        cta={{
-          cta: "Book a Demo",
-          ctaLink: "/contact-us",
-          action: "See Case Studies",
-          actionLink: "ultimate-erp/case-studies",
-        }}
-        card={{
-          title: "Today's Operations",
-          stats: [
-            {
-              label: "Undergraduate",
-              value: 74,
-              color: "bg-primary-cbe-500",
-            },
-            {
-              label: "Postgraduate",
-              value: 78,
-              color: "bg-[#2e86d4]",
-            },
-            {
-              label: "TVET Modules",
-              value: 92,
-              color: "bg-[#C0392B]",
-            },
-          ],
-          overview: [
-            {
-              label: "New Enrolments",
-              value: 47,
-              color: "bg-primary-cbe-500",
-            },
-            {
-              label: "Clearances",
-              value: 12,
-              color: "bg-[#2e86d4]",
-            },
-            {
-              label: "Pending Fees",
-              value: 5,
-              color: "bg-[#C0392B]",
-            },
-          ],
-        }}
-      />
-      <StatsSection
-        description="Never miss a critical operational update. UltimateERP monitors fee balances, student attendance, exam results, payroll cycles, and procurement approvals — automatically alerting every stakeholder the moment action is required."
-        title={
-          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-white">
-            Stay in Control With <span className="text-primary-cta">Real-Time</span>{" "}
-            Institutional Intelligence
-          </h3>
-        }
-        eyebrow="INTELLIGENT AUTOMATION"
-        bulletPoints={[
-          {
-            label: "Comprehensive Finance & Fee Collection Analytics",
-            description:
-              "Live dashboards showing fee collection rates, debtor aging, budget vs. actual variances, and real-time cashbook balances across all departments.",
-          },
-          {
-            label: "Seamless Compliance with M-PESA & Bank Standards",
-            description:
-              "Fully automated bank reconciliations completed in under 5 minutes, with integrated M-PESA, card, and direct bank transfer processing.",
-          },
-          {
-            label: "Configurable Workflows for Admins, Finance & Academics",
-            description:
-              "Role-based access ensures every staff member — from principal to department head — sees only exactly what they need, with full audit trails.",
-          },
-        ]}
-        statCards={[
-          {
-            value: "186+",
-            description:
-              "Institutions successfully deployed across Kenya and East Africa",
-            icon: Users,
-            accent: false,
-          },
-          {
-            value: "98%",
-            description: "System uptime on hybrid cloud-hosted deployments",
-            icon: ShieldCheck,
-            accent: true,
-          },
-          {
-            value: "50%",
-            description:
-              "Reduction in administrative workload reported by client institutions",
-            icon: Clock,
-            accent: false,
-          },
-          {
-            value: "30+",
-            description: "Functional modules covering every aspect of institutional operations",
-            icon: BarChart3,
-            accent: false,
-          },
-        ]}
-      />
-      <SiteTestimonials
-        description="See how UltimateERP has transformed institutional management for universities, TVETs, and polytechnics across Kenya — streamlining operations, ensuring compliance, and empowering administrators to focus on what matters most."
-        stats={[
-          {
-            value: "186+",
-            label: "Institutions successfully deployed",
-          },
-          {
-            value: "50%",
-            label: "Reduction in admin workload",
-          },
-          {
-            value: "5mins",
-            label: "Average bank reconciliation time",
-          },
-        ]}
-        testimonies={[
-          {
-            name: "Dr. James Mwangi",
-            position: "Finance Director",
-            insitution: "Kenya Technical Trainers College",
-            avator: "/images/clients/01.jpg",
-            rating: 4,
-            testimony:
-              "Since deploying UltimateERP, our finance team reconciles bank statements in minutes rather than days. The IPSAS-compliant reporting and automated fee collection have completely transformed how we run our institution.",
-            featured: false,
-          },
-          {
-            name: "Prof. Grace Achieng",
-            position: "Principal",
-            insitution: "Kisumu National Polytechnic",
-            avator: "/images/clients/02.jpg",
-            rating: 5,
-            testimony:
-              "The CEO Dashboard has completely changed how I oversee our campuses. Enrollment trends, fee collection, HR data — all live, on my phone. What used to take our team weeks to compile now updates in real time, and the accuracy of our compliance reports has improved dramatically.",
-            featured: true,
-          },
-          {
-            name: "David Kariuki",
-            position: "Registrar",
-            insitution: "Meru University of Science & Technology",
-            avator: "/images/clients/03.jpg",
-            rating: 3,
-            testimony:
-              "Coordinating admissions, exams, hostels, and payroll across departments was our biggest operational challenge. UltimateERP connected everything on one platform, eliminating data gaps and bringing our entire institution's administration under one roof.",
-            featured: false,
-          },
-        ]}
-      />
+      <OnlinePresenceSection />
+      <IntegrationsSection />
       <SiteDemo
         title={
           <h2 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-white">
             Get A Powerful Start
             <br />
-            With <span className="text-primary-cta">UltimateERP</span>
+            With <span className="text-primary-cta">Ultimate</span>ERP
             <br />
             Today
           </h2>
@@ -269,7 +297,9 @@ export default function Home() {
               />
             </div>
             <div className="pr-5 flex flex-col gap-1">
-              <p className="text-xs text-primary-cbe-800/40">Monthly Fee Collection</p>
+              <p className="text-xs text-primary-cbe-800/40">
+                Monthly Fee Collection
+              </p>
               <div className="flex items-center gap-1.5">
                 <span className="text-sm font-bold text-primary-cbe-800 leading-tight">
                   KES 48M
@@ -327,45 +357,150 @@ export default function Home() {
           { label: "System uptime", value: "99.9%" },
         ]}
       />
-      <SitePricing />
-      <SiteFaq />
-      <SiteCta />
+      <SiteTestimonials
+        description="See how UltimateERP has transformed institutional management for universities, TVETs, and polytechnics across Kenya — streamlining operations, ensuring compliance, and empowering administrators to focus on what matters most."
+        stats={[
+          {
+            value: "186+",
+            label: "Institutions successfully deployed",
+          },
+          {
+            value: "85%",
+            label: "Happiness Index",
+          },
+          {
+            value: "80%",
+            label: "Recommendation ++",
+          },
+        ]}
+        testimonies={[
+          {
+            name: "Dr. James Mwangi",
+            position: "Finance Director",
+            insitution: "Kenya Technical Trainers College",
+            avator: "/images/clients/01.jpg",
+            rating: 4,
+            testimony:
+              "Since deploying UltimateERP, our finance team reconciles bank statements in minutes rather than days. The IPSAS-compliant reporting and automated fee collection have completely transformed how we run our institution.",
+            featured: false,
+          },
+          {
+            name: "Prof. Grace Achieng",
+            position: "Principal",
+            insitution: "Kisumu National Polytechnic",
+            avator: "/images/clients/02.jpg",
+            rating: 5,
+            testimony:
+              "The CEO Dashboard has completely changed how I oversee our campuses. Enrollment trends, fee collection, HR data — all live, on my phone. What used to take our team weeks to compile now updates in real time, and the accuracy of our compliance reports has improved dramatically.",
+            featured: true,
+          },
+          {
+            name: "David Kariuki",
+            position: "Registrar",
+            insitution: "Meru University of Science & Technology",
+            avator: "/images/clients/03.jpg",
+            rating: 3,
+            testimony:
+              "Coordinating admissions, exams, hostels, and payroll across departments was our biggest operational challenge. UltimateERP connected everything on one platform, eliminating data gaps and bringing our entire institution's administration under one roof.",
+            featured: false,
+          },
+        ]}
+      />
+      <StatsSection
+        description="Never miss a critical operational update. UltimateERP monitors fee balances, student attendance, exam results, payroll cycles, and procurement approvals — automatically alerting every stakeholder the moment action is required."
+        title={
+          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-white">
+            Stay in Control With{" "}
+            <span className="text-primary-cta">Real-Time</span> Institutional
+            Intelligence
+          </h3>
+        }
+        eyebrow="INTELLIGENT AUTOMATION"
+        bulletPoints={[
+          {
+            label: "Comprehensive Finance & Fee Collection Analytics",
+            description:
+              "Live dashboards showing fee collection rates, debtor aging, budget vs. actual variances, and real-time cashbook balances across all departments.",
+          },
+          {
+            label: "Seamless Compliance with M-PESA & Bank Standards",
+            description:
+              "Fully automated bank reconciliations completed in under 5 minutes, with integrated M-PESA, card, and direct bank transfer processing.",
+          },
+          {
+            label: "Configurable Workflows for Admins, Finance & Academics",
+            description:
+              "Role-based access ensures every staff member — from principal to department head — sees only exactly what they need, with full audit trails.",
+          },
+        ]}
+        statCards={[
+          {
+            value: "186+",
+            description:
+              "Institutions successfully deployed across Kenya and East Africa",
+            icon: Users,
+            accent: false,
+          },
+          {
+            value: "98%",
+            description: "System uptime on hybrid cloud-hosted deployments",
+            icon: ShieldCheck,
+            accent: true,
+          },
+          {
+            value: "50%",
+            description:
+              "Reduction in administrative workload reported by client institutions",
+            icon: Clock,
+            accent: false,
+          },
+          {
+            value: "30+",
+            description:
+              "Functional modules covering every aspect of institutional operations",
+            icon: BarChart3,
+            accent: false,
+          },
+        ]}
+      />
       <SiteCaseStudies
         description="Discover how universities, TVETs, and national polytechnics across Kenya have transformed their operations, improved compliance, and unlocked institutional growth with UltimateERP."
         caseStudies={[
           {
             industry: "FINANCE",
             title:
-              "How Kisumu Polytechnic Eliminated Manual Bank Reconciliations",
+              "Optimum Computer Systems launches AI tool to revolutionize financial reporting",
             stat: "5mins",
             statLabel: "Average bank reconciliation time, down from 3 days",
             coverSrc:
-              "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-5oYbG-sEImY-unsplash.jpg",
-            href: "#",
+              "https://assets.citizen.digital/131897/conversions/WhatsApp-Image-2024-08-20-at-13.31.54-og_image.webp",
+            href: "/blog",
           },
           {
             industry: "ADMINISTRATION",
             title:
               "Kenya Technical Trainers College's Journey to Paperless Operations",
             stat: "50%",
-            statLabel:
-              "Reduction in administrative workload institution-wide",
+            statLabel: "Reduction in administrative workload institution-wide",
             coverSrc:
-              "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-o9F8dRoSucM-unsplash.jpg",
+              "https://www.kisiipoly.ac.ke/sites/default/files/inline-images/gate.png",
             href: "#",
           },
           {
             industry: "COMPLIANCE",
-            title:
-              "Meru University Achieves Full IPSAS & TVETA Compliance",
+            title: "Meru University Achieves Full IPSAS & TVETA Compliance",
             stat: "100%",
-            statLabel: "Regulatory audit pass rate since UltimateERP deployment",
+            statLabel:
+              "Regulatory audit pass rate since UltimateERP deployment",
             coverSrc:
-              "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-K1W9OjEgacI-unsplash.jpg",
+              "https://tuc.ac.ke/wp-content/uploads/2021/10/university-photo-1.jpg",
             href: "#",
           },
         ]}
       />
+      {/* <SitePricing /> */}
+      <SiteFaq />
+      <SiteCta />
       <SiteFooter />
     </div>
   );
