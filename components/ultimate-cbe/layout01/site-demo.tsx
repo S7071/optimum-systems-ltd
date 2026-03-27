@@ -37,7 +37,7 @@ export default function SiteDemo(prop: prop) {
   return (
     <section className="relative py-16 md:py-24 w-full overflow-hidden px-6 sm:px-30">
       {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-300" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-500" />
 
       <div className="relative z-10 container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -65,7 +65,7 @@ export default function SiteDemo(prop: prop) {
             <div className="flex flex-wrap items-center gap-4">
               {/* Primary red action button */}
               <Button variant="default" size="lg">
-                Request A Demo
+                Request A Quote
                 <ArrowRight className="h-4 w-4" />
               </Button>
 
@@ -97,25 +97,14 @@ export default function SiteDemo(prop: prop) {
                 </DialogContent>
               </Dialog>
             </div>
-            {/* Social proof stats */}
-            <div className="flex gap-8 border-t border-white/10 pt-8">
-              {prop.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1">
-                  <span className="text-2xl font-bold text-white line-clamp-1">
-                    {stat.value}
-                  </span>
-                  <span className="text-xs text-white/50 line-clamp-1">{stat.label}</span>
-                </div>
-              ))}
-            </div>
           </div>
           {/* ── Right column: mockup + floating cards ── */}
-          <div className="relative">
+          <div className="relative w-full h-fit">
             <Image
               src={prop.mockupSrc}
               alt={prop.videoTitle}
-              width={1200}
-              height={700}
+              width={1400}
+              height={900}
               priority
               className="h-auto w-full rounded-xl"
             />

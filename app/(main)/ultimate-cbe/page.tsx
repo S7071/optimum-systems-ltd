@@ -2,13 +2,8 @@ import SiteHero from "@/components/ultimate-cbe/layout02/site-hero";
 import SiteDemo from "@/components/ultimate-cbe/layout01/site-demo";
 import SiteFooter from "@/components/optimum-systems/layout01/site-footer";
 import SiteNavbar from "@/components/optimum-systems/layout01/site-navbar";
-import SiteTestimonials from "@/components/ultimate-cbe/layout01/site-testimonials";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
-import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
 import SiteCta from "@/components/ultimate-cbe/layout02/site-cta";
-import SitePricing from "@/components/ultimate-cbe/layout01/site-pricing";
-import SiteCaseStudies from "@/components/ultimate-cbe/layout01/site-casestudies";
-import HelpDeskButton from "@/components/optimum-systems/layout01/site-help-banner";
 import WhatWeOfferSection from "@/components/ultimate-ch/layout01/section-whatweoffer";
 import FeatureSplitSection from "@/components/ultimate-ch/layout01/section-featuresplit";
 import StatsSection from "@/components/ultimate-ch/layout01/section-stats";
@@ -21,11 +16,14 @@ import {
   TimerReset,
   Users2,
 } from "lucide-react";
+import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
+import WhatsappButton from "@/components/optimum-systems/layout01/section-whatsapp";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen w-full items-start justify-start bg-zinc-50 font-sans dark:bg-black">
-      <HelpDeskButton />
+      <HelpCenterButton />
+            <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
@@ -154,30 +152,13 @@ export default function Home() {
       <StatsSection
         description="Never miss a critical academic update. UltimateCBE monitors student competency levels, attendance, grade submissions, and assessment deadlines — automatically notifying teachers, parents, and administrators the moment action is required."
         title={
-          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-white">
+          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-primary-cbe-500">
             Stay Informed With{" "}
             <span className="text-primary-cta">Real-Time</span> Assessment
             Insights
           </h3>
         }
         eyebrow="INTELLIGENT ALERTING"
-        bulletPoints={[
-          {
-            label: "Comprehensive Competency & Performance Analytics",
-            description:
-              "Live dashboards showing pathway distributions, competency mastery rates, class averages, and individual student progression trends.",
-          },
-          {
-            label: "Seamless Solutions Backed by KNEC & NEMIS Standards",
-            description:
-              "Fully compliant assessment workflows with integrated NEMIS data syncing, CBC grading rubrics, and MOE-ready report generation.",
-          },
-          {
-            label: "Configurable Workflows for Admins, Teachers & Parents",
-            description:
-              "Role-based access ensures every stakeholder sees exactly the data they need — nothing more, nothing less.",
-          },
-        ]}
         statCards={[
           {
             value: "186+",
@@ -203,55 +184,6 @@ export default function Home() {
             description: "Local Kenyan support team always available",
             icon: BarChart3,
             accent: false,
-          },
-        ]}
-      />
-      <SiteTestimonials
-        description="See how UltimateCBE Assessment ERP has transformed education management for schools across Kenya — streamlining assessments, empowering teachers, and driving student excellence."
-        stats={[
-          {
-            value: "186+",
-            label: "Schools onboarded",
-          },
-          {
-            value: "98%",
-            label: "Satisfaction rate",
-          },
-          {
-            value: "40hrs",
-            label: "Saved per term",
-          },
-        ]}
-        testimonies={[
-          {
-            name: "James Mwangi",
-            position: "Dean of Studies",
-            insitution: "Nairobi Academy",
-            avator: "/images/clients/01.jpg",
-            rating: 4,
-            testimony:
-              "Since implementing UltimateCBE, managing student assessments across all three pathways has become effortless. Competency tracking and automated report card generation have eliminated hours of manual paperwork every term.",
-            featured: false,
-          },
-          {
-            name: "Grace Achieng",
-            position: "Principal",
-            insitution: "St. Mary's Girls School",
-            avator: "/images/clients/02.jpg",
-            rating: 5,
-            testimony:
-              "The live dashboards have completely transformed how we monitor student progress. What used to take our team weeks to compile now updates in real time, and the accuracy of our CBE reports has improved dramatically.",
-            featured: true,
-          },
-          {
-            name: "David Kariuki",
-            position: "School Administrator",
-            insitution: "Moi Forces Academy",
-            avator: "/images/clients/03.jpg",
-            rating: 3,
-            testimony:
-              "Coordinating between teachers, parents, and administrators was our biggest challenge. UltimateCBE connected everyone on one platform, eliminating data gaps and bringing our entire school community closer to each student's learning journey.",
-            featured: false,
           },
         ]}
       />
@@ -335,38 +267,7 @@ export default function Home() {
           { label: "System uptime", value: "99.8%" },
         ]}
       />
-      <SitePricing />
-      <SiteFaq />
       <SiteCta />
-      <SiteCaseStudies
-        description="Discover how schools across Kenya are transforming their CBC assessment management with UltimateCBE — reducing admin workload, improving student outcomes, and embracing digital learning."
-        caseStudies={[
-          {
-            industry: "ADMINISTRATION",
-            title: "Nairobi Academy's Digital Assessment Transformation",
-            stat: "50%",
-            statLabel: "Reduction in manual paperwork per term",
-            coverSrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-5oYbG-sEImY-unsplash.jpg",
-            href: "#",
-          },
-          {
-            industry: "COMPETENCY TRACKING",
-            title: "St. Mary's Girls School Path to Full CBC Compliance",
-            stat: "92%",
-            statLabel: "Competency reporting accuracy achieved",
-            coverSrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-o9F8dRoSucM-unsplash.jpg",
-            href: "#",
-          },
-          {
-            industry: "PARENT ENGAGEMENT",
-            title: "Moi Forces Academy's Real-Time Parent Portal Rollout",
-            stat: "60%",
-            statLabel: "Increase in parent-teacher communication",
-            coverSrc: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-K1W9OjEgacI-unsplash.jpg",
-            href: "#",
-          },
-        ]}
-      />
       <SiteFooter />
     </div>
   );

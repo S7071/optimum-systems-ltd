@@ -88,7 +88,7 @@ const featureCards: FeatureCard[] = [
   {
     id: 5,
     banner: "/product-banners/P-06.webp",
-    name: "Ultimate Conference",
+    name: "Ultimate Conference ERP",
     alias: "UltimateCMS",
     description:
       "Seamlessly manage venue bookings, event scheduling, attendee registration, billing, and post-event reporting for conference centres and event facilities.",
@@ -169,7 +169,7 @@ export default function SiteFeatures() {
                       <div className="flex min-w-0 flex-col gap-0.5">
                         <span className="line-clamp-1 text-[15px] font-bold leading-snug text-primary-cbe-500">
                           <span className="text-primary-cta">{card.name.split(" ")[0]}</span>
-                          {card.name.split(" ")[1]}
+                          {card.name.split(" ").slice(1, card.name.split(" ").length).join(" ")}
                         </span>
                       </div>
                     </CardTitle>

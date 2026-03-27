@@ -49,8 +49,8 @@ export default function SiteStats() {
   ];
 
   return (
-    <section className="w-full bg-background bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat">
-      <div className="container w-full py-16 sm:py-32 px-6 sm:px-30 bg-gradient-to-t from-muted/40 to-transparent via-background/55">
+    <section className="w-full bg-primary-cbe-50 bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat flex flex-col items-center">
+      <div className="container py-16 sm:py-32 px-6 sm:px-30 bg-gradient-to-t from-primary-cbe-50/40 to-transparent via-primary-cbe-50/55">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* ── LEFT COLUMN ── */}
           <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">

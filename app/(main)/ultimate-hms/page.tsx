@@ -2,13 +2,8 @@ import SiteHero from "@/components/ultimate-ch/layout01/site-hero";
 import SiteDemo from "@/components/ultimate-cbe/layout01/site-demo";
 import SiteFooter from "@/components/optimum-systems/layout01/site-footer";
 import SiteNavbar from "@/components/optimum-systems/layout01/site-navbar";
-import SiteTestimonials from "@/components/ultimate-cbe/layout01/site-testimonials";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
-import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
 import SiteCta from "@/components/ultimate-cbe/layout02/site-cta";
-import SitePricing from "@/components/ultimate-cbe/layout01/site-pricing";
-import SiteCaseStudies from "@/components/ultimate-cbe/layout01/site-casestudies";
-import HelpDeskButton from "@/components/optimum-systems/layout01/site-help-banner";
 import WhatWeOfferSection from "@/components/ultimate-ch/layout01/section-whatweoffer";
 import FeatureSplitSection from "@/components/ultimate-ch/layout01/section-featuresplit";
 import StatsSection from "@/components/ultimate-ch/layout01/section-stats";
@@ -25,11 +20,14 @@ import {
   BarChart3,
   TrendingUp,
 } from "lucide-react";
+import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
+import WhatsappButton from "@/components/optimum-systems/layout01/section-whatsapp";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen w-full items-start justify-start bg-zinc-50 font-sans dark:bg-black">
-      <HelpDeskButton />
+      <HelpCenterButton />
+            <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
@@ -158,29 +156,12 @@ export default function Home() {
       <StatsSection
         description="Never let a revenue opportunity slip through the cracks. UltimateHotelERP monitors occupancy, billing, restaurant sales, staff attendance, and procurement across every department — automatically alerting your team when action is needed, from any device, anywhere."
         title={
-          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-white">
+          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-primary-cbe-500">
             Run Smarter With{" "}
             <span className="text-primary-cta">Real-Time</span> Hotel Intelligence
           </h3>
         }
         eyebrow="INTELLIGENT OPERATIONS"
-        bulletPoints={[
-          {
-            label: "Comprehensive Occupancy & Revenue Analytics",
-            description:
-              "Live dashboards showing room performance, revenue per department, billing summaries, and collection status — all in one executive view",
-          },
-          {
-            label: "Seamless Payments via M-PESA & Bank Integration",
-            description:
-              "Fully automated invoicing, split billing, and reconciliation across M-PESA, card, and direct bank transfers with zero revenue leakage",
-          },
-          {
-            label: "Configurable Access for Every Role — Receptionist to CEO",
-            description:
-              "Role-based permissions ensure every team member — from front desk to procurement — sees exactly what they need and nothing they shouldn't",
-          },
-        ]}
         statCards={[
           {
             value: "150+",
@@ -206,55 +187,6 @@ export default function Home() {
             description: "Cloud-hosted access with dedicated local Kenyan support always available",
             icon: BarChart3,
             accent: false,
-          },
-        ]}
-      />
-      <SiteTestimonials
-        description="See how UltimateHotelERP has transformed hospitality management for properties across Kenya — streamlining operations, eliminating revenue leakage, and delivering outstanding guest experiences from a single unified platform."
-        stats={[
-          {
-            value: "150+",
-            label: "Properties successfully deployed",
-          },
-          {
-            value: "50%",
-            label: "Reduction in admin workload",
-          },
-          {
-            value: "12",
-            label: "Integrated modules per deployment",
-          },
-        ]}
-        testimonies={[
-          {
-            name: "Samuel Otieno",
-            position: "Front Office Manager",
-            insitution: "Lake Naivasha Resort",
-            avator: "/images/clients/01.jpg",
-            rating: 4,
-            testimony:
-              "Since going live with UltimateHotelERP, our front desk and housekeeping teams finally speak the same language. Room status updates in real time, check-ins take seconds, and our billing errors have dropped to almost zero.",
-            featured: false,
-          },
-          {
-            name: "Patricia Wanjiku",
-            position: "General Manager",
-            insitution: "Serene Gardens Hotel",
-            avator: "/images/clients/02.jpg",
-            rating: 5,
-            testimony:
-              "The CEO dashboard alone was worth the switch. I can see today's occupancy, revenue per room type, and outstanding payments from my phone before I even arrive at the property. It has completely changed how I make decisions.",
-            featured: true,
-          },
-          {
-            name: "Brian Kamau",
-            position: "Operations Director",
-            insitution: "Acacia Conference & Leisure Centre",
-            avator: "/images/clients/03.jpg",
-            rating: 3,
-            testimony:
-              "Managing our restaurant, pub, and conference facilities used to mean juggling three different systems. UltimateHotelERP brought everything under one roof — billing, inventory, staffing — and our end-of-day reconciliation now takes minutes, not hours.",
-            featured: false,
           },
         ]}
       />
@@ -338,41 +270,7 @@ export default function Home() {
           { label: "System uptime", value: "99.8%" },
         ]}
       />
-      <SitePricing />
-      <SiteFaq />
       <SiteCta />
-      <SiteCaseStudies
-        description="Discover how hotels, resorts, and hospitality businesses across Kenya have transformed their operations, boosted revenue, and elevated guest experiences with UltimateHotelERP."
-        caseStudies={[
-          {
-            industry: "ACCOMMODATION",
-            title: "Naivasha Resort's Reservation & Occupancy Overhaul",
-            stat: "40%",
-            statLabel: "Increase in room occupancy within 3 months",
-            coverSrc:
-              "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-5oYbG-sEImY-unsplash.jpg",
-            href: "#",
-          },
-          {
-            industry: "FOOD & BEVERAGE",
-            title: "Sarova's Restaurant & Pub Revenue Transformation",
-            stat: "30%",
-            statLabel: "Reduction in food waste through smart inventory tracking",
-            coverSrc:
-              "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-o9F8dRoSucM-unsplash.jpg",
-            href: "#",
-          },
-          {
-            industry: "FINANCE",
-            title: "Acacia Hotel's M-PESA Billing & Zero Leakage Journey",
-            stat: "80%",
-            statLabel: "Faster payment reconciliation with automated M-PESA integration",
-            coverSrc:
-              "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-K1W9OjEgacI-unsplash.jpg",
-            href: "#",
-          },
-        ]}
-      />
       <SiteFooter />
     </div>
   );

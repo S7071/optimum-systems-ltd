@@ -1,24 +1,16 @@
 import BadgePill from "@/components/ui/badge-pill";
 import { Button } from "@/components/ui/button";
+import CaseStudyCard, { caseStudyProp } from "@/components/ui/case-study-card";
 import { ArrowRight } from "lucide-react";
-
-interface caseStudy {
-  industry: string;
-  title: string;
-  stat: string;
-  statLabel: string;
-  coverSrc: string;
-  href: string;
-}
 
 interface prop {
   description: string;
-  caseStudies: caseStudy[];
+  caseStudies: caseStudyProp[];
 }
 
 export default function SiteCaseStudies(prop: prop) {
   return (
-    <section className="py-16 md:py-24 w-full px-6 sm:px-30">
+    <section className="py-16 md:py-24 w-full px-6 sm:px-30 bg-primary-cbe-50">
       <div className="flex flex-col gap-10 items-center">
         <div className="w-full mx-auto text-center flex items-center flex-col gap-3">
           <BadgePill label="Case Studies" centered={true} />
@@ -30,50 +22,9 @@ export default function SiteCaseStudies(prop: prop) {
           </p>
         </div>
         <div className="container grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {prop.caseStudies.map((study) => (
-            <a
-              key={study.title}
-              href={study.href}
-              style={{ backgroundImage: `url('${study.coverSrc}')` }}
-              className="
-                relative min-h-auto w-full overflow-hidden rounded-lg
-                bg-cover bg-center bg-no-repeat p-5
-                transition-all duration-300
-                before:content-[''] before:absolute before:inset-0 before:z-10
-                before:transition-all before:duration-300
-                hover:before:bg-primary-cbe-800/20
-                after:content-[''] after:absolute after:top-0 after:left-0
-                after:z-20 after:w-1 after:h-full after:bg-[#D01F1F]
-                sm:aspect-square md:aspect-auto md:min-h-[30rem] md:max-w-[30rem]
-              "
-            >
-              <div className="relative z-30 flex size-full flex-col justify-between gap-20 md:gap-16">
-                {/* Top — industry tag + title */}
-                <div className="flex flex-col gap-2">
-                  <span className="text-xs font-medium tracking-widest uppercase text-white line-clamp-1 bg-primary-cbe-500 w-fit p-2 rounded-xl">
-                    {study.industry}
-                  </span>
-                </div>
-
-                {/* Bottom — stat + CTA */}
-                <div className="flex w-full flex-col gap-5 bg-primary-cbe-500/50 text-primary-cbe-800 p-6 rounded-xl items-end">
-                  <div className="flex flex-col gap-0.5">
-                    <p className="text-white font-bold text-sm sm:text-xl text-pretty leading-tight tracking-tight line-clamp-2">
-                      {study.title}
-                    </p>
-                    <span className="text-sm text-white/80 mt-1 line-clamp-3">
-                      {study.statLabel}
-                    </span>
-                  </div>
-
-                  <Button variant="default" size="sm" className="w-fit">
-                    Read Story
-                    <ArrowRight size={24} />
-                  </Button>
-                </div>
-              </div>
-            </a>
-          ))}
+          {prop.caseStudies.map((study, idx) => {
+            return CaseStudyCard(study, idx);
+          })}
         </div>
         {/* CTA */}
         <div className="mt-14 flex justify-center">

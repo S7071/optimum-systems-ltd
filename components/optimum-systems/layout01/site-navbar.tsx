@@ -763,14 +763,14 @@ export default function SiteNavbar() {
           <Image
             src="/logo.svg"
             alt="Logo"
-            width={140}
+            width={170}
             height={32}
             className="dark:hidden"
           />
           <Image
             src="/logo.svg"
             alt="Logo"
-            width={140}
+            width={170}
             height={32}
             className="hidden dark:block"
           />
@@ -804,7 +804,7 @@ export default function SiteNavbar() {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    href="/#industries"
+                    href="/company/partners"
                     className="px-4 py-2 text-sm font-medium text-primary-cbe-800 hover:text-primary-cbe-500 transition-colors data-[state=open]:text-[#1B3FA6]"
                   >
                     Our Clients

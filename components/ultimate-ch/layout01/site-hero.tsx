@@ -61,7 +61,7 @@ export default function SiteHero() {
             <div className="inline-flex items-center gap-3 w-fit">
               <div className="size-10 rounded-lg bg-background flex items-center justify-center flex-shrink-0 p-1.5 border border-primary-cbe-100">
                 <Image
-                  src="/logos/approved/hms-dark-icon.svg"
+                  src="/logos/ultimate-icon.svg"
                   alt="UltimateHMS"
                   width={10}
                   height={10}
@@ -69,7 +69,7 @@ export default function SiteHero() {
                 />
               </div>
               <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
-                Ultimate HMS ERP
+                <span className="text-primary-cta font-extrabold">Ultimate</span> Hotel ERP
               </span>
             </div>
 
@@ -132,39 +132,14 @@ export default function SiteHero() {
         </div>
         {/* Right column — blue dashboard panel */}
         <div className="relative overflow-hidden hidden md:block">
-          {/* Background texture from original */}
-          <Image
-            src="/images/cbe/bg-lines.webp"
-            alt=""
-            fill
-            className="object-cover opacity-30 pointer-events-none z-0"
-            aria-hidden="true"
-          />
-
           {/* Hero photo */}
           <Image
-            src="/images/cbe/hero.jpg"
+            src="/heros/ultimateHMS.jpg"
             alt="Teacher working with students on CBE curriculum"
             fill
             className="object-cover object-center z-[1]"
             priority
           />
-
-          {/*
-                    Left-edge bleed — softens the hard cut between
-                    white left panel and photo.
-                  */}
-          <div
-            className="absolute inset-0 z-[2] pointer-events-none"
-            style={{
-              background: `
-                        linear-gradient(to right, rgba(255,255,255,0.15) 0%, transparent 25%),
-                        linear-gradient(135deg, rgba(11,61,145,0.15) 0%, transparent 55%)
-                      `,
-            }}
-            aria-hidden="true"
-          />
-
           {/* Floating activity badge — bottom-left */}
           <div
             className="absolute top-8 right-8 z-10  bg-white rounded-xl px-4 py-3 flex items-center gap-3 min-w-[230px]"

@@ -2,13 +2,8 @@ import SiteHero from "@/components/ultimate-manufacturing/layout01/site-hero";
 import SiteDemo from "@/components/ultimate-cbe/layout01/site-demo";
 import SiteFooter from "@/components/optimum-systems/layout01/site-footer";
 import SiteNavbar from "@/components/optimum-systems/layout01/site-navbar";
-import SiteTestimonials from "@/components/ultimate-cbe/layout01/site-testimonials";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
-import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
 import SiteCta from "@/components/ultimate-cbe/layout02/site-cta";
-import SitePricing from "@/components/ultimate-cbe/layout01/site-pricing";
-import SiteCaseStudies from "@/components/ultimate-cbe/layout01/site-casestudies";
-import HelpDeskButton from "@/components/optimum-systems/layout01/site-help-banner";
 import WhatWeOfferSection from "@/components/ultimate-ch/layout01/section-whatweoffer";
 import FeatureSplitSection from "@/components/ultimate-ch/layout01/section-featuresplit";
 import StatsSection from "@/components/ultimate-ch/layout01/section-stats";
@@ -25,11 +20,14 @@ import {
   BarChart3,
   TrendingUp,
 } from "lucide-react";
+import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
+import WhatsappButton from "@/components/optimum-systems/layout01/section-whatsapp";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen w-full items-start justify-start bg-zinc-50 font-sans dark:bg-black">
-      <HelpDeskButton />
+      <HelpCenterButton />
+            <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
@@ -158,29 +156,12 @@ export default function Home() {
       <StatsSection
         description="Built for Kenya's manufacturers and processors. Plan production, track costs in real-time, manage procurement and HR — and give leadership the live plant visibility they need to drive results."
         title={
-          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-white">
+          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-primary-cbe-500">
             Stay Ahead With <span className="text-primary-cta">Real-Time</span>{" "}
             Supply Chain Intelligence
           </h3>
         }
         eyebrow="Intelligent Operations"
-        bulletPoints={[
-          {
-            label: "BOM & Production Planning",
-            description:
-              "Real-time stock levels across all warehouses with automated low-stock and reorder notifications",
-          },
-          {
-            label: "Real-Time Cost Tracking",
-            description:
-              "Fully automated tax invoicing, digital payments, and KRA-compliant reporting built into every transaction",
-          },
-          {
-            label: "WIP & Work Orders",
-            description:
-              "Role-based access ensures every team member sees only the data relevant to their function",
-          },
-        ]}
         statCards={[
           {
             value: "150+",
@@ -207,55 +188,6 @@ export default function Home() {
             description: "Local Kenyan support team always available",
             icon: BarChart3,
             accent: false,
-          },
-        ]}
-      />
-      <SiteTestimonials
-        description="See how Ultimate SCM has transformed distribution and retail operations across Kenya — streamlining procurement, eliminating stock losses, and driving measurable growth."
-        stats={[
-          {
-            value: "150+",
-            label: "Institutions deployed",
-          },
-          {
-            value: "40%",
-            label: "ICT professionals",
-          },
-          {
-            value: "99.8%",
-            label: "System uptime",
-          },
-        ]}
-        testimonies={[
-          {
-            name: "James Mwangi",
-            position: "Operations Manager",
-            insitution: "Farmline Agrovet Supplies",
-            avator: "/images/clients/01.jpg",
-            rating: 4,
-            testimony:
-              "Since deploying Ultimate SCM, our stock reconciliations across three branches take minutes instead of days. The automated reorder alerts alone have saved us from countless stockouts during peak season.",
-            featured: false,
-          },
-          {
-            name: "Grace Achieng",
-            position: "General Manager",
-            insitution: "Savanna Wholesale Distributors",
-            avator: "/images/clients/02.jpg",
-            rating: 5,
-            testimony:
-              "The van sales module completely changed how our field team operates. Real-time invoicing, route tracking, and instant inventory updates mean our drivers close more sales with zero paperwork at the end of the day.",
-            featured: true,
-          },
-          {
-            name: "David Kariuki",
-            position: "Finance Director",
-            insitution: "Kariuki Retail Chain",
-            avator: "/images/clients/03.jpg",
-            rating: 3,
-            testimony:
-              "ETIMS compliance used to be a nightmare every month. With Ultimate SCM, every invoice is automatically filed and our KRA submissions are done in minutes. Our accountant finally has time to focus on actual analysis.",
-            featured: false,
           },
         ]}
       />
@@ -339,45 +271,7 @@ export default function Home() {
           { label: "System uptime", value: "99.8%" },
         ]}
       />
-      <SitePricing />
-      <SiteFaq />
       <SiteCta />
-      <SiteCaseStudies
-        description="Discover how schools across Kenya are transforming their CBC assessment management with UltimateCBE — reducing admin workload, improving student outcomes, and embracing digital learning."
-        caseStudies={[
-          {
-            industry: "Wholesale Distribution",
-            title:
-              "Savanna Distributors Scales to 5 Branches Without Adding Headcount",
-            stat: "35%",
-            statLabel: "Reduction in fulfilment errors across all branches",
-            coverSrc:
-              "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-5oYbG-sEImY-unsplash.jpg",
-            href: "#",
-          },
-          {
-            industry: "Agri-Supply Retail",
-            title:
-              "Farmline Agrovet Eliminates Seasonal Stockouts With Smart Reordering",
-            stat: "50%",
-            statLabel:
-              "Decrease in stockout incidents during peak planting season",
-            coverSrc:
-              "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-o9F8dRoSucM-unsplash.jpg",
-            href: "#",
-          },
-          {
-            industry: "Finance & Compliance",
-            title:
-              "Kariuki Retail Chain Achieves Full ETIMS Compliance in Under 30 Days",
-            stat: "60%",
-            statLabel: "Faster month-end close after automating tax invoicing",
-            coverSrc:
-              "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/simone-hutsch-K1W9OjEgacI-unsplash.jpg",
-            href: "#",
-          },
-        ]}
-      />
       <SiteFooter />
     </div>
   );

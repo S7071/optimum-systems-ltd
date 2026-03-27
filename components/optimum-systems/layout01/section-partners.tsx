@@ -1,91 +1,254 @@
 /* eslint-disable @next/next/no-img-element */
-export default function PartnersSection() {
+"use client";
+
+import { useState } from "react";
+
+type Partner = {
+  name: string;
+  abbr: string;
+  bg: string;
+  fg: string;
+};
+
+type Category = {
+  id: string;
+  label: string;
+  partners: Partner[];
+  category: string;
+};
+
+const CATEGORIES: Category[] = [
+  {
+    id: "education",
+    label: "Universities",
+    category: "education",
+    partners: [
+      { name: "", abbr: "/clients/UNI/1.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  {
+    id: "education",
+    label: "National Polytechnics",
+    category: "education",
+    partners: [
+      { name: "", abbr: "/clients/POLY/1.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/2.png", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  {
+    id: "education",
+    label: "Technical & Training Institutions",
+    category: "education",
+    partners: [
+      { name: "", abbr: "/clients/TTI/1.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/2.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/3.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/4.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/5.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/6.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/7.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/8.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/9.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  {
+    id: "education",
+    label: "Technical & Vocational Colleges",
+    category: "education",
+    partners: [
+      { name: "", abbr: "/clients/TVC/1.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/2.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/4.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/5.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/6.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/7.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/8.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/9.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/10.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/11.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/12.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/13.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/14.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/15.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/16.JPEG", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/17.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/18.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/19.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/20.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/21.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/22.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/23.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/24.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/25.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/26.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/27.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/28.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/29.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/30.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/30.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/31.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/32.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/33.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/34.JPEG", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/35.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/36.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/37.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/38.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/39.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/40.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/41.png", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  {
+    id: "education",
+    label: "Teachers Training Colleges",
+    category: "education",
+    partners: [
+      { name: "", abbr: "/clients/TTC/1.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/2.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/3.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/4.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/5.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/6.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/7.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/8.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/9.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/10.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  // {
+  //   id: "education",
+  //   label: "Secondary Schools",
+  //   category: "education",
+  //   partners: [],
+  // },
+  // {
+  //   id: "finance",
+  //   label: "Financial Institutions",
+  //   category: "finance",
+  //   partners: [],
+  // },
+  // {
+  //   id: "healthcare",
+  //   label: "Medical Facilities",
+  //   category: "healthcare",
+  //   partners: [],
+  // },
+  // {
+  //   id: "hospitality",
+  //   label: "Hospitality",
+  //   category: "hospitality",
+  //   partners: [],
+  // },
+  // {
+  //   id: "sme",
+  //   label: "SME",
+  //   category: "sme",
+  //   partners: [],
+  // },
+];
+
+const TABS = [
+  { id: "all", label: "All Categories" },
+  { id: "government", label: "Government" },
+  { id: "education", label: "Education" },
+  { id: "healthcare", label: "Health Care" },
+  { id: "hospitality", label: "Hospitality" },
+  { id: "finance", label: "Finance" },
+  { id: "sme", label: "SME's" },
+] as const;
+
+function PartnerCard({ name, abbr, bg, fg }: Partner) {
   return (
-    <section className="py-32 w-full">
-      <div className="container">
-        <div className="grid grid-cols-1 gap-20 lg:grid-cols-6">
-          <div className="top-10 col-span-2 flex h-fit w-fit items-center gap-3 py-8 lg:sticky">
-            <span className="size-3 bg-orange-500"></span>
-            <p className="text-xl text-foreground/30 uppercase lg:text-2xl">
-              Our partners
-            </p>
-          </div>
-          <ul className="col-span-4 grid w-full grid-cols-2 gap-2 lg:grid-cols-3">
-            <li className="relative flex h-72 items-center justify-center rounded-2xl bg-muted">
-              <div className="">
-                <img
-                  alt="/2021"
-                  className="h-7 w-auto dark:invert"
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-wordmark.svg"
-                />
-              </div>
-              <p className="absolute right-4 bottom-4 font-mono text-sm tracking-tight text-foreground/40">
-                /2021
-              </p>
-            </li>
-            <li className="relative flex h-72 items-center justify-center rounded-2xl bg-muted">
-              <div className="">
-                <img
-                  alt="/2022"
-                  className="h-7 w-auto dark:invert"
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-1.svg"
-                />
-              </div>
-              <p className="absolute right-4 bottom-4 font-mono text-sm tracking-tight text-foreground/40">
-                /2022
-              </p>
-            </li>
-            <li className="relative flex h-72 items-center justify-center rounded-2xl bg-muted">
-              <div className="">
-                <img
-                  alt="/2023"
-                  className="h-7 w-auto dark:invert"
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-2.svg"
-                />
-              </div>
-              <p className="absolute right-4 bottom-4 font-mono text-sm tracking-tight text-foreground/40">
-                /2023
-              </p>
-            </li>
-            <li className="relative flex h-72 items-center justify-center rounded-2xl bg-muted">
-              <div className="">
-                <img
-                  alt="/2024"
-                  className="h-7 w-auto dark:invert"
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-3.svg"
-                />
-              </div>
-              <p className="absolute right-4 bottom-4 font-mono text-sm tracking-tight text-foreground/40">
-                /2024
-              </p>
-            </li>
-            <li className="relative flex h-72 items-center justify-center rounded-2xl bg-muted">
-              <div className="">
-                <img
-                  alt="/2025"
-                  className="h-7 w-auto dark:invert"
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-4.svg"
-                />
-              </div>
-              <p className="absolute right-4 bottom-4 font-mono text-sm tracking-tight text-foreground/40">
-                /2025
-              </p>
-            </li>
-            <li className="relative flex h-72 items-center justify-center rounded-2xl bg-muted">
-              <div className="">
-                <img
-                  alt="/2026"
-                  className="h-5 w-auto dark:invert"
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-5.svg"
-                />
-              </div>
-              <p className="absolute right-4 bottom-4 font-mono text-sm tracking-tight text-foreground/40">
-                /2026
-              </p>
-            </li>
-          </ul>
+    <div
+      className="group flex min-h-[110px] flex-col items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-5 text-center shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_4px_16px_rgba(59,130,246,0.10)]"
+    >
+      <div
+        className="flex h-fit w-fit items-center justify-center rounded-[10px] font-bold tracking-[0.02em] transition-transform duration-200 group-hover:scale-105"
+        style={{ backgroundColor: bg, color: fg }}
+      >
+        <img src={abbr} alt="client-logo" className="w-30 h-30 aspect-square" />
+      </div>
+
+      <p className="text-[11.5px] font-medium leading-[1.35] text-slate-700">
+        {name}
+      </p>
+    </div>
+  );
+}
+
+export default function PartnersGrid() {
+  const [activeTab, setActiveTab] = useState<(typeof TABS)[number]["id"]>("all");
+
+  const visibleCategories =
+    activeTab === "all"
+      ? CATEGORIES
+      : CATEGORIES.filter((category) => category.id === activeTab);
+
+  return (
+    <div className="min-h-screen bg-primary-cbe-50 text-slate-900 flex flex-col items-center w-full">
+      <div className="sticky top-0 z-10 border-b border-slate-200 bg-white shadow-sm w-full px-6 sm:px-30">
+        <div className="flex gap-1 overflow-x-auto justify-center">
+          {TABS.map((tab) => {
+            const isActive = activeTab === tab.id;
+
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                className={[
+                  "whitespace-nowrap border-b-2 px-4 py-3.5 text-[13.5px] font-medium transition-colors duration-150",
+                  isActive
+                    ? "border-blue-600 text-primary-cbe-500"
+                    : "border-transparent text-slate-500 hover:text-slate-700",
+                ].join(" ")}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
       </div>
-    </section>
+
+      <main className="flex flex-col gap-12 py-16 md:py-24 w-full px-6 sm:px-80">
+        {visibleCategories.map((category, idx) => (
+          <section key={idx}>
+            <div className="mb-5">
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary-cbe-500 px-4 py-1.5 text-[13px] font-semibold text-white">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-200" />
+                {category.label}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {category.partners.map((partner, idx) => (
+                <PartnerCard key={idx} {...partner} />
+              ))}
+            </div>
+          </section>
+        ))}
+
+        <section className="rounded-2xl bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-8 py-7 shadow-lg">
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <div>
+              <p className="mb-1 text-[12.5px] font-medium text-blue-200">
+                Optimum Computer Systems Ltd
+              </p>
+              <p className="text-[17px] font-semibold text-white">
+                Grow your business with our integrated ERP ecosystem
+              </p>
+            </div>
+
+            <button
+              type="button"
+              className="rounded-full bg-white px-6 py-2.5 text-[13px] font-semibold text-primary-cbe-500 transition-colors duration-150 hover:bg-blue-50"
+            >
+              Request a Demo →
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }

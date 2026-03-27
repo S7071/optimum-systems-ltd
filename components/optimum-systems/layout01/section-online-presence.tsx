@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import BadgePill from "@/components/ui/badge-pill";
@@ -19,9 +20,9 @@ type Feature = {
 
 const FEATURES: Feature[] = [
   {
-    id: "task-management",
-    label: "Task Management",
-    title: "Task Management",
+    id: "lecture-portal",
+    label: "Lecture Portal",
+    title: "Lecture Portal",
     description:
       "Ullamco proident nisi ut pariatur eu exercitation magna commodo voluptate reprehenderit qui est.",
     bullets: [
@@ -44,9 +45,9 @@ const FEATURES: Feature[] = [
     accent: "from-slate-900 via-slate-700 to-slate-500",
   },
   {
-    id: "team-collaboration",
-    label: "Team Collaboration",
-    title: "Team Collaboration",
+    id: "student-portal",
+    label: "Student Portal",
+    title: "Student Portal",
     description: "Aute cillum ad exercitation ea.",
     bullets: [
       {
@@ -68,9 +69,9 @@ const FEATURES: Feature[] = [
     accent: "from-zinc-900 via-zinc-700 to-zinc-500",
   },
   {
-    id: "workflow-automation",
-    label: "Workflow Automation",
-    title: "Workflow Automation",
+    id: "admin-portal",
+    label: "Admin Portal",
+    title: "Admin Portal",
     description: "Sint commodo voluptate cillum excepteur.",
     bullets: [
       {
@@ -95,23 +96,8 @@ const FEATURES: Feature[] = [
 
 function CubeIllustration() {
   return (
-    <div className="relative mx-auto flex aspect-[1.6] w-full max-w-3xl items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white/70">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.04),transparent_55%)]" />
-
-      <div className="relative h-44 w-44 sm:h-56 sm:w-56">
-        <div className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rotate-45 border-[18px] border-black bg-white sm:h-28 sm:w-28 sm:border-[22px]" />
-        <div className="absolute left-1/2 top-[24%] h-24 w-24 -translate-x-1/2 rotate-45 border-[18px] border-black border-b-transparent border-l-transparent bg-transparent sm:h-28 sm:w-28 sm:border-[22px]" />
-
-        <div className="absolute left-[16%] top-[28%] h-24 w-14 -translate-y-1/2 overflow-hidden border-l-4 border-black sm:h-32 sm:w-16">
-          <div className="h-full w-full bg-[repeating-linear-gradient(to_bottom,black_0px,black_3px,transparent_3px,transparent_10px)] opacity-90" />
-        </div>
-
-        <div className="absolute left-[22%] top-[50%] h-20 w-14 -translate-y-1/2 border border-black bg-white sm:h-24 sm:w-16" />
-
-        <div className="absolute right-[18%] top-[44%] h-24 w-14 -translate-y-1/2 bg-black sm:h-28 sm:w-16" />
-
-        <div className="absolute left-[42%] top-[18%] h-2 w-2 rounded-full bg-black" />
-      </div>
+    <div className="relative mx-auto flex aspect-[1.6] w-full w-fit items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white/70">
+      <img src="/portals/laptop.png" alt="" className="w-full h-full" />
     </div>
   );
 }

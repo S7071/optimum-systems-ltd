@@ -1,15 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import BadgePill from "@/components/ui/badge-pill";
-
-/* eslint-disable @next/next/no-img-element */
-
-
+import CaseStudyCard from "@/components/ui/case-study-card";
 
 // ─── Main section ─────────────────────────────────────────────────────────────
 export default function SiteTestimonials() {
@@ -52,7 +50,7 @@ export default function SiteTestimonials() {
 
   const statCards: caseStudy[] = [
     {
-      industry: "FINANCE",
+      industry: "INNOVATION",
       title:
         "Optimum Computer Systems launches AI tool to revolutionize financial reporting",
       stat: "5mins",
@@ -62,9 +60,9 @@ export default function SiteTestimonials() {
       href: "/blog",
     },
     {
-      industry: "ADMINISTRATION",
+      industry: "SUCCESS STORIES",
       title:
-        "Kenya Technical Trainers College's Journey to Paperless Operations",
+        "Kisii National Polytechnic Journey to Paperless Operations",
       stat: "50%",
       statLabel: "Reduction in administrative workload institution-wide",
       coverSrc:
@@ -72,8 +70,8 @@ export default function SiteTestimonials() {
       href: "#",
     },
     {
-      industry: "COMPLIANCE",
-      title: "Meru University Achieves Full IPSAS & TVETA Compliance",
+      industry: "SUCCESS STORY",
+      title: "Turkana University Achieves Full IPSAS & TVETA Compliance",
       stat: "100%",
       statLabel: "Regulatory audit pass rate since UltimateERP deployment",
       coverSrc:
@@ -93,33 +91,18 @@ export default function SiteTestimonials() {
     return () => clearInterval(timer);
   }, [testimonies.length]);
 
-  // ── Trigger count-up when stats scroll into view ────────────────────────────
-  const [statsInView, setStatsInView] = useState(false);
-  const statsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setStatsInView(true);
-      },
-      { threshold: 0.2 },
-    );
-    if (statsRef.current) observer.observe(statsRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section className="w-full bg-background bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat">
-      <div className="container flex flex-col gap-6 px-6 sm:px-30 w-full bg-gradient-to-t from-muted/40 to-transparent via-background/85 py-16 sm:py-32">
+    <section className="w-full bg-primary-cbe-50 bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat flex flex-col items-center">
+      <div className="container flex flex-col gap-6 px-6 sm:px-30 w-full bg-gradient-to-t from-primary-cbe-50/40 to-transparent via-primary-cbe-50/85 py-16 sm:py-32">
         {/* ── Section header ──────────────────────────────────────────────────── */}
         <div className="flex flex-col items-center gap-3 text-center mb-12">
           <BadgePill label="Client Stories" centered={true} />
           <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
-            What Our <span className="text-primary-cta">Clients</span> Think
+            What Our <span className="text-primary-cta">Clients</span> Say
           </h3>
           <p className="max-w-md text-muted-foreground leading-relaxed">
             Trusted by over{" "}
-            <strong className="text-foreground">160 institutions</strong> across
+            <strong className="text-foreground">200 institutions</strong> across
             Kenya — here&apos;s what they have to say about working with
             Optimum.
           </p>
@@ -240,71 +223,25 @@ export default function SiteTestimonials() {
         </div>
 
         {/* ── Divider ─────────────────────────────────────────────────────────── */}
-        <div className="flex items-center gap-5 py-2">
-          <div className="h-px flex-1 bg-border" />
-          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground whitespace-nowrap">
-            Proven Results
+        <div className="flex items-center gap-5 py-10">
+          <div className="h-px flex-1 bg-primary-cbe-800/50" />
+          <span className="text-lg font-bold uppercase tracking-widest text-primary-cta whitespace-nowrap">
+            Case Studies
           </span>
-          <div className="h-px flex-1 bg-border" />
+          <div className="h-px flex-1 bg-primary-cbe-800/50" />
         </div>
 
         {/* ── Stat cards (count-up on scroll) ─────────────────────────────────── */}
-        <div
-          ref={statsRef}
-          className="grid w-full grid-cols-1 gap-6 md:grid-cols-3"
-        >
+        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
           {statCards.map((card, idx) => {
-            return (
-              <a
-                key={idx}
-                href={card.href}
-                style={{ backgroundImage: `url('${card.coverSrc}')` }}
-                className="
-                relative min-h-auto w-full overflow-hidden rounded-lg
-                bg-cover bg-center bg-no-repeat p-5
-                transition-all duration-300
-                before:content-[''] before:absolute before:inset-0 before:z-10
-                before:transition-all before:duration-300
-                hover:before:bg-primary-cbe-800/20
-                after:content-[''] after:absolute after:top-0 after:left-0
-                after:z-20 after:w-1 after:h-full after:bg-[#D01F1F]
-                sm:aspect-square md:aspect-auto md:min-h-[30rem] md:max-w-[30rem]
-              "
-              >
-                <div className="relative z-30 flex size-full flex-col justify-between gap-20 md:gap-16">
-                  {/* Top — industry tag + title */}
-                  <div className="flex flex-col gap-2">
-                    <span className="text-xs font-medium tracking-widest uppercase text-white line-clamp-1 bg-primary-cbe-500 w-fit p-2 rounded-xl">
-                      {card.industry}
-                    </span>
-                  </div>
-
-                  {/* Bottom — stat + CTA */}
-                  <div className="flex w-full flex-col gap-5 bg-primary-cbe-500/50 text-primary-cbe-800 p-6 rounded-xl items-end">
-                    <div className="flex flex-col gap-0.5">
-                      <p className="text-white font-bold text-sm sm:text-xl text-pretty leading-tight tracking-tight line-clamp-2">
-                        {card.title}
-                      </p>
-                      <span className="text-sm text-white/80 mt-1 line-clamp-3">
-                        {card.statLabel}
-                      </span>
-                    </div>
-
-                    <Button variant="default" size="sm" className="w-fit">
-                      Read Story
-                      <ArrowRight size={24} />
-                    </Button>
-                  </div>
-                </div>
-              </a>
-            );
+            return CaseStudyCard(card, idx);
           })}
         </div>
 
         {/* ── CTA footer ──────────────────────────────────────────────────────── */}
         <div className="flex flex-col items-center gap-10 pt-10">
           <p className="text-sm text-muted-foreground">
-            Join 160+ Kenyan institutions already transforming their operations
+            Join 200+ World institutions already transforming their operations
           </p>
           <Button variant="default" size="lg">
             Read All Client Stories

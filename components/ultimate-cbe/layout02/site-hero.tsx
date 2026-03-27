@@ -130,7 +130,7 @@ export default function SiteHero() {
               />
             </div>
             <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
-              Ultimate CBE ASSESSMENT ERP
+              <span className="text-primary-cta font-extrabold">Ultimate</span>CBE ASSESSMENT ERP
             </span>
           </div>
 

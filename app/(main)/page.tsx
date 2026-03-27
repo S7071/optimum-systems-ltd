@@ -7,20 +7,22 @@ import SiteTestimonials from "@/components/optimum-systems/layout01/site-testimo
 import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import SiteMainFeature from "@/components/optimum-systems/layout01/site-main-feature";
-import HelpDeskButton from "@/components/optimum-systems/layout01/site-help-banner";
 import IndustrySection from "@/components/optimum-systems/layout01/section-industry";
 import SiteLogos from "@/components/optimum-systems/layout02/site-logos";
+import WhatsappButton from "@/components/optimum-systems/layout01/section-whatsapp";
+import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen items-start justify-start bg-zinc-50 font-sans dark:bg-black">
-      <HelpDeskButton />
+      <HelpCenterButton />
+      <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
       <SiteLogos />
-      <SiteMainFeature />
       <IndustrySection />
+      <SiteMainFeature />
       <SiteFeatures />
       <SiteStats />
       <SiteTestimonials />

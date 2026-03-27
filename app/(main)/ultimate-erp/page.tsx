@@ -7,7 +7,6 @@ import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
 import SiteCta from "@/components/ultimate-cbe/layout02/site-cta";
 import SiteCaseStudies from "@/components/ultimate-cbe/layout01/site-casestudies";
-import HelpDeskButton from "@/components/optimum-systems/layout01/site-help-banner";
 import WhatWeOfferSection from "@/components/ultimate-ch/layout02/section-whatweoffer";
 import StatsSection from "@/components/ultimate-ch/layout01/section-stats";
 import { Users, ShieldCheck, Clock, BarChart3, TrendingUp } from "lucide-react";
@@ -15,11 +14,14 @@ import WhyUsSections from "@/components/optimum-systems/layout02/section-whyus";
 import IntegrationsSection from "@/components/optimum-systems/layout01/section-integrations";
 import OnlinePresenceSection from "@/components/optimum-systems/layout01/section-online-presence";
 import SiteLogos from "@/components/optimum-systems/layout02/site-logos";
+import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
+import WhatsappButton from "@/components/optimum-systems/layout01/section-whatsapp";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen w-full items-start justify-start bg-zinc-50 font-sans dark:bg-black">
-      <HelpDeskButton />
+      <HelpCenterButton />
+            <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
@@ -343,7 +345,7 @@ export default function Home() {
         ]}
         videoSrc="https://www.youtube.com/embed/Da1hUqzoiAo?autoplay=1"
         videoTitle="Optimum ERP System – Product Walkthrough"
-        mockupSrc="/images/cta.png"
+        mockupSrc="/images/saas/laptop.png"
         description="Built specifically for Kenya's universities, TVETs, and national polytechnics. Manage student lifecycles, automate finance and payroll, enforce compliance, and give administrators the tools they need to focus on what matters most: education."
         tags={[
           { label: "CBET-CDACC Compliance" },
@@ -365,12 +367,12 @@ export default function Home() {
             label: "Institutions successfully deployed",
           },
           {
-            value: "85%",
+            value: "98%",
             label: "Happiness Index",
           },
           {
-            value: "80%",
-            label: "Recommendation ++",
+            value: "98%",
+            label: "Recommendation Index",
           },
         ]}
         testimonies={[
@@ -409,30 +411,13 @@ export default function Home() {
       <StatsSection
         description="Never miss a critical operational update. UltimateERP monitors fee balances, student attendance, exam results, payroll cycles, and procurement approvals — automatically alerting every stakeholder the moment action is required."
         title={
-          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-white">
+          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-primary-cbe-500">
             Stay in Control With{" "}
             <span className="text-primary-cta">Real-Time</span> Institutional
             Intelligence
           </h3>
         }
         eyebrow="INTELLIGENT AUTOMATION"
-        bulletPoints={[
-          {
-            label: "Comprehensive Finance & Fee Collection Analytics",
-            description:
-              "Live dashboards showing fee collection rates, debtor aging, budget vs. actual variances, and real-time cashbook balances across all departments.",
-          },
-          {
-            label: "Seamless Compliance with M-PESA & Bank Standards",
-            description:
-              "Fully automated bank reconciliations completed in under 5 minutes, with integrated M-PESA, card, and direct bank transfer processing.",
-          },
-          {
-            label: "Configurable Workflows for Admins, Finance & Academics",
-            description:
-              "Role-based access ensures every staff member — from principal to department head — sees only exactly what they need, with full audit trails.",
-          },
-        ]}
         statCards={[
           {
             value: "186+",

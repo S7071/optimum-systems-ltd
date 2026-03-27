@@ -176,7 +176,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
         {/* Avatar */}
         <div className="relative shrink-0">
           <div
-            className={`w-[72px] h-[72px] rounded-full ring-[3px] ring-slate-100 bg-gradient-to-br ${member.avatarGradient} overflow-hidden`}
+            className={`w-full h-full aspect-square rounded-full ring-[3px] ring-slate-100 bg-gradient-to-br ${member.avatarGradient} overflow-hidden`}
           >
             <img
               src={member.avatarSrc}

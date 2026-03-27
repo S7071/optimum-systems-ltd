@@ -6,7 +6,7 @@ import { ArrowRight, Check } from "lucide-react";
 /* eslint-disable @next/next/no-img-element */
 export default function SiteCta() {
   return (
-    <section className="py-16 md:py-24 w-full px-6 sm:px-30 bg-background">
+    <section className="py-16 md:py-24 w-full px-6 sm:px-30 bg-primary-cbe-50">
       <div className="">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {/* ── Left: App Download Card ── */}
@@ -101,7 +101,7 @@ export default function SiteCta() {
           </div>
 
           {/* ── Right: Newsletter Card ── */}
-          <div className="h-auto sm:h-[380px] items-center justify-center rounded-xl bg-card p-0 mt-6 sm:mt-0 sm:flex sm:p-8 md:p-12">
+          <div className="h-auto sm:h-[380px] items-center justify-center rounded-xl bg-primary-cbe-50 p-0 mt-6 sm:mt-0 sm:flex sm:p-8 md:p-12">
             <div className="w-full flex flex-col">
               {/* Red eyebrow label */}
               <BadgePill label="Weekly digest" centered={false} />

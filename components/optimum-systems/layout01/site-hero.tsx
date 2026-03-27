@@ -24,44 +24,44 @@ interface Stat {
 
 const PRODUCTS: Product[] = [
   {
-    src: "/logos/approved/erp-dark-icon.svg",
+    src: "/logos/icon.svg",
     label: "Ultimate",
     name: "ERP",
     desc: "Resource Mgmt",
     accent: true,
   },
   {
-    src: "/logos/approved/cbe-dark-icon.svg",
+    src: "/logos/ultimate-icon.svg",
     label: "Ultimate",
     name: "CBE",
     desc: "Education",
   },
   {
-    src: "/logos/approved/cms-dark-icon.svg",
+    src: "/logos/ultimate-icon.svg",
     label: "Ultimate",
     name: "CMS",
     desc: "Conference Mgmt",
   },
   {
-    src: "/logos/approved/hms-dark-icon.svg",
+    src: "/logos/ultimate-icon.svg",
     label: "Ultimate",
     name: "HMS",
     desc: "Hotel Mgmt",
   },
   {
-    src: "/logos/approved/mfg-dark-icon.svg",
+    src: "/logos/ultimate-icon.svg",
     label: "Ultimate",
     name: "MFG",
     desc: "Manufacturing",
   },
   {
-    src: "/logos/approved/pos-dark-icon.svg",
+    src: "/logos/ultimate-icon.svg",
     label: "Ultimate",
     name: "POS",
     desc: "Point of Sale",
   },
   {
-    src: "/logos/approved/sc-dark-icon.svg",
+    src: "/logos/ultimate-icon.svg",
     label: "Ultimate",
     name: "SCM",
     desc: "Supply Chain",
@@ -69,9 +69,9 @@ const PRODUCTS: Product[] = [
 ];
 
 const STATS: Stat[] = [
-  { value: "160", suffix: "+", label: "Organizations" },
+  { value: "200", suffix: "+", label: "Organizations" },
   { value: "15", suffix: "+", label: "Years Active" },
-  { value: "8", suffix: "+", label: "ERP Modules" },
+  { value: "30", suffix: "+", label: "Products" },
 ];
 
 const TRUST_AVATARS = ["KU", "SB", "MP", "KE", "+"];
@@ -85,7 +85,7 @@ function ProductCard({ product }: { product: Product }) {
         "flex items-center gap-3 rounded-xl border p-3 cursor-pointer",
         "transition-all duration-200 hover:-translate-y-px",
         product.accent
-          ? "bg-red-500/10 border-red-500/25 hover:bg-red-500/18 hover:border-red-500/40"
+          ? "bg-primary-cbe-500/20 border-primary-cbe-500/25 hover:bg-primary-cbe-500/18 hover:border-primary-cbe-500/40"
           : "bg-white/5 border-white/8 hover:bg-white/10 hover:border-white/18",
       ].join(" ")}
     >
@@ -100,13 +100,13 @@ function ProductCard({ product }: { product: Product }) {
 
       {/* text */}
       <div className="flex flex-col gap-0.5 min-w-0">
-        <span className="text-[10px] font-medium uppercase tracking-widest text-white/35 leading-none">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-primary-cta leading-none">
           {product.label}
         </span>
         <span className="text-sm font-bold text-white leading-tight">
           {product.name}
         </span>
-        <span className="text-[11px] text-white/40 leading-tight truncate hidden sm:flex">
+        <span className="text-[10px] text-white leading-tight truncate hidden sm:flex">
           {product.desc}
         </span>
       </div>
@@ -116,7 +116,7 @@ function ProductCard({ product }: { product: Product }) {
 
 function StatBlock({ stat }: { stat: Stat }) {
   return (
-    <div className="flex flex-col gap-1 px-5 py-3 border-r border-white/10 last:border-r-0 bg-white/[0.03] hover:bg-white/[0.06] transition-colors items-center justify-center">
+    <div className="flex-1 flex flex-col gap-1 px-5 py-3 border-r border-white/10 last:border-r-0 bg-white/[0.03] hover:bg-white/[0.06] transition-colors items-center justify-center">
       <span className="font-bold text-white text-2xl leading-none tabular-nums">
         {stat.value}
         <sup className="text-red-500 text-base">{stat.suffix}</sup>
@@ -211,7 +211,7 @@ export default function SiteHero() {
             </p>
 
             {/* Stats row */}
-            <div className="flex w-fit overflow-hidden rounded-xl border border-white/10">
+            <div className="flex overflow-hidden rounded-xl border border-white/10 w-[440px]">
               {STATS.map((stat) => (
                 <StatBlock key={stat.label} stat={stat} />
               ))}
@@ -238,22 +238,15 @@ export default function SiteHero() {
           {/* ── RIGHT: Frosted product panel ── */}
           <div className="w-fit flex justify-end">
             <div
-              className="w-full max-w-[420px] rounded-2xl border border-white/10 p-6 flex flex-col gap-5 bg-gradient-to-tr from-primary-cbe-900/70 via-primary-cbe-800/70 to-primary-cbe-900/70"
-              style={{
-                // background: "rgba(9, 24, 56, 0.70)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                boxShadow:
-                  "0 24px 64px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.07)",
-              }}
+              className="bg-primary-cbe-50/10 backdrop-blur-xl shadow-[0_24px_64px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.07)] w-full max-w-[420px] rounded-2xl border border-white/10 p-6 flex flex-col gap-5"
             >
               {/* Panel header */}
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-white/60">
+                <span className="text-xs font-bold uppercase tracking-[0.12em] text-white">
                   Our Product Suite
                 </span>
-                <span className="text-[11px] font-semibold tracking-wide uppercase text-red-400 bg-red-500/12 border border-red-500/25 rounded px-2 py-0.5">
-                  {PRODUCTS.length} Modules
+                <span className="text-xs font-semibold tracking-wide uppercase text-white bg-primary-cta/30 border border-primary-cta/45 rounded px-2 py-0.5">
+                  30+ Products
                 </span>
               </div>
 
@@ -274,7 +267,7 @@ export default function SiteHero() {
                   {TRUST_AVATARS.map((initials, i) => (
                     <span
                       key={initials}
-                      className="size-7 rounded-full border-2 border-[rgba(9,24,56,0.9)] flex items-center justify-center text-[10px] font-bold text-white"
+                      className="size-7 rounded-full border-2 border-white/20 flex items-center justify-center text-[10px] font-bold text-white"
                       style={{
                         marginLeft: i === 0 ? 0 : "-7px",
                         zIndex: TRUST_AVATARS.length - i,
@@ -295,10 +288,10 @@ export default function SiteHero() {
                 <p className="text-[13px] text-white/55 leading-snug">
                   Trusted by{" "}
                   <strong className="text-white font-medium">
-                    160+ organizations
+                    200+ organizations
                   </strong>
                   <br />
-                  across Kenya &amp; East Africa
+                  across the World
                 </p>
 
                 {/* Arrow nudge */}

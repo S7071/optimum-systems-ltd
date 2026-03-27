@@ -149,7 +149,7 @@ export default function WhatWeOfferSection(prop: prop) {
   };
 
   return (
-    <section className="w-full bg-background bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat overflow-hidden">
+    <section className="w-full bg-primary-cbe-50 bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat overflow-hidden">
       {/* Header */}
       <div className="text-center flex flex-col gap-3 items-center px-6 sm:px-30 pt-16 sm:pt-32">
         <BadgePill label={prop.eyebrow} centered={true} />
