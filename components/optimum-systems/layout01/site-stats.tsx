@@ -56,10 +56,10 @@ export default function SiteStats() {
           <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
             <div className="flex flex-col items-center gap-3 text-center lg:items-start lg:text-left">
               {/* Eyebrow pill */}
-              <BadgePill label="ERP Platform" centered={false} />
+              <BadgePill label="What we offer" centered={false} />
 
               <h1 className="mb-3 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
-                Automate, Manage &amp; Grow Your{" "}<span className="text-primary-cta">Institution</span>{" "}Today
+                Automate, Manage &amp; Grow Your{" "}<span className="text-primary-cta">Organisation</span>{" "}Today
               </h1>
 
               <p className="text-muted-foreground leading-relaxed">

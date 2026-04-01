@@ -6,7 +6,6 @@ import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import SiteCta from "@/components/ultimate-cbe/layout02/site-cta";
 import WhatWeOfferSection from "@/components/ultimate-ch/layout01/section-whatweoffer";
 import FeatureSplitSection from "@/components/ultimate-ch/layout01/section-featuresplit";
-import StatsSection from "@/components/ultimate-ch/layout01/section-stats";
 import {
   Calendar,
   ChartBarBigIcon,
@@ -14,10 +13,6 @@ import {
   FileEdit,
   Users2,
   TimerReset,
-  Users,
-  ShieldCheck,
-  Clock,
-  BarChart3,
   TrendingUp,
 } from "lucide-react";
 import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
@@ -27,7 +22,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen w-full items-start justify-start bg-zinc-50 font-sans dark:bg-black">
       <HelpCenterButton />
-            <WhatsappButton />
+      <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
@@ -153,45 +148,8 @@ export default function Home() {
           ],
         }}
       />
-      <StatsSection
-        description="Built for Kenya's manufacturers and processors. Plan production, track costs in real-time, manage procurement and HR — and give leadership the live plant visibility they need to drive results."
-        title={
-          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-primary-cbe-500">
-            Stay Ahead With <span className="text-primary-cta">Real-Time</span>{" "}
-            Supply Chain Intelligence
-          </h3>
-        }
-        eyebrow="Intelligent Operations"
-        statCards={[
-          {
-            value: "150+",
-            description:
-              "Businesses successfully deployed across Kenya & East Africa",
-            icon: Users,
-            accent: false,
-          },
-          {
-            value: "98%",
-            description: "Uptime guarantee on cloud-hosted deployments",
-            icon: ShieldCheck,
-            accent: true,
-          },
-          {
-            value: "40%",
-            description:
-              "Average reduction in operational costs reported by clients",
-            icon: Clock,
-            accent: false,
-          },
-          {
-            value: "24/7",
-            description: "Local Kenyan support team always available",
-            icon: BarChart3,
-            accent: false,
-          },
-        ]}
-      />
       <SiteDemo
+        ctaSrc="/ultimate-mfg/schedule-demo"
         title={
           <h2 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-white">
             Get A Powerful Start

@@ -6,7 +6,6 @@ import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import SiteCta from "@/components/ultimate-cbe/layout02/site-cta";
 import WhatWeOfferSection from "@/components/ultimate-ch/layout01/section-whatweoffer";
 import FeatureSplitSection from "@/components/ultimate-ch/layout01/section-featuresplit";
-import StatsSection from "@/components/ultimate-ch/layout01/section-stats";
 import {
   Calendar,
   ChartBarBigIcon,
@@ -14,10 +13,6 @@ import {
   FileEdit,
   Users2,
   TimerReset,
-  Users,
-  ShieldCheck,
-  Clock,
-  BarChart3,
   TrendingUp,
 } from "lucide-react";
 import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
@@ -27,7 +22,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen w-full items-start justify-start bg-zinc-50 font-sans dark:bg-black">
       <HelpCenterButton />
-            <WhatsappButton />
+      <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
@@ -153,44 +148,8 @@ export default function Home() {
           ],
         }}
       />
-      <StatsSection
-        description="Never let a revenue opportunity slip through the cracks. UltimateHotelERP monitors occupancy, billing, restaurant sales, staff attendance, and procurement across every department — automatically alerting your team when action is needed, from any device, anywhere."
-        title={
-          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-primary-cbe-500">
-            Run Smarter With{" "}
-            <span className="text-primary-cta">Real-Time</span> Hotel Intelligence
-          </h3>
-        }
-        eyebrow="INTELLIGENT OPERATIONS"
-        statCards={[
-          {
-            value: "150+",
-            description: "Institutions successfully deployed across Kenya and East Africa",
-            icon: Users,
-            accent: false,
-          },
-          {
-            value: "12",
-            description: "Fully integrated modules covering every hotel department in one system",
-            icon: ShieldCheck,
-            accent: true,
-          },
-          {
-            value: "50%",
-            description:
-              "Reduction in administrative workload reported by Optimum clients",
-            icon: Clock,
-            accent: false,
-          },
-          {
-            value: "24/7",
-            description: "Cloud-hosted access with dedicated local Kenyan support always available",
-            icon: BarChart3,
-            accent: false,
-          },
-        ]}
-      />
       <SiteDemo
+        ctaSrc="/ultimate-hms/schedule-demo"
         title={
           <h2 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-white">
             Get A Powerful Start

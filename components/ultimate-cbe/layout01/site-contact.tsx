@@ -109,7 +109,7 @@ export default function SiteContact() {
             style={{ fontSize: "clamp(36px, 5vw, 52px)", lineHeight: 1.1, fontFamily: "inherit" }}
           >
             Let&apos;s talk about your<br />
-            <span className="text-[#FF6B6B]">school&apos;s CBC needs</span>
+            <span className="text-primary-cta">organization&apos;s needs</span>
           </h1>
 
           <p className="hero-animate-2 relative mx-auto mt-4 max-w-[480px] text-base font-light leading-[1.7] text-white/70">

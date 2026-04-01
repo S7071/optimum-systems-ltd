@@ -248,6 +248,7 @@ export default function Home() {
       <OnlinePresenceSection />
       <IntegrationsSection />
       <SiteDemo
+        ctaSrc="/ultimate-erp/schedule-demo"
         title={
           <h2 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-white">
             Get A Powerful Start

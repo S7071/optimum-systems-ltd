@@ -10,15 +10,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useRouter } from "next/navigation";
 
 interface tagProp {
   label: string;
-};
+}
 
-interface  statProp {
+interface statProp {
   label: string;
   value: string;
-};
+}
 
 interface prop {
   title: React.ReactElement;
@@ -29,10 +30,12 @@ interface prop {
   cards: React.ReactElement[];
   stats: statProp[];
   mockupSrc: string;
-};
+  ctaSrc: string;
+}
 
 export default function SiteDemo(prop: prop) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <section className="relative py-16 md:py-24 w-full overflow-hidden px-6 sm:px-30">
@@ -64,7 +67,13 @@ export default function SiteDemo(prop: prop) {
             {/* CTA row */}
             <div className="flex flex-wrap items-center gap-4">
               {/* Primary red action button */}
-              <Button variant="default" size="lg">
+              <Button
+                variant="default"
+                size="lg"
+                onClick={() => {
+                  router.push(prop.ctaSrc);
+                }}
+              >
                 Request A Quote
                 <ArrowRight className="h-4 w-4" />
               </Button>
@@ -81,9 +90,7 @@ export default function SiteDemo(prop: prop) {
                     <Play className="h-3.5 w-3.5 fill-white" />
                   </Button>
                 </DialogTrigger>
-                <DialogTitle className="sr-only">
-                  {prop.videoTitle}
-                </DialogTitle>
+                <DialogTitle className="sr-only">{prop.videoTitle}</DialogTitle>
                 <DialogContent className="max-w-4xl overflow-hidden p-0">
                   <div className="aspect-video w-full">
                     <iframe

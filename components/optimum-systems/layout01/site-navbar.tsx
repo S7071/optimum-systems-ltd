@@ -118,15 +118,13 @@ interface Solution {
   title: string;
   href: string;
   description: string;
-  Icon: React.ElementType;
-  iconBg: string; // Tailwind bg class
-  iconColor: string; // Tailwind text class
-  badge?: string; // e.g. "New"
+  iconSrc: string;
+  badge?: string;
 }
 
 const company: MenuItem[] = [
   {
-    title: "About Optimus System Ltd",
+    title: "About Optimum Systems Ltd",
     href: "/company",
     description: "Ipsum dolor et in ad fugiat proident eu commodo occaecat.",
   },
@@ -139,59 +137,47 @@ const company: MenuItem[] = [
 
 const FEATURED_SOLUTIONS: Solution[] = [
   {
-    title: "UltimateCBE",
+    title: "Ultimate CBE Assessment ERP",
     href: "/ultimate-cbe",
     description:
       "30+ modules for universities, TVETs & polytechnics — from admissions to alumni.",
-    Icon: GraduationCap,
-    iconBg: "bg-blue-50",
-    iconColor: "text-[#1B3FA6]",
+    iconSrc: "/logos/ultimate-icon.svg",
   },
   {
-    title: "MedFlow",
-    href: "/medflow",
+    title: "Ultimate Supply Chain ERP",
+    href: "/ultimate-scm",
     description:
       "End-to-end drug tracking for county health systems — KEMSA to patient.",
-    Icon: HeartPulse,
-    iconBg: "bg-rose-50",
-    iconColor: "text-rose-600",
+    iconSrc: "/logos/ultimate-icon.svg",
     badge: "New",
-  },
-  {
-    title: "Lend360",
-    href: "/lend360",
-    description:
-      "Full-cycle lending ERP with MPESA integration and automated appraisals.",
-    Icon: Landmark,
-    iconBg: "bg-amber-50",
-    iconColor: "text-amber-600",
   },
   {
     title: "Ultimate Manufacturing ERP",
     href: "/ultimate-mfg",
     description:
-      "Production planning, BOM, WIP costing and multi-plant scalability.",
-    Icon: Factory,
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
+      "Full-cycle lending ERP with MPESA integration and automated appraisals.",
+    iconSrc: "/logos/ultimate-icon.svg",
   },
   {
-    title: "Retail & Distribution Suite",
-    href: "/ultimate-scm",
+    title: "Ultimate Hotel ERP",
+    href: "/ultimate-hms",
+    description:
+      "Production planning, BOM, WIP costing and multi-plant scalability.",
+    iconSrc: "/logos/ultimate-icon.svg",
+  },
+  {
+    title: "Ultimate POS",
+    href: "/ultimate-pos",
     description:
       "SmartPOS, van sales, ETIMS/MPESA compliance and multi-branch inventory.",
-    Icon: ShoppingCart,
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
+    iconSrc: "/logos/ultimate-icon.svg",
   },
   {
-    title: "Dairy Management System",
-    href: "/dairy",
+    title: "Ultimate Conference ERP",
+    href: "/ultimate-cms",
     description:
       "Farm-to-shelf ERP for cooperatives: milk intake, processing & payments.",
-    Icon: Milk,
-    iconBg: "bg-sky-50",
-    iconColor: "text-sky-600",
+    iconSrc: "/logos/ultimate-icon.svg",
   },
 ];
 
@@ -257,7 +243,7 @@ export function SolutionsMenuItem() {
               {/* Logo mark */}
               <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-white backdrop-blur-sm">
                 <Image
-                  src="/logos/approved/erp-dark-icon.svg"
+                  src="/logos/icon.svg"
                   alt="Optimum ERP"
                   width={30}
                   height={30}
@@ -308,7 +294,7 @@ export function SolutionsMenuItem() {
 
           {/* ── COL 2 · Featured Solutions ──────────────────────────── */}
           <div className="bg-white px-7 py-6">
-            <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-gray-400">
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-primary-cbe-800">
               Featured Solutions
             </p>
 
@@ -321,11 +307,13 @@ export function SolutionsMenuItem() {
                   >
                     {/* Icon container */}
                     <span
-                      className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${item.iconBg} transition-transform group-hover:scale-105`}
+                      className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary-cbe-50 bg-background transition-transform group-hover:scale-105`}
                     >
-                      <item.Icon
-                        className={`h-4.5 w-4.5 ${item.iconColor}`}
-                        strokeWidth={1.8}
+                      <Image
+                        src={item.iconSrc}
+                        alt="Optimum ERP"
+                        width={20}
+                        height={20}
                       />
                     </span>
 
@@ -355,10 +343,10 @@ export function SolutionsMenuItem() {
                 20 products across all sectors
               </span>
               <a
-                href="/solutions"
+                href="/products"
                 className="inline-flex items-center gap-1 text-xs font-semibold text-[#1B3FA6] hover:text-[#D42B2B] transition-colors group"
               >
-                View all solutions
+                View all products
                 <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
               </a>
             </div>
@@ -366,7 +354,7 @@ export function SolutionsMenuItem() {
 
           {/* ── COL 3 · Explore by Industry ─────────────────────────── */}
           <div className="border-l border-gray-100 bg-gray-50/60 px-6 py-6">
-            <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-gray-400">
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-primary-cbe-800">
               Explore by Industry
             </p>
 
@@ -466,7 +454,7 @@ const ABOUT_LINKS = [
     badge: "Hiring",
   },
   {
-    href: "/company/awards",
+    href: "/company#awards",
     Icon: Trophy,
     iconBg: "bg-orange-50",
     iconColor: "text-orange-500",
@@ -474,11 +462,11 @@ const ABOUT_LINKS = [
     description: "Category 1 ICT Authority & certified credentials",
   },
   {
-    href: "/company/news",
+    href: "/company/gallery",
     Icon: Newspaper,
     iconBg: "bg-fuchsia-50",
     iconColor: "text-fuchsia-600",
-    title: "News & Media",
+    title: "Events & Media",
     description: "Latest press releases, events & announcements",
   },
 ] as const;
@@ -550,7 +538,7 @@ export function AboutUsMenuItem() {
               {/* Logo mark */}
               <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-white backdrop-blur-sm">
                 <Image
-                  src="/logos/approved/erp-dark-icon.svg"
+                  src="/logos/icon.svg"
                   alt="Optimum ERP Systems"
                   width={30}
                   height={30}
@@ -564,7 +552,7 @@ export function AboutUsMenuItem() {
               <h3 className="text-xl font-bold leading-tight mb-3">
                 Optimum ERP
                 <br />
-                Systems
+                Systems Ltd
               </h3>
 
               <p className="text-sm leading-relaxed text-blue-100">
@@ -640,7 +628,7 @@ export function AboutUsMenuItem() {
 
           {/* ── COL 2 · About links ────────────────────────────────── */}
           <div className="bg-white px-7 py-6">
-            <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-gray-400">
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-primary-cbe-800">
               Explore Our Company
             </p>
 
@@ -698,7 +686,7 @@ export function AboutUsMenuItem() {
 
           {/* ── COL 3 · Company highlights ────────────────────────── */}
           <div className="border-l border-gray-100 bg-gray-50/60 px-6 py-6">
-            <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-gray-400">
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-primary-cbe-800">
               Why Optimum
             </p>
 

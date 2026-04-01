@@ -6,8 +6,7 @@ import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import SiteCta from "@/components/ultimate-cbe/layout02/site-cta";
 import WhatWeOfferSection from "@/components/ultimate-ch/layout01/section-whatweoffer";
 import FeatureSplitSection from "@/components/ultimate-ch/layout01/section-featuresplit";
-import StatsSection from "@/components/ultimate-ch/layout01/section-stats";
-import { BarChart3, Clock, ShieldCheck, TrendingUp, Users } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 import {
   Calendar,
   ChartBarBigIcon,
@@ -23,7 +22,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen w-full items-start justify-start bg-zinc-50 font-sans dark:bg-black">
       <HelpCenterButton />
-            <WhatsappButton />
+      <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
@@ -148,44 +147,6 @@ export default function Home() {
             },
           ],
         }}
-      />
-      <StatsSection
-        description="Never miss a critical academic update. UltimateCBE monitors student competency levels, attendance, grade submissions, and assessment deadlines — automatically notifying teachers, parents, and administrators the moment action is required."
-        title={
-          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-primary-cbe-500">
-            Stay Informed With{" "}
-            <span className="text-primary-cta">Real-Time</span> Assessment
-            Insights
-          </h3>
-        }
-        eyebrow="INTELLIGENT ALERTING"
-        statCards={[
-          {
-            value: "186+",
-            description: "Schools successfully deployed across Kenya",
-            icon: Users,
-            accent: false,
-          },
-          {
-            value: "98%",
-            description: "Uptime guarantee on cloud-hosted deployments",
-            icon: ShieldCheck,
-            accent: true,
-          },
-          {
-            value: "50%",
-            description:
-              "Reduction in teacher admin workload reported by clients",
-            icon: Clock,
-            accent: false,
-          },
-          {
-            value: "24/7",
-            description: "Local Kenyan support team always available",
-            icon: BarChart3,
-            accent: false,
-          },
-        ]}
       />
       <SiteDemo
         title={

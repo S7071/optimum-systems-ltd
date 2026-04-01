@@ -4,7 +4,6 @@ import { LucideIcon } from "@/lib/utils";
 import {
   Activity,
   Calendar,
-  CheckCircle2,
   DollarSign,
   Home,
   Play,
@@ -115,15 +114,6 @@ export default function SiteHero() {
         </div>
         {/* ── RIGHT: Photo ── */}
         <div className="relative overflow-hidden hidden md:block">
-          {/* Background texture from original */}
-          <Image
-            src="/images/cbe/bg-lines.webp"
-            alt=""
-            fill
-            className="object-cover opacity-30 pointer-events-none z-0"
-            aria-hidden="true"
-          />
-
           {/* Hero photo */}
           <Image
             src="/heros/ultimateCMS.jpg"
@@ -132,11 +122,13 @@ export default function SiteHero() {
             className="object-cover object-center z-[1]"
             priority
           />
-
-          {/*
-            Left-edge bleed — softens the hard cut between
-            white left panel and photo.
-          */}
+          <Image
+            src="/images/cbe/bg-lines.webp"
+            alt=""
+            fill
+            className="object-cover opacity-30 pointer-events-none z-10"
+            aria-hidden="true"
+          />
           <div
             className="absolute inset-0 z-[2] pointer-events-none"
             style={{
@@ -147,33 +139,6 @@ export default function SiteHero() {
             }}
             aria-hidden="true"
           />
-
-          {/* KNEC tag — top-right */}
-          <div className="absolute top-8 right-8 z-10 bg-primary-cbe-800 text-white text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full flex items-center gap-2">
-            <CheckCircle2 className="size-3" />
-            KNEC Aligned
-          </div>
-
-          {/* Floating activity badge — bottom-left */}
-          <div
-            className="absolute bottom-10 left-6 z-10 bg-white rounded-xl px-4 py-3 flex items-center gap-3 min-w-[230px]"
-            style={{
-              boxShadow:
-                "0 8px 32px rgba(11,61,145,0.15), 0 2px 8px rgba(0,0,0,0.06)",
-            }}
-          >
-            <div className="size-10 rounded-lg bg-[#E8F0FC] flex items-center justify-center flex-shrink-0">
-              <CheckCircle2 className="size-5 text-primary-cbe-800" />
-            </div>
-            <div>
-              <p className="text-[13px] font-medium text-slate-800 leading-tight">
-                Auto-grading enabled
-              </p>
-              <p className="text-xs text-slate-400 mt-0.5">
-                47 assessments processed today
-              </p>
-            </div>
-          </div>
         </div>
       </div>
       <div className="bg-white border-t border-b border-gray-200 hidden sm:flex flex-wrap px-10 w-full">

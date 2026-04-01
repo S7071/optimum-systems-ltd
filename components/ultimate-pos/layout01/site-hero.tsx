@@ -2,11 +2,20 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Play } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useRouter } from "next/navigation";
 
 export default function SiteHero() {
   const [visible, setVisible] = useState(false);
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
@@ -35,7 +44,8 @@ export default function SiteHero() {
               />
             </div>
             <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
-              <span className="text-primary-cta font-extrabold">Ultimate</span>POS
+              <span className="text-primary-cta font-extrabold">Ultimate</span>
+              POS
             </span>
           </div>
 
@@ -55,18 +65,45 @@ export default function SiteHero() {
           </p>
 
           <div className="flex flex-wrap gap-2.5 mb-11">
-            <Button variant="default" size="lg">
+            <Button
+              variant="default"
+              size="lg"
+              onClick={() => {
+                router.push("/ultimate-pos/schedule-demo");
+              }}
+            >
               Book a Demo
               <ArrowRight size={4} />
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-primary-cbe-800"
-            >
-              <Play className="size-3.5 fill-current text-primary-cbe-800 hidden sm:block" />
-              Watch Overview
-            </Button>
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size="lg">
+                  <span className="size-7 rounded-full bg-primary-cbe-800 flex items-center justify-center flex-shrink-0">
+                    <Play
+                      size={10}
+                      fill="white"
+                      color="white"
+                      className="ml-px"
+                    />
+                  </span>
+                  Watch Overview
+                </Button>
+              </DialogTrigger>
+              <DialogTitle className="sr-only">
+                Product Overview Demo
+              </DialogTitle>
+              <DialogContent className="max-w-4xl overflow-hidden p-0">
+                <div className="aspect-video w-full">
+                  <iframe
+                    className="h-full w-full"
+                    src="https://www.youtube.com/embed/Da1hUqzoiAo?autoplay=1"
+                    title="Product Overview Demo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
 
@@ -80,33 +117,6 @@ export default function SiteHero() {
             className="object-cover object-center z-[1]"
             priority
           />
-
-          {/* KNEC tag — top-right */}
-          <div className="absolute top-8 right-8 z-10 bg-primary-cbe-800 text-white text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full flex items-center gap-2">
-            <CheckCircle2 className="size-3" />
-            KNEC Aligned
-          </div>
-
-          {/* Floating activity badge — bottom-left */}
-          <div
-            className="absolute bottom-10 left-6 z-10 bg-white rounded-xl px-4 py-3 flex items-center gap-3 min-w-[230px]"
-            style={{
-              boxShadow:
-                "0 8px 32px rgba(11,61,145,0.15), 0 2px 8px rgba(0,0,0,0.06)",
-            }}
-          >
-            <div className="size-10 rounded-lg bg-[#E8F0FC] flex items-center justify-center flex-shrink-0">
-              <CheckCircle2 className="size-5 text-primary-cbe-800" />
-            </div>
-            <div>
-              <p className="text-[13px] font-medium text-slate-800 leading-tight">
-                Auto-grading enabled
-              </p>
-              <p className="text-xs text-slate-400 mt-0.5">
-                47 assessments processed today
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>

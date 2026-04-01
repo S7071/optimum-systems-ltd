@@ -1,5 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { LucideIcon } from "@/lib/utils";
 import {
   Activity,
@@ -11,6 +17,8 @@ import {
   Play,
 } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface featureProp {
   label: string;
@@ -51,6 +59,8 @@ const TRUST_AVATARS = [
 /* ─── Component ─────────────────────────────────────────────────────────── */
 
 export default function SiteHero() {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
   return (
     <section className="w-full bg-primary-cbe-50">
       <div className="grid lg:grid-cols-2 items-stretch w-full">
@@ -69,7 +79,10 @@ export default function SiteHero() {
                 />
               </div>
               <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
-                <span className="text-primary-cta font-extrabold">Ultimate</span> Hotel ERP
+                <span className="text-primary-cta font-extrabold">
+                  Ultimate
+                </span>{" "}
+                Hotel ERP
               </span>
             </div>
 
@@ -93,17 +106,44 @@ export default function SiteHero() {
 
             {/* Action buttons */}
             <div className="flex items-center gap-3">
-              <Button variant="default" size="lg">
+              <Button
+                variant="default"
+                size="lg"
+                onClick={() => {
+                  router.push("/ultimate-hms/schedule-demo");
+                }}
+              >
                 Request a Demo
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-primary-cbe-800"
-              >
-                <Play className="size-3.5 fill-current text-primary-cbe-800 hidden sm:block" />
-                Watch Overview
-              </Button>
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="ghost" size="lg">
+                    <span className="size-7 rounded-full bg-primary-cbe-800 flex items-center justify-center flex-shrink-0">
+                      <Play
+                        size={10}
+                        fill="white"
+                        color="white"
+                        className="ml-px"
+                      />
+                    </span>
+                    Watch Overview
+                  </Button>
+                </DialogTrigger>
+                <DialogTitle className="sr-only">
+                  Product Overview Demo
+                </DialogTitle>
+                <DialogContent className="max-w-4xl overflow-hidden p-0">
+                  <div className="aspect-video w-full">
+                    <iframe
+                      className="h-full w-full"
+                      src="https://www.youtube.com/embed/Da1hUqzoiAo?autoplay=1"
+                      title="Product Overview Demo"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Trust row */}

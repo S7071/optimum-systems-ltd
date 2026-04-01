@@ -626,7 +626,7 @@ export default function MapHeroSection() {
   }
 
   return (
-    <section className="relative w-full h-[70vh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white overflow-hidden px-6 sm:px-30">
+    <section className="relative w-full h-[70vh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white overflow-hidden px-6 sm:px-30 hidden md:block">
       <div className="relative z-10 top-0 left-0 w-full flex flex-col items-center h-full">
         {/* Right - Interactive Map */}
         <div className="relative flex flex-row item-center pl-24 md:pl-0 md:item-start justify-start w-full h-[100%] py-16">

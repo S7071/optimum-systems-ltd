@@ -1,6 +1,11 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ArrowRight, CheckCircle2, Play } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const AVATARS = [
   { label: "KE", bg: "#1240a0", color: "white" },
@@ -9,13 +14,9 @@ const AVATARS = [
   { label: "+", bg: "#e8ecf5", color: "#526280" },
 ] as const;
 
-const STATS = [
-  { value: "99.9%", label: "System Uptime" },
-  { value: "$2.1B", label: "Processed / Year" },
-  { value: "4.2×", label: "Average ROI" },
-] as const;
-
 export default function SiteHero() {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
   return (
     <section className="w-full bg-primary-cbe-50">
       <div className="grid lg:grid-cols-2 items-stretch w-full">
@@ -33,7 +34,8 @@ export default function SiteHero() {
               />
             </div>
             <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
-              <span className="text-primary-cta font-extrabold">Ultimate</span> Supply Chain ERP
+              <span className="text-primary-cta font-extrabold">Ultimate</span>{" "}
+              Supply Chain ERP
             </span>
           </div>
 
@@ -56,33 +58,47 @@ export default function SiteHero() {
             last-mile delivery.
           </p>
 
-          {/* Bottom stats row */}
-          <div className="flex gap-0 pt-5 border-t border-[#edf0f8]">
-            {STATS.map((stat, i) => (
-              <div key={i} className="flex items-stretch gap-0">
-                {i > 0 && <div className="w-px mr-6 bg-[#edf0f8]" />}
-                <div className={i < 2 ? "pr-6" : ""}>
-                  <div className="text-2xl font-extrabold leading-none text-[#0a1938]">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs mt-1 text-[#94a3be]">
-                    {stat.label}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
           {/* CTAs */}
           <div className="flex gap-2.5 items-center flex-wrap">
-            <Button variant="default" size="lg">
+            <Button
+              variant="default"
+              size="lg"
+              onClick={() => {
+                router.push("/ultimate-scm/schedule-demo");
+              }}
+            >
               Book a Demo
               <ArrowRight size={4} />
             </Button>
-            <Button variant="ghost" size="lg">
-              <Play className="size-3.5 fill-current text-primary-cbe-800 hidden sm:block" />
-              Watch Overview
-            </Button>
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size="lg">
+                  <span className="size-7 rounded-full bg-primary-cbe-800 flex items-center justify-center flex-shrink-0">
+                    <Play
+                      size={10}
+                      fill="white"
+                      color="white"
+                      className="ml-px"
+                    />
+                  </span>
+                  Watch Overview
+                </Button>
+              </DialogTrigger>
+              <DialogTitle className="sr-only">
+                Product Overview Demo
+              </DialogTitle>
+              <DialogContent className="max-w-4xl overflow-hidden p-0">
+                <div className="aspect-video w-full">
+                  <iframe
+                    className="h-full w-full"
+                    src="https://www.youtube.com/embed/Da1hUqzoiAo?autoplay=1"
+                    title="Product Overview Demo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
           {/* Social proof avatars */}

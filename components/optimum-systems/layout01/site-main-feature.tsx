@@ -202,17 +202,7 @@ export default function SiteMainFeature() {
           {/* header section */}
           <div className="flex flex-col gap-3 items-center px-6 sm:px-30 text-center">
             {/* Badge with animated pulse dot */}
-            <Badge
-              variant="outline"
-              className="text-red-600 border-red-200 bg-red-50 dark:bg-red-950/30 dark:border-red-900 text-xs font-bold rounded-full h-10 px-5 py-0.5 gap-3"
-            >
-              {/* Animated red pulse dot */}
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600" />
-              </span>
-              Now with AI-powered analytics
-            </Badge>
+            <BadgePill label="Our Flagship Product" centered={true} />
 
             {/* Headline with red gradient accent */}
             <h2 className="max-w-2xl text-center text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight mb-4 text-primary-cbe-500">
@@ -367,7 +357,7 @@ export default function SiteMainFeature() {
           <div className="w-full bg-primary-cbe-50 border-t border-border py-16 sm:py-24">
             {/* Section header */}
             <div className="flex flex-col items-center gap-3 text-center mb-12 px-6 sm:px-16">
-              <BadgePill label="What Makes Us Standout" centered={true} />
+              <BadgePill label="What Makes Ultimate ERP Standout" centered={true} />
               <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
                 Everything Your Institution <br />
                 Needs,{" "}
@@ -410,7 +400,7 @@ export default function SiteMainFeature() {
 
             {/* components */}
             <div className="relative z-10 flex w-full items-center overflow-hidden h-[50px] bg-primary-cbe-100 border-t border-b border-primary-cbe-800 mt-30">
-              <div className="ticker-badge flex h-full shrink-0 items-center gap-1.5 bg-[#C0392B] pl-[14px] pr-5 text-[10px] font-semibold tracking-[0.12em] uppercase text-white">
+              <div className="rounded-tr-full rounded-br-full ticker-badge flex h-full shrink-0 items-center gap-1.5 bg-[#C0392B] pl-[14px] pr-5 text-[10px] font-semibold tracking-[0.12em] uppercase text-white">
                 <span className="blink inline-block h-[5px] w-[5px] rounded-full bg-[#ffaaaa]" />
                 ERP MODULES
               </div>

@@ -4,6 +4,13 @@ import { useState, useEffect } from "react";
 import { Play, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "../../ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -100,7 +107,8 @@ function StatBlock({ stat }: { stat: Stat }) {
 
 export default function SiteHero() {
   const [visible, setVisible] = useState(false);
-
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
     return () => clearTimeout(t);
@@ -122,7 +130,7 @@ export default function SiteHero() {
           <div className="inline-flex items-center gap-3 w-fit">
             <div className="size-10 rounded-lg bg-background flex items-center justify-center flex-shrink-0 p-1.5 border border-primary-cbe-100">
               <Image
-                src="/logos/approved/cbe-dark-icon.svg"
+                src="/logos/ultimate-icon.svg"
                 alt="UltimateCBE"
                 width={10}
                 height={10}
@@ -130,7 +138,8 @@ export default function SiteHero() {
               />
             </div>
             <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
-              <span className="text-primary-cta font-extrabold">Ultimate</span>CBE ASSESSMENT ERP
+              <span className="text-primary-cta font-extrabold">Ultimate</span>
+              CBE ASSESSMENT ERP
             </span>
           </div>
 
@@ -168,18 +177,47 @@ export default function SiteHero() {
           {/* CTAs */}
           <div className="flex items-center gap-3 flex-wrap">
             {/* Primary — red action */}
-            <Button variant="default" size="lg">
+            <Button
+              variant="default"
+              size="lg"
+              onClick={() => {
+                router.push("/ultimate-cbe/schedule-demo");
+              }}
+            >
               Book a Demo
               <ArrowRight className="size-4" />
             </Button>
 
             {/* Ghost — secondary / video */}
-            <Button variant="ghost" size="lg">
-              <span className="size-7 rounded-full bg-primary-cbe-800 flex items-center justify-center flex-shrink-0">
-                <Play size={10} fill="white" color="white" className="ml-px" />
-              </span>
-              Watch Overview
-            </Button>
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size="lg">
+                  <span className="size-7 rounded-full bg-primary-cbe-800 flex items-center justify-center flex-shrink-0">
+                    <Play
+                      size={10}
+                      fill="white"
+                      color="white"
+                      className="ml-px"
+                    />
+                  </span>
+                  Watch Overview
+                </Button>
+              </DialogTrigger>
+              <DialogTitle className="sr-only">
+                Product Overview Demo
+              </DialogTitle>
+              <DialogContent className="max-w-4xl overflow-hidden p-0">
+                <div className="aspect-video w-full">
+                  <iframe
+                    className="h-full w-full"
+                    src="https://www.youtube.com/embed/Da1hUqzoiAo?autoplay=1"
+                    title="Product Overview Demo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
           {/* Rating social proof */}

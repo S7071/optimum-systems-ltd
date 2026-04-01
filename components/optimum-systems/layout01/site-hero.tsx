@@ -1,8 +1,18 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ArrowRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -65,6 +75,12 @@ const PRODUCTS: Product[] = [
     label: "Ultimate",
     name: "SCM",
     desc: "Supply Chain",
+  },
+  {
+    src: "/logos/ultimate-icon.svg",
+    label: "Ultimate",
+    name: "BIO",
+    desc: "Biometric Attendance",
   },
 ];
 
@@ -131,6 +147,8 @@ function StatBlock({ stat }: { stat: Stat }) {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function SiteHero() {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
   return (
     <section className="relative flex flex-col items-center min-h-screen overflow-hidden w-full">
       {/* ── Background photo ── */}
@@ -159,8 +177,7 @@ export default function SiteHero() {
         aria-hidden="true"
       />
       <div className="absolute z-20 w-full h-full bg-primary-cbe-500 opacity-40"></div>
-      <div className="absolute inset-0 z-10 w-full bg-fixed bg-cover bg-no-repeat bg-top h-full bg-[url('/heros/main-hero-characters.png')]">
-      </div>
+      <div className="absolute inset-0 z-10 w-full bg-fixed bg-cover bg-no-repeat bg-top h-full bg-[url('/heros/main-hero-characters.png')]"></div>
 
       {/* Subtle red tint over photo side */}
       <div
@@ -222,19 +239,58 @@ export default function SiteHero() {
 
             {/* CTAs */}
             <div className="flex items-center gap-2 md:gap-4">
-              <Button variant="default" size="lg">
+              <Button
+                variant="default"
+                size="lg"
+                onClick={() => {
+                  router.push("/ultimate-cbe/schedule-demo");
+                }}
+              >
                 Explore ERP Solutions
                 <ArrowRight className="size-4" />
               </Button>
 
-              <Button
+              {/* <Button
                 variant="outline"
                 size="lg"
                 className="h-12 gap-2 border-white/20 bg-transparent text-white/75 hover:bg-white/5 hover:border-white/40 hover:text-white transition-all duration-200 md:flex hidden"
               >
                 <Play className="size-3.5 fill-current" />
                 Watch Demo
-              </Button>
+              </Button> */}
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="h-12 gap-2 border-white/20 bg-transparent text-white/75 hover:bg-white/5 hover:border-white/40 hover:text-white transition-all duration-200 md:flex hidden"
+                  >
+                    <span className="size-7 rounded-full bg-primary-cbe-800 flex items-center justify-center flex-shrink-0">
+                      <Play
+                        size={10}
+                        fill="white"
+                        color="white"
+                        className="ml-px"
+                      />
+                    </span>
+                    Watch Company Overview
+                  </Button>
+                </DialogTrigger>
+                <DialogTitle className="sr-only">
+                  Product Overview Demo
+                </DialogTitle>
+                <DialogContent className="max-w-4xl overflow-hidden p-0">
+                  <div className="aspect-video w-full">
+                    <iframe
+                      className="h-full w-full"
+                      src="https://www.youtube.com/embed/Da1hUqzoiAo?autoplay=1"
+                      title="Product Overview Demo"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
 

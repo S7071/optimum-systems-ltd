@@ -160,9 +160,7 @@ const TABS = [
 
 function PartnerCard({ name, abbr, bg, fg }: Partner) {
   return (
-    <div
-      className="group flex min-h-[110px] flex-col items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-5 text-center shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_4px_16px_rgba(59,130,246,0.10)]"
-    >
+    <div className="group flex min-h-[110px] flex-col items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-5 text-center shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_4px_16px_rgba(59,130,246,0.10)]">
       <div
         className="flex h-fit w-fit items-center justify-center rounded-[10px] font-bold tracking-[0.02em] transition-transform duration-200 group-hover:scale-105"
         style={{ backgroundColor: bg, color: fg }}
@@ -178,7 +176,8 @@ function PartnerCard({ name, abbr, bg, fg }: Partner) {
 }
 
 export default function PartnersGrid() {
-  const [activeTab, setActiveTab] = useState<(typeof TABS)[number]["id"]>("all");
+  const [activeTab, setActiveTab] =
+    useState<(typeof TABS)[number]["id"]>("all");
 
   const visibleCategories =
     activeTab === "all"
@@ -214,10 +213,17 @@ export default function PartnersGrid() {
       <main className="flex flex-col gap-12 py-16 md:py-24 w-full px-6 md:px-30">
         {visibleCategories.map((category, idx) => (
           <section key={idx}>
-            <div className="mb-5">
-              <span className="inline-flex items-center gap-2 rounded-full bg-primary-cbe-500 px-4 py-1.5 text-[13px] font-semibold text-white">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-200" />
+            <div
+              className="relative flex items-baseline gap-3 border-b-2 pb-3.5 mb-5"
+              style={{ borderColor: "#E4E8F2" }}
+            >
+              {/* Red underline accent */}
+              <span className="absolute bottom-[-2px] left-0 h-[2px] w-10 rounded bg-primary-cta" />
+              <h2 className="text-[17px] font-bold leading-none tracking-tight text-primary-cbe-800">
                 {category.label}
+              </h2>
+              <span className="rounded-full bg-gray-200 px-2 py-0.5 text-[12px] font-medium text-gray-500">
+                {category.partners.length}
               </span>
             </div>
 

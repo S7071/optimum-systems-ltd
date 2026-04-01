@@ -157,11 +157,11 @@ export default function HelpCenterButton() {
   const shouldRender = mounted && isVisible;
 
   return (
-    <div className="fixed top-[50%] bottom-[50%] -right-7 z-[9999] w-fit h-14 rotate-270">
+    <div className="fixed top-[50%] bottom-[50%] -right-8 z-[9999] w-fit h-14 rotate-270">
       <button
         ref={buttonRef}
         className={[
-          "w-25 h-full rounded-sm border-0 cursor-pointer",
+          "w-28 h-full rounded-sm border-0 cursor-pointer",
           "flex items-center justify-center text-white relative",
           "bg-[linear-gradient(145deg,#e53935,#c62828)]",
           "transition-[transform,box-shadow,opacity] duration-300",
