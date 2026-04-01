@@ -1,10 +1,9 @@
 import SiteFooter from "@/components/optimum-systems/layout01/site-footer";
 import SiteNavbar from "@/components/optimum-systems/layout01/site-navbar";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
-import PartnersGrid from "@/components/optimum-systems/layout01/section-partners";
 import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
 import WhatsappButton from "@/components/optimum-systems/layout01/section-whatsapp";
-import MapHeroSection from "@/components/optimum-systems/layout01/section-map-hero";
+import GalleryPageBody from "@/components/ultimate-cbe/layout01/site-gallery";
 
 export default function PageLayout() {
   return (
@@ -13,8 +12,7 @@ export default function PageLayout() {
       <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
-      <MapHeroSection />
-      <PartnersGrid />
+      <GalleryPageBody />
       <SiteFooter />
     </div>
   );

@@ -126,6 +126,7 @@ function IndustryCard({ industry }: { industry: Industry; index: number }) {
         className="flex flex-col justify-end min-h-[400px]"
       >
         <div className="absolute inset-0 z-0">
+          <div className="absolute z-20 w-full h-full bg-primary-cbe-500 opacity-10"></div>
           <img
             src={industry.image}
             alt=""

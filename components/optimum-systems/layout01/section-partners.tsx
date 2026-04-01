@@ -187,7 +187,7 @@ export default function PartnersGrid() {
 
   return (
     <div className="min-h-screen bg-primary-cbe-50 text-slate-900 flex flex-col items-center w-full">
-      <div className="sticky top-0 z-10 border-b border-slate-200 bg-white shadow-sm w-full px-6 sm:px-30">
+      <div className="sticky top-0 z-10 border-b border-slate-200 bg-white shadow-sm w-full px-6 md:px-30">
         <div className="flex gap-1 overflow-x-auto justify-center">
           {TABS.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -211,7 +211,7 @@ export default function PartnersGrid() {
         </div>
       </div>
 
-      <main className="flex flex-col gap-12 py-16 md:py-24 w-full px-6 sm:px-80">
+      <main className="flex flex-col gap-12 py-16 md:py-24 w-full px-6 md:px-30">
         {visibleCategories.map((category, idx) => (
           <section key={idx}>
             <div className="mb-5">

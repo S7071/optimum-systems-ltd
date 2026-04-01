@@ -32,7 +32,7 @@ const featureCards: FeatureCard[] = [
     alias: "UltimateCBE",
     description:
       "A complete Competency-Based Education management system for TVETs and polytechnics — covering student registration, unit tracking, assessments, and KNQA-compliant reporting.",
-    icon: "/logos/approved/cbe-dark-icon.svg",
+    icon: "/logos/ultimate-icon.svg",
     href: "/ultimate-cbe",
     tag: "Education",
     category: "CBE",
@@ -44,7 +44,7 @@ const featureCards: FeatureCard[] = [
     alias: "UltimateSCM",
     description:
       "End-to-end procurement, inventory, and logistics management. Track suppliers, purchase orders, stock movement, and deliveries in real time across all your branches.",
-    icon: "/logos/approved/sc-dark-icon.svg",
+    icon: "/logos/ultimate-icon.svg",
     href: "/ultimate-scm",
     tag: "Logistics",
     category: "SCM",
@@ -56,7 +56,7 @@ const featureCards: FeatureCard[] = [
     alias: "UltimateMFG",
     description:
       "Streamline your entire production cycle — from raw material planning and work-in-progress tracking to finished goods management and quality control.",
-    icon: "/logos/approved/mfg-dark-icon.svg",
+    icon: "/logos/ultimate-icon.svg",
     href: "/ultimate-mfg",
     tag: "Manufacturing",
     category: "MFG",
@@ -68,7 +68,7 @@ const featureCards: FeatureCard[] = [
     alias: "UltimateHMS",
     description:
       "A fully integrated hospitality management system covering reservations, front desk, housekeeping, restaurant POS, billing, and guest experience management.",
-    icon: "/logos/approved/hms-dark-icon.svg",
+    icon: "/logos/ultimate-icon.svg",
     href: "/ultimate-hms",
     tag: "Hospitality",
     category: "HMS",
@@ -80,7 +80,7 @@ const featureCards: FeatureCard[] = [
     alias: "UltimatePOS",
     description:
       "A fast, reliable point-of-sale system for retail and service businesses. Manage sales, stock, receipts, and daily reports from a single, easy-to-use interface.",
-    icon: "/logos/approved/pos-dark-icon.svg",
+    icon: "/logos/ultimate-icon.svg",
     href: "/ultimate-pos",
     tag: "Retail",
     category: "POS",
@@ -92,7 +92,7 @@ const featureCards: FeatureCard[] = [
     alias: "UltimateCMS",
     description:
       "Seamlessly manage venue bookings, event scheduling, attendee registration, billing, and post-event reporting for conference centres and event facilities.",
-    icon: "/logos/approved/cms-dark-icon.svg",
+    icon: "/logos/ultimate-icon.svg",
     href: "/ultimate-cms",
     tag: "Events",
     category: "CMS",
@@ -151,14 +151,9 @@ export default function SiteFeatures() {
                 key={card.id}
                 className="group overflow-hidden border border-[#e8edf5] py-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[#1a3a6b] hover:shadow-[0_20px_48px_rgba(26,58,107,0.02)]"
               >
-                <CardContent className="px-0 pb-0">
-                  {/* ── Banner ── */}
-                  
-
-                  {/* ── Body ── */}
-                  <div className="flex flex-col gap-3 p-5">
+                <CardContent className="w-full h-full flex flex-col gap-3 p-5">
                     {/* Icon + Name + Alias */}
-                    <CardTitle className="flex items-center justify-start gap-3">
+                    <CardTitle className="w-full flex items-center justify-start gap-3">
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border bg-white shadow-sm">
                         <img
                           alt={card.alias}
@@ -178,7 +173,7 @@ export default function SiteFeatures() {
                     <hr className="border-[#f0f2f6]" />
 
                     {/* Description */}
-                    <CardDescription className="line-clamp-5 text-sm leading-relaxed text-gray-500">
+                    <CardDescription className="line-clamp-5 text-sm leading-relaxed text-gray-500 flex-1">
                       {card.description}
                     </CardDescription>
 
@@ -203,7 +198,6 @@ export default function SiteFeatures() {
                         </Button>
                       </a>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
             ))}

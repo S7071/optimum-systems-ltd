@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen w-full items-start justify-start bg-zinc-50 font-sans dark:bg-black">
       <HelpCenterButton />
-            <WhatsappButton />
+      <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
@@ -36,242 +36,212 @@ export default function Home() {
           {
             title: "System Administration",
             description:
-              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
-            icon: "Calendar",
-            cta: "Student Portal",
-            featured: false,
+              "Centralized ERP control with granular role permissions, audit logging, MFA, real-time system health monitoring, and Active Directory single sign-on for seamless administration.",
+            icon: "Settings",
+            cta: "System Control",
           },
           {
             title: "Student Management",
             description:
-              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
-            icon: "Calendar",
+              "Full student lifecycle — enrollment tracking, auto ID generation, biometric records, attendance, bulk data imports, dropout analytics, and instant SMS/email notifications.",
+            icon: "Users",
             cta: "Student Portal",
-            featured: false,
           },
           {
-            title: "Student Academics Assessment",
+            title: "Student Academics & Assessment",
             description:
-              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
-            icon: "Calendar",
-            cta: "Student Portal",
-            featured: false,
+              "Automates course registration, grade entry, transcript generation, exam scheduling with conflict detection, and full CBET-CDACC compliance for modularized programs.",
+            icon: "GraduationCap",
+            cta: "Academic Tools",
           },
           {
             title: "Student Finance",
             description:
-              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
-            icon: "Calendar",
-            cta: "Student Portal",
-            featured: false,
+              "Invoice generation, MPESA-linked fee payments, sponsorship tracking, overdue SMS alerts, aging reports, and fast reconciliation tools for healthy institutional cash flow.",
+            icon: "CreditCard",
+            cta: "Fee Management",
           },
           {
-            title: "Core Finance and Accounting",
+            title: "Core Finance & Accounting",
             description:
-              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
-            icon: "Calendar",
-            cta: "Student Portal",
-            featured: false,
+              "IPSAS-compliant accrual accounting, general ledger, automated bank reconciliations under 5 minutes, multi-currency support, and KRA-integrated audit-ready reporting.",
+            icon: "DollarSign",
+            cta: "Finance Ready",
           },
           {
             title: "E-Citizen Integration",
             description:
-              "Full-cycle student lifecycle management — online applications, enrollment, auto ID generation, demographic tracking, and bulk data handling across all departments with instant SMS/email confirmation.",
-            icon: "Calendar",
-            cta: "Student Portal",
-            featured: false,
+              "Seamlessly syncs with E-Citizen for certificate issuance, compliance reporting, and real-time government data exchange via secure API endpoints.",
+            icon: "Globe",
+            cta: "Gov Integration",
           },
           {
             title: "Timetabling Management",
             description:
-              "Real-time enrollment trends, fee collection vs. targets, budget variances, staffing ratios, and debtor/creditor summaries — all in one executive view accessible from any device, anywhere.",
-            icon: "ChartBarBigIcon",
-            cta: "Live Insights",
-            featured: false,
+              "AI-driven scheduling resolves room, lecturer, and course conflicts automatically. Supports hybrid learning modes with printable, calendar-synced timetables.",
+            icon: "CalendarDays",
+            cta: "Schedule Now",
           },
           {
             title: "Lecturer Evaluation",
             description:
-              "IPSAS-compliant general ledger, automated bank reconciliations completed in under 5 minutes, M-PESA & multi-bank integration, and audit-ready financial reporting ensuring zero revenue leakage.",
-            icon: "Target",
-            cta: "Finance Ready",
-            featured: false,
+              "Anonymous student feedback surveys with real-time analytics on teaching effectiveness, term-based trend reporting, and HR-linked professional development tracking.",
+            icon: "ClipboardList",
+            cta: "Quality Assurance",
           },
           {
             title: "Online Student Voting",
             description:
-              "Automated course registration, AI-driven timetabling with conflict detection, CBET-CDACC compliant grading, result computation, and transcript generation — cutting processing time from weeks to hours.",
-            icon: "FileEdit",
-            cta: "Academic Tools",
-            featured: false,
+              "Secure biometric-verified digital elections with real-time vote tallying, full audit trails, multi-position ballot support, and automated SMS reminders.",
+            icon: "CheckSquare",
+            cta: "Democratic Tools",
           },
           {
             title: "Online Student Application",
             description:
-              "End-to-end staff onboarding, automated payroll with statutory deductions (NSSF, SHA, Housing Levy), biometric time tracking, and self-service portals for payslips and leave — all in one unified hub.",
-            icon: "Users2",
-            cta: "HR Portal",
-            featured: false,
+              "Digital applications with document uploads, automated eligibility checks, application fee payment integration, waitlist management, and instant admission letter generation.",
+            icon: "FilePlus",
+            cta: "Apply Online",
           },
           {
             title: "Online Student Clearance",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Multi-department digital clearance — finance, library, hostels — with automated notifications, document submission portals, and real-time approval status dashboards.",
+            icon: "CheckCircle",
+            cta: "Clearance Portal",
           },
           {
             title: "Placement",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Matches students to internships by skills and preferences, tracks placements via progress logs, supervisor evaluation forms, and placement success rate reporting.",
+            icon: "Briefcase",
+            cta: "Internship Hub",
           },
           {
             title: "Library Management",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Full LMS with RFID/barcode cataloging, automated overdue fines, digital e-book access, inter-library loans, and borrowing usage analytics integrated with student portals.",
+            icon: "BookOpen",
+            cta: "Library Access",
           },
           {
-            title: "Pay As You Eat/Catering Management",
+            title: "Pay As You Eat / Catering",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "RFID/biometric cashless cafeteria payments, meal plan subscriptions, food inventory tracking, nutritional menu planning, and demand forecasting to reduce waste.",
+            icon: "UtensilsCrossed",
+            cta: "Smart Dining",
           },
           {
-            title: "Health/Clinic Management",
+            title: "Health / Clinic Management",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "EHR system with appointment scheduling, vaccination tracking, medication inventory, telemedicine integration, and proactive health outbreak monitoring and emergency alerts.",
+            icon: "HeartPulse",
+            cta: "Student Health",
           },
           {
-            title: "Hostel and Accommodation Management",
+            title: "Hostel & Accommodation",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Room allocation dashboards, online booking portals, maintenance request tracking, utility billing, biometric access control, and occupancy analytics for resident satisfaction.",
+            icon: "Home",
+            cta: "Hostel Portal",
           },
           {
-            title: "Human Resources and Payroll Management",
+            title: "HR & Payroll Management",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "End-to-end HR — onboarding, payroll automation, NSSF/SHA/Housing Levy compliance, leave management, self-service payslips, and biometric time tracking for accuracy.",
+            icon: "UserCheck",
+            cta: "HR Portal",
           },
           {
-            title: "Procurement & Stores Management",
+            title: "Procurement & Stores",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Automates requisitions, tender management, supplier databases, inventory reordering, and spend analytics with full audit trails and finance module integration.",
+            icon: "ShoppingCart",
+            cta: "Procurement",
           },
           {
-            title: "Biometric Gate Control System",
+            title: "Biometric Gate Control",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
+              "Fingerprint/iris campus access with visitor logging, fee-eligibility enforcement, real-time unauthorized-entry alerts, and detailed entry/exit pattern analytics.",
+            icon: "ShieldCheck",
             cta: "Secure Access",
-            featured: false,
           },
           {
-            title: "Biometric Time and Attendance",
+            title: "Biometric Time & Attendance",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Biometric attendance for staff and students linked directly to payroll, with absenteeism dashboards, proxy fraud elimination, and flexible remote check-in support.",
+            icon: "Clock",
+            cta: "Attendance Hub",
           },
           {
             title: "Bank Integration",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Direct API links to banks for real-time transactions, automated reconciliations in under 5 minutes, MPESA payment gateways, and secure inter-account fund transfers.",
+            icon: "Landmark",
+            cta: "Bank Connect",
           },
           {
-            title: "CEO’s Dashboard",
+            title: "CEO's Dashboard",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Executive KPI hub — enrollment trends, revenue, debtors, creditors, cashbook balances, gender splits, staffing counts, and drill-down predictive analytics from any device.",
+            icon: "LayoutDashboard",
+            cta: "Live Insights",
           },
           {
             title: "Alumni Management",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Graduate tracking database, event management, donation portals, networking features, and alumni engagement analytics that foster lifelong institutional connections.",
+            icon: "Network",
+            cta: "Alumni Network",
           },
           {
             title: "Students Affairs Management",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Club registrations, event calendars, counseling logs, and student welfare tracking with SMS integration for holistic extracurricular support and community engagement.",
+            icon: "Star",
+            cta: "Student Life",
           },
           {
             title: "SMS Integration",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Bulk SMS notifications for fees, events, and urgent alerts. Two-way messaging with customizable templates and delivery analytics for instant, low-cost stakeholder reach.",
+            icon: "MessageSquare",
+            cta: "Communicate",
           },
           {
-            title: "Self-Service Portal (For Students and Staff)",
+            title: "Self-Service Portal",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Mobile-responsive portals for transcripts, fee statements, payslips, course registration, and exam booking — reducing admin workload with push notification support.",
+            icon: "Monitor",
+            cta: "Self Service",
           },
           {
             title: "Estate Management",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Campus property tracking with maintenance schedules, lease management, utility billing, and GIS mapping for optimal institutional asset utilization and cost control.",
+            icon: "MapPin",
+            cta: "Campus Assets",
           },
           {
-            title: "Transport/Fleet Management",
+            title: "Transport / Fleet Management",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Vehicle scheduling, maintenance logs, fuel tracking, driver assignments, and GPS real-time monitoring with efficiency reporting to reduce institutional operational costs.",
+            icon: "Truck",
+            cta: "Fleet Control",
           },
           {
             title: "Ticketing Management",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Issue resolution system with ticket creation, SLA tracking, team assignments, knowledge bases, and response-time analytics to improve support across all departments.",
+            icon: "Tag",
+            cta: "Support Desk",
           },
           {
-            title: "Audit and Risk Management",
+            title: "Audit & Risk Management",
             description:
-              "Fingerprint and facial campus access control with fee-eligibility enforcement, real-time unauthorized access alerts, attendance synchronization, and encrypted audit trails across all institutional modules.",
-            icon: "TimerReset",
-            cta: "Secure Access",
-            featured: false,
+              "Risk assessments, audit planning, issue tracking, and compliance reporting dashboards ensuring regulatory adherence and proactive institutional risk mitigation at all levels.",
+            icon: "ShieldAlert",
+            cta: "Compliance",
           },
         ]}
       />

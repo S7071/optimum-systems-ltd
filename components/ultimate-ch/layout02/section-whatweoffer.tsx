@@ -6,29 +6,73 @@ import BadgePill from "@/components/ui/badge-pill";
 import { LucideIcon } from "@/lib/utils";
 import {
   ArrowRight,
-  Calendar,
-  ChartBarBigIcon,
+  BookOpen,
+  Briefcase,
+  CalendarDays,
+  CheckCircle,
+  CheckSquare,
   ChevronLeft,
   ChevronRight,
-  FileEdit,
-  Target,
-  TimerReset,
-  Users2,
+  ClipboardList,
+  Clock,
+  CreditCard,
+  DollarSign,
+  FilePlus,
+  Globe,
+  GraduationCap,
+  HeartPulse,
+  Home,
+  Landmark,
+  LayoutDashboard,
+  MapPin,
+  MessageSquare,
+  Monitor,
+  Network,
+  Settings,
+  ShieldAlert,
+  ShieldCheck,
+  ShoppingCart,
+  Star,
+  Tag,
+  Truck,
+  UserCheck,
+  Users,
+  UtensilsCrossed,
 } from "lucide-react";
 import { useRef, useState, useCallback, useEffect } from "react";
 
+
 const iconMap: Record<string, LucideIcon> = {
-  Calendar: Calendar,
-  Calendar1: Calendar,
-  Calendar2: Calendar,
-  Calendar3: Calendar,
-  Calendar4: Calendar,
-  Calendar5: Calendar,
-  ChartBarBigIcon: ChartBarBigIcon,
-  Target: Target,
-  FileEdit: FileEdit,
-  Users2: Users2,
-  TimerReset: TimerReset,
+  Settings: Settings,
+  Users: Users,
+  GraduationCap: GraduationCap,
+  CreditCard: CreditCard,
+  DollarSign: DollarSign,
+  Globe: Globe,
+  CalendarDays: CalendarDays,
+  ClipboardList: ClipboardList,
+  CheckSquare: CheckSquare,
+  FilePlus: FilePlus,
+  CheckCircle: CheckCircle,
+  Briefcase: Briefcase,
+  BookOpen: BookOpen,
+  UtensilsCrossed: UtensilsCrossed,
+  HeartPulse: HeartPulse,
+  Home: Home,
+  UserCheck: UserCheck,
+  ShoppingCart: ShoppingCart,
+  ShieldCheck: ShieldCheck,
+  Clock: Clock,
+  Landmark: Landmark,
+  LayoutDashboard: LayoutDashboard,
+  Network: Network,
+  Star: Star,
+  MessageSquare: MessageSquare,
+  Monitor: Monitor,
+  MapPin: MapPin,
+  Truck: Truck,
+  Tag: Tag,
+  ShieldAlert: ShieldAlert,
 };
 
 function Card(prop: CardProp) {
@@ -100,7 +144,7 @@ interface CardProp {
   title: string;
   description: string;
   cta: string;
-  featured: boolean;
+  featured?: boolean;
 }
 
 interface prop {
@@ -151,7 +195,7 @@ export default function WhatWeOfferSection(prop: prop) {
   return (
     <section className="w-full bg-primary-cbe-50 bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat overflow-hidden">
       {/* Header */}
-      <div className="text-center flex flex-col gap-3 items-center px-6 sm:px-30 pt-16 sm:pt-32">
+      <div className="text-center flex flex-col gap-3 items-center px-6 md:px-30 pt-16 sm:pt-32">
         <BadgePill label={prop.eyebrow} centered={true} />
         <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
           {prop.title}{" "}
@@ -163,9 +207,9 @@ export default function WhatWeOfferSection(prop: prop) {
       </div>
 
       {/* Cards area with nav row */}
-      <div className="px-6 sm:px-30 py-10 sm:py-16">
+      <div className="py-10 sm:py-16">
         {/* Nav buttons row — top-right */}
-        <div className="flex items-center justify-end gap-2 mb-5">
+        <div className="flex items-center justify-end gap-2 mb-5 px-6 md:px-30">
           <button
             onClick={scrollLeft}
             disabled={!canScrollLeft}
@@ -197,9 +241,9 @@ export default function WhatWeOfferSection(prop: prop) {
         {/* Scrollable cards track — 2 rows, columns flow horizontally */}
         <div
           ref={scrollRef}
-          className="w-screen overflow-x-auto scroll-smooth pb-2 -mx-26 pr-11 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="w-screen overflow-x-auto scroll-smooth pb-2 px-6 md:px-30 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          <div className="grid grid-rows-2 grid-flow-col gap-5 w-max">
+          <div className="grid grid-rows-1 grid-flow-col gap-5 w-max">
             {prop.card.map((card, idx) => (
               <Card key={idx} {...card} />
             ))}

@@ -3,6 +3,7 @@
 "use client";
 
 import BadgePill from "@/components/ui/badge-pill";
+import { ChevronRight } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type FeatureCard = {
@@ -37,13 +38,16 @@ function FeatureCardBlock({
           alt=""
           className="size-15 p-3 bg-primary-cbe-50 rounded-sm"
         />
-        <div className="flex flex-col gap-0">
-          <span className="mb-3 inline-block rounded bg-[#F0F4FB] px-[7px] py-[3px] text-[9px] font-semibold uppercase tracking-[.14em] text-[#8D9DC0] w-fit">
+        <div className="flex flex-col gap-2 flex-1 justify-center">
+          <span className="inline-block rounded bg-[#F0F4FB] px-[7px] py-[3px] text-[9px] font-semibold uppercase tracking-[.14em] text-[#8D9DC0] w-fit">
             {badge}
           </span>
-          <h3 className="mb-[7px] text-[14px] font-bold tracking-tight text-[#08152A]">
+          <h3 className="text-[14px] font-bold tracking-tight text-[#08152A]">
             {title}
           </h3>
+        </div>
+        <div className="size-10 rounded-sm bg-primary-cbe-50 flex flex-col items-center justify-center">
+          <ChevronRight size={16} className="text-primary-cbe-800" />
         </div>
       </div>
 
@@ -327,7 +331,7 @@ export default function IntegrationsSection() {
           <BadgePill label="Integrated Solutions" centered={true} />
 
           <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
-            Unlocking Your Workflow{" "}
+            Extend Your Workflow{" "}
             <span className="text-primary-cta">Potential</span>
           </h2>
 
@@ -369,9 +373,12 @@ export default function IntegrationsSection() {
           <div className="relative z-10 flex items-center justify-center">
             <div
               ref={logoRef}
-              className="relative flex aspect-square w-full max-w-[210px] flex-col items-center justify-center overflow-hidden rounded-full bg-background shadow-sm"
+              className="relative flex aspect-square w-full max-w-[210px] flex-col items-center justify-center overflow-hidden rounded-full bg-primary-cta shadow-sm"
             >
-              <img src="/logos/icon.svg" alt="" className="size-30" />
+              <div className="p-12 rounded-full aspect-square bg-primary-cbe-50 shadow-2xl">
+
+              <img src="/logos/icon.svg" alt="" className="size-20" />
+              </div>
             </div>
           </div>
 

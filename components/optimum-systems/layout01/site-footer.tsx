@@ -83,7 +83,7 @@ const NAV_RESOURCES = [
 
 export default function SiteFooter() {
   return (
-    <section className="bg-primary-cbe-600 text-primary-foreground py-8 w-full px-6 sm:px-30">
+    <section className="bg-primary-cbe-600 text-primary-foreground py-8 w-full px-6 md:px-30">
       <div className="">
         <footer>
           {/* ── Nav columns ── */}

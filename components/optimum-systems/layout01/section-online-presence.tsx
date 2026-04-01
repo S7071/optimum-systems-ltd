@@ -27,19 +27,19 @@ const FEATURES: Feature[] = [
       "Ullamco proident nisi ut pariatur eu exercitation magna commodo voluptate reprehenderit qui est.",
     bullets: [
       {
-        title: "Custom event triggers",
+        title: "AI-Driven Timetable Scheduling",
         description:
-          "Consequat do nulla fugiat ad commodo pariatur pariatur non veniam sint culpa consectetur ex. Cillum occaecat et anim et voluptate labore ex. Anim anim in anim adipisicing dolor enim anim adipisicing ea elit magna ipsum. Exercitation minim sit ullamco mollit consequat reprehenderit cillum minim laborum id qui. Eiusmod incididunt mollit nisi laborum laborum ullamco ex dolore incididunt.",
+          "Automatically resolve room, lecturer, and course conflicts with intelligent scheduling. Generate printable timetables synced to calendars, supporting both online and offline hybrid learning modes without manual intervention.",
       },
       {
-        title: "Reusable automation flows",
+        title: "Anonymous Lecturer Evaluation",
         description:
-          "Sint do Lorem elit occaecat dolore ad pariatur esse culpa ullamco tempor ex. Minim sunt magna amet ex eiusmod et mollit pariatur dolore nulla. Commodo labore proident in officia consectetur anim excepteur occaecat qui nisi pariatur ea eiusmod quis. Sit duis sit veniam officia eiusmod qui tempor aliquip ipsum. Laborum et qui fugiat aute sint commodo labore adipisicing tempor proident veniam qui irure anim. Reprehenderit dolor sunt esse ullamco. Aliqua fugiat do nostrud tempor voluptate dolor.",
+          "Collect honest student feedback through secure online surveys with customizable questionnaires. Access real-time analytics on teaching effectiveness scores, term-over-term trends, and low-rating alerts linked to HR development tracking.",
       },
       {
-        title: "Reduce manual effort",
+        title: "Biometric Attendance Sessions",
         description:
-          "Ullamco veniam cupidatat in excepteur amet. Quis commodo proident sint aliquip consequat exercitation nostrud. Ex non duis qui anim culpa ad in ad reprehenderit. Do consectetur exercitation veniam cupidatat ut labore consequat amet nulla commodo. Mollit pariatur incididunt esse enim excepteur pariatur consequat mollit voluptate tempor aliquip cupidatat enim laboris.",
+          "Initiate attendance sessions with a fingerprint scan before class begins. Students log presence biometrically, with the system auto-calculating per-course attendance percentages and generating real-time reports for academic compliance.",
       },
     ],
     accent: "from-slate-900 via-slate-700 to-slate-500",
@@ -51,19 +51,19 @@ const FEATURES: Feature[] = [
     description: "Aute cillum ad exercitation ea.",
     bullets: [
       {
-        title: "Custom event triggers",
+        title: "Self-Service Academic Access",
         description:
-          "Consequat do nulla fugiat ad commodo pariatur pariatur non veniam sint culpa consectetur ex. Cillum occaecat et anim et voluptate labore ex. Anim anim in anim adipisicing dolor enim anim adipisicing ea elit magna ipsum. Exercitation minim sit ullamco mollit consequat reprehenderit cillum minim laborum id qui. Eiusmod incididunt mollit nisi laborum laborum ullamco ex dolore incididunt.",
+          "Access transcripts, register for courses, book exams, and view results from a mobile-responsive portal. Receive push notifications for deadlines, announcements, and academic updates — reducing dependence on administrative offices entirely.",
       },
       {
-        title: "Reusable automation flows",
+        title: "Fee Payments & Finance Statements",
         description:
-          "Sint do Lorem elit occaecat dolore ad pariatur esse culpa ullamco tempor ex. Minim sunt magna amet ex eiusmod et mollit pariatur dolore nulla. Commodo labore proident in officia consectetur anim excepteur occaecat qui nisi pariatur ea eiusmod quis. Sit duis sit veniam officia eiusmod qui tempor aliquip ipsum. Laborum et qui fugiat aute sint commodo labore adipisicing tempor proident veniam qui irure anim. Reprehenderit dolor sunt esse ullamco. Aliqua fugiat do nostrud tempor voluptate dolor.",
+          "View outstanding fee invoices, make partial or full payments via MPESA, and download personalized fee statements instantly. Receive automated SMS and email alerts for overdue balances, sponsorship updates, and payment confirmations.",
       },
       {
-        title: "Reduce manual effort",
+        title: "Online Application & Clearance",
         description:
-          "Ullamco veniam cupidatat in excepteur amet. Quis commodo proident sint aliquip consequat exercitation nostrud. Ex non duis qui anim culpa ad in ad reprehenderit. Do consectetur exercitation veniam cupidatat ut labore consequat amet nulla commodo. Mollit pariatur incididunt esse enim excepteur pariatur consequat mollit voluptate tempor aliquip cupidatat enim laboris.",
+          "Apply for admission with document uploads and automated eligibility checks. Track multi-department clearance status — finance, library, hostels, and exams — through a transparent digital dashboard from application to graduation exit.",
       },
     ],
     accent: "from-zinc-900 via-zinc-700 to-zinc-500",
@@ -75,19 +75,19 @@ const FEATURES: Feature[] = [
     description: "Sint commodo voluptate cillum excepteur.",
     bullets: [
       {
-        title: "Custom event triggers",
+        title: "Centralized System Control",
         description:
-          "Consequat do nulla fugiat ad commodo pariatur pariatur non veniam sint culpa consectetur ex. Cillum occaecat et anim et voluptate labore ex. Anim anim in anim adipisicing dolor enim anim adipisicing ea elit magna ipsum. Exercitation minim sit ullamco mollit consequat reprehenderit cillum minim laborum id qui. Eiusmod incididunt mollit nisi laborum laborum ullamco ex dolore incididunt.",
+          "Manage user roles with granular permissions, configure custom workflows, and monitor system health in real time. Enforce multi-factor authentication, schedule automated backups, and maintain an indelible audit log of every system action.",
       },
       {
-        title: "Reusable automation flows",
+        title: "Real-Time Executive Dashboard",
         description:
-          "Sint do Lorem elit occaecat dolore ad pariatur esse culpa ullamco tempor ex. Minim sunt magna amet ex eiusmod et mollit pariatur dolore nulla. Commodo labore proident in officia consectetur anim excepteur occaecat qui nisi pariatur ea eiusmod quis. Sit duis sit veniam officia eiusmod qui tempor aliquip ipsum. Laborum et qui fugiat aute sint commodo labore adipisicing tempor proident veniam qui irure anim. Reprehenderit dolor sunt esse ullamco. Aliqua fugiat do nostrud tempor voluptate dolor.",
+          "Access live KPIs covering enrollment trends, revenue, debtors, creditors, cashbook balances, gender distribution, and staffing counts. Drill down into predictive analytics and generate board-ready reports from any device, anywhere.",
       },
       {
-        title: "Reduce manual effort",
+        title: "Automated Procurement & Compliance",
         description:
-          "Ullamco veniam cupidatat in excepteur amet. Quis commodo proident sint aliquip consequat exercitation nostrud. Ex non duis qui anim culpa ad in ad reprehenderit. Do consectetur exercitation veniam cupidatat ut labore consequat amet nulla commodo. Mollit pariatur incididunt esse enim excepteur pariatur consequat mollit voluptate tempor aliquip cupidatat enim laboris.",
+          "Streamline requisitions, supplier tendering, and purchase order workflows with full finance integration. Track inventory reorder levels, analyze spend patterns, and maintain IPSAS-compliant, audit-ready financial and procurement records.",
       },
     ],
     accent: "from-black via-neutral-800 to-neutral-500",
@@ -103,10 +103,10 @@ function CubeIllustration() {
 }
 
 export default function OnlinePresenceSection() {
-  const [activeId, setActiveId] = useState(FEATURES[2].id);
+  const [activeId, setActiveId] = useState(FEATURES[0].id);
 
   const activeFeature = useMemo(
-    () => FEATURES.find((feature) => feature.id === activeId) ?? FEATURES[2],
+    () => FEATURES.find((feature) => feature.id === activeId) ?? FEATURES[0],
     [activeId],
   );
 
@@ -119,11 +119,11 @@ export default function OnlinePresenceSection() {
           Our <span className="text-primary-cta">Online</span> Presence
         </h2>
         <p className="mx-auto max-w-[600px] text-[15px] leading-[1.7] text-primary-cbe-800/60 line-clamp-3 text-center">
-          Ut nisi in deserunt fugiat reprehenderit in anim eiusmod labore
-          labore. Reprehenderit deserunt exercitation dolor voluptate aliqua.
-          Labore ad ipsum est consectetur sint. Officia velit officia irure esse
-          consequat exercitation sunt. Anim eu nisi elit commodo ullamco
-          excepteur pariatur consectetur excepteur.
+          Experience UltimateERP through purpose-built portals designed for
+          every stakeholder. From lecturers managing assessments to students
+          tracking fees and administrators overseeing institutional operations —
+          each portal delivers real-time access, automation, and control from
+          any device, anywhere.
         </p>
         <div className="mt-8 w-full">
           <div className="flex items-center justify-center">

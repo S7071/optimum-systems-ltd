@@ -116,7 +116,7 @@ function ProductCard({ product }: { product: Product }) {
 
 function StatBlock({ stat }: { stat: Stat }) {
   return (
-    <div className="flex-1 flex flex-col gap-1 px-5 py-3 border-r border-white/10 last:border-r-0 bg-white/[0.03] hover:bg-white/[0.06] transition-colors items-center justify-center">
+    <div className="flex-1 flex flex-col gap-1 px-5 py-3 border-r border-white/10 last:border-r-0 backdrop-blur-xl bg-white/[0.03] hover:bg-white/[0.06] transition-colors items-center justify-center">
       <span className="font-bold text-white text-2xl leading-none tabular-nums">
         {stat.value}
         <sup className="text-red-500 text-base">{stat.suffix}</sup>
@@ -136,7 +136,7 @@ export default function SiteHero() {
       {/* ── Background photo ── */}
       <div className="absolute inset-0 z-0 bg-primary-cbe-800">
         <Image
-          src="/images/parent/hero.jpg"
+          src="/heros/main-hero-bg.png"
           alt="background"
           fill
           className="object-cover object-center"
@@ -154,10 +154,13 @@ export default function SiteHero() {
       <div
         className={cn(
           "absolute inset-0 z-10 pointer-events-none",
-          "bg-[linear-gradient(to_right,rgba(21,20,62,0.97)_0%,rgba(21,20,62,0.93)_30%,rgba(21,20,62,0.55)_52%,rgba(21,20,62,0.18)_70%,rgba(21,20,62,0.04)_100%),linear-gradient(to_top,rgba(21,20,62,0.65)_0%,transparent_38%)]",
+          "bg-[linear-gradient(to_right,rgba(21,20,62,1)_0%,rgba(21,20,62,1)_30%,rgba(21,20,62,1)_50%,rgba(21,20,62,0.18)_70%,rgba(21,20,62,0.04)_100%),linear-gradient(to_top,rgba(21,20,62,0.65)_0%,transparent_38%)]",
         )}
         aria-hidden="true"
       />
+      <div className="absolute z-20 w-full h-full bg-primary-cbe-500 opacity-40"></div>
+      <div className="absolute inset-0 z-10 w-full bg-fixed bg-cover bg-no-repeat bg-top h-full bg-[url('/heros/main-hero-characters.png')]">
+      </div>
 
       {/* Subtle red tint over photo side */}
       <div
@@ -237,9 +240,7 @@ export default function SiteHero() {
 
           {/* ── RIGHT: Frosted product panel ── */}
           <div className="w-fit flex justify-end">
-            <div
-              className="bg-primary-cbe-50/10 backdrop-blur-xl shadow-[0_24px_64px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.07)] w-full max-w-[420px] rounded-2xl border border-white/10 p-6 flex flex-col gap-5"
-            >
+            <div className="bg-primary-cbe-50/10 backdrop-blur-xl shadow-[0_24px_64px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.07)] w-full max-w-[420px] rounded-2xl border border-white/10 p-6 flex flex-col gap-5">
               {/* Panel header */}
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-[0.12em] text-white">

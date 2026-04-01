@@ -603,7 +603,7 @@ export function AboutUsMenuItem() {
               </div>
 
               <a
-                href="/about/gallery"
+                href="/company/gallery"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-200 hover:text-white transition-colors group"
               >
                 View full gallery
@@ -757,7 +757,7 @@ export function AboutUsMenuItem() {
 export default function SiteNavbar() {
   const router = useRouter();
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background px-6 sm:px-30">
+    <nav className="sticky top-0 z-50 w-full border-b bg-background px-6 md:px-30">
       <div className="flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <Image

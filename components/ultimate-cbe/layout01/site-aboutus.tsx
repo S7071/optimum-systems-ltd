@@ -1,311 +1,628 @@
-/* eslint-disable @next/next/no-img-element */
+import BadgePill from "@/components/ui/badge-pill";
+import { Button } from "@/components/ui/button";
 
-// ── Sub-components ─────────────────────────────────────────────────────────────
-
-const PhotoCard = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children?: React.ReactNode;
-}) => (
-  <div
-    className={`relative overflow-hidden rounded-lg bg-blue-50 ${className ?? ""}`}
-  >
-    {children}
-  </div>
-);
-
-const StatItem = ({
-  value,
-  suffix,
-  label,
-  last = false,
-}: {
-  value: string;
-  suffix?: string;
+type SectionLink = {
   label: string;
-  last?: boolean;
-}) => (
-  <div className={`px-10 py-10 ${last ? "" : "border-r border-border"}`}>
-    <p className="mb-1.5 text-4xl font-bold tracking-tighter text-foreground">
-      {value}
-      {suffix && <em className="not-italic text-primary-cta">{suffix}</em>}
-    </p>
-    <p className="text-sm leading-snug text-muted-foreground whitespace-pre-line">
-      {label}
-    </p>
-  </div>
-);
+  href: string;
+};
 
-const MosaicTile = ({
-  className,
-  caption,
-  src,
-  alt,
-}: {
-  className?: string;
-  caption?: string;
-  src: string;
-  alt: string;
-}) => (
-  <div
-    className={`relative overflow-hidden rounded-lg bg-blue-50 ${className ?? ""}`}
-  >
-    <img
-      src={src}
-      alt={alt}
-      className="h-full w-full object-cover opacity-80"
+type Stat = {
+  value: string;
+  label: string;
+  note: string;
+};
+
+type Pillar = {
+  title: string;
+  description: string;
+};
+
+type FocusArea = {
+  title: string;
+  description: string;
+  items: string[];
+};
+
+type DeliveryModel = {
+  title: string;
+  description: string;
+};
+
+type Commitment = {
+  title: string;
+  description: string;
+};
+
+const sectionLinks: SectionLink[] = [
+  { label: "Who We Are", href: "#who-we-are" },
+  { label: "Our Direction", href: "#our-direction" },
+  { label: "Our Focus", href: "#our-focus" },
+  { label: "How We Deliver", href: "#how-we-deliver" },
+  { label: "Our Commitment", href: "#our-commitment" },
+];
+
+const stats: Stat[] = [
+  {
+    value: "15+",
+    label: "Years of practical ERP experience",
+    note: "Built around real operational demands across Kenyan institutions.",
+  },
+  {
+    value: "160+",
+    label: "Academic institutions served",
+    note: "Supporting colleges, universities, TVETs, and other learning environments.",
+  },
+  {
+    value: "11+",
+    label: "Financial and retail organizations",
+    note: "Serving financial institutions, distributors, and retailers nationwide.",
+  },
+  {
+    value: "100%",
+    label: "Tailored implementation approach",
+    note: "Solutions aligned to real workflows, reporting needs, and compliance realities.",
+  },
+];
+
+const pillars: Pillar[] = [
+  {
+    title: "Vision",
+    description:
+      "To be a world-class provider of client-centric software solutions that help organizations operate with greater clarity, control, and confidence.",
+  },
+  {
+    title: "Mission",
+    description:
+      "To provide innovative software solutions that enhance service delivery through strong user experience, modern technology, and a focused delivery team.",
+  },
+  {
+    title: "Goal",
+    description:
+      "To deliver tailored software solutions that help clients optimize their return on investment while building efficient and sustainable operations.",
+  },
+];
+
+const focusAreas: FocusArea[] = [
+  {
+    title: "Education ERP Systems",
+    description:
+      "Purpose-built platforms for universities, colleges, polytechnics, TVETs, and schools that unify administration, finance, academics, and reporting.",
+    items: [
+      "Admissions & registration",
+      "Academic records",
+      "Fees & finance",
+      "Exams & reporting",
+    ],
+  },
+  {
+    title: "Financial Institution Solutions",
+    description:
+      "Structured ERP implementations for SACCOs, microfinance institutions, and building societies with controls that support growth, compliance, and visibility.",
+    items: [
+      "Member lifecycle",
+      "Loans & savings",
+      "Audit-ready reporting",
+      "Operational controls",
+    ],
+  },
+  {
+    title: "Business Operations Platforms",
+    description:
+      "Operational systems for distributors, retailers, manufacturers, and service-oriented businesses that need connected workflows across departments.",
+    items: [
+      "Inventory workflows",
+      "Procurement",
+      "Payroll & HR",
+      "Management dashboards",
+    ],
+  },
+  {
+    title: "Custom & Hybrid Delivery",
+    description:
+      "We combine tailored implementation, extensible modules, and hybrid deployment models so each solution fits the organization it serves.",
+    items: [
+      "Cloud + on-premise",
+      "Custom modules",
+      "Integrations",
+      "Phased rollout support",
+    ],
+  },
+];
+
+const deliveryModels: DeliveryModel[] = [
+  {
+    title: "Discover",
+    description:
+      "We begin with exploratory engagement to understand what slows delivery, where inefficiencies exist, and what stakeholders need from the system.",
+  },
+  {
+    title: "Design",
+    description:
+      "We translate business processes into practical system architecture, aligning modules, permissions, reports, and approval flows to actual operations.",
+  },
+  {
+    title: "Deploy",
+    description:
+      "Our delivery model supports tailored implementations, hybrid environments, staff onboarding, and structured rollout to minimize disruption.",
+  },
+  {
+    title: "Support",
+    description:
+      "We reinforce long-term success through training, simulation, support, and ongoing refinement so clients keep extracting value after go-live.",
+  },
+];
+
+const commitments: Commitment[] = [
+  {
+    title: "Tailored Around Real Workflows",
+    description:
+      "Every implementation is shaped around how the client actually operates, not forced into a rigid off-the-shelf model.",
+  },
+  {
+    title: "Built for Scale and Continuity",
+    description:
+      "Our systems are designed to support both growing institutions and mature organizations with complex reporting and operational demands.",
+  },
+  {
+    title: "Grounded in Service Delivery",
+    description:
+      "We prioritize practical outcomes: faster processing, clearer reporting, stronger accountability, and better stakeholder experiences.",
+  },
+];
+
+function GridPattern() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 opacity-[0.08]"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, rgba(15,23,42,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,0.08) 1px, transparent 1px)",
+        backgroundSize: "44px 44px",
+      }}
     />
-    {caption && (
-      <span
-        className="absolute bottom-3 left-3 rounded-sm px-2 py-1 text-[11px] font-medium uppercase tracking-wide"
-        style={{ background: "rgba(255,255,255,0.85)", color: "#0B2FA6" }}
-      >
-        {caption}
-      </span>
-    )}
-  </div>
-);
-
-// ── Main component ─────────────────────────────────────────────────────────────
+  );
+}
 
 export default function SiteAboutUs() {
   return (
-    <div className="w-full py-16 sm:py-24 px-6 sm:px-30">
-      <section className="mx-auto grid max-w-full grid-cols-1 items-center gap-16 md:grid-cols-2 md:gap-20 mb-16 sm:mb-24">
-        {/* Copy */}
-        <div>
-          <div className="mb-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-primary-cta">
-            <span className="h-[2px] w-5 rounded-full bg-primary-cta" />
-            About Optimum System Ltd
-          </div>
-          <h1 className="mb-6 text-5xl font-bold leading-[1.08] tracking-tighter text-foreground md:text-[52px]">
-            We build ERP that institutions grow into
-          </h1>
-          <p className="max-w-[380px] text-base leading-relaxed text-muted-foreground">
-            Meet our team, explore our solutions, and discover how we&apos;re
-            powering Kenya&apos;s digital transformation — one institution at a
-            time.
-          </p>
-        </div>
+    <main className="relative overflow-hidden bg-white text-slate-900 w-full">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <div className="absolute left-[-8rem] top-[-5rem] h-72 w-72 rounded-full bg-blue-600/15 blur-3xl animate-pulse" />
+        <div className="absolute right-[-7rem] top-40 h-80 w-80 rounded-full bg-red-500/10 blur-3xl animate-pulse" />
+        <div className="absolute bottom-[-8rem] left-1/3 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl animate-pulse" />
+      </div>
 
-        {/* Photo grid — tall left + stacked right */}
-        <div
-          className="grid grid-cols-2 gap-2"
-          style={{ gridTemplateRows: "200px 120px" }}
-        >
-          <PhotoCard className="row-span-2">
-            <img
-              alt="Team at work"
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
-              className="h-full w-full object-cover"
-            />
-          </PhotoCard>
-          <PhotoCard>
-            <img
-              alt="Office environment"
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg"
-              className="h-full w-full object-cover"
-            />
-          </PhotoCard>
-          <PhotoCard>
-            <img
-              alt="Product design"
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg"
-              className="h-full w-full object-cover"
-            />
-          </PhotoCard>
+      <section className="relative isolate border-b border-slate-200/70 bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.16),_transparent_35%),linear-gradient(180deg,#f8fbff_0%,#ffffff_52%,#f8fafc_100%)]">
+        <GridPattern />
+        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-24">
+          <div className="grid items-end gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="max-w-3xl">
+              <BadgePill label="About Optimum" centered={false} />
+
+              <h1 className="mt-6 max-w-full text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-5xl lg:leading-[1.06]">
+                Driving business evolution through technology that boosts
+                <span className="bg-gradient-to-r from-primary-cbe-700 via-primary-cbe-400 to-primary-cta bg-clip-text text-transparent">
+                  {" "}
+                  efficiency, productivity, and workflow optimization.
+                </span>
+              </h1>
+
+              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+                Optimum Computer Systems Ltd is a Kenyan software company
+                headquartered in Nairobi, specializing in innovative, tailored
+                ERP and management information systems. With a team of 50+ ICT
+                professionals, we deliver client-centric solutions that generate
+                high ROI at optimal cost.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button size="lg" variant="default" className="h-14">
+                  Explore Our Story
+                </Button>
+                <a
+                  href="#our-focus"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:text-primary-cbe-800"
+                >
+                  See What We Deliver
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="group rounded-3xl border border-slate-200 bg-white/85 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <div className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                      {stat.value}
+                    </div>
+                    <p className="mt-2 text-sm font-semibold text-blue-700">
+                      {stat.label}
+                    </p>
+                  </div>
+                  <span className="mt-1 h-3 w-3 rounded-full bg-red-500 transition-transform duration-300 group-hover:scale-125" />
+                </div>
+                <p className="mt-4 text-sm leading-7 text-slate-600">
+                  {stat.note}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── Stats strip ── */}
-      <div className="grid grid-cols-2 border-y border-border md:grid-cols-4">
-        <StatItem
-          value="50"
-          suffix="%"
-          label={"ICT professionals on our team"}
-        />
-        <StatItem
-          value="186"
-          suffix="+"
-          label={"Institutions successfully served"}
-        />
-        <StatItem
-          value="20"
-          suffix="+"
-          label={"Tailored ERP solutions delivered"}
-        />
-        <StatItem
-          value="Cat"
-          suffix="-1"
-          label={"ICT Authority accreditation — highest level"}
-          last
-        />
-      </div>
-
-      {/* ── Content columns ── */}
-      <div className="mx-auto grid max-w-full grid-cols-1 gap-16 py-24 md:grid-cols-[280px_1fr_1fr]">
-        {/* Sidebar */}
-        <div>
-          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-primary-cta">
-            What we believe
-          </p>
-          <h2 className="mb-5 text-[32px] font-bold leading-[1.15] tracking-tighter text-foreground">
-            Technology built for African institutions
-          </h2>
-          <span
-            className="mb-5 block h-[2px] w-7 rounded-full"
-            style={{ background: "#C8251B" }}
-          />
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            We think the best tools are the ones shaped around your realities —
-            not generic platforms that force institutions to adapt to software.
-            Deep local knowledge. No compromise on security. No per-user
-            licensing fees. Just solutions that work.
-          </p>
-        </div>
-
-        {/* Vision */}
-        <div>
-          <p className="mb-5 border-b border-border pb-4 text-xs font-semibold uppercase tracking-widest text-primary-cbe-800">
-            Our Vision
-          </p>
-          <div className="space-y-4 text-[15px] leading-[1.8] text-foreground/80">
-            <p>
-              For too long, East African institutions have relied on fragmented
-              systems, manual processes, and outdated tools that slow operations
-              and drain resources — while compliance demands grow ever more
-              complex.
-            </p>
-            <p>
-              We saw an opportunity: to build ERP solutions purpose-designed for
-              the realities of Kenyan institutions — from government compliance
-              requirements (IPSAS, TVETA, CDACC, E-Citizen) to M-Pesa
-              integrations and biometric infrastructure.
-            </p>
-            <p>
-              Today, Optimum ERP Systems delivers modular, scalable, hybrid
-              software across education, health, finance, agriculture, and
-              enterprise — empowering over 186 institutions to operate with
-              greater efficiency, transparency, and accountability.
-            </p>
-          </div>
-        </div>
-
-        {/* Creators */}
-        <div>
-          <p className="mb-5 border-b border-border pb-4 text-xs font-semibold uppercase tracking-widest text-primary-cbe-800">
-            Our Creators
-          </p>
-          <div className="space-y-4 text-[15px] leading-[1.8] text-foreground/80">
-            <p>
+      <section className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div className="no-scrollbar flex gap-3 overflow-x-auto py-4">
+            {sectionLinks.map((link) => (
               <a
-                href="#"
-                className="mr-1 border-b pb-px font-medium transition-colors border-primary-cta text-primary-cta"
+                key={link.href}
+                href={link.href}
+                className="whitespace-nowrap rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-300 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
               >
-                Optimum System Ltd
+                {link.label}
               </a>
-              is a Nairobi-based software company founded by a passionate team
-              of ICT professionals who understood that local institutions
-              deserve world-class technology built for their context.
-            </p>
-            <p>
-              With 50+ dedicated specialists in software engineering, systems
-              integration, and client success, we hold Category 1 ICT Authority
-              accreditations — the highest level — in both Systems &
-              Applications and Information Security. We are also registered as
-              both Data Controller and Data Processor under Kenya&apos;s Data
-              Protection Act.
-            </p>
-            <p>
-              Every solution we build reflects our core values: integrity,
-              accountability, excellence, and an unwavering commitment to
-              delivering high ROI for the institutions we serve.
-            </p>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── Photo mosaic ── */}
-      <div className="border-y border-border">
-        <div className="mx-auto max-w-full py-16">
-          <p className="mb-8 text-xs font-medium uppercase tracking-widest text-primary-cta">
-            Our work &amp; culture
-          </p>
-          <div
-            className="grid gap-2"
-            style={{
-              gridTemplateColumns: "repeat(6, 1fr)",
-              gridTemplateRows: "160px 160px",
-            }}
-          >
-            <MosaicTile
-              className="col-span-2"
-              caption="Engineering"
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
-              alt="Engineering"
-            />
-            <MosaicTile
-              className="col-span-1"
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg"
-              alt="Design"
-            />
-            <MosaicTile
-              className="col-span-3"
-              caption="Culture &amp; Growth"
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg"
-              alt="Culture"
-            />
-            <MosaicTile
-              className="col-span-1"
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg"
-              alt="Team"
-            />
-            <MosaicTile
-              className="col-span-2"
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-6.svg"
-              alt="Office"
-            />
+      <section id="who-we-are" className="relative py-20 sm:py-24">
+        <div className="mx-auto grid max-w-7xl gap-14 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
+          <div>
+            <BadgePill label="Who We Are" centered={false} />
+            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+              A Kenyan software company specializing in innovative, tailored ERP
+              and management information systems.
+            </h2>
+            <div className="mt-6 space-y-5 text-base leading-8 text-slate-600">
+              <p>
+                Optimum Computer Systems Ltd delivers innovative software
+                solutions that dramatically enhance operational efficiency,
+                boost productivity, and streamline processes across diverse
+                industries. Our contributions stem from deep, collaborative
+                engagements with clients — meticulously analyzing pain points,
+                inefficiencies, and growth barriers to craft tailored,
+                cost-effective solutions that deliver measurable results.
+              </p>
+              <p>
+                With a customer-centric approach at our core, our team of
+                dedicated experts stands ready to align your business processes
+                with cutting-edge technologies, ensuring sustained growth and
+                competitive advantage. We prioritize customer satisfaction above
+                all, backed by a proven track record of quality service
+                delivery.
+              </p>
+              <p>
+                Today, over 150 institutions of higher learning rely on our ERP
+                system to power their operations — experiencing transformative
+                outcomes that position them for long-term success. We hold
+                Category 1 ICT Authority accreditations, the highest level
+                awarded in Kenya, and are registered as both Data Controller and
+                Data Processor under Kenya&apos;s Data Protection laws.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-5 self-start">
+            <div className="overflow-hidden rounded-[2rem] border border-blue-100 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 p-8 text-white shadow-2xl shadow-blue-900/10">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-100">
+                Leadership Perspective
+              </p>
+              <p className="mt-6 text-xl font-medium leading-9 text-white/95 sm:text-2xl">
+                &quot;Our team of dedicated experts stands ready to align your
+                business processes with cutting-edge technologies, ensuring
+                sustained growth, competitive advantage, and solutions that
+                exceed expectations.&quot;
+              </p>
+              <div className="mt-8 h-px w-full bg-white/15" />
+              <p className="mt-5 text-sm text-blue-100">
+                Optimum Computer Systems Ltd leadership
+              </p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-red-600">
+                  What makes us effective
+                </p>
+                <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
+                  <li>• Hybrid on-premise + cloud system</li>
+                  <li>• No per-user license fees</li>
+                  <li>• Category 1 ICT Authority accredited</li>
+                  <li>• Advanced security — zero breaches reported</li>
+                </ul>
+              </div>
+
+              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-blue-700">
+                  What clients gain
+                </p>
+                <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
+                  <li>• Up to 50% admin workload reduction</li>
+                  <li>• Bank reconciliations under 5 minutes</li>
+                  <li>• Full IPSAS & CBET compliance</li>
+                  <li>• Long-term partnerships and proven ROI</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── CTA strip ── */}
-      <div className="mx-auto flex max-w-full flex-col items-start justify-between gap-10 py-20 md:flex-row md:items-center">
-        <div>
-          <p className="mb-2.5 text-xs font-medium uppercase tracking-widest text-primary-cta">
-            Part of our global team
-          </p>
-          <h3 className="text-[30px] font-bold leading-tight tracking-tight text-foreground">
-            Curious who&apos;s behind the platform?
-          </h3>
+      <section
+        id="our-direction"
+        className="relative border-y border-slate-200/80 bg-slate-50 py-20 sm:py-24"
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div className="max-w-2xl">
+            <BadgePill label="Our Direction" centered={false} />
+            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+              The principles that guide how Optimum builds, deploys, and
+              sustains software solutions for our clients.
+            </h2>
+          </div>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {pillars.map((pillar, index) => (
+              <article
+                key={pillar.title}
+                className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5"
+              >
+                <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-blue-100/60 blur-2xl transition-transform duration-500 group-hover:scale-125" />
+                <div className="relative">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-sm font-semibold text-white">
+                      0{index + 1}
+                    </span>
+                    <span className="h-2.5 w-2.5 rounded-full bg-red-500" />
+                  </div>
+                  <h3 className="mt-6 text-2xl font-semibold text-slate-950">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                    {pillar.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-        <div className="flex shrink-0 items-center gap-4">
-          <a
-            href="#"
-            className="inline-flex items-center rounded-sm border border-border px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-          >
-            Learn more
-          </a>
-          <a
-            href="/company/team"
-            className="inline-flex items-center gap-2 rounded-sm px-6 py-3 text-sm font-medium text-white transition-all hover:-translate-y-px"
-            style={{ background: "#C8251B" }}
-          >
-            Meet the team
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path
-                d="M2 7h10M8 3l4 4-4 4"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
+      </section>
+
+      <section id="our-focus" className="relative py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <BadgePill label="Our Focus" centered={false} />
+              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Modular, scalable solutions for sectors where efficiency,
+                compliance, and data security matter most.
+              </h2>
+            </div>
+            <p className="max-w-xl text-base leading-8 text-slate-600">
+              We deliver hybrid, cross-platform software with strong emphasis on
+              regulatory compliance, security features, seamless integrations,
+              and real-time analytics — reducing manual work and enhancing
+              decision-making across diverse industries.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 xl:grid-cols-2">
+            {focusAreas.map((area) => (
+              <article
+                key={area.title}
+                className="group rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-2xl font-semibold text-slate-950">
+                    {area.title}
+                  </h3>
+                  <span className="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-blue-700">
+                    Optimum
+                  </span>
+                </div>
+                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                  {area.description}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2.5">
+                  {area.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-2 text-sm font-medium text-slate-700 transition-colors duration-300 group-hover:border-blue-100 group-hover:bg-blue-50 group-hover:text-blue-700"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section
+        id="how-we-deliver"
+        className="relative border-y border-slate-200/80 bg-[linear-gradient(180deg,#0f172a_0%,#081224_100%)] py-20 text-white sm:py-24"
+      >
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
+        />
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div className="max-w-2xl">
+            <BadgePill label="How We Deliver" centered={false} />
+            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              A client-centric delivery model designed for operational fit,
+              strong adoption, and long-term measurable value.
+            </h2>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {deliveryModels.map((model, index) => (
+              <article
+                key={model.title}
+                className="rounded-[2rem] border border-white/10 bg-white/5 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10"
+              >
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sm font-semibold text-slate-950">
+                  {index + 1}
+                </div>
+                <h3 className="mt-6 text-xl font-semibold text-white">
+                  {model.title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-slate-300">
+                  {model.description}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_0.9fr]">
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-100">
+                Why this matters
+              </p>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-200">
+                Enterprise software only delivers value when it reflects real
+                operational workflows, supports user adoption, integrates with
+                existing systems, and evolves with the client. Our delivery
+                model is designed to protect each of those dimensions — from
+                initial engagement through to long-term support.
+              </p>
+            </div>
+            <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-blue-600/20 to-red-500/10 p-8 backdrop-blur-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-red-200">
+                Deployment readiness
+              </p>
+              <div className="mt-5 grid grid-cols-2 gap-4 text-sm text-slate-200">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  Hybrid on-premise + cloud deployment
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  MPESA & multi-bank integration
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  IPSAS & CBET-CDACC compliance
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  Biometric & advanced security layers
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="our-commitment" className="relative py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <BadgePill label="Our Commitment" centered={false} />
+              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                We build for institutions and organizations that need
+                reliability, transparency, and room to scale.
+              </h2>
+              <p className="mt-6 text-base leading-8 text-slate-600">
+                Our commitment extends beyond software delivery — to how systems
+                are adopted, how teams are supported, and how organizations
+                continue gaining value long after go-live.
+              </p>
+            </div>
+
+            <div className="grid gap-5">
+              {commitments.map((commitment) => (
+                <article
+                  key={commitment.title}
+                  className="group rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-600 text-sm font-semibold text-white transition-transform duration-300 group-hover:scale-105">
+                      ✓
+                    </span>
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-950">
+                        {commitment.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
+                        {commitment.description}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-14 overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-950 shadow-2xl shadow-slate-900/10">
+            <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+              <div className="relative p-8 sm:p-10 lg:p-12">
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800" />
+                <div className="relative">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-100">
+                    Ready to transform your operations
+                  </p>
+                  <h3 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                    Partner with Optimum to modernize the systems your
+                    institution relies on every day.
+                  </h3>
+                  <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
+                    From higher education and healthcare to retail and
+                    manufacturing, we design ERP solutions that improve
+                    visibility, streamline service delivery, and deliver
+                    measurable returns on investment across every department.
+                  </p>
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    <a
+                      href="#"
+                      className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-100"
+                    >
+                      Talk to Sales
+                    </a>
+                    <a
+                      href="#"
+                      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10"
+                    >
+                      Request a Demonstration
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-1">
+                {[
+                  [
+                    "No per-user fees",
+                    "Unlimited deployment post-installation with one-off, affordable pricing and flexible terms.",
+                  ],
+                  [
+                    "Hybrid-ready",
+                    "Secure on-premise deployment combined with cloud accessibility across all platforms and devices.",
+                  ],
+                  [
+                    "Support-led",
+                    "Staff training, guided onboarding, simulation, and ongoing technical support built into every delivery.",
+                  ],
+                ].map(([title, description]) => (
+                  <div key={title} className="bg-white/5 p-8 sm:p-10">
+                    <p className="text-lg font-semibold text-white">{title}</p>
+                    <p className="mt-3 text-sm leading-7 text-slate-300">
+                      {description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -122,8 +122,8 @@ export default function SiteContact() {
                 icon: <Mail size={18} className="stroke-[#0A2463]" />,
                 label: "Email",
                 sub: "Response within 24 hours",
-                value: "hello@company.com",
-                href: "mailto:hello@company.com",
+                value: "info@optimumsystems.co.ke",
+                href: "mailto:info@optimumsystems.co.ke",
               },
               {
                 animClass: "card-animate-2",
@@ -138,15 +138,15 @@ export default function SiteContact() {
                 icon: <Phone size={18} className="stroke-[#0A2463]" />,
                 label: "Phone",
                 sub: "Mon–Fri, 9AM–6PM EST",
-                value: "+254 (723) 550-664",
-                href: "tel:+254723550664",
+                value: "+254 (723) 653 910",
+                href: "tel:+254723653910",
               },
               {
                 animClass: "card-animate-4",
                 icon: <MapPin size={18} className="stroke-[#0A2463]" />,
                 label: "Office",
                 sub: "Schedule an in-person meeting",
-                value: "1610 – 00200, City Square Nairobi",
+                value: "Crown Z Towers, 3rd Floor, Office B3, Eastern Bypass, near KCB Kamakis",
                 href: "#",
               },
             ].map((card) => (
@@ -249,7 +249,7 @@ export default function SiteContact() {
                     </label>
                     <Input
                       type="email"
-                      placeholder="john@company.com"
+                      placeholder="john@optimumsystems.co.ke"
                       required
                       className="bg-[#F8F9FA] focus-visible:border-[#0A2463]"
                     />
@@ -403,9 +403,9 @@ export default function SiteContact() {
               Contact Information
             </h3>
             {[
-              { icon: <Mail size={14} className="stroke-[#0A2463]" />,  label: "Email",   value: "hello@company.com" },
-              { icon: <Phone size={14} className="stroke-[#0A2463]" />, label: "Phone",   value: "+254 (723) 550-664" },
-              { icon: <MapPin size={14} className="stroke-[#0A2463]" />,label: "Address", value: "1610 – 00200, City Square Nairobi" },
+              { icon: <Mail size={14} className="stroke-[#0A2463]" />,  label: "Email",   value: "info@optimumsystems.co.ke" },
+              { icon: <Phone size={14} className="stroke-[#0A2463]" />, label: "Phone",   value: "+254 (723) 653-910" },
+              { icon: <MapPin size={14} className="stroke-[#0A2463]" />,label: "Address", value: "Crown Z Towers, 3rd Floor, Office B3, Eastern Bypass, near KCB Kamakis" },
             ].map(({ icon, label, value }) => (
               <div
                 key={label}

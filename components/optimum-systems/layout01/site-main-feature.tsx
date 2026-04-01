@@ -354,7 +354,7 @@ export default function SiteMainFeature() {
                         fontSize="12"
                         fontFamily="Arial, sans-serif"
                       >
-                        https://ssogroup.co.ke
+                        https://optimumsystems.co.ke
                       </text>
                     </g>
                   </g>
@@ -423,9 +423,6 @@ export default function SiteMainFeature() {
                         className="inline-flex items-center gap-1.5 px-6 text-lg text-primary-cbe-800 font-semibold"
                       >
                         {item.label}
-                        <span className="text-[8px] text-[rgba(55,138,221,0.2)]">
-                          ◆
-                        </span>
                       </span>
                     );
                   })}

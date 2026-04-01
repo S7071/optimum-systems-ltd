@@ -154,53 +154,14 @@ export default function HelpCenterButton() {
     if (hasUnread) setHasUnread(false);
   };
 
-  const helpOptions: HelpOption[] = [
-    {
-      icon: <PhoneIcon />,
-      label: "Call Us",
-      description: "+254 723 550 664",
-      action: () => {
-        window.location.href = "tel:+254723550664";
-      },
-      color: "#1a237e",
-    },
-    {
-      icon: <WhatsAppIcon />,
-      label: "WhatsApp",
-      description: "Chat with support",
-      action: () => {
-        window.open("https://wa.me/254723550664", "_blank");
-      },
-      color: "#25D366",
-    },
-    {
-      icon: <ChatIcon />,
-      label: "Live Chat",
-      description: "Avg. response ~2 min",
-      action: () => {
-        console.log("Open live chat");
-      },
-      color: "#e53935",
-    },
-    {
-      icon: <EmailIcon />,
-      label: "Email Us",
-      description: "info@optimumsystems.co.ke",
-      action: () => {
-        window.location.href = "mailto:info@optimumsystems.co.ke";
-      },
-      color: "#1a237e",
-    },
-  ];
-
   const shouldRender = mounted && isVisible;
 
   return (
-    <div className="fixed top-[50%] bottom-[50%] -right-20 z-[9999] w-fit h-14 rotate-270">
+    <div className="fixed top-[50%] bottom-[50%] -right-7 z-[9999] w-fit h-14 rotate-270">
       <button
         ref={buttonRef}
         className={[
-          "w-50 h-full rounded-sm border-0 cursor-pointer",
+          "w-25 h-full rounded-sm border-0 cursor-pointer",
           "flex items-center justify-center text-white relative",
           "bg-[linear-gradient(145deg,#e53935,#c62828)]",
           "transition-[transform,box-shadow,opacity] duration-300",
