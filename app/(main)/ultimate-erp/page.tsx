@@ -422,7 +422,7 @@ export default function Home() {
         description="Discover how universities, TVETs, and national polytechnics across Kenya have transformed their operations, improved compliance, and unlocked institutional growth with UltimateERP."
         caseStudies={[
           {
-            industry: "FINANCE",
+            industry: "INNOVATION",
             title:
               "Optimum Computer Systems launches AI tool to revolutionize financial reporting",
             stat: "5mins",
@@ -432,9 +432,8 @@ export default function Home() {
             href: "/blog",
           },
           {
-            industry: "ADMINISTRATION",
-            title:
-              "Kenya Technical Trainers College's Journey to Paperless Operations",
+            industry: "SUCCESS STORIES",
+            title: "Kisii National Polytechnic Journey to Paperless Operations",
             stat: "50%",
             statLabel: "Reduction in administrative workload institution-wide",
             coverSrc:
@@ -442,8 +441,8 @@ export default function Home() {
             href: "#",
           },
           {
-            industry: "COMPLIANCE",
-            title: "Meru University Achieves Full IPSAS & TVETA Compliance",
+            industry: "SUCCESS STORY",
+            title: "Turkana University Achieves Full IPSAS & TVETA Compliance",
             stat: "100%",
             statLabel:
               "Regulatory audit pass rate since UltimateERP deployment",

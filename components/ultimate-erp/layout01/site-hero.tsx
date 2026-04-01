@@ -101,9 +101,9 @@ export default function SiteHeroEnhanced({
           {/* ── LEFT COPY ─────────────────────────────────────────────── */}
           <div className="animate-fadeUp flex flex-col gap-7 md:max-w-full shrink-0">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-primary-cbe-800 border border-[rgba(43,79,216,0.4)] rounded-full px-3 py-1.5 w-fit">
+            <div className="inline-flex items-center gap-2 bg-[rgba(26,52,148,0.3)] border border-[rgba(43,79,216,0.4)] rounded-full px-3 py-1.5 mb-8 w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-[#F03333] shadow-[0_0_8px_#F03333] animate-pulse shrink-0" />
-              <span className="text-[#93AAFF] text-xs font-medium">
+              <span className="text-white text-sm font-medium">
                 {badgeText}
               </span>
             </div>

@@ -22,19 +22,18 @@ export default function SiteTestimonials() {
   const testimonies: Testimony[] = [
     {
       statement:
-        "Optimum's ERP has completely transformed how we manage fees, payroll, and student records. Everything is now in one place — it's simplified our operations tenfold and the support team is always responsive.",
+        "The Audit has never been this fast and seamless-auditors wakiitisha report, ninaclick inatoka. Asante sana Optimum.",
       avatar: "/images/clients/01.jpg",
-      name: "Dr. Jane Mutua",
-      position: "Principal, Trukana University College",
+      name: "CHARITY",
+      position: "Accountant, Meru Teachers",
       logo: "/images/clients/tuc.png",
     },
     {
       statement:
-        "Since deploying the Optimum system, we've eliminated manual errors in our financial reporting and our audit processes are now seamless. It integrates perfectly across all our departments.",
+        "The system is working very well for us and whenever we have any issue you are always there for us and even when we request for a resource, you always send your engineer, we sincerely appreciate optimum.",
       avatar: "/images/clients/02.jpg",
-      name: "Mr. Peter Omondi",
-      position:
-        "Finance Officer, Gatundu South Technical and Vocational College",
+      name: "MADAM HELLEN",
+      position: "C.P KWALE TTC",
       logo: "/images/clients/gatundu-south-technical-and-vocational-college.png",
     },
   ];
@@ -61,8 +60,7 @@ export default function SiteTestimonials() {
     },
     {
       industry: "SUCCESS STORIES",
-      title:
-        "Kisii National Polytechnic Journey to Paperless Operations",
+      title: "Kisii National Polytechnic Journey to Paperless Operations",
       stat: "50%",
       statLabel: "Reduction in administrative workload institution-wide",
       coverSrc:
