@@ -3,7 +3,7 @@ import SiteNavbar from "@/components/optimum-systems/layout01/site-navbar";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
 import WhatsappButton from "@/components/optimum-systems/layout01/section-whatsapp";
-import SectorsWeServePageBody from "@/components/optimum-systems/layout01/section-sectors";
+import IndustrySolutionsPageBody from "@/components/optimum-systems/layout01/section-industry-solutions";
 
 export default function PageLayout() {
   return (
@@ -12,7 +12,7 @@ export default function PageLayout() {
       <WhatsappButton />
       <SiteBanner />
       <SiteNavbar />
-      <SectorsWeServePageBody />
+      <IndustrySolutionsPageBody />
       <SiteFooter />
     </div>
   );

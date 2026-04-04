@@ -781,7 +781,7 @@ export default function SiteNavbar() {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
-                    href="/#industries"
+                    href="/sectors-we-serve"
                     className="px-4 py-2 text-sm font-medium text-primary-cbe-800 hover:text-primary-cbe-500 transition-colors data-[state=open]:text-[#1B3FA6]"
                   >
                     Sectors We Serve

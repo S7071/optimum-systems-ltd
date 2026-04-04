@@ -160,12 +160,12 @@ const TABS = [
 
 function PartnerCard({ name, abbr, bg, fg }: Partner) {
   return (
-    <div className="group flex min-h-[110px] flex-col items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-5 text-center shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_4px_16px_rgba(59,130,246,0.10)]">
+    <div className="group flex max-h-[100px] flex-col items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-5 text-center shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_4px_16px_rgba(59,130,246,0.10)]">
       <div
         className="flex h-fit w-fit items-center justify-center rounded-[10px] font-bold tracking-[0.02em] transition-transform duration-200 group-hover:scale-105"
         style={{ backgroundColor: bg, color: fg }}
       >
-        <img src={abbr} alt="client-logo" className="w-30 h-30 aspect-square" />
+        <img src={abbr} alt="client-logo" className="w-15 h-15 aspect-square" />
       </div>
 
       <p className="text-[11.5px] font-medium leading-[1.35] text-slate-700">
@@ -210,7 +210,7 @@ export default function PartnersGrid() {
         </div>
       </div>
 
-      <main className="flex flex-col gap-12 py-16 md:py-24 w-full px-6 md:px-30">
+      <main className="flex flex-col gap-12 py-16 md:py-24 w-full sm:max-w-6xl px-6 md:px-30">
         {visibleCategories.map((category, idx) => (
           <section key={idx}>
             <div
@@ -227,7 +227,7 @@ export default function PartnersGrid() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-6">
               {category.partners.map((partner, idx) => (
                 <PartnerCard key={idx} {...partner} />
               ))}

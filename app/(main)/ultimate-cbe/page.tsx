@@ -158,6 +158,7 @@ export default function Home() {
             ERP Today
           </h2>
         }
+        ctaSrc="#"
         cards={[
           <div
             key="1"

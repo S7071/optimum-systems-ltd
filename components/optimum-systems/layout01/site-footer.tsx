@@ -29,8 +29,8 @@ const NAV_COMPANY = [
     href: "/company/team",
   },
   {
-    label: "Success Stories",
-    href: "/company/success-stories",
+    label: "Our Clients",
+    href: "/company/partners",
   },
   {
     label: "Careers",
@@ -49,9 +49,18 @@ const NAV_PRODUCTS = [
 ];
 
 const NAV_SOLUTIONS = [
-  "Sectors We Serve",
-  "Industry Solutions",
-  "Product Ecosystems",
+  {
+    label: "Sectors We Serve",
+    href: "/sectors-we-serve",
+  },
+  {
+    label: "Industry Solutions",
+    href: "/industry-solutions",
+  },
+  {
+    label: "Product Ecosystems",
+    href: "/product-ecosystems",
+  },
 ];
 
 const NAV_RESOURCES = [
@@ -60,16 +69,8 @@ const NAV_RESOURCES = [
     href: "/resources/blogs",
   },
   {
-    label: "Implementation Guide",
-    href: "#",
-  },
-  {
     label: "Case Studies",
-    href: "#",
-  },
-  {
-    label: "System Documentation",
-    href: "#",
+    href: "/resources/case-studies",
   },
   {
     label: "Support Center",
@@ -144,12 +145,12 @@ export default function SiteFooter() {
               </h3>
               <ul className="space-y-1 text-secondary/55">
                 {NAV_SOLUTIONS.map((item) => (
-                  <li key={item}>
+                  <li key={item.label}>
                     <a
-                      href="#"
+                      href={item.href}
                       className="block py-1 text-sm transition-all duration-150 hover:text-white hover:pl-2"
                     >
-                      {item}
+                      {item.label}
                     </a>
                   </li>
                 ))}
@@ -182,14 +183,14 @@ export default function SiteFooter() {
             <ul className="flex sm:flex-row flex-col items-start sm:items-center gap-4 lg:justify-start">
               <div className="flex flex-row gap-5">
                 <li className="hover:text-secondary/80 transition-colors">
-                  <a href="#">Privacy</a>
+                  <a href="/company/privacy-policy">Privacy</a>
                 </li>
                 <li className="hover:text-secondary/80 transition-colors">
-                  <a href="#">Terms</a>
+                  <a href="/company/terms-of-service">Terms</a>
                 </li>
                 {/* Cookie Policy — added for compliance */}
                 <li className="hover:text-secondary/80 transition-colors">
-                  <a href="#">Cookie Policy</a>
+                  <a href="/company/cookie-policy">Cookie Policy</a>
                 </li>
               </div>
 
@@ -198,10 +199,10 @@ export default function SiteFooter() {
 
               <li>
                 <a
-                  href="https://ssogroup.co.ke"
+                  href="https://optimumsystems.co.ke"
                   className="text-secondary/25 hover:text-secondary/50 transition-colors"
                 >
-                  © 2026 SSO GROUP KE. All rights reserved.
+                  © 2026 OPTIMUM SYSTEMS LTD KE. All rights reserved.
                 </a>
               </li>
             </ul>
