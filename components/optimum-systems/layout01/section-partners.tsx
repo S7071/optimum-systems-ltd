@@ -160,12 +160,12 @@ const TABS = [
 
 function PartnerCard({ name, abbr, bg, fg }: Partner) {
   return (
-    <div className="group flex max-h-[100px] flex-col items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-5 text-center shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_4px_16px_rgba(59,130,246,0.10)]">
+    <div className="group flex h-[200px] flex-col items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-5 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md">
       <div
         className="flex h-fit w-fit items-center justify-center rounded-[10px] font-bold tracking-[0.02em] transition-transform duration-200 group-hover:scale-105"
         style={{ backgroundColor: bg, color: fg }}
       >
-        <img src={abbr} alt="client-logo" className="w-15 h-15 aspect-square" />
+        <img src={abbr} alt="client-logo" className="w-30 h-30 aspect-square" />
       </div>
 
       <p className="text-[11.5px] font-medium leading-[1.35] text-slate-700">
@@ -227,7 +227,7 @@ export default function PartnersGrid() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-6">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {category.partners.map((partner, idx) => (
                 <PartnerCard key={idx} {...partner} />
               ))}
@@ -238,7 +238,7 @@ export default function PartnersGrid() {
         <section className="rounded-2xl bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-8 py-7 shadow-lg">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div>
-              <p className="mb-1 text-[12.5px] font-medium text-blue-200">
+              <p className="mb-1 text-xs uppercase tracking-widest font-medium text-blue-200">
                 Optimum Computer Systems Ltd
               </p>
               <p className="text-[17px] font-semibold text-white">
@@ -248,7 +248,7 @@ export default function PartnersGrid() {
 
             <button
               type="button"
-              className="rounded-full bg-white px-6 py-2.5 text-[13px] font-semibold text-primary-cbe-500 transition-colors duration-150 hover:bg-blue-50"
+              className="rounded-full bg-primary-cta px-6 py-2.5 text-[13px] font-semibold text-primary-cbe-50 transition-colors duration-150 hover:bg-primary-cta-800"
             >
               Request a Demo →
             </button>

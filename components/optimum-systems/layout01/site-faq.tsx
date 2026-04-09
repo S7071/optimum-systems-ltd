@@ -1,8 +1,13 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { ArrowRight, ChevronDown, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useMemo, useState } from "react";
+import {
+  ArrowRight,
+  ChevronDown,
+  HelpCircle,
+  Search,
+  Sparkles,
+} from "lucide-react";
 import BadgePill from "@/components/ui/badge-pill";
 
 type Category = "all" | "general" | "platform" | "billing" | "support";
@@ -59,9 +64,9 @@ const FAQS: FaqItem[] = [
   },
   {
     id: 7,
-    question: "What payment methods does Optimum System Ltd accept?",
+    question: "What payment methods does Optimum Systems Ltd accept?",
     answer:
-      "We accept all major credit and debit cards, bank transfers, and select digital wallets. Enterprise clients may also request invoice-based billing with net-30 payment terms. Contact our billing team for details.",
+      "We accept major credit and debit cards, bank transfers, and select digital wallets. Enterprise clients may also request invoice-based billing with agreed commercial terms. Contact our billing team for account-specific guidance.",
     category: "billing",
   },
 ];
@@ -74,27 +79,45 @@ const TABS: { label: string; value: Category }[] = [
   { label: "Support", value: "support" },
 ];
 
-const STATS = [
-  { value: "24", label: "Total FAQs" },
-  { value: "6", label: "Categories" },
-  { value: "<2 min", label: "Avg. Read Time" },
-];
+const CATEGORY_DESCRIPTIONS: Record<Exclude<Category, "all">, string> = {
+  general: "Core information and common overview questions.",
+  platform: "Product capabilities, workflows, and platform usage.",
+  billing: "Payments, invoicing, and commercial terms.",
+  support: "Help, maintenance, updates, and assistance.",
+};
 
 export default function SiteFaq() {
-  const [openId, setOpenId] = useState<number | null>(null);
+  const [openId, setOpenId] = useState<number | null>(1);
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
+  const categoryCounts = useMemo(() => {
+    return FAQS.reduce<Record<Exclude<Category, "all">, number>>(
+      (acc, faq) => {
+        acc[faq.category] += 1;
+        return acc;
+      },
+      {
+        general: 0,
+        platform: 0,
+        billing: 0,
+        support: 0,
+      },
+    );
+  }, []);
+
   const filteredFaqs = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
+
     return FAQS.filter((faq) => {
-      const matchCat =
+      const matchesCategory =
         activeCategory === "all" || faq.category === activeCategory;
-      const matchSearch =
+      const matchesSearch =
         !q ||
         faq.question.toLowerCase().includes(q) ||
         faq.answer.toLowerCase().includes(q);
-      return matchCat && matchSearch;
+
+      return matchesCategory && matchesSearch;
     });
   }, [activeCategory, searchQuery]);
 
@@ -102,182 +125,372 @@ export default function SiteFaq() {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
+  const activeCategoryLabel =
+    TABS.find((tab) => tab.value === activeCategory)?.label ?? "All Topics";
+
   return (
-    <section className="w-full">
-      {/* ── Hero ── */}
-      <div className="relative overflow-hidden bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-6 py-16 text-center sm:py-24">
-        {/* Decorative radial overlays */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-[10%] top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary-cbe-500 opacity-30 blur-3xl" />
-          <div className="absolute right-[10%] top-0 h-72 w-72 rounded-full bg-red-500 opacity-10 blur-3xl" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-2xl flex flex-col gap-3 items-center">
-          <BadgePill label="FAQ" centered={true} />
-
-          <h1 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-white mb-4">
-            Common Questions & <span className="text-red-500">Answers</span>
-          </h1>
-
-          <p className="text-base text-white/65 sm:text-lg max-w-xl">
-            Find out all the essential details about our platform and how it can
-            serve your needs.
-          </p>
-
-          {/* Search */}
-          <div className="mt-8 flex overflow-hidden rounded-xl shadow-xl w-full">
-            <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search a question…"
-                className="h-full w-full bg-white py-4 pl-11 pr-4 text-sm text-gray-800 outline-none placeholder:text-gray-400"
-              />
-            </div>
-            <button
-              onClick={() => {}}
-              className="bg-red-600 px-6 text-sm font-semibold text-white transition-colors hover:bg-red-700 active:bg-red-800"
-            >
-              Search
-            </button>
-          </div>
-        </div>
+    <section className="relative overflow-hidden bg-background py-16 sm:py-20 w-full">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute right-0 top-24 h-72 w-72 rounded-full bg-red-100 blur-3xl" />
       </div>
 
-      {/* ── Stats bar ── */}
-      <div className="flex justify-center gap-12 border-b border-border bg-background px-6 py-5">
-        {STATS.map((stat) => (
-          <div key={stat.label} className="text-center">
-            <p className="text-xl font-bold text-primary-cbe-800 sm:text-2xl">
-              {stat.value}
-            </p>
-            <p className="text-xs text-muted-foreground">{stat.label}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* ── Main content ── */}
-      <div className="bg-primary-cbe-50 px-6 py-14 sm:px-10">
-        <div className="mx-auto max-w-3xl">
-          {/* Category tabs */}
-          <div className="mb-8 flex flex-wrap gap-2">
-            {TABS.map((tab) => (
-              <button
-                key={tab.value}
-                onClick={() => setActiveCategory(tab.value)}
-                className={[
-                  "rounded-full border px-4 py-1.5 text-sm font-medium transition-colors",
-                  activeCategory === tab.value
-                    ? "border-primary-cbe-800 bg-primary-cbe-800 text-white"
-                    : "border-border bg-background text-muted-foreground hover:border-primary-cbe-400 hover:text-primary-cbe-700",
-                ].join(" ")}
-              >
-                {tab.label}
-              </button>
-            ))}
+      <div className="relative mx-auto max-w-full px-6 md:px-30">
+        {/* Hero */}
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 shadow-sm">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-red-500/10 blur-3xl" />
           </div>
 
-          {/* Accordion list */}
-          {filteredFaqs.length > 0 ? (
-            <div className="flex flex-col gap-3">
-              {filteredFaqs.map((faq) => {
-                const isOpen = openId === faq.id;
-                return (
-                  <div
-                    key={faq.id}
-                    className={[
-                      "overflow-hidden rounded-2xl border bg-background transition-all duration-200",
-                      isOpen
-                        ? "border-primary-cbe-400 shadow-md shadow-primary-cbe-100"
-                        : "border-border hover:border-primary-cbe-200 hover:shadow-sm",
-                    ].join(" ")}
-                  >
-                    {/* Header */}
-                    <button
-                      onClick={() => handleToggle(faq.id)}
-                      className="flex w-full items-center gap-4 px-5 py-5 text-left"
-                    >
-                      {/* Number badge */}
-                      <span
-                        className={[
-                          "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold transition-colors",
-                          isOpen
-                            ? "bg-primary-cbe-800 text-white"
-                            : "bg-primary-cbe-100 text-primary-cbe-800",
-                        ].join(" ")}
-                      >
-                        {faq.id}
-                      </span>
+          <div className="relative z-10 px-6 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
+            <div className="w-full flex flex-col items-center text-center gap-3">
+              <BadgePill label="FAQ CENTER" centered={true} />
 
-                      {/* Question */}
-                      <span className="flex-1 text-sm font-semibold text-foreground sm:text-base">
-                        {faq.question}
-                      </span>
+              <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-50">
+                Clear Answers, Structured <br />
+                <span className="text-primary-cta">Professionally.</span>
+              </h3>
 
-                      {/* Chevron */}
-                      <span
-                        className={[
-                          "flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
-                          isOpen
-                            ? "border-red-600 bg-red-600 text-white"
-                            : "border-border text-muted-foreground",
-                        ].join(" ")}
-                      >
-                        <ChevronDown
-                          className={[
-                            "h-4 w-4 transition-transform duration-300",
-                            isOpen ? "rotate-180" : "",
-                          ].join(" ")}
-                        />
-                      </span>
-                    </button>
-
-                    {/* Collapsible answer */}
-                    <div
-                      className={[
-                        "grid transition-all duration-300 ease-in-out",
-                        isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
-                      ].join(" ")}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="border-t border-border px-5 pb-5 pt-4 pl-[68px] text-sm leading-relaxed text-muted-foreground">
-                          {faq.answer}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            /* No results */
-            <div className="py-16 text-center text-muted-foreground">
-              <Search className="mx-auto mb-3 h-10 w-10 opacity-30" />
-              <p className="text-sm">
-                No questions match your search. Try a different term.
+              <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
+                Browse common questions, filter by topic, and quickly find the
+                information your users need without adding friction to the
+                experience.
               </p>
             </div>
-          )}
 
-          {/* ── CTA Banner ── */}
-          <div className="relative mt-14 overflow-hidden rounded-2xl bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-8 py-10 sm:flex sm:items-center sm:justify-between">
-            {/* Decorative circle */}
-            <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/5" />
+            <div className="mt-14 rounded-2xl border border-white/10 bg-white/10 p-3 backdrop-blur-md">
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+                <div className="relative flex-1">
+                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search questions, topics, or keywords..."
+                    className="h-14 w-full rounded-xl border border-white/60 bg-white pl-11 pr-4 text-sm text-slate-900 outline-none transition-all duration-300 placeholder:text-slate-400 focus:border-primary-cbe-400 focus:ring-4 focus:ring-primary-cbe-100"
+                  />
+                </div>
+
+                <div className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-slate-950/15 px-4 py-3 text-sm text-white/80 lg:min-w-[220px]">
+                  <span>
+                    {filteredFaqs.length} result
+                    {filteredFaqs.length === 1 ? "" : "s"}
+                  </span>
+
+                  {searchQuery ? (
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery("")}
+                      className="rounded-lg border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white transition-all duration-300 hover:bg-white/15"
+                    >
+                      Clear
+                    </button>
+                  ) : (
+                    <span className="text-xs text-white/60">Live search</span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 backdrop-blur-sm">
+                <p className="text-2xl font-semibold text-white">
+                  {FAQS.length}
+                </p>
+                <p className="mt-1 text-sm text-white/70">Total questions</p>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 backdrop-blur-sm">
+                <p className="text-2xl font-semibold text-white">
+                  {Object.keys(categoryCounts).length}
+                </p>
+                <p className="mt-1 text-sm text-white/70">
+                  Structured categories
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 backdrop-blur-sm">
+                <p className="text-2xl font-semibold text-white">
+                  {filteredFaqs.length}
+                </p>
+                <p className="mt-1 text-sm text-white/70">Visible results</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main content */}
+        <div className="mt-8 grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
+          {/* Sidebar */}
+          <aside className="lg:sticky lg:top-24 lg:self-start">
+            <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_20px_60px_-32px_rgba(15,23,42,0.2)]">
+              <div className="border-b border-slate-200 px-6 py-5">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-300">
+                  Browse by Category
+                </p>
+                <h3 className="mt-2 text-lg font-semibold text-primary-cbe-500">
+                  Refined Topic Navigation
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  Switch between topic groups to help users scan the FAQ more
+                  efficiently.
+                </p>
+              </div>
+
+              <div className="p-4">
+                <div className="space-y-2">
+                  {TABS.map((tab) => {
+                    const isActive = activeCategory === tab.value;
+                    const count =
+                      tab.value === "all"
+                        ? FAQS.length
+                        : categoryCounts[tab.value as Exclude<Category, "all">];
+
+                    return (
+                      <button
+                        key={tab.value}
+                        type="button"
+                        onClick={() => setActiveCategory(tab.value)}
+                        className={[
+                          "group flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left transition-all duration-300",
+                          isActive
+                            ? "border-primary-cbe-200 bg-primary-cbe-50 shadow-sm"
+                            : "border-transparent bg-white hover:border-slate-200 hover:bg-slate-50",
+                        ].join(" ")}
+                      >
+                        <div>
+                          <p
+                            className={[
+                              "text-sm font-semibold transition-colors",
+                              isActive
+                                ? "text-primary-cbe-500"
+                                : "text-slate-900 group-hover:text-primary-cbe-800",
+                            ].join(" ")}
+                          >
+                            {tab.label}
+                          </p>
+
+                          {tab.value !== "all" && (
+                            <p className="mt-1 text-xs text-slate-500">
+                              {
+                                CATEGORY_DESCRIPTIONS[
+                                  tab.value as Exclude<Category, "all">
+                                ]
+                              }
+                            </p>
+                          )}
+                        </div>
+
+                        <span
+                          className={[
+                            "ml-4 inline-flex min-w-8 items-center justify-center rounded-full px-2.5 py-1 text-xs font-semibold transition-all duration-300",
+                            isActive
+                              ? "bg-primary-cbe-500 text-white"
+                              : "bg-slate-100 text-slate-600",
+                          ].join(" ")}
+                        >
+                          {count}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-5 rounded-2xl bg-primary-cbe-500 px-5 py-5 text-white">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
+                    <HelpCircle className="h-5 w-5" />
+                  </div>
+
+                  <h4 className="mt-4 text-base font-semibold">
+                    Need Direct Assistance?
+                  </h4>
+                  <p className="mt-2 text-sm leading-6 text-white/70">
+                    Use this section for quick self-service, then route users to
+                    your support team for more complex enquiries.
+                  </p>
+
+                  <button
+                    type="button"
+                    className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary-cta hover:bg-primary-cta-800 px-4 py-3 text-sm font-semibold text-primary-cbe-50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                  >
+                    Contact Support
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          {/* FAQ Panel */}
+          <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_20px_60px_-32px_rgba(15,23,42,0.2)]">
+            <div className="border-b border-slate-200 px-6 py-5 sm:px-8">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="w-[60%]">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-300">
+                    {activeCategoryLabel}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold tracking-tight text-primary-cbe-500">
+                    Frequently Asked Questions
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    A cleaner, more structured accordion layout with improved
+                    readability and better topic separation.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">
+                  Showing{" "}
+                  <span className="font-semibold text-primary-cbe-500">
+                    {filteredFaqs.length}
+                  </span>{" "}
+                  matched item{filteredFaqs.length === 1 ? "" : "s"}
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 sm:p-6">
+              {filteredFaqs.length > 0 ? (
+                <div className="space-y-3">
+                  {filteredFaqs.map((faq) => {
+                    const isOpen = openId === faq.id;
+
+                    return (
+                      <div
+                        key={faq.id}
+                        className={[
+                          "overflow-hidden rounded-[1.5rem] border transition-all duration-300",
+                          isOpen
+                            ? "border-primary-cbe-200 bg-primary-cbe-50/60 shadow-sm"
+                            : "border-slate-200 bg-white hover:border-primary-cbe-100 hover:shadow-md",
+                        ].join(" ")}
+                      >
+                        <button
+                          type="button"
+                          aria-expanded={isOpen}
+                          aria-controls={`faq-answer-${faq.id}`}
+                          onClick={() => handleToggle(faq.id)}
+                          className="flex w-full items-center gap-4 px-5 py-5 text-left sm:px-6"
+                        >
+                          <div
+                            className={[
+                              "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-all duration-300",
+                              isOpen
+                                ? "bg-primary-cbe-500 text-white"
+                                : "bg-primary-cbe-100 text-primary-cbe-500",
+                            ].join(" ")}
+                          >
+                            {String(faq.id).padStart(2, "0")}
+                          </div>
+
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                              <h4 className="pr-4 text-base font-semibold leading-7 text-primary-cbe-500 sm:text-lg">
+                                {faq.question}
+                              </h4>
+
+                              <span className="inline-flex w-fit rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium capitalize text-slate-600">
+                                {faq.category}
+                              </span>
+                            </div>
+                          </div>
+
+                          <span
+                            className={[
+                              "mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
+                              isOpen
+                                ? "border-red-600 bg-red-600 text-white"
+                                : "border-slate-200 bg-white text-slate-500",
+                            ].join(" ")}
+                          >
+                            <ChevronDown
+                              className={[
+                                "h-4 w-4 transition-transform duration-300",
+                                isOpen ? "rotate-180" : "",
+                              ].join(" ")}
+                            />
+                          </span>
+                        </button>
+
+                        <div
+                          className={[
+                            "grid transition-all duration-300 ease-in-out",
+                            isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                          ].join(" ")}
+                        >
+                          <div className="overflow-hidden">
+                            <div
+                              id={`faq-answer-${faq.id}`}
+                              className="border-t border-slate-200/80 px-5 pb-5 pt-4 sm:px-6 sm:pb-6"
+                            >
+                              <div className="pl-[3.65rem]">
+                                <p className="max-w-3xl text-sm leading-7 text-slate-600 sm:text-[15px]">
+                                  {faq.answer}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="flex min-h-[320px] flex-col items-center justify-center rounded-[1.5rem] border border-dashed border-slate-300 bg-slate-50 px-6 text-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm">
+                    <Search className="h-6 w-6 text-slate-400" />
+                  </div>
+                  <h4 className="mt-5 text-lg font-semibold text-slate-900">
+                    No matching questions found
+                  </h4>
+                  <p className="mt-2 max-w-md text-sm leading-6 text-slate-600">
+                    Try a broader keyword or switch to another topic category to
+                    reveal more results.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery("");
+                      setActiveCategory("all");
+                    }}
+                    className="mt-5 rounded-xl bg-primary-cbe-800 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-primary-cbe-700"
+                  >
+                    Reset filters
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm">
+          <div className="relative grid gap-6 overflow-hidden bg-gradient-to-r from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-6 py-8 sm:px-8 lg:grid-cols-[1.35fr_auto] lg:items-center">
+            <div className="pointer-events-none absolute right-0 top-0 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
+            <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-red-500/10 blur-3xl" />
 
             <div className="relative z-10">
-              <h3 className="text-xl font-bold text-white">
-                Still have questions?
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
+                Next step
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+                Still Have Questions?
               </h3>
-              <p className="mt-1 text-sm text-white/60">
-                Our support team is ready to help you with anything you need.
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-white/70">
+                Pair the FAQ with a clear support escalation path so users can
+                move from self-service to direct assistance without losing
+                momentum.
               </p>
             </div>
 
-            <Button variant="default" size="lg">
-              Contact Support <ArrowRight size={14} />
-            </Button>
+            <div className="relative z-10">
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 rounded-full bg-primary-cta hover:bg-primary-cta-800 px-5 py-3.5 text-sm font-semibold text-primary-cbe-50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+              >
+                Contact Support
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

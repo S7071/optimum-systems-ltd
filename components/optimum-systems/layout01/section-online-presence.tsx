@@ -2,165 +2,270 @@
 "use client";
 
 import BadgePill from "@/components/ui/badge-pill";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
-interface bulletProp {
-  title: string;
-  description: string;
-}
 
 type Feature = {
   id: string;
   label: string;
   title: string;
   description: string;
-  bullets: bulletProp[];
   accent: string;
+  eyebrow: string;
+  outcomes: string[];
 };
 
 const FEATURES: Feature[] = [
   {
-    id: "lecture-portal",
-    label: "Lecture Portal",
-    title: "Lecture Portal",
+    id: "staff-portal",
+    label: "Staff Portal",
+    title: "Staff Portal",
+    eyebrow: "Academic Delivery Workspace",
     description:
-      "Ullamco proident nisi ut pariatur eu exercitation magna commodo voluptate reprehenderit qui est.",
-    bullets: [
-      {
-        title: "AI-Driven Timetable Scheduling",
-        description:
-          "Automatically resolve room, lecturer, and course conflicts with intelligent scheduling. Generate printable timetables synced to calendars, supporting both online and offline hybrid learning modes without manual intervention.",
-      },
-      {
-        title: "Anonymous Lecturer Evaluation",
-        description:
-          "Collect honest student feedback through secure online surveys with customizable questionnaires. Access real-time analytics on teaching effectiveness scores, term-over-term trends, and low-rating alerts linked to HR development tracking.",
-      },
-      {
-        title: "Biometric Attendance Sessions",
-        description:
-          "Initiate attendance sessions with a fingerprint scan before class begins. Students log presence biometrically, with the system auto-calculating per-course attendance percentages and generating real-time reports for academic compliance.",
-      },
+      "A dedicated portal for lecturers to manage class delivery, academic workflows, attendance, evaluations, and scheduling from one secure interface.",
+    outcomes: [
+      "Faster academic coordination",
+      "Reduced manual scheduling work",
+      "Improved teaching visibility",
     ],
-    accent: "from-slate-900 via-slate-700 to-slate-500",
+    accent: "from-primary-cbe-700 via-primary-cbe-600 to-sky-500",
   },
   {
     id: "student-portal",
     label: "Student Portal",
     title: "Student Portal",
-    description: "Aute cillum ad exercitation ea.",
-    bullets: [
-      {
-        title: "Self-Service Academic Access",
-        description:
-          "Access transcripts, register for courses, book exams, and view results from a mobile-responsive portal. Receive push notifications for deadlines, announcements, and academic updates — reducing dependence on administrative offices entirely.",
-      },
-      {
-        title: "Fee Payments & Finance Statements",
-        description:
-          "View outstanding fee invoices, make partial or full payments via MPESA, and download personalized fee statements instantly. Receive automated SMS and email alerts for overdue balances, sponsorship updates, and payment confirmations.",
-      },
-      {
-        title: "Online Application & Clearance",
-        description:
-          "Apply for admission with document uploads and automated eligibility checks. Track multi-department clearance status — finance, library, hostels, and exams — through a transparent digital dashboard from application to graduation exit.",
-      },
+    eyebrow: "Self-Service Student Experience",
+    description:
+      "A modern self-service portal that gives students direct access to academic records, fee management, applications, and institutional updates on any device.",
+    outcomes: [
+      "Better student convenience",
+      "Lower admin workload",
+      "Clearer fee visibility",
     ],
-    accent: "from-zinc-900 via-zinc-700 to-zinc-500",
+    accent: "from-primary-cta via-rose-500 to-orange-400",
   },
   {
-    id: "admin-portal",
-    label: "Admin Portal",
-    title: "Admin Portal",
-    description: "Sint commodo voluptate cillum excepteur.",
-    bullets: [
-      {
-        title: "Centralized System Control",
-        description:
-          "Manage user roles with granular permissions, configure custom workflows, and monitor system health in real time. Enforce multi-factor authentication, schedule automated backups, and maintain an indelible audit log of every system action.",
-      },
-      {
-        title: "Real-Time Executive Dashboard",
-        description:
-          "Access live KPIs covering enrollment trends, revenue, debtors, creditors, cashbook balances, gender distribution, and staffing counts. Drill down into predictive analytics and generate board-ready reports from any device, anywhere.",
-      },
-      {
-        title: "Automated Procurement & Compliance",
-        description:
-          "Streamline requisitions, supplier tendering, and purchase order workflows with full finance integration. Track inventory reorder levels, analyze spend patterns, and maintain IPSAS-compliant, audit-ready financial and procurement records.",
-      },
+    id: "management-portal",
+    label: "Management Portal",
+    title: "Management Portal",
+    eyebrow: "Institutional Oversight & Control",
+    description:
+      "A centralized control layer for operations, finance, users, reporting, workflows, and executive decision-making across the institution.",
+    outcomes: [
+      "Stronger operational control",
+      "Board-ready reporting",
+      "Audit-ready processes",
     ],
-    accent: "from-black via-neutral-800 to-neutral-500",
+    accent: "from-slate-900 via-slate-700 to-slate-500",
   },
 ];
 
-function CubeIllustration() {
+function PortalPreview({ feature }: { feature: Feature }) {
   return (
-    <div className="relative mx-auto flex aspect-[1.6] w-full w-fit items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white/70">
-      <img src="/portals/laptop.png" alt="" className="w-full h-full" />
+    <div className="grid gap-6 lg:grid-cols-[1.05fr_1.2fr] lg:gap-8">
+      <div className="flex h-full flex-col rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+        <div
+          className={`mb-5 inline-flex w-fit items-center rounded-full bg-gradient-to-r px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white shadow-sm ${feature.accent}`}
+        >
+          {feature.eyebrow}
+        </div>
+
+        <h3 className="text-2xl font-bold tracking-tight text-primary-cbe-500 sm:text-[30px]">
+          {feature.title}
+        </h3>
+
+        <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-[15px]">
+          {feature.description}
+        </p>
+
+        <div className="mt-6 grid gap-3">
+          {feature.outcomes.map((item) => (
+            <div
+              key={item}
+              className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3"
+            >
+              <div
+                className={`h-2.5 w-2.5 rounded-full bg-gradient-to-r ${feature.accent}`}
+              />
+              <p className="text-sm font-medium text-slate-700">{item}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 grid grid-cols-3 gap-3">
+          {["Secure", "Realtime", "Responsive"].map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-center text-[11px] font-semibold uppercase tracking-wide text-slate-600"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="relative overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm">
+        <div className={`h-24 w-full bg-gradient-to-r ${feature.accent}`} />
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/10 to-transparent" />
+
+        <div className="relative -mt-24 p-4 sm:p-6">
+          <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-3 shadow-inner sm:p-4">
+            <div className="relative overflow-hidden rounded-[20px] border border-slate-200 bg-white">
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:30px_30px]" />
+              <img
+                src="/portals/laptop.png"
+                alt={feature.title}
+                className="relative h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/10 via-transparent to-white/10" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default function OnlinePresenceSection() {
   const [activeId, setActiveId] = useState(FEATURES[0].id);
+  const tabsRef = useRef<Array<HTMLButtonElement | null>>([]);
 
   const activeFeature = useMemo(
     () => FEATURES.find((feature) => feature.id === activeId) ?? FEATURES[0],
     [activeId],
   );
 
+  const activeIndex = FEATURES.findIndex((feature) => feature.id === activeId);
+
+  const handleTabKeyDown = (
+    e: React.KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+
+    e.preventDefault();
+
+    const nextIndex =
+      e.key === "ArrowRight"
+        ? (index + 1) % FEATURES.length
+        : (index - 1 + FEATURES.length) % FEATURES.length;
+
+    setActiveId(FEATURES[nextIndex].id);
+    tabsRef.current[nextIndex]?.focus();
+  };
+
   return (
-    <section className="w-full bg-primary-cbe-50 px-6 sm:px-30 pt-16 sm:pt-32">
-      <div className="w-full flex flex-col gap-3 items-center px-4 sm:px-6 lg:px-8">
-        <BadgePill label="Online Platforms" centered={true} />
+    <section className="w-full overflow-hidden bg-background py-18 sm:py-24 px-6 sm:px-16 lg:px-30">
+      <div className="relative">
+        <div className="absolute left-0 top-0 h-48 w-48 rounded-full bg-primary-cbe-100/50 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-56 w-56 rounded-full bg-primary-cta/10 blur-3xl" />
 
-        <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
-          Our <span className="text-primary-cta">Online</span> Presence
-        </h2>
-        <p className="mx-auto max-w-[600px] text-[15px] leading-[1.7] text-primary-cbe-800/60 line-clamp-3 text-center">
-          Experience UltimateERP through purpose-built portals designed for
-          every stakeholder. From lecturers managing assessments to students
-          tracking fees and administrators overseeing institutional operations —
-          each portal delivers real-time access, automation, and control from
-          any device, anywhere.
-        </p>
-        <div className="mt-8 w-full">
-          <div className="flex items-center justify-center">
+        <div className="mx-auto max-w-3xl text-center flex flex-col gap-3 items-center">
+          <BadgePill label="Online Platforms" centered={true} />
+
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
+            Our <span className="text-primary-cta">Online</span> Presence
+          </h3>
+
+          <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+            Experience UltimateERP through purpose-built portals designed for
+            every stakeholder. From lecturers managing assessments to students
+            tracking fees and administrators overseeing institutional
+            operations, each portal delivers secure access, automation, and
+            control across the institution.
+          </p>
+        </div>
+
+        <div className="relative mt-14">
+          <div
+            role="tablist"
+            aria-label="Feature categories"
+            className="mx-auto flex max-w-5xl gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {FEATURES.map((feature, index) => {
+              const isActive = feature.id === activeId;
+
+              return (
+                <button
+                  key={feature.id}
+                  ref={(el) => {
+                    tabsRef.current[index] = el;
+                  }}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`panel-${feature.id}`}
+                  id={`tab-${feature.id}`}
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => setActiveId(feature.id)}
+                  onKeyDown={(e) => handleTabKeyDown(e, index)}
+                  className={[
+                    "group min-w-[260px] flex-1 rounded-[24px] border p-4 text-left transition-all duration-300 ease-out sm:min-w-0 sm:p-5",
+                    isActive
+                      ? "border-primary-cbe-200 bg-white shadow-sm"
+                      : "border-slate-200 bg-white/60 hover:translate-y-0.5 hover:border-slate-300 hover:bg-white",
+                  ].join(" ")}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={[
+                        "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-all duration-300",
+                        isActive
+                          ? `bg-gradient-to-r text-white ${feature.accent}`
+                          : "bg-slate-100 text-slate-700 group-hover:bg-slate-200",
+                      ].join(" ")}
+                    >
+                      {`0${index + 1}`}
+                    </div>
+
+                    <div className="min-w-0">
+                      <p
+                        className={[
+                          "text-sm font-semibold",
+                          isActive ? "text-primary-cbe-500" : "text-slate-700",
+                        ].join(" ")}
+                      >
+                        {feature.label}
+                      </p>
+                      <p
+                        className={[
+                          "mt-1 text-xs",
+                          isActive ? "text-slate-600" : "text-slate-500",
+                        ].join(" ")}
+                      >
+                        {feature.eyebrow}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 overflow-hidden rounded-full bg-slate-100">
+                    <div
+                      className={[
+                        "h-1 rounded-full transition-all duration-300",
+                        isActive
+                          ? `w-full bg-gradient-to-r ${feature.accent}`
+                          : "w-0 bg-transparent",
+                      ].join(" ")}
+                    />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-8">
             <div
-              role="tablist"
-              aria-label="Feature categories"
-              className="hidden flex-wrap justify-center gap-2 rounded-full bg-primary-cbe-100 p-1 sm:inline-flex"
+              role="tabpanel"
+              aria-labelledby={`tab-${activeFeature.id}`}
+              id={`panel-${activeFeature.id}`}
+              className="outline-none"
             >
-              {FEATURES.map((feature) => {
-                const isActive = feature.id === activeId;
-
-                return (
-                  <button
-                    key={feature.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-controls={`panel-${feature.id}`}
-                    id={`tab-${feature.id}`}
-                    onClick={() => setActiveId(feature.id)}
-                    className={[
-                      "rounded-full px-4 py-2 text-sm font-medium transition-all",
-                      "focus:outline-none focus:ring-2 focus:ring-slate-950/10",
-                      isActive
-                        ? "bg-white text-primary-cbe-800 shadow-sm ring-1 ring-slate-200"
-                        : "text-primary-cbe-800/60 hover:text-slate-950",
-                    ].join(" ")}
-                  >
-                    {feature.label}
-                  </button>
-                );
-              })}
+              <PortalPreview feature={activeFeature} />
             </div>
           </div>
 
-          <div className="mt-4 flex items-center justify-center gap-2 sm:hidden">
-            {FEATURES.map((feature) => {
+          <div className="mt-8 flex items-center justify-center gap-2 sm:hidden">
+            {FEATURES.map((feature, index) => {
               const isActive = feature.id === activeId;
               return (
                 <button
@@ -170,41 +275,16 @@ export default function OnlinePresenceSection() {
                   aria-pressed={isActive}
                   onClick={() => setActiveId(feature.id)}
                   className={[
-                    "h-2.5 rounded-full transition-all",
-                    isActive ? "w-8 bg-slate-950" : "w-2.5 bg-slate-300",
+                    "h-2.5 rounded-full transition-all duration-300",
+                    isActive
+                      ? "w-8 bg-primary-cbe-700"
+                      : index === activeIndex
+                        ? "w-2.5 bg-primary-cbe-300"
+                        : "w-2.5 bg-slate-300",
                   ].join(" ")}
                 />
               );
             })}
-          </div>
-
-          <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-            <div
-              role="tabpanel"
-              aria-labelledby={`tab-${activeFeature.id}`}
-              id={`panel-${activeFeature.id}`}
-              className="outline-none"
-            >
-              <CubeIllustration />
-            </div>
-          </div>
-
-          <div className="mt-6 grid gap-5 md:grid-cols-3">
-            {activeFeature.bullets.map((item, idx) => (
-              <div
-                key={idx}
-                className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
-              >
-                <div className="mb-3 flex items-center gap-3">
-                  <p className="text-sm font-semibold text-slate-950">
-                    {item.title}
-                  </p>
-                </div>
-                <p className="text-sm leading-6 text-slate-600 line-clamp-3">
-                  {item.description}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
 

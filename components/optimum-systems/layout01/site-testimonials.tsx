@@ -1,250 +1,121 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useState } from "react";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import BadgePill from "@/components/ui/badge-pill";
-import CaseStudyCard from "@/components/ui/case-study-card";
+import { Quote } from "lucide-react";
 
-// ─── Main section ─────────────────────────────────────────────────────────────
+type Testimony = {
+  statement: string;
+  avatar: string;
+  name: string;
+  position: string;
+  logo: string;
+};
+
+const testimonies: Testimony[] = [
+  {
+    statement:
+      "The audit has never been this fast and seamless—when auditors ask for a report, I simply click and it is ready instantly. Asante sana, Optimum.",
+    avatar: "/images/clients/01.jpg",
+    name: "Charity",
+    position: "Accountant, Meru Teachers",
+    logo: "/images/clients/tuc.png",
+  },
+  {
+    statement:
+      "The system is working very well for us. Whenever we have any issue, your team is always there for us, and when we request support, an engineer is sent promptly. We sincerely appreciate Optimum.",
+    avatar: "/images/clients/02.jpg",
+    name: "Madam Hellen",
+    position: "C.P Kwale TTC",
+    logo: "/images/clients/gatundu-south-technical-and-vocational-college.png",
+  },
+];
+
 export default function SiteTestimonials() {
-  interface Testimony {
-    statement: string;
-    avatar: string;
-    name: string;
-    position: string;
-    logo: string;
-  }
-
-  const testimonies: Testimony[] = [
-    {
-      statement:
-        "The Audit has never been this fast and seamless-auditors wakiitisha report, ninaclick inatoka. Asante sana Optimum.",
-      avatar: "/images/clients/01.jpg",
-      name: "CHARITY",
-      position: "Accountant, Meru Teachers",
-      logo: "/images/clients/tuc.png",
-    },
-    {
-      statement:
-        "The system is working very well for us and whenever we have any issue you are always there for us and even when we request for a resource, you always send your engineer, we sincerely appreciate optimum.",
-      avatar: "/images/clients/02.jpg",
-      name: "MADAM HELLEN",
-      position: "C.P KWALE TTC",
-      logo: "/images/clients/gatundu-south-technical-and-vocational-college.png",
-    },
-  ];
-
-  interface caseStudy {
-    industry: string;
-    title: string;
-    stat: string;
-    statLabel: string;
-    coverSrc: string;
-    href: string;
-  }
-
-  const statCards: caseStudy[] = [
-    {
-      industry: "INNOVATION",
-      title:
-        "Optimum Computer Systems launches AI tool to revolutionize financial reporting",
-      stat: "5mins",
-      statLabel: "Average bank reconciliation time, down from 3 days",
-      coverSrc:
-        "https://assets.citizen.digital/131897/conversions/WhatsApp-Image-2024-08-20-at-13.31.54-og_image.webp",
-      href: "/blog",
-    },
-    {
-      industry: "SUCCESS STORIES",
-      title: "Kisii National Polytechnic Journey to Paperless Operations",
-      stat: "50%",
-      statLabel: "Reduction in administrative workload institution-wide",
-      coverSrc:
-        "https://www.kisiipoly.ac.ke/sites/default/files/inline-images/gate.png",
-      href: "#",
-    },
-    {
-      industry: "SUCCESS STORY",
-      title: "Turkana University Achieves Full IPSAS & TVETA Compliance",
-      stat: "100%",
-      statLabel: "Regulatory audit pass rate since UltimateERP deployment",
-      coverSrc:
-        "https://tuc.ac.ke/wp-content/uploads/2021/10/university-photo-1.jpg",
-      href: "#",
-    },
-  ];
-
-  // ── Active testimonial (click + auto-rotate every 5 s) ──────────────────────
-  const [activeIdx, setActiveIdx] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(
-      () => setActiveIdx((prev) => (prev + 1) % testimonies.length),
-      5000,
-    );
-    return () => clearInterval(timer);
-  }, [testimonies.length]);
-
   return (
-    <section className="w-full bg-primary-cbe-50 bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat flex flex-col items-center">
-      <div className="container flex flex-col gap-6 px-6 sm:px-30 w-full bg-gradient-to-t from-primary-cbe-50/40 to-transparent via-primary-cbe-50/85 py-16 sm:py-32">
-        {/* ── Section header ──────────────────────────────────────────────────── */}
-        <div className="flex flex-col items-center gap-3 text-center mb-12">
-          <BadgePill label="Client Stories" centered={true} />
-          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
+    <section className="relative isolate overflow-hidden bg-background w-full">
+      {/* Background layers */}
+      {/* <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_top,_rgba(15,31,92,0.10),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(232,36,92,0.10),_transparent_28%)]" /> */}
+      <div className="mx-auto flex w-full flex-col gap-14 px-6 py-16 sm:px-16 lg:px-30 lg:py-24">
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center flex flex-col gap-3 items-center">
+          <BadgePill label="Client Testimonies" centered={true} />
+
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
             What Our <span className="text-primary-cta">Clients</span> Say
           </h3>
-          <p className="max-w-md text-muted-foreground leading-relaxed">
+
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
             Trusted by over{" "}
-            <strong className="text-foreground">200 institutions</strong> across
-            Kenya — here&apos;s what they have to say about working with
-            Optimum.
+            <span className="font-semibold text-primary-cbe-900">
+              200 institutions
+            </span>{" "}
+            across Kenya, our work continues to improve operational efficiency,
+            compliance, and service delivery at scale.
           </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs font-medium text-slate-600 sm:text-sm">
+            <div className="rounded-full border border-slate-200 bg-white/80 px-4 py-2 shadow-sm">
+              200+ Institutions
+            </div>
+            <div className="rounded-full border border-slate-200 bg-white/80 px-4 py-2 shadow-sm">
+              Kenya-wide Deployments
+            </div>
+            <div className="rounded-full border border-slate-200 bg-white/80 px-4 py-2 shadow-sm">
+              Proven Institutional Impact
+            </div>
+          </div>
         </div>
 
-        {/* ── Testimonial cards ───────────────────────────────────────────────── */}
-        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-          {testimonies.map((card, idx) => {
-            const isActive = activeIdx === idx;
-            return (
-              <div
-                key={idx}
-                onClick={() => setActiveIdx(idx)}
-                className={cn(
-                  "relative flex h-full cursor-pointer flex-col justify-between gap-8 overflow-hidden rounded-2xl p-4 sm:p-6 transition-all duration-400",
-                  isActive
-                    ? "bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
-                    : "bg-white",
-                  isActive
-                    ? "shadow-[0_20px_60px_rgba(15,31,92,0.02)]"
-                    : "shadow-[0_2px_12px_rgba(0,0,0,0.04)]",
-                  isActive
-                    ? "none"
-                    : "border-[1.5px] bolder-solid border-[#e5e7eb]",
-                )}
-                style={{
-                  transition: "all 0.4s ease",
-                }}
-              >
-                {/* Decorative watermark quote mark */}
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute right-5 top-2 select-none font-serif text-[120px] font-bold leading-none"
-                  style={{
-                    color: isActive
-                      ? "rgba(255,255,255,0.05)"
-                      : "rgba(15,31,92,0.04)",
-                  }}
-                >
-                  &ldquo;
-                </span>
+        {/* Testimonial cards */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {testimonies.map((item) => (
+            <article
+              key={item.name}
+              className="group relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white/95 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-md sm:p-7"
+            >
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-cbe-700 via-primary-cbe-500 to-primary-cta" />
+              <div className="absolute right-5 top-5 rounded-2xl bg-primary-cbe-50 p-3 text-primary-cbe-300 transition-transform duration-500 group-hover:scale-110 group-hover:text-primary-cbe-400">
+                <Quote className="h-5 w-5" strokeWidth={2.2} />
+              </div>
 
-                {/* Animated red accent bar */}
-                <div
-                  className="rounded-full"
-                  style={{
-                    width: isActive ? "48px" : "0px",
-                    height: "3px",
-                    background: "#e8245c",
-                    marginBottom: "4px",
-                    transition: "width 0.5s ease",
-                  }}
-                />
-
-                <div className="flex flex-col gap-6">
-                  <p
-                    className="text-sm leading-relaxed font-normal"
-                    style={{
-                      color: isActive ? "rgba(255,255,255,0.85)" : "#374151",
-                      transition: "color 0.4s",
-                    }}
-                  >
-                    {card.statement}
+              <div className="relative flex h-full min-h-[240px] flex-col justify-between gap-8">
+                <div className="max-w-[92%]">
+                  <p className="text-[15px] leading-8 text-slate-700 sm:text-base">
+                    “{item.statement}”
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Avatar
-                      size="default"
-                      style={{
-                        border: isActive
-                          ? "2px solid rgba(232,36,92,0.4)"
-                          : "none",
-                        transition: "border 0.4s",
-                      }}
-                    >
-                      <AvatarImage
-                        className="rounded-full aspect-square size-full object-cover"
-                        alt={card.name}
-                        src={card.avatar}
+                <div className="flex items-end justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-primary-cta/20 ring-4 ring-primary-cbe-50">
+                      <img
+                        src={item.avatar}
+                        alt={item.name}
+                        className="h-full w-full object-cover"
                       />
-                    </Avatar>
-                    <div className="flex flex-col gap-0.5">
-                      <div
-                        className="text-sm font-medium transition-colors duration-300"
-                        style={{ color: isActive ? "#ffffff" : "#0f1f5c" }}
-                      >
-                        {card.name}
-                      </div>
-                      <div
-                        className="text-sm transition-colors duration-300"
-                        style={{
-                          color: isActive
-                            ? "rgba(255,255,255,0.55)"
-                            : "#9ca3af",
-                        }}
-                      >
-                        {card.position}
-                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-primary-cbe-900">
+                        {item.name}
+                      </h3>
+                      <p className="mt-1 text-sm text-slate-500">
+                        {item.position}
+                      </p>
                     </div>
                   </div>
-                  <div className="w-14 h-14">
+
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm">
                     <img
-                      className="h-full object-contain object-center"
-                      style={{
-                        opacity: isActive ? 0.7 : 0.5,
-                        transition: "opacity 0.4s",
-                      }}
-                      alt={card.name}
-                      src={card.logo}
+                      src={item.logo}
+                      alt={`${item.name} institution logo`}
+                      className="max-h-10 max-w-10 object-contain"
                     />
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* ── Divider ─────────────────────────────────────────────────────────── */}
-        <div className="flex items-center gap-5 py-10">
-          <div className="h-px flex-1 bg-primary-cbe-800/50" />
-          <span className="text-lg font-bold uppercase tracking-widest text-primary-cta whitespace-nowrap">
-            Case Studies
-          </span>
-          <div className="h-px flex-1 bg-primary-cbe-800/50" />
-        </div>
-
-        {/* ── Stat cards (count-up on scroll) ─────────────────────────────────── */}
-        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
-          {statCards.map((card, idx) => {
-            return CaseStudyCard(card, idx);
-          })}
-        </div>
-
-        {/* ── CTA footer ──────────────────────────────────────────────────────── */}
-        <div className="flex flex-col items-center gap-10 pt-10">
-          <p className="text-sm text-muted-foreground">
-            Join 200+ World institutions already transforming their operations
-          </p>
-          <Button variant="default" size="lg">
-            Read All Client Stories
-            <ArrowRight size={14} />
-          </Button>
+            </article>
+          ))}
         </div>
       </div>
     </section>

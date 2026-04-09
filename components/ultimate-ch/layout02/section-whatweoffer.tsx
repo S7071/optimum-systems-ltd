@@ -1,9 +1,6 @@
 "use client";
 
-// components/WhatWeOffer.tsx
-
 import BadgePill from "@/components/ui/badge-pill";
-import { LucideIcon } from "@/lib/utils";
 import {
   ArrowRight,
   BookOpen,
@@ -38,106 +35,42 @@ import {
   UserCheck,
   Users,
   UtensilsCrossed,
+  type LucideIcon,
 } from "lucide-react";
-import { useRef, useState, useCallback, useEffect } from "react";
-
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const iconMap: Record<string, LucideIcon> = {
-  Settings: Settings,
-  Users: Users,
-  GraduationCap: GraduationCap,
-  CreditCard: CreditCard,
-  DollarSign: DollarSign,
-  Globe: Globe,
-  CalendarDays: CalendarDays,
-  ClipboardList: ClipboardList,
-  CheckSquare: CheckSquare,
-  FilePlus: FilePlus,
-  CheckCircle: CheckCircle,
-  Briefcase: Briefcase,
-  BookOpen: BookOpen,
-  UtensilsCrossed: UtensilsCrossed,
-  HeartPulse: HeartPulse,
-  Home: Home,
-  UserCheck: UserCheck,
-  ShoppingCart: ShoppingCart,
-  ShieldCheck: ShieldCheck,
-  Clock: Clock,
-  Landmark: Landmark,
-  LayoutDashboard: LayoutDashboard,
-  Network: Network,
-  Star: Star,
-  MessageSquare: MessageSquare,
-  Monitor: Monitor,
-  MapPin: MapPin,
-  Truck: Truck,
-  Tag: Tag,
-  ShieldAlert: ShieldAlert,
+  Settings,
+  Users,
+  GraduationCap,
+  CreditCard,
+  DollarSign,
+  Globe,
+  CalendarDays,
+  ClipboardList,
+  CheckSquare,
+  FilePlus,
+  CheckCircle,
+  Briefcase,
+  BookOpen,
+  UtensilsCrossed,
+  HeartPulse,
+  Home,
+  UserCheck,
+  ShoppingCart,
+  ShieldCheck,
+  Clock,
+  Landmark,
+  LayoutDashboard,
+  Network,
+  Star,
+  MessageSquare,
+  Monitor,
+  MapPin,
+  Truck,
+  Tag,
+  ShieldAlert,
 };
-
-function Card(prop: CardProp) {
-    const Ic: LucideIcon = iconMap[prop.icon as string];
-  return (
-    <div
-      className={[
-        "relative flex flex-col overflow-hidden rounded-2xl border p-8 transition-all duration-200 flex-shrink-0 w-[320px] sm:w-[360px]",
-        prop.featured
-          ? "bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 border-primary-cbe-500"
-          : "bg-white border-primary-cbe-50 hover:border-primary-cbe-100 hover:shadow-[0_8px_32px_rgba(24,95,165,0.03)]",
-      ].join(" ")}
-    >
-      {/* Corner accent */}
-      <div
-        className={[
-          "pointer-events-none absolute top-0 right-0 w-20 h-20 rounded-bl-full",
-          prop.featured ? "bg-white/10" : "bg-[#EBF1FA]",
-        ].join(" ")}
-      />
-
-      {/* Icon */}
-      <div
-        className={[
-          "relative z-10 mb-5 flex h-[52px] w-[52px] items-center justify-center rounded-[13px] flex-shrink-0",
-          prop.featured ? "bg-white/20" : "bg-[#EBF1FA]",
-        ].join(" ")}
-      >
-        <Ic size={24} className={prop.featured ? "text-white" : "text-primary-cbe-400"}
-        />
-      </div>
-
-      {/* Text */}
-      <h3
-        className={[
-          "mb-2.5 text-base font-bold leading-snug",
-          prop.featured ? "text-white" : "text-primary-cbe-800",
-        ].join(" ")}
-      >
-        {prop.title}
-      </h3>
-      <p
-        className={[
-          "flex-1 text-[13.5px] leading-relaxed mb-[22px]",
-          prop.featured ? "text-white/75" : "text-[#5a6a7e]",
-        ].join(" ")}
-      >
-        {prop.description}
-      </p>
-
-      {/* Link */}
-      <span
-        className={[
-          "text-[11px] font-bold uppercase tracking-[1px] inline-flex items-center gap-1.5 cursor-pointer flex flex-row gap-2 items-center",
-          prop.featured
-            ? "text-white/90 hover:text-white"
-            : "text-primary-cta/90 hover:text-primary-cta",
-        ].join(" ")}
-      >
-        {prop.cta}
-        <ArrowRight size={16} />
-      </span>
-    </div>
-  );
-}
 
 interface CardProp {
   icon: string;
@@ -147,7 +80,7 @@ interface CardProp {
   featured?: boolean;
 }
 
-interface prop {
+interface Props {
   eyebrow: string;
   title: string;
   titleSuffix: string;
@@ -155,9 +88,93 @@ interface prop {
   card: CardProp[];
 }
 
-/* ─── Main Section ───────────────────────────────────────────────────────── */
+function OfferCard({
+  icon,
+  title,
+  description,
+  cta,
+  featured = false,
+}: CardProp) {
+  const Icon = iconMap[icon] ?? LayoutDashboard;
 
-export default function WhatWeOfferSection(prop: prop) {
+  return (
+    <article
+      className={[
+        "group relative flex min-h-[320px] w-[310px] sm:w-[340px] lg:w-[360px] snap-start flex-col overflow-hidden rounded-[28px] border p-7 sm:p-6",
+        "transition-all duration-300 ease-out hover:translate-y-1",
+        featured
+          ? "border-primary-cbe-500 bg-[linear-gradient(135deg,rgba(15,49,110,1)_0%,rgba(24,95,165,1)_62%,rgba(220,38,38,0.96)_140%)] shadow-sm"
+          : "border-primary-cbe-100/80 bg-white/95 shadow-sm hover:border-primary-cbe-200 hover:shadow-md",
+      ].join(" ")}
+    >
+      <div
+        className={[
+          "pointer-events-none absolute inset-x-0 top-0 h-1",
+          featured
+            ? "bg-white/25"
+            : "bg-gradient-to-r from-primary-cbe-500 via-primary-cbe-300 to-primary-cta/90",
+        ].join(" ")}
+      />
+
+      <div className="relative z-10 mb-6 flex items-start justify-between gap-4">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border transition-transform duration-300 group-hover:scale-105 bg-gradient-to-br from-primary-cbe-500 to-primary-cbe-800 text-white shadow-sm ring-1 ring-white/40">
+          <Icon className="h-6 w-6" />
+        </div>
+
+        <div
+          className={[
+            "rounded-full border px-3 py-1 text-[10px] font-bold uppercase",
+            featured
+              ? "border-white/15 bg-white/10 text-white/80"
+              : "border-primary-cbe-100 bg-white text-primary-cbe-500/80",
+          ].join(" ")}
+        >
+          Module
+        </div>
+      </div>
+
+      <div className="relative z-10 flex flex-1 flex-col justify-between">
+        <h3 className="max-w-full font-semibold text-lg text-primary-cbe-800">
+          {title}
+        </h3>
+
+        <p className="flex-1 text-[14px] leading-7 text-slate-600">
+          {description}
+        </p>
+
+        <div className="flex items-center justify-between gap-4">
+          <span
+            className={[
+              "inline-flex items-center gap-2 text-xs font-bold uppercase",
+              featured ? "text-white/90" : "text-primary-cta",
+            ].join(" ")}
+          >
+            {cta}
+          </span>
+
+          <span
+            className={[
+              "inline-flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 group-hover:translate-x-1",
+              featured
+                ? "border-white/15 bg-white/10 text-white"
+                : "border-primary-cbe-100 bg-primary-cbe-50 text-primary-cbe-500",
+            ].join(" ")}
+          >
+            <ArrowRight className="h-4 w-4" />
+          </span>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default function WhatWeOfferSection({
+  eyebrow,
+  title,
+  titleSuffix,
+  description,
+  card,
+}: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -167,86 +184,109 @@ export default function WhatWeOfferSection(prop: prop) {
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+
+    setCanScrollLeft(el.scrollLeft > 6);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 6);
   }, []);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+
     updateScrollState();
+
     el.addEventListener("scroll", updateScrollState, { passive: true });
-    const ro = new ResizeObserver(updateScrollState);
-    ro.observe(el);
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateScrollState();
+    });
+
+    resizeObserver.observe(el);
+
     return () => {
       el.removeEventListener("scroll", updateScrollState);
-      ro.disconnect();
+      resizeObserver.disconnect();
     };
   }, [updateScrollState]);
 
-  const scrollLeft = () => {
-    scrollRef.current?.scrollBy({ left: -SCROLL_AMOUNT, behavior: "smooth" });
-  };
-
-  const scrollRight = () => {
-    scrollRef.current?.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" });
+  const handleScroll = (direction: "left" | "right") => {
+    scrollRef.current?.scrollBy({
+      left: direction === "left" ? -SCROLL_AMOUNT : SCROLL_AMOUNT,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <section className="w-full bg-primary-cbe-50 bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat overflow-hidden">
-      {/* Header */}
-      <div className="text-center flex flex-col gap-3 items-center px-6 md:px-30 pt-16 sm:pt-32">
-        <BadgePill label={prop.eyebrow} centered={true} />
-        <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
-          {prop.title}{" "}
-          <span className="text-primary-cta">{prop.titleSuffix}</span>
-        </h2>
-        <p className="mx-auto max-w-[600px] text-[15px] leading-[1.7] text-primary-cbe-800/60 line-clamp-3">
-          {prop.description}
-        </p>
+    <section className="relative overflow-hidden bg-background py-20 sm:py-24 lg:py-28 w-full">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-0 top-[-10%] h-64 w-64 rounded-full bg-primary-cbe-100/50 blur-3xl" />
+        <div className="absolute right-[-8%] top-30 h-72 w-72 rounded-full bg-primary-cta/10 blur-3xl" />
       </div>
 
-      {/* Cards area with nav row */}
-      <div className="py-10 sm:py-16">
-        {/* Nav buttons row — top-right */}
-        <div className="flex items-center justify-end gap-2 mb-5 px-6 md:px-30">
-          <button
-            onClick={scrollLeft}
-            disabled={!canScrollLeft}
-            aria-label="Scroll left"
-            className={[
-              "flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-150",
-              canScrollLeft
-                ? "border-primary-cbe-200 text-primary-cbe-600 hover:bg-primary-cbe-50 hover:border-primary-cbe-300 cursor-pointer"
-                : "border-primary-cbe-100 text-primary-cbe-200 cursor-not-allowed",
-            ].join(" ")}
-          >
-            <ChevronLeft size={18} />
-          </button>
-          <button
-            onClick={scrollRight}
-            disabled={!canScrollRight}
-            aria-label="Scroll right"
-            className={[
-              "flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-150",
-              canScrollRight
-                ? "border-primary-cbe-200 text-primary-cbe-600 hover:bg-primary-cbe-50 hover:border-primary-cbe-300 cursor-pointer"
-                : "border-primary-cbe-100 text-primary-cbe-200 cursor-not-allowed",
-            ].join(" ")}
-          >
-            <ChevronRight size={18} />
-          </button>
+      <div className="relative mx-auto max-w-full z-10">
+        <div className="px-6 md:px-16 xl:px-30">
+          <div className="mx-auto max-w-3xl text-center flex flex-col gap-3 items-center">
+            <BadgePill label={eyebrow} centered={true} />
+
+            <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
+              {title} <span className="text-primary-cta">{titleSuffix}</span>
+            </h3>
+
+            <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+              {description}
+            </p>
+          </div>
+
+          <div className="mt-12 flex items-center justify-between gap-4 sm:mt-14">
+            <div className="hidden sm:flex items-center gap-3 text-sm text-slate-500">
+              <span className="h-px w-12 bg-primary-cbe-200" />
+              Explore core platform capabilities
+            </div>
+
+            <div className="ml-auto inline-flex items-center gap-2 rounded-full border border-primary-cbe-100 bg-white/90 p-1.5 shadow-sm backdrop-blur">
+              <button
+                type="button"
+                onClick={() => handleScroll("left")}
+                disabled={!canScrollLeft}
+                aria-label="Scroll left"
+                className={[
+                  "inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200",
+                  canScrollLeft
+                    ? "border-primary-cbe-100 bg-white text-primary-cbe-600 hover:-translate-x-0.5 hover:border-primary-cbe-200 hover:bg-primary-cbe-50"
+                    : "cursor-not-allowed border-primary-cbe-100 bg-slate-50 text-slate-300",
+                ].join(" ")}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleScroll("right")}
+                disabled={!canScrollRight}
+                aria-label="Scroll right"
+                className={[
+                  "inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200",
+                  canScrollRight
+                    ? "border-primary-cbe-100 bg-white text-primary-cbe-600 hover:translate-x-0.5 hover:border-primary-cbe-200 hover:bg-primary-cbe-50"
+                    : "cursor-not-allowed border-primary-cbe-100 bg-slate-50 text-slate-300",
+                ].join(" ")}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Scrollable cards track — 2 rows, columns flow horizontally */}
-        <div
-          ref={scrollRef}
-          className="w-screen overflow-x-auto scroll-smooth pb-2 px-6 md:px-30 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          <div className="grid grid-rows-1 grid-flow-col gap-5 w-max">
-            {prop.card.map((card, idx) => (
-              <Card key={idx} {...card} />
-            ))}
+        <div className="relative mt-8 sm:mt-10">
+          <div
+            ref={scrollRef}
+            className="overflow-x-auto scroll-smooth px-6 md:px-16 xl:px-30 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            <div className="flex w-max gap-5 sm:gap-6">
+              {card.map((item, index) => (
+                <OfferCard key={`${item.title}-${index}`} {...item} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

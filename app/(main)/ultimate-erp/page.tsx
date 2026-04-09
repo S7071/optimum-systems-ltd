@@ -5,7 +5,6 @@ import SiteNavbar from "@/components/optimum-systems/layout01/site-navbar";
 import SiteTestimonials from "@/components/ultimate-cbe/layout01/site-testimonials";
 import SiteBanner from "@/components/optimum-systems/layout01/site-banner";
 import SiteFaq from "@/components/optimum-systems/layout01/site-faq";
-import SiteCta from "@/components/ultimate-cbe/layout02/site-cta";
 import SiteCaseStudies from "@/components/ultimate-cbe/layout01/site-casestudies";
 import WhatWeOfferSection from "@/components/ultimate-ch/layout02/section-whatweoffer";
 import StatsSection from "@/components/ultimate-ch/layout01/section-stats";
@@ -13,7 +12,6 @@ import { Users, ShieldCheck, Clock, BarChart3, TrendingUp } from "lucide-react";
 import WhyUsSections from "@/components/optimum-systems/layout02/section-whyus";
 import IntegrationsSection from "@/components/optimum-systems/layout01/section-integrations";
 import OnlinePresenceSection from "@/components/optimum-systems/layout01/section-online-presence";
-import SiteLogos from "@/components/optimum-systems/layout02/site-logos";
 import HelpCenterButton from "@/components/optimum-systems/layout01/section-help-center";
 import WhatsappButton from "@/components/optimum-systems/layout01/section-whatsapp";
 
@@ -25,7 +23,6 @@ export default function Home() {
       <SiteBanner />
       <SiteNavbar />
       <SiteHero />
-      <SiteLogos />
       <WhyUsSections />
       <WhatWeOfferSection
         eyebrow="PLATFORM CAPABILITIES"
@@ -247,6 +244,46 @@ export default function Home() {
       />
       <OnlinePresenceSection />
       <IntegrationsSection />
+      <StatsSection
+        description="Never miss a critical operational update. UltimateERP monitors fee balances, student attendance, exam results, payroll cycles, and procurement approvals — automatically alerting every stakeholder the moment action is required."
+        title={
+          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-primary-cbe-500">
+            Stay in Control With{" "}
+            <span className="text-primary-cta">Real-Time</span> Institutional
+            Intelligence
+          </h3>
+        }
+        eyebrow="Useful Statistics"
+        statCards={[
+          {
+            value: "200+",
+            description:
+              "Institutions successfully deployed across Kenya and East Africa",
+            icon: Users,
+            accent: false,
+          },
+          {
+            value: "98%",
+            description: "System uptime on hybrid cloud-hosted deployments",
+            icon: ShieldCheck,
+            accent: true,
+          },
+          {
+            value: "92%",
+            description:
+              "Reduction in administrative workload reported by client institutions",
+            icon: Clock,
+            accent: false,
+          },
+          {
+            value: "30+",
+            description:
+              "Functional modules covering every aspect of institutional operations",
+            icon: BarChart3,
+            accent: false,
+          },
+        ]}
+      />
       <SiteDemo
         ctaSrc="/ultimate-erp/schedule-demo"
         title={
@@ -334,11 +371,11 @@ export default function Home() {
         description="See how UltimateERP has transformed institutional management for universities, TVETs, and polytechnics across Kenya — streamlining operations, ensuring compliance, and empowering administrators to focus on what matters most."
         stats={[
           {
-            value: "186+",
+            value: "200+",
             label: "Institutions successfully deployed",
           },
           {
-            value: "98%",
+            value: "91%",
             label: "Happiness Index",
           },
           {
@@ -379,83 +416,51 @@ export default function Home() {
           },
         ]}
       />
-      <StatsSection
-        description="Never miss a critical operational update. UltimateERP monitors fee balances, student attendance, exam results, payroll cycles, and procurement approvals — automatically alerting every stakeholder the moment action is required."
-        title={
-          <h3 className="text-2xl sm:text-4xl text-pretty leading-tight tracking-tight font-extrabold text-primary-cbe-500">
-            Stay in Control With{" "}
-            <span className="text-primary-cta">Real-Time</span> Institutional
-            Intelligence
-          </h3>
-        }
-        eyebrow="INTELLIGENT AUTOMATION"
-        statCards={[
-          {
-            value: "186+",
-            description:
-              "Institutions successfully deployed across Kenya and East Africa",
-            icon: Users,
-            accent: false,
-          },
-          {
-            value: "98%",
-            description: "System uptime on hybrid cloud-hosted deployments",
-            icon: ShieldCheck,
-            accent: true,
-          },
-          {
-            value: "50%",
-            description:
-              "Reduction in administrative workload reported by client institutions",
-            icon: Clock,
-            accent: false,
-          },
-          {
-            value: "30+",
-            description:
-              "Functional modules covering every aspect of institutional operations",
-            icon: BarChart3,
-            accent: false,
-          },
-        ]}
-      />
       <SiteCaseStudies
         description="Discover how universities, TVETs, and national polytechnics across Kenya have transformed their operations, improved compliance, and unlocked institutional growth with UltimateERP."
         caseStudies={[
           {
-            industry: "INNOVATION",
+            badge: "Innovation",
             title:
               "Optimum Computer Systems launches AI tool to revolutionize financial reporting",
-            stat: "5mins",
-            statLabel: "Average bank reconciliation time, down from 3 days",
-            coverSrc:
+            description:
+              "A breakthrough deployment that dramatically reduced reconciliation delays and modernized finance workflows for institutional teams.",
+            metric: "5 mins",
+            metricLabel: "Average bank reconciliation time, down from 3 days",
+            image:
               "https://assets.citizen.digital/131897/conversions/WhatsApp-Image-2024-08-20-at-13.31.54-og_image.webp",
             href: "/blog",
+            institution: "Optimum Computer Systems",
           },
           {
-            industry: "SUCCESS STORIES",
+            badge: "Success Story",
             title: "Kisii National Polytechnic Journey to Paperless Operations",
-            stat: "50%",
-            statLabel: "Reduction in administrative workload institution-wide",
-            coverSrc:
+            description:
+              "A digital transformation initiative that reduced manual workload, streamlined approvals, and improved operational efficiency campus-wide.",
+            metric: "50%",
+            metricLabel:
+              "Reduction in administrative workload institution-wide",
+            image:
               "https://www.kisiipoly.ac.ke/sites/default/files/inline-images/gate.png",
             href: "#",
+            institution: "Kisii National Polytechnic",
           },
           {
-            industry: "SUCCESS STORY",
+            badge: "Success Story",
             title: "Turkana University Achieves Full IPSAS & TVETA Compliance",
-            stat: "100%",
-            statLabel:
+            description:
+              "UltimateERP enabled stronger reporting controls, improved audit readiness, and sustained compliance across core institutional processes.",
+            metric: "100%",
+            metricLabel:
               "Regulatory audit pass rate since UltimateERP deployment",
-            coverSrc:
+            image:
               "https://tuc.ac.ke/wp-content/uploads/2021/10/university-photo-1.jpg",
             href: "#",
+            institution: "Turkana University College",
           },
         ]}
       />
-      {/* <SitePricing /> */}
       <SiteFaq />
-      <SiteCta />
       <SiteFooter />
     </div>
   );

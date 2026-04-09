@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Circle, Star } from "lucide-react";
+import { Circle } from "lucide-react";
+import BadgePill from "@/components/ui/badge-pill";
 
 export default function MapHeroSection() {
   const [hovered, setHovered] = useState<string | null>(null);
@@ -63,13 +64,13 @@ export default function MapHeroSection() {
 
     let startedAt: number | null = null;
 
-    const durationMs = 4400;
+    const durationMs = 3400;
     const travelPadding = 150;
     const viewBoxWidth = 440;
     const sigma = 62;
-    const maxLift = 6;
+    const maxLift = 8;
     const maxScaleBoost = 0.018;
-    const maxTilt = 0.7;
+    const maxTilt = 0.6;
 
     const tick = (timestamp: number) => {
       if (startedAt === null) startedAt = timestamp;
@@ -739,187 +740,361 @@ export default function MapHeroSection() {
   }
 
   return (
-    <section className="relative w-full h-[70vh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white overflow-hidden px-6 sm:px-30 hidden md:block">
-      <div className="relative z-10 top-0 left-0 w-full flex flex-col items-center h-full">
-        {/* Right - Interactive Map */}
-        <div className="relative flex flex-row item-center pl-24 md:pl-0 md:item-start justify-start w-full h-[100%] py-16">
-          <motion.div className="flex-1 w-[100vw] h-full">
-            <svg
-              viewBox="0 0 440 440"
-              className="w-full h-full flex flex-col items-center"
-            >
-              <style>
-                {`
-                  .cls-29, .cls-3, .cls-4 {
-                    font-family: GillSansMT-Bold, 'Gill Sans MT';
-                    font-size: 8.5px;
-                    font-weight: 700;
-                    fill: #fff;
-                  }
-                `}
-              </style>
+    <section className="relative hidden w-full overflow-hidden text-white md:block">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.18),transparent_28%),radial-gradient(circle_at_top_right,rgba(234,34,41,0.14),transparent_24%),linear-gradient(135deg,#0f172a_0%,#0b1f4d_38%,#12306b_68%,#0f172a_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/6 to-transparent" />
+      </div>
 
-              <defs>
-                <clipPath id="kenya-wave-clip">
-                  <path d={d} />
-                </clipPath>
+      <div className="relative z-10 mx-auto w-full max-w-[1680px] px-6 py-10 lg:px-10 xl:px-14">
+        <div className="mb-8 flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+          <div className="max-w-3xl">
+            <BadgePill label="National Client Footprint" centered={false} />
 
-                <linearGradient
-                  id="defaultGradient"
-                  x1="0"
-                  y1="0"
-                  x2="1"
-                  y2="1"
-                >
-                  <stop offset="0%" stopColor="#1e3a8a" />
-                  <stop offset="100%" stopColor="#2563eb" />
-                </linearGradient>
+            <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-50 mt-4">
+              Trusted Institutional Presence <br />
+              Across <span className="text-primary-cta">Kenya</span>
+            </h3>
 
-                <linearGradient id="hoverGradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#1e3a8a" />
-                  <stop offset="100%" stopColor="#2563eb" />
-                </linearGradient>
-
-                <linearGradient
-                  id="idleWaveGradient"
-                  x1="0"
-                  y1="0"
-                  x2="1"
-                  y2="0"
-                >
-                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
-                  <stop offset="30%" stopColor="#93c5fd" stopOpacity="0.08" />
-                  <stop offset="50%" stopColor="#ffffff" stopOpacity="0.34" />
-                  <stop offset="70%" stopColor="#60a5fa" stopOpacity="0.12" />
-                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-
-              <g>
-                <path
-                  d={d}
-                  className="pointer-events-none fill-none stroke-slate-950/90"
-                  strokeWidth={1}
-                />
-
-                {isMapIdle && (
-                  <g
-                    clipPath="url(#kenya-wave-clip)"
-                    className="pointer-events-none"
-                  >
-                    <g
-                      ref={waveOverlayRef}
-                      className="[transform-box:fill-box] [transform-origin:center] will-change-transform"
-                      style={{ transform: "translateX(-220px)", opacity: 0 }}
-                    >
-                      <rect
-                        x="-180"
-                        y="-40"
-                        width="170"
-                        height="520"
-                        rx="28"
-                        fill="url(#idleWaveGradient)"
-                        transform="rotate(-14 220 220)"
-                      />
-                    </g>
-                  </g>
-                )}
-
-                {regions.map((region, idx) => {
-                  const isHovered = hovered === `${region.id}`;
-
-                  return (
-                    <g
-                      key={`${region.id}-${idx}`}
-                      ref={(el) => {
-                        regionGroupRefs.current[idx] = el;
-                      }}
-                      className="[transform-box:fill-box] [transform-origin:center] transition-[transform,filter] duration-150 ease-out will-change-transform"
-                    >
-                      <motion.path
-                        ref={(el) => {
-                          regionPathRefs.current[idx] = el;
-                        }}
-                        d={region.d}
-                        className="cursor-pointer"
-                        fill={
-                          isHovered
-                            ? "url(#hoverGradient)"
-                            : "url(#defaultGradient)"
-                        }
-                        onMouseEnter={() => setHovered(`${region.id}`)}
-                        onMouseLeave={() => setHovered(null)}
-                        whileHover={{ scale: 0.94 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 22,
-                        }}
-                        stroke={isHovered ? "#ea2229" : "rgba(2,6,23,0.85)"}
-                        strokeWidth={isHovered ? 2.4 : 0.8}
-                      />
-                    </g>
-                  );
-                })}
-              </g>
-            </svg>
-          </motion.div>
-
-          <div
-            className="content-start shrink-0 flex-2 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 items-start justify-start text-xs font-medium overflow-y-auto [&::-webkit-scrollbar]:w-2 
-            [&::-webkit-scrollbar-thumb]:bg-gray-400 
-            [&::-webkit-scrollbar-track]:bg-transparent"
-          >
-            {filteredClients.map((c) => {
-              return c.list.map((m) => {
-                return (
-                  <div key={m} className="flex flex-row gap-2 items-center">
-                    <Star fill="#ffbb00" size={14} className="text-[#ffbb00]" />
-                    <span>{m}</span>
-                  </div>
-                );
-              });
-            })}
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70 lg:text-base">
+              Explore county-level distribution and view institutions linked to
+              each region through the interactive deployment map.
+            </p>
           </div>
 
-          {/* Tooltip */}
-          <div className="absolute -left-10 bottom-10 text-sm flex flex-row items-center">
-            <svg
-              viewBox="0 0 680 680"
-              className="w-[60px] h-[60px]"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              <g transform="scale(1.5)">
-                <motion.path
-                  key="outline"
-                  stroke="rgba(255, 255, 255, 0.50)"
-                  d={d}
-                  className="cursor-pointer"
-                />
-                <motion.path
-                  key={regions.find((r) => `${r.id}` === hovered)?.id}
-                  d={regions.find((r) => `${r.id}` === hovered)?.d}
-                  className="cursor-pointer"
-                  fill="currentColor"
-                />
-              </g>
-            </svg>
+          <div className="grid grid-cols-3 gap-3 self-start xl:min-w-[360px]">
+            <div className="rounded-2xl border border-white/10 bg-primary-cbe-50/10 backdrop-blur-xl shadow-sm px-4 py-4">
+              <p className="text-xs uppercase tracking-widest font-semibold text-primary-cbe-200">
+                Counties
+              </p>
+              <p className="mt-2 text-2xl font-semibold text-white">
+                {new Set(filteredClients.map((c) => c.county)).size}
+              </p>
+            </div>
 
-            <div className="flex flex-col gap-1 font-medium text-xs pl-4 border-l-2 border-primary-cbe-50/40">
-              {hovered ? (
-                <span>
-                  {`${regions.find((r) => `${r.id}` === hovered)?.id.padStart(3, "0")} ` +
-                    regions.find((r) => `${r.id}` === hovered)?.label}
-                </span>
-              ) : (
-                <span className="font-normal">Republic of Kenya</span>
-              )}
+            <div className="rounded-2xl border border-white/10 bg-primary-cbe-50/10 backdrop-blur-xl shadow-sm px-4 py-4">
+              <p className="text-xs uppercase tracking-widest font-semibold text-primary-cbe-200">
+                Institutions
+              </p>
+              <p className="mt-2 text-2xl font-semibold text-white">
+                {count(filteredClients)}
+              </p>
+            </div>
 
-              <span className="font-bold text-xl">
-                Total Clients {count(filteredClients).toString()}
-              </span>
+            <div className="rounded-2xl border border-white/10 bg-primary-cbe-50/10 backdrop-blur-xl shadow-sm px-4 py-4">
+              <p className="text-xs uppercase tracking-widest font-semibold text-primary-cbe-200">
+                Status
+              </p>
+              <p className="mt-2 text-sm font-semibold text-emerald-300">
+                Interactive
+              </p>
             </div>
           </div>
+        </div>
+
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_660px]">
+          <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-primary-cbe-50/10 backdrop-blur-xl shadow-[0_24px_64px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.07)]">
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,rgba(96,165,250,0.12),transparent_26%),radial-gradient(circle_at_75%_20%,rgba(255,255,255,0.08),transparent_18%),radial-gradient(circle_at_50%_100%,rgba(15,23,42,0.45),transparent_45%)]" />
+            </div>
+
+            <div className="relative flex h-full flex-col">
+              <div className="flex items-center justify-between border-b border-white/10 px-6 py-5">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
+                    Coverage Map
+                  </p>
+                  <p className="mt-1 text-lg font-semibold text-white">
+                    Kenya Deployment Overview
+                  </p>
+                </div>
+
+                <div className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-medium text-white/70">
+                  Hover a county to isolate client institutions
+                </div>
+              </div>
+
+              <div className="p-4 sm:p-6">
+                <div className="relative min-h-[620px] overflow-hidden rounded-[28px] border border-white/10 bg-primary-cbe-800">
+                  <div className="pointer-events-none absolute inset-0">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_42%)]" />
+                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/40 to-transparent" />
+                  </div>
+
+                  <motion.div className="relative z-10 h-fit w-full px-3 py-3 sm:px-6 sm:py-5">
+                    <svg viewBox="-80 -10 490 490" className="h-fit w-fit">
+                      <style>
+                        {`
+                        .cls-29, .cls-3, .cls-4 {
+                          font-family: GillSansMT-Bold, 'Gill Sans MT';
+                          font-size: 8.5px;
+                          font-weight: 700;
+                          fill: #fff;
+                        }
+                      `}
+                      </style>
+
+                      <defs>
+                        <clipPath id="kenya-wave-clip">
+                          <path d={d} />
+                        </clipPath>
+
+                        <linearGradient
+                          id="defaultGradient"
+                          x1="0"
+                          y1="0"
+                          x2="1"
+                          y2="1"
+                        >
+                          <stop offset="0%" stopColor="#1e3a8a" />
+                          <stop offset="100%" stopColor="#2563eb" />
+                        </linearGradient>
+                        <linearGradient
+                          id="noopGradient"
+                          x1="0"
+                          y1="0"
+                          x2="1"
+                          y2="1"
+                        >
+                          <stop offset="0%" stopColor="#fcfcfc" />
+                          <stop offset="100%" stopColor="#bbcef8" />
+                        </linearGradient>
+
+                        <linearGradient
+                          id="hoverGradient"
+                          x1="0"
+                          y1="0"
+                          x2="1"
+                          y2="1"
+                        >
+                          <stop offset="0%" stopColor="#1e3a8a" />
+                          <stop offset="100%" stopColor="#2563eb" />
+                        </linearGradient>
+
+                        <linearGradient
+                          id="idleWaveGradient"
+                          x1="0"
+                          y1="0"
+                          x2="1"
+                          y2="0"
+                        >
+                          <stop offset="0%" stopColor="#1e3a8a" />
+                          <stop offset="100%" stopColor="#2563eb" />
+                        </linearGradient>
+                      </defs>
+
+                      <g>
+                        <path
+                          d={d}
+                          className="pointer-events-none fill-none stroke-white/0"
+                          strokeWidth={1}
+                        />
+
+                        {isMapIdle && (
+                          <g
+                            clipPath="url(#kenya-wave-clip)"
+                            className="pointer-events-none"
+                          >
+                            <g
+                              ref={waveOverlayRef}
+                              className="[transform-box:fill-box] [transform-origin:center] will-change-transform"
+                              style={{
+                                transform: "translateX(-220px)",
+                                opacity: 0,
+                              }}
+                            >
+                              <rect
+                                x="-180"
+                                y="-40"
+                                width="170"
+                                height="520"
+                                rx="28"
+                                fill="url(#idleWaveGradient)"
+                                transform="rotate(-14 220 220)"
+                              />
+                            </g>
+                          </g>
+                        )}
+
+                        {regions.map((region, idx) => {
+                          const isHovered = hovered === `${region.id}`;
+
+                          let grd =
+                            region.id === "9" ||
+                            region.id === "8" ||
+                            region.id === "11" ||
+                            region.id === "31" ||
+                            region.id === "5" ||
+                            region.id === "6"
+                              ? "url(#noopGradient)"
+                              : "url(#defaultGradient)";
+
+                          if (hovered) {
+                            if (
+                              region.id === "9" ||
+                              region.id === "8" ||
+                              region.id === "11" ||
+                              region.id === "31" ||
+                              region.id === "5" ||
+                              region.id === "6"
+                            ) {
+                              grd = "url(#noopGradient)";
+                            } else {
+                              grd = "url(#defaultGradient)";
+                            }
+                          } else {
+                            if (
+                              region.id === "9" ||
+                              region.id === "8" ||
+                              region.id === "11" ||
+                              region.id === "31" ||
+                              region.id === "5" ||
+                              region.id === "6"
+                            ) {
+                              grd = "url(#noopGradient)";
+                            } else {
+                              grd = "url(#defaultGradient)";
+                            }
+                          }
+
+                          return (
+                            <g
+                              key={`${region.id}-${idx}`}
+                              ref={(el) => {
+                                regionGroupRefs.current[idx] = el;
+                              }}
+                              className="[transform-box:fill-box] [transform-origin:center] transition-[transform,filter] duration-150 ease-out will-change-transform"
+                            >
+                              <motion.path
+                                ref={(el) => {
+                                  regionPathRefs.current[idx] = el;
+                                }}
+                                d={region.d}
+                                className="cursor-pointer"
+                                fill={grd}
+                                onMouseEnter={() => setHovered(`${region.id}`)}
+                                onMouseLeave={() => setHovered(null)}
+                                whileHover={{ scale: 0.94 }}
+                                transition={{
+                                  type: "spring",
+                                  stiffness: 300,
+                                  damping: 22,
+                                }}
+                                stroke={
+                                  isHovered ? "#ea2229" : "rgba(2,6,23,0.85)"
+                                }
+                                strokeWidth={isHovered ? 2.4 : 0.8}
+                              />
+                            </g>
+                          );
+                        })}
+                      </g>
+                    </svg>
+                  </motion.div>
+
+                  <div className="absolute bottom-5 left-5 right-5 z-20 max-w-fit rounded-2xl border border-white/12 bg-slate-950/55 p-4 shadow-[0_20px_50px_rgba(2,6,23,0.35)] backdrop-blur-xl">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06]">
+                        <svg
+                          viewBox="-80 0 680 680"
+                          className="h-12 w-12"
+                          preserveAspectRatio="xMidYMid meet"
+                        >
+                          <g transform="scale(1.5)">
+                            <motion.path
+                              key="outline"
+                              stroke="rgba(255, 255, 255, 0.8)"
+                              d={d}
+                              className="cursor-pointer"
+                            />
+                            <motion.path
+                              key={
+                                regions.find((r) => `${r.id}` === hovered)?.id
+                              }
+                              d={regions.find((r) => `${r.id}` === hovered)?.d}
+                              className="cursor-pointer"
+                              fill="currentColor"
+                            />
+                          </g>
+                        </svg>
+                      </div>
+
+                      <div className="min-w-0 flex-1 pr-12">
+                        <p className="text-xs uppercase tracking-widest text-primary-cbe-200 font-semibold">
+                          Active Selection
+                        </p>
+
+                        {hovered ? (
+                          <p className="mt-1 truncate text-sm font-medium text-white/80">
+                            {`${regions.find((r) => `${r.id}` === hovered)?.id.padStart(3, "0")} ${regions.find((r) => `${r.id}` === hovered)?.label}`}
+                          </p>
+                        ) : (
+                          <p className="mt-1 text-sm font-medium text-white/70">
+                            Republic of Kenya
+                          </p>
+                        )}
+
+                        <div className="mt-2 flex items-end gap-3">
+                          <span className="text-3xl font-semibold tracking-tight text-white">
+                            {count(filteredClients)}
+                          </span>
+                          <span className="pb-1 text-sm text-white/60">
+                            Total Clients
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside className="relative overflow-hidden rounded-[32px] border border-white/10 bg-primary-cbe-50/10 backdrop-blur-xl shadow-[0_24px_64px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.07)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(96,165,250,0.08),transparent_30%)]" />
+
+            <div className="relative flex h-full flex-col">
+              <div className="border-b border-white/10 px-6 py-5">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
+                  Client Directory
+                </p>
+                <p className="mt-1 text-lg font-semibold text-white">
+                  Institutions in focus
+                </p>
+                <p className="mt-2 text-sm leading-6 text-white/65">
+                  Scroll through institutions linked to the selected county.
+                  When no county is selected, the full client footprint is
+                  displayed.
+                </p>
+              </div>
+
+              <div className="relative flex-1 px-4 pb-4 pt-4 sm:px-5 sm:pb-5">
+                <div className="grid max-h-[640px] grid-cols-1 gap-3 overflow-y-auto pr-1 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/20 [&::-webkit-scrollbar-track]:bg-transparent">
+                  {filteredClients.map((c) =>
+                    c.list.map((m) => (
+                      <div
+                        key={m}
+                        className="group flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.045] px-3.5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-200 hover:border-white/20 hover:bg-white/[0.075]"
+                      >
+                        <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/8 ring-1 ring-inset ring-white/10">
+                          <Circle
+                            fill="#ed1c24"
+                            size={14}
+                            className="text-primary-cta"
+                          />
+                        </div>
+
+                        <span className="text-sm font-medium leading-6 text-white/82">
+                          {m}
+                        </span>
+                      </div>
+                    )),
+                  )}
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>

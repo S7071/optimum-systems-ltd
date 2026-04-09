@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import BadgePill from "@/components/ui/badge-pill";
@@ -11,58 +11,84 @@ type FeatureCard = {
   title: string;
   description: string;
   delayClass: string;
+  logo: string;
 };
 
+type ConnectorPath = {
+  id: string;
+  d: string;
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
+  duration: number;
+  delay: number;
+  showStartDot: boolean;
+};
 
 function FeatureCardBlock({
   badge,
   title,
   description,
   mounted,
+  logo,
+  delayClass,
 }: FeatureCard & { mounted: boolean }) {
   return (
     <div
       data-feature-card
       className={[
-        "group rounded-2xl border border-[#E0E6F2] bg-white p-6 shadow-sm",
-        "transition-all duration-500 ease-out",
-        "hover:-translate-y-1 hover:border-[#B5D4F4] hover:shadow-xl hover:shadow-[#1C4AB5]/10",
-        "motion-reduce:transition-none motion-reduce:hover:translate-y-0 gap-4 flex flex-col",
-        mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+        "group relative overflow-hidden rounded-[28px] border border-primary-cbe-100 bg-background/95 p-6 backdrop-blur-sm",
+        "shadow-sm",
+        "transition-all duration-700 ease-out",
+        "hover:-translate-y-1.5 hover:border-primary-cbe-200 hover:shadow-lg",
+        delayClass,
+        mounted ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
       ].join(" ")}
-      style={{ transitionDelay: mounted ? undefined : undefined }}
     >
-      <div className="flex flex-row gap-3 items-center">
-        <img
-          src="/logos/icon.svg"
-          alt=""
-          className="size-15 p-3 bg-primary-cbe-50 rounded-sm"
-        />
-        <div className="flex flex-col gap-2 flex-1 justify-center">
-          <span className="inline-block rounded bg-[#F0F4FB] px-[7px] py-[3px] text-[9px] font-semibold uppercase tracking-[.14em] text-[#8D9DC0] w-fit">
+      <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-primary-cta/35 to-transparent" />
+      <div className="absolute bottom-0 left-0 h-20 w-20 rounded-tr-[36px] bg-primary-cta/[0.045]" />
+
+      <div className="relative flex items-start gap-4">
+        <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-primary-cbe-50 bg-background shadow-sm">
+          <div className="absolute inset-1 rounded-xl bg-background" />
+          <img src={logo} alt="" className="relative h-8 w-8 object-contain" />
+        </div>
+
+        <div className="min-w-0 flex-1 flex flex-col gap-2">
+          <span className="inline-flex rounded-full border border-primary-cbe-200 bg-primary-cbe-100 px-2.5 py-1 text-[10px] font-semibold uppercase text-primary-cbe-500 w-fit">
             {badge}
           </span>
-          <h3 className="text-[14px] font-bold tracking-tight text-[#08152A]">
+
+          <h3 className="text-xs font-semibold leading-6 text-primary-cbe-500 sm:text-sm">
             {title}
           </h3>
         </div>
-        <div className="size-10 rounded-sm bg-primary-cbe-50 flex flex-col items-center justify-center">
-          <ChevronRight size={16} className="text-primary-cbe-800" />
+
+        <div className="hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-primary-cbe-100 bg-background text-primary-cbe-500 transition-all duration-300 group-hover:border-primary-cbe-50 group-hover:bg-white group-hover:shadow-sm">
+          <ChevronRight className="h-4 w-4" />
         </div>
       </div>
 
-      <p className="text-[12.5px] font-light leading-relaxed text-[#4B5D80]">
+      <p className="relative mt-5 text-[13.5px] leading-7 text-[#586A8E]">
         {description}
       </p>
+
+      <div className="relative mt-5 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-[#8A9CC0]">
+        <span className="h-1.5 w-1.5 rounded-full bg-[#ED1C24]" />
+        Connected module
+      </div>
     </div>
   );
 }
 
 export default function IntegrationsSection() {
   const [mounted, setMounted] = useState(false);
+  const [paths, setPaths] = useState<ConnectorPath[]>([]);
+
   const gridRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLDivElement | null>(null);
-  const svgRef = useRef<SVGSVGElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const leftCards = useMemo<FeatureCard[]>(
     () => [
@@ -70,22 +96,25 @@ export default function IntegrationsSection() {
         badge: "Oversight",
         title: "Management Dashboard",
         description:
-          "Real-time institutional intelligence for leadership — monitor KPIs, enrollment, and financial health from a unified executive view.",
-        delayClass: "delay-[150ms]",
+          "Real-time executive visibility across enrollment, finance, operations, and institutional performance from one unified control layer.",
+        delayClass: "delay-[80ms]",
+        logo: "/logos/ultimate-icon.svg",
       },
       {
         badge: "Governance",
         title: "Qualification Award Board",
         description:
-          "Centralized academic governance for qualification approvals, moderation workflows, and compliant award processing.",
-        delayClass: "delay-[250ms]",
+          "Structured academic approval workflows that strengthen moderation, compliance, and qualification governance across the institution.",
+        delayClass: "delay-[180ms]",
+        logo: "/logos/qabs.svg",
       },
       {
         badge: "Curriculum",
         title: "Curriculum Management (CBET)",
         description:
-          "Automates competency-based education frameworks — managing modularized curricula and TVETA & CDACC compliance.",
-        delayClass: "delay-[350ms]",
+          "Streamline modular curriculum planning, competency delivery, and TVETA/CDACC-aligned academic administration with greater consistency.",
+        delayClass: "delay-[280ms]",
+        logo: "/logos/carriculum.svg",
       },
     ],
     [],
@@ -95,296 +124,368 @@ export default function IntegrationsSection() {
     () => [
       {
         badge: "Attendance",
-        title: "UltimateBio Biometric Attendance",
+        title: "Ultimate Biometric Attendance",
         description:
-          "Eliminates proxy attendance through fingerprint verification — automating session tracking for students and staff.",
-        delayClass: "delay-[150ms]",
+          "Accurate biometric attendance validation for students and staff with automated session capture and stronger accountability.",
+        delayClass: "delay-[120ms]",
+        logo: "/logos/ultimate-bio.svg",
       },
       {
         badge: "Security",
         title: "Turnstile Biometric Gate Control",
         description:
-          "Full-height anti-tailgating turnstiles with biometric authentication and fee-linked eligibility enforcement.",
-        delayClass: "delay-[250ms]",
+          "Secure campus access with anti-tailgating turnstiles, biometric authentication, and fee-linked eligibility enforcement.",
+        delayClass: "delay-[220ms]",
+        logo: "/logos/turnstile-bio.svg",
       },
       {
         badge: "Dining",
         title: "SmartDine Pay-As-You-Eat",
         description:
-          "Cashless campus dining powered by M-Pesa wallet integration, biometric authentication, and real-time analytics.",
-        delayClass: "delay-[350ms]",
+          "Cashless dining operations powered by M-Pesa integration, biometric validation, and real-time meal transaction insights.",
+        delayClass: "delay-[320ms]",
+        logo: "/logos/smart-dine.svg",
       },
     ],
     [],
   );
-
-  const drawConnections = () => {
-    const svg = svgRef.current;
-    const grid = gridRef.current;
-    const logo = logoRef.current;
-
-    if (!svg || !grid || !logo) return;
-
-    svg.replaceChildren();
-
-    const ns = "http://www.w3.org/2000/svg";
-    const defs = document.createElementNS(ns, "defs");
-
-    const gridRect = grid.getBoundingClientRect();
-    const logoRect = logo.getBoundingClientRect();
-
-    const cards = Array.from(
-      grid.querySelectorAll<HTMLElement>("[data-feature-card]"),
-    );
-
-    const logoLeft = logoRect.left - gridRect.left;
-    const logoRight = logoRect.right - gridRect.left;
-    const logoCenterY = logoRect.top + logoRect.height / 2 - gridRect.top;
-
-    const dashDurations = [3.0, 2.6, 3.4, 2.8, 3.2, 2.5];
-    const motionDurations = [3.0, 2.6, 3.4, 2.8, 3.2, 2.5];
-
-    // Top / middle / bottom attachment points on the logo side
-
-    const sourceYOffsets = [-28, 10, 38, -28, 10, 38];
-
-    cards.forEach((card, i) => {
-      const cardRect = card.getBoundingClientRect();
-      const isLeft = i < 3;
-      const isMiddleCard = i === 1 || i === 4;
-
-      const sx = isLeft ? logoLeft : logoRight;
-      const sy = logoCenterY + sourceYOffsets[i];
-
-      const ex = isLeft
-        ? cardRect.right - gridRect.left
-        : cardRect.left - gridRect.left;
-
-      const ey = cardRect.top + cardRect.height / 2 - gridRect.top;
-
-      let d: string;
-
-      if (isMiddleCard) {
-        // Straight line for the middle cards
-        d = `M ${sx} ${sy} L ${ex} ${ey}`;
-      } else {
-        // Sharp-corner elbow path for top and bottom cards
-        // Bend point is pulled toward the center gap for the circuit-like look
-        const bendX = isLeft ? sx + (ex - sx) * 0.08 : sx - (sx - ex) * 0.08;
-
-        d = `M ${sx} ${sy}
-           L ${bendX} ${sy}
-           L ${bendX} ${ey}
-           L ${ex} ${ey}`;
-      }
-
-      const pathId = `conn-path-${i}-${Date.now()}`;
-
-      const defPath = document.createElementNS(ns, "path");
-      defPath.setAttribute("id", pathId);
-      defPath.setAttribute("d", d);
-      defPath.setAttribute("fill", "none");
-      defs.appendChild(defPath);
-
-      const glow = document.createElementNS(ns, "path");
-      glow.setAttribute("d", d);
-      glow.setAttribute("fill", "none");
-      glow.setAttribute("stroke", "rgba(237, 28, 35, 0.10)");
-      glow.setAttribute("stroke-width", "8");
-      glow.setAttribute("stroke-linecap", "butt");
-      glow.setAttribute("stroke-linejoin", "miter");
-      svg.appendChild(glow);
-
-      const line = document.createElementNS(ns, "path");
-      line.setAttribute("d", d);
-      line.setAttribute("fill", "none");
-      line.setAttribute("stroke", "#ed1c24");
-      line.setAttribute("stroke-width", "1.2");
-      line.setAttribute("stroke-opacity", "0.32");
-      line.setAttribute("stroke-linecap", "butt");
-      line.setAttribute("stroke-linejoin", "miter");
-      line.setAttribute("stroke-dasharray", "5 10");
-
-      const dashAnim = document.createElementNS(ns, "animate");
-      dashAnim.setAttribute("attributeName", "stroke-dashoffset");
-      dashAnim.setAttribute("from", "10");
-      dashAnim.setAttribute("to", "-68");
-      dashAnim.setAttribute("dur", `${dashDurations[i]}s`);
-      dashAnim.setAttribute("repeatCount", "indefinite");
-      line.appendChild(dashAnim);
-      svg.appendChild(line);
-
-      const dot = document.createElementNS(ns, "circle");
-      dot.setAttribute("r", "4");
-      dot.setAttribute("fill", "#ed1c24");
-      dot.setAttribute("opacity", "0.92");
-
-      const motion = document.createElementNS(ns, "animateMotion");
-      motion.setAttribute("dur", `${motionDurations[i]}s`);
-      motion.setAttribute("repeatCount", "indefinite");
-      motion.setAttribute("begin", `${i * 0.62}s`);
-      motion.setAttribute("calcMode", "spline");
-      motion.setAttribute("keyTimes", "0;1");
-      motion.setAttribute("keySplines", "0.42 0 0.58 1");
-
-      const mpath = document.createElementNS(ns, "mpath");
-      mpath.setAttribute("href", `#${pathId}`);
-      mpath.setAttributeNS(
-        "http://www.w3.org/1999/xlink",
-        "xlink:href",
-        `#${pathId}`,
-      );
-
-      motion.appendChild(mpath);
-      dot.appendChild(motion);
-      svg.appendChild(dot);
-
-      const ghost = document.createElementNS(ns, "circle");
-      ghost.setAttribute("r", "2.5");
-      ghost.setAttribute("fill", "#ed1c24");
-      ghost.setAttribute("opacity", "0.48");
-
-      const ghostMotion = document.createElementNS(ns, "animateMotion");
-      ghostMotion.setAttribute("dur", `${motionDurations[i]}s`);
-      ghostMotion.setAttribute("repeatCount", "indefinite");
-      ghostMotion.setAttribute("begin", `${i * 0.62 + 0.18}s`);
-      ghostMotion.setAttribute("calcMode", "spline");
-      ghostMotion.setAttribute("keyTimes", "0;1");
-      ghostMotion.setAttribute("keySplines", "0.42 0 0.58 1");
-
-      const ghostMpath = document.createElementNS(ns, "mpath");
-      ghostMpath.setAttribute("href", `#${pathId}`);
-      ghostMpath.setAttributeNS(
-        "http://www.w3.org/1999/xlink",
-        "xlink:href",
-        `#${pathId}`,
-      );
-
-      ghostMotion.appendChild(ghostMpath);
-      ghost.appendChild(ghostMotion);
-      svg.appendChild(ghost);
-
-      const ping = document.createElementNS(ns, "circle");
-      ping.setAttribute("cx", `${ex}`);
-      ping.setAttribute("cy", `${ey}`);
-      ping.setAttribute("r", "5");
-      ping.setAttribute("fill", "rgba(28,74,181,0.25)");
-      ping.setAttribute("class", "animate-ping");
-      ping.setAttribute("style", `transform-origin:${ex}px ${ey}px;`);
-      svg.appendChild(ping);
-
-      const outer = document.createElementNS(ns, "circle");
-      outer.setAttribute("cx", `${ex}`);
-      outer.setAttribute("cy", `${ey}`);
-      outer.setAttribute("r", "5.5");
-      outer.setAttribute("fill", "white");
-      outer.setAttribute("stroke", "#ed1c24");
-      outer.setAttribute("stroke-width", "1.4");
-      outer.setAttribute("opacity", "0.92");
-      svg.appendChild(outer);
-
-      const inner = document.createElementNS(ns, "circle");
-      inner.setAttribute("cx", `${ex}`);
-      inner.setAttribute("cy", `${ey}`);
-      inner.setAttribute("r", "2.5");
-      inner.setAttribute("fill", "#ed1c24");
-      svg.appendChild(inner);
-
-      const origin = document.createElementNS(ns, "circle");
-      origin.setAttribute("cx", `${sx}`);
-      origin.setAttribute("cy", `${sy}`);
-      origin.setAttribute("r", "3");
-      origin.setAttribute("fill", "#ed1c24");
-      origin.setAttribute("opacity", "0.55");
-      svg.appendChild(origin);
-    });
-
-    svg.appendChild(defs);
-  };
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    let raf1 = 0;
+    let raf2 = 0;
 
-    const timeout = window.setTimeout(drawConnections, 80);
+    const computePaths = () => {
+      if (typeof window === "undefined") return;
 
-    const onResize = () => drawConnections();
-    window.addEventListener("resize", onResize);
+      const grid = gridRef.current;
+      const logo = logoRef.current;
 
-    const observer = new ResizeObserver(() => drawConnections());
+      if (!grid || !logo) return;
+
+      if (window.innerWidth < 1024) {
+        setPaths([]);
+        return;
+      }
+
+      const gridRect = grid.getBoundingClientRect();
+      const logoRect = logo.getBoundingClientRect();
+
+      if (!logoRect.width || !logoRect.height) return;
+
+      const logoLeft = logoRect.left - gridRect.left;
+      const logoRight = logoRect.right - gridRect.left;
+      const logoCenterX = logoRect.left + logoRect.width / 2 - gridRect.left;
+      const logoCenterY = logoRect.top + logoRect.height / 2 - gridRect.top;
+
+      const sourceOffsets = [-72, 0, 72, -72, 0, 72];
+      const durations = [3.1, 2.7, 3.3, 2.9, 3.2, 2.8];
+      const delays = [0, 0.25, 0.5, 0.15, 0.4, 0.65];
+
+      const hiddenStartInset = 54;
+      const outerElbowOffset = 16;
+
+      const nextPaths: ConnectorPath[] = [];
+
+      cardRefs.current.forEach((card, index) => {
+        if (!card) return;
+
+        const cardRect = card.getBoundingClientRect();
+        const isLeft = index < 3;
+        const isMiddle = index === 1 || index === 4;
+
+        const cardEdgeX = isLeft
+          ? cardRect.right - gridRect.left
+          : cardRect.left - gridRect.left;
+
+        const cardCenterY = cardRect.top + cardRect.height / 2 - gridRect.top;
+
+        const startY = logoCenterY + sourceOffsets[index];
+        const endY = isMiddle ? startY : cardCenterY;
+
+        const startX = isMiddle
+          ? isLeft
+            ? logoLeft
+            : logoRight
+          : isLeft
+            ? logoCenterX - hiddenStartInset
+            : logoCenterX + hiddenStartInset;
+
+        const elbowX = isMiddle
+          ? cardEdgeX
+          : isLeft
+            ? logoLeft - outerElbowOffset
+            : logoRight + outerElbowOffset;
+
+        const d = isMiddle
+          ? `M ${startX} ${startY} L ${cardEdgeX} ${endY}`
+          : `M ${startX} ${startY} L ${elbowX} ${startY} L ${elbowX} ${endY} L ${cardEdgeX} ${endY}`;
+
+        nextPaths.push({
+          id: `connector-path-${index}`,
+          d,
+          startX,
+          startY,
+          endX: cardEdgeX,
+          endY,
+          duration: durations[index],
+          delay: delays[index],
+          showStartDot: isMiddle,
+        });
+      });
+
+      setPaths(nextPaths);
+    };
+
+    const scheduleCompute = () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+
+      raf1 = requestAnimationFrame(() => {
+        raf2 = requestAnimationFrame(computePaths);
+      });
+    };
+
+    scheduleCompute();
+
+    const observer = new ResizeObserver(() => {
+      scheduleCompute();
+    });
+
     if (gridRef.current) observer.observe(gridRef.current);
+    if (logoRef.current) observer.observe(logoRef.current);
+    cardRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    window.addEventListener("resize", scheduleCompute);
 
     return () => {
-      window.clearTimeout(timeout);
-      window.removeEventListener("resize", onResize);
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
       observer.disconnect();
+      window.removeEventListener("resize", scheduleCompute);
     };
-  }, [mounted]);
+  }, []);
 
   return (
-    <section className="w-full bg-primary-cbe-50 px-6 sm:px-30 py-16 sm:py-32">
-      <div className="mx-auto w-full max-w-[1180px]">
-        <div className="mx-auto mb-14 flex max-w-3xl flex-col items-center gap-4 text-center md:mb-16">
+    <section className="relative w-full overflow-hidden bg-background px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute bottom-[-120px] left-0 h-[300px] w-[300px] rounded-full bg-primary-cta/5 blur-3xl" />
+        <div className="absolute right-0 top-1/3 h-[260px] w-[260px] rounded-full bg-primary-cbe-500/5 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.5),transparent_60%)]" />
+      </div>
+
+      <div className="relative mx-auto max-w-[1240px]">
+        <div className="mx-auto max-w-3xl text-center flex flex-col gap-3 items-center">
           <BadgePill label="Integrated Solutions" centered={true} />
 
-          <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
             Extend Your Workflow{" "}
             <span className="text-primary-cta">Potential</span>
-          </h2>
+          </h3>
 
-          <p
-            className={[
-              "max-w-[500px] text-[14.5px] font-light leading-relaxed text-[#4B5D80] transition-all duration-700 ease-out line-clamp-3",
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-            ].join(" ")}
-          >
-            Dolor in dolore duis duis mollit minim consequat officia esse culpa
-            laboris amet. Proident pariatur cillum sit adipisicing aliqua. In
-            magna pariatur reprehenderit ipsum excepteur id anim veniam labore
-            enim voluptate consequat. Duis ea id elit labore dolore. Quis
-            cupidatat nisi excepteur ex do commodo incididunt dolor ex excepteur
-            dolore commodo occaecat. Irure esse labore est dolor.
+          <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+            Extend Ultimate ERP with tightly integrated modules for oversight,
+            governance, biometric access, attendance, and student services — all
+            connected through one institutional ecosystem.
           </p>
+
+          <div className="mt-8 inline-flex rounded-full border border-[#E3EAF6] bg-white/90 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#7D90B7] shadow-sm lg:hidden">
+            Ultimate ERP System
+          </div>
         </div>
 
         <div
           ref={gridRef}
-          className="relative grid items-center gap-5 lg:grid-cols-[1fr_268px_1fr]"
+          className="relative grid items-center gap-6 lg:grid-cols-[1fr_300px_1fr] lg:gap-10 mt-14"
         >
           <svg
-            ref={svgRef}
             className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible lg:block"
-            overflow="visible"
-            xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
-          />
+          >
+            <defs>
+              <linearGradient
+                id="connectorStroke"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#ED1C24" stopOpacity="0.12" />
+                <stop offset="50%" stopColor="#ED1C24" stopOpacity="0.34" />
+                <stop offset="100%" stopColor="#1C4AB5" stopOpacity="0.16" />
+              </linearGradient>
 
-          <div className="relative z-10 flex flex-col gap-[14px]">
-            {leftCards.map((card) => (
-              <div key={card.title} className={card.delayClass}>
+              {paths.map((path) => (
+                <path key={path.id} id={path.id} d={path.d} fill="none" />
+              ))}
+            </defs>
+
+            {paths.map((path) => (
+              <g key={`${path.id}-visual`}>
+                <path
+                  d={path.d}
+                  fill="none"
+                  stroke="rgba(237,28,36,0.08)"
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+
+                <path
+                  d={path.d}
+                  fill="none"
+                  stroke="url(#connectorStroke)"
+                  strokeWidth="1.5"
+                  strokeDasharray="6 9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    from="84"
+                    to="0"
+                    dur={`${path.duration}s`}
+                    begin={`${path.delay}s`}
+                    repeatCount="indefinite"
+                  />
+                </path>
+
+                {path.showStartDot && (
+                  <circle
+                    cx={path.startX}
+                    cy={path.startY}
+                    r="3.5"
+                    fill="#ED1C24"
+                    opacity="0.5"
+                  >
+                    <animate
+                      attributeName="opacity"
+                      values="0.35;0.85;0.35"
+                      dur="2.2s"
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                )}
+
+                <circle
+                  cx={path.endX}
+                  cy={path.endY}
+                  r="5.5"
+                  fill="white"
+                  stroke="#ED1C24"
+                  strokeWidth="1.4"
+                  opacity="0.96"
+                />
+
+                <circle cx={path.endX} cy={path.endY} r="2.5" fill="#ED1C24">
+                  <animate
+                    attributeName="opacity"
+                    values="0.45;1;0.45"
+                    dur="2s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+
+                <circle
+                  cx={path.endX}
+                  cy={path.endY}
+                  r="5"
+                  fill="none"
+                  stroke="rgba(237,28,36,0.28)"
+                  strokeWidth="1"
+                >
+                  <animate
+                    attributeName="r"
+                    values="5;11;5"
+                    dur="2.4s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.55;0;0.55"
+                    dur="2.4s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+
+                <circle r="4" fill="#ED1C24" opacity="0.95">
+                  <animateMotion
+                    dur={`${path.duration}s`}
+                    begin={`${path.delay}s`}
+                    repeatCount="indefinite"
+                    rotate="auto"
+                  >
+                    <mpath href={`#${path.id}`} />
+                  </animateMotion>
+                </circle>
+
+                <circle r="2.6" fill="#ED1C24" opacity="0.4">
+                  <animateMotion
+                    dur={`${path.duration}s`}
+                    begin={`${path.delay + 0.18}s`}
+                    repeatCount="indefinite"
+                    rotate="auto"
+                  >
+                    <mpath href={`#${path.id}`} />
+                  </animateMotion>
+                </circle>
+              </g>
+            ))}
+          </svg>
+
+          <div className="relative z-10 flex flex-col gap-5">
+            {leftCards.map((card, index) => (
+              <div
+                key={card.title}
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
+              >
                 <FeatureCardBlock {...card} mounted={mounted} />
               </div>
             ))}
           </div>
 
-          <div className="relative z-10 flex items-center justify-center">
+          <div className="relative z-10 hidden items-center justify-center lg:flex">
             <div
               ref={logoRef}
-              className="relative flex aspect-square w-full max-w-[210px] flex-col items-center justify-center overflow-hidden rounded-full bg-primary-cta shadow-sm"
+              className={[
+                "relative flex h-[240px] w-[240px] items-center justify-center transition-all duration-700",
+                mounted ? "scale-100 opacity-100" : "scale-95 opacity-0",
+              ].join(" ")}
             >
-              <div className="p-12 rounded-full aspect-square bg-primary-cbe-50 shadow-2xl">
+              <div className="absolute inset-0 rounded-full border border-primary-cta/80 bg-background" />
+              <div className="absolute inset-[4%] rounded-full border border-primary-cbe-500/80" />
+              <div className="absolute inset-[2%] rounded-full border border-dashed border-primary-cbe-500/60 animate-[spin_18s_linear_infinite]" />
+              <div className="absolute inset-[18%] rounded-full border border-white/20 animate-pulse" />
 
-              <img src="/logos/icon.svg" alt="" className="size-20" />
+              <div className="relative z-10 flex h-[192px] w-[192px] items-center justify-center rounded-full bg-white">
+                <img
+                  src="/logos/icon.svg"
+                  alt="Optimum integrated solutions"
+                  className="h-30 w-30 object-contain"
+                />
+              </div>
+
+              <div className="absolute -bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full border border-[#E5EBF7] bg-background px-4 py-2 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-primary-cbe-500 shadow-md">
+                Ultimate ERP System
               </div>
             </div>
           </div>
 
-          <div className="relative z-10 flex flex-col gap-[14px]">
-            {rightCards.map((card) => (
-              <div key={card.title} className={card.delayClass}>
+          <div className="relative z-10 flex flex-col gap-5">
+            {rightCards.map((card, index) => (
+              <div
+                key={card.title}
+                ref={(el) => {
+                  cardRefs.current[index + 3] = el;
+                }}
+              >
                 <FeatureCardBlock {...card} mounted={mounted} />
               </div>
             ))}

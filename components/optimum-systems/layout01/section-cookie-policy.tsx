@@ -184,14 +184,6 @@ export default function CookiePolicyPage() {
         <div className="absolute -left-32 -top-24 h-96 w-96 rounded-full bg-blue-500/10 blur-[120px]" />
         <div className="absolute -right-32 top-32 h-96 w-96 rounded-full bg-red-500/10 blur-[120px]" />
         <div className="absolute bottom-0 left-1/2 h-64 w-[600px] -translate-x-1/2 rounded-full bg-blue-400/10 blur-[100px]" />
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(148, 163, 184, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 1) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
       </div>
 
       {/* Hero */}

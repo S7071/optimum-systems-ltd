@@ -1,23 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import BadgePill from "@/components/ui/badge-pill";
-import { Separator } from "@/components/ui/separator";
-import { LucideIcon } from "@/lib/utils";
-import type { Easing } from "framer-motion";
-import { motion } from "framer-motion";
+import { BadgePill } from "@/components/ui/badge-pill";
 import {
-  Plus,
-  MoveRight,
-  Medal,
-  HouseHeart,
-  Factory,
-  BriefcaseBusiness,
   Ambulance,
+  ArrowRight,
+  BriefcaseBusiness,
+  Factory,
   GraduationCap,
+  HouseHeart,
+  Medal,
+  Plus,
+  type LucideIcon,
 } from "lucide-react";
-
-const ease: Easing = [0.25, 0.1, 0.25, 1];
 
 interface Industry {
   id: number;
@@ -41,7 +36,7 @@ const industries: Industry[] = [
     image: "/industries/higher-edu.jpg",
     icon: GraduationCap,
     overview:
-      "UltimateERP powers 186+ learning institutions with 30+ modules covering student lifecycle management, finance, HR, biometric attendance, CBET compliance, and real-time executive dashboards — all in a secure hybrid system.",
+      "Purpose-built ERP for universities, TVETs, and colleges, covering the full student lifecycle, finance, HR, compliance, attendance, and executive reporting.",
   },
   {
     id: 2,
@@ -53,7 +48,7 @@ const industries: Industry[] = [
     image: "/industries/healthcare.jpg",
     icon: Ambulance,
     overview:
-      "From MedFlow's end-to-end pharmaceutical tracking across county health facilities, to our cloud-based Hospital Management System — we reduce stockouts, cut patient wait times, and drive accountability across public and private health systems.",
+      "From hospital operations to county pharmaceutical tracking, our healthcare solutions improve accountability, reduce delays, and strengthen service delivery.",
   },
   {
     id: 3,
@@ -65,7 +60,7 @@ const industries: Industry[] = [
     image: "/industries/finre.jpg",
     icon: BriefcaseBusiness,
     overview:
-      "UltimateERP powers 186+ learning institutions with 30+ modules covering student lifecycle management, finance, HR, biometric attendance, CBET compliance, and real-time executive dashboards — all in a secure hybrid system.",
+      "Built for high-volume, transaction-heavy environments requiring branch visibility, lending controls, distribution workflows, compliance, and operational intelligence.",
   },
   {
     id: 4,
@@ -81,7 +76,7 @@ const industries: Industry[] = [
     image: "/industries/mangri.jpg",
     icon: Factory,
     overview:
-      "Our Manufacturing ERP, Dairy Management System, and Poultry Farm Management System unify production planning, supply chain, farmer payments, and financials — transforming operations from farm level to finished product distribution.",
+      "Integrated systems for production planning, farmer payments, intake, costing, inventory, and financial control across agricultural and manufacturing operations.",
   },
   {
     id: 5,
@@ -93,7 +88,7 @@ const industries: Industry[] = [
     image: "/industries/realestate.jpg",
     icon: HouseHeart,
     overview:
-      "REMS automates tenant lifecycle management, lease billing, M-Pesa collections, and portfolio analytics, while our Security Management System centralises biometric access control, CCTV integration, guard tracking, and incident response across multi-site facilities.",
+      "Manage leasing, billing, collections, access control, incident monitoring, and multi-site security from one connected enterprise environment.",
   },
   {
     id: 6,
@@ -105,122 +100,121 @@ const industries: Industry[] = [
     image: "/industries/gov.jpg",
     icon: Medal,
     overview:
-      "MedFlow equips county governments with transparent pharmaceutical supply chain control, while UltimateCBE Assessment ERP supports Kenya's CBC reform by enabling competency-based learning, NEMIS integration, and real-time student progress tracking across Grades 10–12.",
+      "Digital infrastructure for public institutions that need transparency, compliance, system integration, and real-time operational visibility at scale.",
   },
 ];
 
-function IndustryCard({ industry }: { industry: Industry; index: number }) {
+function IndustryCard({ industry }: { industry: Industry }) {
+  const Icon = industry.icon;
+
   return (
-    <motion.div
-      className="group relative overflow-hidden cursor-pointer bg-white hover:bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 border-t-[3px] border-primary-cbe-500 hover:border-primary-cta transition-[background-color,border-color] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] rounded-sm shadow-sm"
-      whileHover="hover"
-      initial="initial"
-    >
-      {/* ── Front face ── */}
-      <motion.div
-        variants={{
-          initial: { opacity: 1, y: 0, pointerEvents: "auto" },
-          hover: { opacity: 0, y: -16, pointerEvents: "none" },
-        }}
-        transition={{ duration: 0.28, ease }}
-        className="flex flex-col justify-end min-h-[400px]"
-      >
-        <div className="absolute inset-0 z-0">
-          <div className="absolute z-20 w-full h-full bg-primary-cbe-500 opacity-10"></div>
+    <article className="group relative min-h-[440px] overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-primary-cbe-200 hover:shadow-lg">
+      {/* Accent line */}
+      <div className="absolute inset-x-0 top-0 z-20 h-[3px] bg-gradient-to-r from-primary-cbe-500 via-primary-cbe-700 to-primary-cta" />
+
+      {/* Front */}
+      <div className="relative z-10 flex h-full flex-col transition-all duration-500 group-hover:scale-[0.985] group-hover:opacity-0">
+        {/* Image */}
+        <div className="relative h-[230px] overflow-hidden">
           <img
             src={industry.image}
-            alt=""
-            aria-hidden="true"
-            className="w-full h-[80%] object-cover object-top brightness-80"
+            alt={industry.name}
+            className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
           />
-        </div>
 
-        {/* Tagline + Name */}
-        <div className="z-2 bg-background p-6 flex flex-col gap-4 items-start w-full">
-          <div className="bg-background flex flex-row gap-3 items-center">
-            <div className="size-11 flex items-center justify-center rounded-sm bg-background border shadow-sm">
-              <industry.icon size={20} className="text-primary-cbe-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/20 to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,79,158,0.14),transparent_45%,rgba(220,38,38,0.10))]" />
+
+          <div className="absolute left-5 bottom-5 flex items-center gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-cbe-500 to-primary-cbe-800 text-white shadow-lg shadow-primary-cbe-500/20 ring-1 ring-primary-cbe-500/40">
+              <Icon className="h-5 w-5" />
             </div>
-            <div>
-              <p className="text-[10px] font-semibold text-pretty uppercase text-primary-cta line-clamp-1">
+
+            <div className="min-w-0">
+              <p className="mb-1 text-[10px] font-semibold uppercase text-white/80">
                 {industry.tagline}
               </p>
-              <h3 className="text-sm sm:text-base font-semibold text-primary-cbe-800 line-clamp-1">
+              <h3 className="truncate text-xl font-semibold tracking-tight text-white">
                 {industry.name}
               </h3>
             </div>
           </div>
-          <Separator />
-          {/* Description */}
-          <div className="line-clamp-2 text-sm leading-relaxed text-gray-500">
-            {industry.overview}
-          </div>
-        </div>
-      </motion.div>
-
-      {/* ── Back face ── */}
-      <motion.div
-        variants={{
-          initial: { opacity: 0, y: 22, pointerEvents: "none" },
-          hover: { opacity: 1, y: 0, pointerEvents: "auto" },
-        }}
-        transition={{ duration: 0.32, ease, delay: 0.07 }}
-        className="absolute inset-0 flex flex-col justify-between p-7 lg:p-8"
-      >
-        {/* Overview */}
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <span className="block w-4 h-px bg-primary-cta shrink-0" />
-            <p className="text-[0.6rem] font-bold tracking-[0.22em] uppercase text-primary-cta">
-              Overview
-            </p>
-          </div>
-          <p className="text-[0.84rem] leading-[1.72] text-white/80">
-            {industry.description}
-          </p>
         </div>
 
-        {/* Products + CTA */}
-        <div className="space-y-4">
-          <div className="w-full h-px bg-white/[0.09]" />
-
+        {/* Content */}
+        <div className="flex flex-1 flex-col justify-between p-6">
           <div>
-            <p className="text-[0.58rem] font-bold tracking-[0.18em] uppercase text-white/30 mb-2.5">
-              Solutions included
+            <p className="text-[15px] leading-7 text-slate-600 line-clamp-4">
+              {industry.overview}
             </p>
-            <div className="flex flex-wrap gap-1.5">
-              {industry.products.map((p) => (
-                <span
-                  key={p}
-                  className="text-[0.65rem] tracking-wide px-2.5 py-[5px] rounded-sm whitespace-nowrap bg-white/[0.06] text-white/60 border border-white/[0.10] leading-none"
-                >
-                  {p}
-                </span>
-              ))}
+          </div>
+
+          <div className="mt-6 flex items-center justify-between gap-4">
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary-cbe-700 transition-colors duration-300 group-hover:text-primary-cta">
+              View sector solutions
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </span>
+
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-primary-cbe-700 transition-all duration-300 group-hover:border-primary-cta/20 group-hover:bg-primary-cta group-hover:text-white">
+              <Plus className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
             </div>
           </div>
+        </div>
+      </div>
 
-          <span className="inline-flex items-center gap-1.5 text-white text-[0.78rem] font-semibold border-b border-primary-cta/50 pb-px">
+      {/* Hover panel */}
+      <div className="pointer-events-none absolute inset-0 z-30 flex translate-y-6 flex-col justify-between bg-[linear-gradient(180deg,rgba(11,16,64,0.985)_0%,rgba(7,11,45,0.985)_100%)] p-8 opacity-0 transition-all duration-500 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.05),transparent_35%)]" />
+
+        <div className="relative z-10 flex items-start justify-between gap-4">
+          <div>
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-5 bg-primary-cta" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary-cta">
+                Overview
+              </span>
+            </div>
+
+            <h4 className="mb-4 text-lg font-semibold tracking-tight text-white">
+              {industry.name}
+            </h4>
+
+            <p className="max-w-[32ch] text-sm leading-7 text-white/82 line-clamp-3">
+              {industry.description}
+            </p>
+          </div>
+        </div>
+
+        <div className="relative z-10 mt-8">
+          <div className="mb-6 h-px w-full bg-white/10" />
+
+          <p className="mb-3 text-[8px] font-bold uppercase tracking-[0.22em] text-white/35">
+            Solutions Included
+          </p>
+
+          <div className="mb-8 flex flex-wrap gap-2">
+            {industry.products.map((product) => (
+              <span
+                key={product}
+                className="rounded-xl border border-white/10 bg-white/6 px-3 py-1.5 text-[12px] font-medium text-white/80 backdrop-blur-sm"
+              >
+                {product}
+              </span>
+            ))}
+          </div>
+
+          <span className="inline-flex items-center gap-2 border-b border-primary-cta/60 pb-1 text-sm font-semibold text-white">
             Explore solutions
-            <MoveRight size={13} />
+            <ArrowRight className="h-4 w-4" />
           </span>
         </div>
-      </motion.div>
+      </div>
 
-      {/* ── Plus / close button ── */}
-      <motion.div
-        className="absolute top-[18px] right-[18px] z-10"
-        variants={{
-          initial: { rotate: 0 },
-          hover: { rotate: 45 },
-        }}
-        transition={{ duration: 0.32, ease }}
-      >
-        <div className="w-7 h-7 rounded-full flex items-center justify-center bg-primary-cbe-500/10 text-primary-cbe-500 group-hover:bg-primary-cta group-hover:text-white transition-colors duration-300">
-          <Plus size={14} strokeWidth={2.5} />
-        </div>
-      </motion.div>
-    </motion.div>
+      {/* Top-right control */}
+      <div className="absolute right-5 top-5 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-white/88 text-primary-cbe-700 shadow-md ring-1 ring-slate-200/70 backdrop-blur-sm transition-all duration-300 group-hover:bg-primary-cta group-hover:text-white group-hover:ring-primary-cta">
+        <Plus className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+      </div>
+    </article>
   );
 }
 
@@ -228,28 +222,33 @@ export default function IndustrySection() {
   return (
     <section
       id="industries"
-      className="px-6 sm:px-30 py-16 md:py-24 bg-primary-cbe-50 w-full"
+      className="relative overflow-hidden px-6 py-18 sm:px-8 md:px-12 lg:px-16 xl:px-24 w-full bg-background"
     >
-      <div className="space-y-8 flex flex-col items-center">
-        {/* ── Header ── */}
-        <div className="flex flex-col items-center gap-3 text-center mb-12">
-          <BadgePill label="Sectors" centered={true} />
-          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
-            Industries We <span className="text-primary-cta">Serve</span>
+      {/* Background accents */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-primary-cta/5 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl">
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center flex flex-col gap-3 items-center mb-14">
+          <BadgePill label="Sectors We Serve" centered={true} />
+
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
+            Industries We {" "}<span className="text-primary-cta">Serve</span>
           </h3>
-          <p className="max-w-xl text-muted-foreground leading-relaxed line-clamp-3">
-            From higher education to healthcare, retail to real estate — Optimum
-            delivers purpose-built ERP solutions trusted by 150+ institutions
-            across Kenya&apos;s most dynamic sectors.
+
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+            From higher education to healthcare, retail to real estate, Optimum
+            delivers purpose-built enterprise systems trusted by institutions
+            across Kenya’s most dynamic sectors.
           </p>
         </div>
 
-        {/* ── Cards grid ──
-            gap-px + bg-[#D1D9EE] = 1px hairline separators between all cards
-        */}
-        <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {industries.map((industry, i) => (
-            <IndustryCard key={industry.id} industry={industry} index={i} />
+        {/* Cards */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {industries.map((industry) => (
+            <IndustryCard key={industry.id} industry={industry} />
           ))}
         </div>
       </div>

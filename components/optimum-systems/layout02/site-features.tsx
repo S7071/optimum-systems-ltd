@@ -2,19 +2,13 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowRightIcon } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import BadgePill from "@/components/ui/badge-pill";
 
 interface FeatureCard {
   id: number;
-  banner: string;
   name: string;
   alias: string;
   description: string;
@@ -27,197 +21,220 @@ interface FeatureCard {
 const featureCards: FeatureCard[] = [
   {
     id: 0,
-    banner: "/product-banners/P-01.webp",
     name: "Ultimate CBE Assessment ERP",
     alias: "UltimateCBE",
     description:
       "A complete Competency-Based Education management system for TVETs and polytechnics — covering student registration, unit tracking, assessments, and KNQA-compliant reporting.",
-    icon: "/logos/ultimate-icon.svg",
+    icon: "/logos/ultimate-cbe.svg",
     href: "/ultimate-cbe",
     tag: "Education",
     category: "CBE",
   },
   {
     id: 1,
-    banner: "/product-banners/P-02.webp",
     name: "Ultimate Supply Chain ERP",
     alias: "UltimateSCM",
     description:
       "End-to-end procurement, inventory, and logistics management. Track suppliers, purchase orders, stock movement, and deliveries in real time across all your branches.",
-    icon: "/logos/ultimate-icon.svg",
+    icon: "/logos/ultimate-supply-chain.svg",
     href: "/ultimate-scm",
     tag: "Logistics",
     category: "SCM",
   },
   {
     id: 2,
-    banner: "/product-banners/P-03.webp",
     name: "Ultimate Manufacturing ERP",
     alias: "UltimateMFG",
     description:
       "Streamline your entire production cycle — from raw material planning and work-in-progress tracking to finished goods management and quality control.",
-    icon: "/logos/ultimate-icon.svg",
+    icon: "/logos/ultimate-manufacturing.svg",
     href: "/ultimate-mfg",
     tag: "Manufacturing",
     category: "MFG",
   },
   {
     id: 3,
-    banner: "/product-banners/P-04.png",
     name: "Ultimate Hotel ERP",
     alias: "UltimateHMS",
     description:
       "A fully integrated hospitality management system covering reservations, front desk, housekeeping, restaurant POS, billing, and guest experience management.",
-    icon: "/logos/ultimate-icon.svg",
+    icon: "/logos/ultimate-hotel.svg",
     href: "/ultimate-hms",
     tag: "Hospitality",
     category: "HMS",
   },
   {
     id: 4,
-    banner: "/product-banners/P-05.png",
     name: "Ultimate POS",
     alias: "UltimatePOS",
     description:
       "A fast, reliable point-of-sale system for retail and service businesses. Manage sales, stock, receipts, and daily reports from a single, easy-to-use interface.",
-    icon: "/logos/ultimate-icon.svg",
+    icon: "/logos/ultimate-pos.svg",
     href: "/ultimate-pos",
     tag: "Retail",
     category: "POS",
   },
   {
     id: 5,
-    banner: "/product-banners/P-06.webp",
     name: "Ultimate Conference ERP",
     alias: "UltimateCMS",
     description:
       "Seamlessly manage venue bookings, event scheduling, attendee registration, billing, and post-event reporting for conference centres and event facilities.",
-    icon: "/logos/ultimate-icon.svg",
+    icon: "/logos/ultimate-conference.svg",
     href: "/ultimate-cms",
     tag: "Events",
     category: "CMS",
   },
 ];
 
+function ProductName({ name }: { name: string }) {
+  const [first, ...rest] = name.split(" ");
+
+  return (
+    <h3 className="text-lg font-semibold leading-tight tracking-[-0.02em] text-slate-950">
+      <span className="text-primary-cta">{first}</span>{" "}
+      <span className="text-primary-cbe-700">{rest.join(" ")}</span>
+    </h3>
+  );
+}
+
 export default function SiteFeatures() {
   const router = useRouter();
 
   return (
-    <section className="w-full">
-      {/* ── Hero Header ─────────────────────────────────────────────── */}
-      <div
-        className="relative overflow-hidden px-6 py-16 sm:py-24 text-center bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
-      >
-        {/* Decorative blobs */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="0 0 900 240"
-            preserveAspectRatio="xMidYMid slice"
-            aria-hidden="true"
-          >
-            <circle cx="100" cy="60" r="140" fill="#fff" />
-            <circle cx="780" cy="180" r="160" fill="#fff" />
-            <circle cx="450" cy="20" r="90" fill="#e63329" />
-          </svg>
-        </div>
+    <section className="relative w-full bg-white py-12 sm:py-16 lg:py-20">
+      <div className="w-full px-6 sm:px-16 lg:px-30">
+        {/* Header */}
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-6 py-14 shadow-sm sm:px-10 sm:py-16 lg:px-14">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(230,51,41,0.16),transparent_22%)]" />
 
-        <div className="relative z-10 mx-auto flex max-w-[47.5rem] flex-col items-center gap-3">
-          {/* Brand pill */}
-          <BadgePill label="Optimum ERP Systems Ltd" centered={true} />
+          <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <div className="mx-auto max-w-3xl text-center flex flex-col gap-3 items-center">
+              <BadgePill label="Optimum ERP Systems Ltd" centered={true} />
 
-          {/* Headline */}
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-white mb-4">
-            Purpose-Built ERP Products for{" "}
-            <span className="text-primary-cta">Every Industry</span>
-          </h2>
+              <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-50 mb-4">
+                Purpose-Built ERP <br />
+                Products for <span className="text-primary-cta">Every Industry</span>
+              </h3>
 
-          {/* Sub-copy */}
-          <p className="text-sm leading-relaxed sm:text-base text-[#ffffff99]">
-            From hospitality and manufacturing to retail and conferencing —
-            every Optimum product is built specifically for its industry, fully
-            integrated, and tested across real Kenyan businesses.
-          </p>
-        </div>
-      </div>
+              <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
+                From hospitality and manufacturing to retail and conferencing,
+                every Optimum product is designed for sector-specific workflows,
+                operational efficiency, and long-term scale.
+              </p>
+            </div>
 
-      {/* ── Cards Grid ──────────────────────────────────────────────── */}
-      <div className="bg-primary-cbe-50 px-6 py-14 sm:px-10 sm:py-20">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {featureCards.map((card) => (
-              <Card
-                key={card.id}
-                className="group overflow-hidden border border-[#e8edf5] py-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[#1a3a6b] hover:shadow-[0_20px_48px_rgba(26,58,107,0.02)]"
-              >
-                <CardContent className="w-full h-full flex flex-col gap-3 p-5">
-                    {/* Icon + Name + Alias */}
-                    <CardTitle className="w-full flex items-center justify-start gap-3">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border bg-white shadow-sm">
-                        <img
-                          alt={card.alias}
-                          className="h-7 w-7"
-                          src={card.icon}
-                        />
-                      </div>
-                      <div className="flex min-w-0 flex-col gap-0.5">
-                        <span className="line-clamp-1 text-[15px] font-bold leading-snug text-primary-cbe-500">
-                          <span className="text-primary-cta">{card.name.split(" ")[0]}</span>
-                          {card.name.split(" ").slice(1, card.name.split(" ").length).join(" ")}
-                        </span>
-                      </div>
-                    </CardTitle>
-
-                    {/* Divider */}
-                    <hr className="border-[#f0f2f6]" />
-
-                    {/* Description */}
-                    <CardDescription className="line-clamp-5 text-sm leading-relaxed text-gray-500 flex-1">
-                      {card.description}
-                    </CardDescription>
-
-                    {/* Actions */}
-                    <div className="flex w-full flex-row items-center justify-end gap-2 pt-2">
-                      <a href={card.href}>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="gap-1.5 font-semibold text-[#1a3a6b] hover:bg-[#eef3fb] hover:text-[#1a3a6b]"
-                        >
-                          Explore
-                          <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                        </Button>
-                      </a>
-                      <a href={`${card.href}/schedule-demo`}>
-                        <Button
-                          size="sm"
-                          className="bg-[#e63329] font-semibold text-white shadow-none hover:bg-[#c8251b] active:scale-95"
-                        >
-                          Book a Demo
-                        </Button>
-                      </a>
-                    </div>
-                </CardContent>
-              </Card>
-            ))}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              {[
+                "Industry-specific design",
+                "Operationally integrated",
+                "Built for real deployments",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-medium tracking-wide text-white/90 backdrop-blur-sm sm:text-sm"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
+        </div>
 
-          {/* ── Bottom CTA ───────────────────────────────────────── */}
-          <div className="mt-16 flex flex-col items-center gap-10">
-            <Button size="lg" onClick={() => router.push("/products")}>
-              Explore All Our Products
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Button>
-            <p className="text-xs text-gray-400">
-              Need a custom solution?{" "}
-              <a
-                href="/contact"
-                className="font-semibold text-[#1a3a6b] underline-offset-2 hover:underline"
-              >
-                Talk to our team
+        {/* Cards */}
+        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {featureCards.map((card) => (
+            <Card
+              key={card.id}
+              className="group h-full overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white py-0 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-primary-cbe-200 hover:shadow-md"
+            >
+              <CardContent className="flex h-full flex-col p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm transition-transform duration-300 group-hover:scale-105">
+                      <img
+                        alt={card.alias}
+                        className="h-7 w-7 object-contain"
+                        src={card.icon}
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      <ProductName name={card.name} />
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                        {card.alias}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="my-5 h-px w-full bg-gradient-to-r from-slate-200 via-slate-100 to-transparent" />
+
+                <div className="flex flex-1 flex-col">
+                  <div className="flex items-center gap-2">
+                    <span className="rounded-full bg-primary-cbe-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-primary-cbe-700">
+                      {card.tag}
+                    </span>
+                    <span className="rounded-full bg-primary-cta/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-primary-cta">
+                      {card.category}
+                    </span>
+                  </div>
+
+                  <CardDescription className="mt-4 flex-1 text-sm leading-7 text-slate-600">
+                    {card.description}
+                  </CardDescription>
+                </div>
+
+                <div className="mt-6 grid grid-cols-2 gap-3">
+                  <a href={card.href} className="block">
+                    <Button
+                      variant="ghost"
+                      className="h-11 w-full rounded-full border border-primary-cbe-100 bg-primary-cbe-50/70 font-semibold text-primary-cbe-700 transition-all duration-300 hover:bg-primary-cbe-100 hover:text-primary-cbe-800"
+                    >
+                      Explore
+                      <ArrowUpRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </Button>
+                  </a>
+
+                  <a href={`${card.href}/schedule-demo`} className="block">
+                    <Button className="h-11 w-full rounded-full bg-primary-cta font-semibold text-white shadow-none transition-all duration-300 hover:bg-[#c8251b]">
+                      Book Demo
+                    </Button>
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-8 rounded-[1.75rem] border border-slate-200 bg-gradient-to-b from-white to-slate-50 px-6 py-8 shadow-sm sm:px-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
+                Product Ecosystem
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-slate-950">
+                Explore the Full Optimum ERP Portfolio
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Discover additional product lines, modules, and enterprise
+                solutions tailored for institutions and growing organizations.
+              </p>
+            </div>
+
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <Button size="lg" onClick={() => router.push("/products")}>
+                Explore All Products
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+
+              <a href="/contact">
+                <Button size="lg" variant="outline">
+                  Talk to Our Team
+                </Button>
               </a>
-            </p>
+            </div>
           </div>
         </div>
       </div>

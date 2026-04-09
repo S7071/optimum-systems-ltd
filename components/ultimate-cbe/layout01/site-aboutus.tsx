@@ -1,5 +1,17 @@
 import BadgePill from "@/components/ui/badge-pill";
 import { Button } from "@/components/ui/button";
+import {
+  BadgeCheck,
+  Briefcase,
+  CloudCog,
+  FileCheck2,
+  Fingerprint,
+  RefreshCw,
+  ServerCog,
+  ShieldCheck,
+  Star,
+  Users,
+} from "lucide-react";
 
 type SectionLink = {
   label: string;
@@ -15,12 +27,6 @@ type Stat = {
 type Pillar = {
   title: string;
   description: string;
-};
-
-type FocusArea = {
-  title: string;
-  description: string;
-  items: string[];
 };
 
 type DeliveryModel = {
@@ -48,8 +54,8 @@ const stats: Stat[] = [
     note: "Built around real operational demands across Kenyan institutions.",
   },
   {
-    value: "160+",
-    label: "Academic institutions served",
+    value: "200+",
+    label: "Institutions Served",
     note: "Supporting colleges, universities, TVETs, and other learning environments.",
   },
   {
@@ -79,53 +85,6 @@ const pillars: Pillar[] = [
     title: "Goal",
     description:
       "To deliver tailored software solutions that help clients optimize their return on investment while building efficient and sustainable operations.",
-  },
-];
-
-const focusAreas: FocusArea[] = [
-  {
-    title: "Education ERP Systems",
-    description:
-      "Purpose-built platforms for universities, colleges, polytechnics, TVETs, and schools that unify administration, finance, academics, and reporting.",
-    items: [
-      "Admissions & registration",
-      "Academic records",
-      "Fees & finance",
-      "Exams & reporting",
-    ],
-  },
-  {
-    title: "Financial Institution Solutions",
-    description:
-      "Structured ERP implementations for SACCOs, microfinance institutions, and building societies with controls that support growth, compliance, and visibility.",
-    items: [
-      "Member lifecycle",
-      "Loans & savings",
-      "Audit-ready reporting",
-      "Operational controls",
-    ],
-  },
-  {
-    title: "Business Operations Platforms",
-    description:
-      "Operational systems for distributors, retailers, manufacturers, and service-oriented businesses that need connected workflows across departments.",
-    items: [
-      "Inventory workflows",
-      "Procurement",
-      "Payroll & HR",
-      "Management dashboards",
-    ],
-  },
-  {
-    title: "Custom & Hybrid Delivery",
-    description:
-      "We combine tailored implementation, extensible modules, and hybrid deployment models so each solution fits the organization it serves.",
-    items: [
-      "Cloud + on-premise",
-      "Custom modules",
-      "Integrations",
-      "Phased rollout support",
-    ],
   },
 ];
 
@@ -203,9 +162,9 @@ export default function SiteAboutUs() {
             <div className="max-w-3xl">
               <BadgePill label="About Optimum" centered={false} />
 
-              <h1 className="mt-6 max-w-full text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-5xl lg:leading-[1.06]">
+              <h1 className="mt-6 max-w-full text-4xl font-extrabold tracking-tight text-primary-cbe-500 sm:text-5xl lg:text-5xl lg:leading-[1.06]">
                 Driving business evolution through technology that boosts
-                <span className="bg-gradient-to-r from-primary-cbe-700 via-primary-cbe-400 to-primary-cta bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary-cbe-500 via-primary-cbe-500 to-primary-cta bg-clip-text text-transparent">
                   {" "}
                   efficiency, productivity, and workflow optimization.
                 </span>
@@ -237,11 +196,11 @@ export default function SiteAboutUs() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="group rounded-3xl border border-slate-200 bg-white/85 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5"
+                className="group rounded-3xl border border-slate-200 bg-white/85 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-md"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <div className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                    <div className="text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
                       {stat.value}
                     </div>
                     <p className="mt-2 text-sm font-semibold text-blue-700">
@@ -279,7 +238,7 @@ export default function SiteAboutUs() {
         <div className="mx-auto grid max-w-7xl gap-14 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
           <div>
             <BadgePill label="Who We Are" centered={false} />
-            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
               A Kenyan software company specializing in innovative, tailored ERP
               and management information systems.
             </h2>
@@ -302,7 +261,7 @@ export default function SiteAboutUs() {
                 delivery.
               </p>
               <p>
-                Today, over 150 institutions of higher learning rely on our ERP
+                Today, over 200 institutions of higher learning rely on our ERP
                 system to power their operations — experiencing transformative
                 outcomes that position them for long-term success. We hold
                 Category 1 ICT Authority accreditations, the highest level
@@ -313,8 +272,8 @@ export default function SiteAboutUs() {
           </div>
 
           <div className="grid gap-5 self-start">
-            <div className="overflow-hidden rounded-[2rem] border border-blue-100 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 p-8 text-white shadow-2xl shadow-blue-900/10">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-100">
+            <div className="overflow-hidden rounded-[2rem] border border-blue-100 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 p-8 text-white shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary-cbe-200">
                 Leadership Perspective
               </p>
               <p className="mt-6 text-xl font-medium leading-9 text-white/95 sm:text-2xl">
@@ -325,13 +284,13 @@ export default function SiteAboutUs() {
               </p>
               <div className="mt-8 h-px w-full bg-white/15" />
               <p className="mt-5 text-sm text-blue-100">
-                Optimum Computer Systems Ltd leadership
+                Optimum Systems Ltd leadership
               </p>
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-red-600">
+              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                <p className="text-xs font-semibold uppercase tracking-widest text-red-600">
                   What makes us effective
                 </p>
                 <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
@@ -342,16 +301,196 @@ export default function SiteAboutUs() {
                 </ul>
               </div>
 
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-blue-700">
+              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                <p className="text-xs font-semibold uppercase tracking-widest text-blue-700">
                   What clients gain
                 </p>
                 <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
-                  <li>• Up to 50% admin workload reduction</li>
+                  <li>• Up to 90% admin workload reduction</li>
                   <li>• Bank reconciliations under 5 minutes</li>
                   <li>• Full IPSAS & CBET compliance</li>
                   <li>• Long-term partnerships and proven ROI</li>
                 </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="accreditations" className="relative py-20 sm:py-24">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 overflow-hidden"
+        >
+          <div className="absolute left-0 top-30 h-64 w-64 rounded-full bg-primary-cbe-500/10 blur-3xl" />
+          <div className="absolute right-0 bottom-30 h-64 w-64 rounded-full bg-primary-cta/10 blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <BadgePill label="Accreditations" centered={false} />
+              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
+                Recognized for compliance, security, and trusted technology
+                delivery.
+              </h2>
+            </div>
+
+            <p className="max-w-2xl text-base leading-8 text-slate-600">
+              Optimum holds top-tier ICT Authority accreditations and data
+              protection registrations that reinforce our capability to build,
+              secure, host, and manage enterprise systems with confidence.
+            </p>
+          </div>
+
+          <div className="mt-12 overflow-hidden rounded-[2rem] border border-primary-cbe-100 bg-white shadow-sm">
+            <div className="grid gap-px bg-slate-200 lg:grid-cols-[1.15fr_0.85fr]">
+              <div className="bg-white p-8 sm:p-10">
+                <div className="flex items-center gap-3">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-cbe-500/10 text-primary-cbe-500">
+                    <BadgeCheck className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-red-600">
+                      ICT Authority
+                    </p>
+                    <h3 className="text-2xl font-semibold text-primary-cbe-500">
+                      Category 1 Accreditations
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
+                  Optimum holds four ICT Authority Category 1 accreditations
+                  covering systems and applications, information security, cloud
+                  computing, and data centre capability.
+                </p>
+
+                <div className="mt-8 grid gap-4 md:grid-cols-2">
+                  {[
+                    {
+                      icon: BadgeCheck,
+                      title: "Systems & Applications",
+                      code: "ICTA 1",
+                      description:
+                        "Validates expertise in developing and deploying robust software solutions.",
+                    },
+                    {
+                      icon: ShieldCheck,
+                      title: "Information Security",
+                      code: "ICTA 1",
+                      description:
+                        "Confirms commitment to safeguarding data with top-tier security protocols.",
+                    },
+                    {
+                      icon: CloudCog,
+                      title: "Cloud Computing",
+                      code: "ICTA 1",
+                      description:
+                        "Affirms capability to deliver reliable, scalable, and efficient cloud services.",
+                    },
+                    {
+                      icon: ServerCog,
+                      title: "Data Centre",
+                      code: "ICTA 1",
+                      description:
+                        "Demonstrates secure, high-availability infrastructure for hosting and recovery.",
+                    },
+                  ].map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <article
+                        key={item.title}
+                        className="group rounded-3xl border border-slate-200 bg-slate-50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary-cbe-200 hover:bg-white hover:shadow-md"
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-cbe-500/10 text-primary-cbe-500 transition-transform duration-300 group-hover:scale-105">
+                            <Icon className="h-5 w-5" />
+                          </div>
+                          <span className="rounded-full border border-red-200 bg-red-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-600">
+                            {item.code}
+                          </span>
+                        </div>
+
+                        <h4 className="mt-5 text-lg font-semibold text-primary-cbe-500">
+                          {item.title}
+                        </h4>
+                        <p className="mt-2 text-sm leading-7 text-slate-600">
+                          {item.description}
+                        </p>
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="bg-slate-50 p-8 sm:p-10">
+                <div className="flex items-center gap-3">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-red-500/10 text-red-600">
+                    <Fingerprint className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-blue-700">
+                      Data Protection
+                    </p>
+                    <h3 className="text-2xl font-semibold text-primary-cbe-500">
+                      Compliance Registrations
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base">
+                  Optimum is also registered under Kenya’s data protection
+                  framework as both a Data Controller and a Data Processor,
+                  reinforcing formal accountability in the handling of client
+                  and institutional data.
+                </p>
+
+                <div className="mt-8 space-y-4">
+                  {[
+                    {
+                      title: "Data Controller",
+                      description:
+                        "Authorizes determination of the purposes and means of processing personal data.",
+                    },
+                    {
+                      title: "Data Processor",
+                      description:
+                        "Enables processing of data on behalf of clients with stringent safeguards.",
+                    },
+                  ].map((item) => (
+                    <article
+                      key={item.title}
+                      className="group rounded-3xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary-cbe-200 hover:shadow-md"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary-cbe-500/10 text-primary-cbe-500 transition-transform duration-300 group-hover:scale-105">
+                          <FileCheck2 className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-semibold text-primary-cbe-500">
+                            {item.title}
+                          </h4>
+                          <p className="mt-2 text-sm leading-7 text-slate-600">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                <div className="mt-8 rounded-3xl border border-primary-cbe-100 bg-gradient-to-br from-primary-cbe-500 to-primary-cbe-800 p-6 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-100">
+                    Trust Signal
+                  </p>
+                  <p className="mt-3 text-base leading-8 text-white/90">
+                    These accreditations strengthen Optimum’s positioning across
+                    secure software development, enterprise hosting, cloud
+                    delivery, and compliant data handling.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -365,7 +504,7 @@ export default function SiteAboutUs() {
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
           <div className="max-w-2xl">
             <BadgePill label="Our Direction" centered={false} />
-            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
               The principles that guide how Optimum builds, deploys, and
               sustains software solutions for our clients.
             </h2>
@@ -375,17 +514,17 @@ export default function SiteAboutUs() {
             {pillars.map((pillar, index) => (
               <article
                 key={pillar.title}
-                className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5"
+                className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-md"
               >
                 <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-blue-100/60 blur-2xl transition-transform duration-500 group-hover:scale-125" />
                 <div className="relative">
                   <div className="flex items-center justify-between gap-4">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-sm font-semibold text-white">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-cbe-500 text-sm font-semibold text-white">
                       0{index + 1}
                     </span>
                     <span className="h-2.5 w-2.5 rounded-full bg-red-500" />
                   </div>
-                  <h3 className="mt-6 text-2xl font-semibold text-slate-950">
+                  <h3 className="mt-6 text-2xl font-semibold text-primary-cbe-500">
                     {pillar.title}
                   </h3>
                   <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
@@ -398,53 +537,240 @@ export default function SiteAboutUs() {
         </div>
       </section>
 
-      <section id="our-focus" className="relative py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+      <section id="core-values" className="relative py-20 sm:py-24">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 overflow-hidden"
+        >
+          <div className="absolute left-[-4rem] top-16 h-56 w-56 rounded-full bg-primary-cbe-500/10 blur-3xl" />
+          <div className="absolute right-[-4rem] bottom-20 h-56 w-56 rounded-full bg-primary-cta/10 blur-3xl" />
+        </div>
+
+        <div className="relative w-full px-6 sm:px-15 lg:px-30">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <BadgePill label="Our Focus" centered={false} />
-              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                Modular, scalable solutions for sectors where efficiency,
-                compliance, and data security matter most.
+              <BadgePill label="Our Core Values" centered={false} />
+              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
+                The principles that shape how we think, build, and serve.
               </h2>
             </div>
-            <p className="max-w-xl text-base leading-8 text-slate-600">
-              We deliver hybrid, cross-platform software with strong emphasis on
-              regulatory compliance, security features, seamless integrations,
-              and real-time analytics — reducing manual work and enhancing
-              decision-making across diverse industries.
+
+            <p className="max-w-2xl text-base leading-8 text-slate-600">
+              Optimum’s culture is grounded in client focus, trust, discipline,
+              excellence, continuous improvement, and accountability across
+              every engagement.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 xl:grid-cols-2">
-            {focusAreas.map((area) => (
-              <article
-                key={area.title}
-                className="group rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-2xl font-semibold text-slate-950">
-                    {area.title}
-                  </h3>
-                  <span className="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-blue-700">
-                    Optimum
-                  </span>
-                </div>
-                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                  {area.description}
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2.5">
-                  {area.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-2 text-sm font-medium text-slate-700 transition-colors duration-300 group-hover:border-blue-100 group-hover:bg-blue-50 group-hover:text-blue-700"
-                    >
-                      {item}
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {[
+              {
+                icon: Users,
+                title: "Client Centric",
+                description:
+                  "We focus on what our customers need and how they want to interact with our business. Our company is designed from the customer’s perspective.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Integrity",
+                description:
+                  "Our team is trustworthy, dependable, and passionate about what we do, especially in how we handle client information.",
+              },
+              {
+                icon: Briefcase,
+                title: "Professionalism",
+                description:
+                  "We are reliable, organized, and hold ourselves accountable for our thoughts, words, and actions. We care about every aspect of our work.",
+              },
+              {
+                icon: Star,
+                title: "Excellence",
+                description:
+                  "Whatever is worth doing is worth doing right. We are committed to completing tasks to perfection.",
+              },
+              {
+                icon: RefreshCw,
+                title: "Continuous Improvement",
+                description:
+                  "We stay responsive to the dynamism of technology and continually improve our processes, tools, products, services, and relationships.",
+              },
+              {
+                icon: BadgeCheck,
+                title: "Accountability",
+                description:
+                  "Our commitment is above board, and we take responsibility for our actions, behaviors, performance, and decisions as a company.",
+              },
+            ].map((value) => {
+              const Icon = value.icon;
+
+              return (
+                <article
+                  key={value.title}
+                  className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary-cbe-200 hover:shadow-md"
+                >
+                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-cbe-500 via-primary-cbe-400 to-primary-cta" />
+
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-cbe-500/10 text-primary-cbe-500 transition-transform duration-300 group-hover:scale-105">
+                      <Icon className="h-6 w-6" />
+                    </div>
+
+                    <span className="rounded-full border border-red-200 bg-red-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-red-600">
+                      Value
                     </span>
-                  ))}
-                </div>
-              </article>
-            ))}
+                  </div>
+
+                  <h3 className="mt-6 text-xl font-semibold text-primary-cbe-500">
+                    {value.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
+                    {value.description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 rounded-[2rem] border border-primary-cbe-100 bg-gradient-to-r from-primary-cbe-50 via-white to-red-50 p-6 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-widest text-red-600">
+              What this means in practice
+            </p>
+            <p className="mt-3 max-w-4xl text-base leading-8 text-slate-700">
+              These values define how Optimum approaches delivery, partnerships,
+              security, and service quality—ensuring every solution is built
+              with discipline, trust, and long-term client success in mind.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="what-sets-optimum-apart" className="relative py-20 sm:py-24">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 overflow-hidden"
+        >
+          <div className="absolute left-[-5rem] top-20 h-64 w-64 rounded-full bg-primary-cbe-500/10 blur-3xl" />
+          <div className="absolute right-[-4rem] bottom-0 h-64 w-64 rounded-full bg-primary-cta/10 blur-3xl" />
+        </div>
+
+        <div className="relative w-full px-6 sm:px-15 lg:px-30">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <div className="max-w-2xl">
+              <BadgePill label="What Sets Optimum Apart" centered={false} />
+              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
+                Why institutions and enterprises trust Optimum as a long-term
+                technology partner.
+              </h2>
+            </div>
+
+            <div className="overflow-hidden">
+              <p className="mt-6 text-base leading-8 text-slate-600">
+                Optimum combines proven implementation depth, tailored
+                enterprise delivery, strong technical capability, and a
+                hybrid-first architecture to solve real operational challenges
+                at scale.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {[
+              {
+                number: "01",
+                icon: BadgeCheck,
+                title: "Proven Institutional Impact",
+                description:
+                  "Optimum has successfully implemented enterprise systems across numerous institutions, with over 180 in education relying on our ERP for daily operations.",
+              },
+              {
+                number: "02",
+                icon: Briefcase,
+                title: "Deep Sector Expertise",
+                description:
+                  "Our team brings extensive expertise in enterprise systems development, software engineering, and digital transformation shaped by years of implementation experience.",
+              },
+              {
+                number: "03",
+                icon: FileCheck2,
+                title: "Custom Enterprise Solutions",
+                description:
+                  "We work closely with clients to analyze operational challenges and design solutions aligned to their specific institutional processes and realities.",
+              },
+              {
+                number: "04",
+                icon: Star,
+                title: "Commitment to Excellence",
+                description:
+                  "Integrity, accountability, professionalism, and excellence guide every engagement, with a clear focus on exceeding client expectations.",
+              },
+              {
+                number: "05",
+                icon: ServerCog,
+                title: "Strong Technical Capability",
+                description:
+                  "Our team of over 60 experienced technical professionals combines project management, systems development, and enterprise technology expertise.",
+              },
+              {
+                number: "06",
+                icon: Users,
+                title: "Customer-Centric Approach",
+                description:
+                  "We partner closely with clients to ensure every system delivered contributes directly to efficiency, productivity, and long-term organizational growth.",
+              },
+              {
+                number: "07",
+                icon: RefreshCw,
+                title: "Continuous Innovation",
+                description:
+                  "We continually refine our platforms and delivery approach to respond to evolving operational needs, sector demands, and enterprise expectations.",
+              },
+              {
+                number: "08",
+                icon: CloudCog,
+                title: "Hybrid Architecture",
+                description:
+                  "On-premise security combined with cloud accessibility keeps critical data protected while enabling staff and stakeholders to access services from anywhere.",
+              },
+            ].map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <article
+                  key={item.title}
+                  className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary-cbe-200 hover:shadow-md"
+                >
+                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-cbe-500 via-primary-cbe-400 to-primary-cta" />
+                  <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-primary-cbe-500/5 blur-2xl transition-transform duration-500 group-hover:scale-125" />
+
+                  <div className="relative">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-cbe-500/10 text-primary-cbe-500 transition-transform duration-300 group-hover:scale-105">
+                        <Icon className="h-6 w-6" />
+                      </div>
+                    </div>
+
+                    <h3 className="mt-6 text-xl font-semibold text-primary-cbe-500">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
+                      {item.description}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 rounded-[2rem] border border-primary-cbe-100 bg-gradient-to-r from-primary-cbe-50 via-white to-red-50 p-6 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-widest text-red-600">
+              Enterprise positioning
+            </p>
+            <p className="mt-3 max-w-4xl text-base leading-8 text-slate-700">
+              Together, these strengths position Optimum as a trusted enterprise
+              technology partner for institutions and organizations that require
+              reliable systems, practical implementation depth, and long-term
+              operational value.
+            </p>
           </div>
         </div>
       </section>
@@ -457,7 +783,7 @@ export default function SiteAboutUs() {
           aria-hidden="true"
           className="absolute inset-0 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
         />
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+        <div className="relative w-full px-6 sm:px-15 lg:px-30">
           <div className="max-w-2xl">
             <BadgePill label="How We Deliver" centered={false} />
             <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -472,7 +798,7 @@ export default function SiteAboutUs() {
                 key={model.title}
                 className="rounded-[2rem] border border-white/10 bg-white/5 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10"
               >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sm font-semibold text-slate-950">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sm font-semibold text-primary-cbe-500">
                   {index + 1}
                 </div>
                 <h3 className="mt-6 text-xl font-semibold text-white">
@@ -487,7 +813,7 @@ export default function SiteAboutUs() {
 
           <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_0.9fr]">
             <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-100">
+              <p className="text-sm font-semibold uppercase tracking-widest text-blue-100">
                 Why this matters
               </p>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-200">
@@ -499,7 +825,7 @@ export default function SiteAboutUs() {
               </p>
             </div>
             <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-blue-600/20 to-red-500/10 p-8 backdrop-blur-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-red-200">
+              <p className="text-sm font-semibold uppercase tracking-widest text-red-200">
                 Deployment readiness
               </p>
               <div className="mt-5 grid grid-cols-2 gap-4 text-sm text-slate-200">
@@ -522,11 +848,11 @@ export default function SiteAboutUs() {
       </section>
 
       <section id="our-commitment" className="relative py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+        <div className="w-full px-6 sm:px-15 lg:px-30">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <BadgePill label="Our Commitment" centered={false} />
-              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+              <h2 className="mt-6 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
                 We build for institutions and organizations that need
                 reliability, transparency, and room to scale.
               </h2>
@@ -541,14 +867,14 @@ export default function SiteAboutUs() {
               {commitments.map((commitment) => (
                 <article
                   key={commitment.title}
-                  className="group rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-900/5"
+                  className="group rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-100 hover:shadow-md"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-600 text-sm font-semibold text-white transition-transform duration-300 group-hover:scale-105">
+                    <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary-cbe-500 text-sm font-semibold text-white transition-transform duration-300 group-hover:scale-105">
                       ✓
                     </span>
                     <div>
-                      <h3 className="text-xl font-semibold text-slate-950">
+                      <h3 className="text-xl font-semibold text-primary-cbe-500">
                         {commitment.title}
                       </h3>
                       <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
@@ -558,67 +884,6 @@ export default function SiteAboutUs() {
                   </div>
                 </article>
               ))}
-            </div>
-          </div>
-
-          <div className="mt-14 overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-950 shadow-2xl shadow-slate-900/10">
-            <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-              <div className="relative p-8 sm:p-10 lg:p-12">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800" />
-                <div className="relative">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-100">
-                    Ready to transform your operations
-                  </p>
-                  <h3 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                    Partner with Optimum to modernize the systems your
-                    institution relies on every day.
-                  </h3>
-                  <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
-                    From higher education and healthcare to retail and
-                    manufacturing, we design ERP solutions that improve
-                    visibility, streamline service delivery, and deliver
-                    measurable returns on investment across every department.
-                  </p>
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <a
-                      href="#"
-                      className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-100"
-                    >
-                      Talk to Sales
-                    </a>
-                    <a
-                      href="#"
-                      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10"
-                    >
-                      Request a Demonstration
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-1">
-                {[
-                  [
-                    "No per-user fees",
-                    "Unlimited deployment post-installation with one-off, affordable pricing and flexible terms.",
-                  ],
-                  [
-                    "Hybrid-ready",
-                    "Secure on-premise deployment combined with cloud accessibility across all platforms and devices.",
-                  ],
-                  [
-                    "Support-led",
-                    "Staff training, guided onboarding, simulation, and ongoing technical support built into every delivery.",
-                  ],
-                ].map(([title, description]) => (
-                  <div key={title} className="bg-white/5 p-8 sm:p-10">
-                    <p className="text-lg font-semibold text-white">{title}</p>
-                    <p className="mt-3 text-sm leading-7 text-slate-300">
-                      {description}
-                    </p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>

@@ -2,55 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-// ─── Add these to tailwind.config.ts → theme.extend ────────────────────────
-//
-//  fontFamily: {
-//    syne: ["var(--font-syne)", "sans-serif"],   // load via next/font/google
-//  },
-//  keyframes: {
-//    driftGlow: {
-//      "0%":   { transform: "translate(0, 0) scale(1)" },
-//      "100%": { transform: "translate(-40px, 60px) scale(1.1)" },
-//    },
-//    float1: {
-//      "0%, 100%": { transform: "translateY(0)" },
-//      "50%":      { transform: "translateY(-10px)" },
-//    },
-//    float2: {
-//      "0%, 100%": { transform: "translateY(0)" },
-//      "50%":      { transform: "translateY(8px)" },
-//    },
-//    float3: {
-//      "0%, 100%": { transform: "translateY(0)" },
-//      "50%":      { transform: "translateY(-12px)" },
-//    },
-//    shimmer: {
-//      to: { backgroundPosition: "200% center" },
-//    },
-//    fadeUp: {
-//      from: { opacity: "0", transform: "translateY(24px)" },
-//      to:   { opacity: "1", transform: "translateY(0)" },
-//    },
-//  },
-//  animation: {
-//    driftGlow: "driftGlow 8s ease-in-out infinite alternate",
-//    float1:    "float1 4s ease-in-out infinite",
-//    float2:    "float2 5s ease-in-out infinite",
-//    float3:    "float3 4.5s ease-in-out infinite",
-//    shimmer:   "shimmer 3s linear infinite 1s",
-//    fadeUp:    "fadeUp 0.6s ease both",
-//  },
-//
-// ────────────────────────────────────────────────────────────────────────────
-
-interface StatItem {
-  value: string;
-  suffix: string;
-  label: string;
-}
+import {
+  ArrowRight,
+  BarChart3,
+  Building2,
+  Play,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 
 interface Props {
   title?: string;
@@ -61,102 +20,228 @@ interface Props {
   videoUrl?: string;
   imageSrc?: string;
   badgeText?: string;
-  stats?: StatItem[];
   trustLogos?: string[];
 }
 
 export default function SiteHeroEnhanced({
   title = "The Complete",
   highlight = "ERP Solution",
-  titleSuffix = "for Every Team",
-  description = "Optimum System Ltd brings together HR, finance, academics, and operations in one unified platform — built for organisations that refuse to compromise.",
+  titleSuffix = "for Modern Institutions",
+  description = "Ultimate ERP unifies finance, HR, academics, procurement, and operations in one intelligent platform built for institutions that need scale, control, and clarity.",
   primaryCtaHref = "#",
   videoUrl = "https://www.youtube.com/watch?v=Da1hUqzoiAo",
-  imageSrc = "/images/laptop.png",
+  imageSrc = "/images/saas/laptop.png",
   badgeText = "Now available · Ultimate ERP v3.0",
-  stats = [
-    { value: "500", suffix: "+", label: "Schools & Institutions" },
-    { value: "98", suffix: "%", label: "Client Retention Rate" },
-    { value: "24", suffix: "/7", label: "Uptime & Support" },
-  ],
+  trustLogos = ["Finance", "Academics", "HR & Payroll", "Procurement"],
 }: Props) {
   return (
-    <div className="bg-primary-cbe-500 text-white overflow-hidden w-full">
-      {/* ── SECTION ────────────────────────────────────────────────────── */}
-      <section className="relative w-full overflow-hidden bg-[url('/heros/ultimateERP.jpg')] bg-cover bg-black">
-        {/* Background: radial colour layers */}
-        <div
-          className="absolute inset-0 z-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 65% 40%, rgba(26,52,148,0.45) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(212,43,43,0.18) 0%, transparent 60%)",
-          }}
-        />
+    <section className="relative isolate overflow-hidden bg-primary-cbe-500 text-white w-full">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[url('/heros/ultimateERP.jpg')] bg-cover bg-center opacity-20" />
+        <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(5,10,24,0.97)_0%,rgba(7,17,39,0.94)_40%,rgba(7,17,39,0.72)_72%,rgba(7,17,39,0.9)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.25),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(239,68,68,0.14),transparent_28%)]" />
+      </div>
 
-        {/* Drifting blue glow — top right */}
-        <div className="absolute z-10 w-full h-full bg-[linear-gradient(to_right,rgba(21,20,62,0.97)_0%,rgba(21,20,62,0.93)_30%,rgba(21,20,62,0.55)_52%,rgba(21,20,62,0.18)_70%,rgba(21,20,62,0.04)_100%),linear-gradient(to_top,rgba(21,20,62,0.65)_0%,transparent_38%)]" />
+      {/* Ambient glows */}
+      <div className="absolute -left-16 top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl animate-pulse" />
+      <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-sky-400/10 blur-3xl animate-pulse" />
+      <div className="absolute -right-10 bottom-0 h-72 w-72 rounded-full bg-red-500/10 blur-3xl animate-pulse" />
 
-        {/* ── HERO GRID ──────────────────────────────────────────────── */}
-        <div className="relative z-10 container px-6 sm:px-30 py-14 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-81px)]">
-          {/* ── LEFT COPY ─────────────────────────────────────────────── */}
-          <div className="animate-fadeUp flex flex-col gap-7 md:max-w-full shrink-0">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-[rgba(26,52,148,0.3)] border border-[rgba(43,79,216,0.4)] rounded-full px-3 py-1.5 mb-8 w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F03333] shadow-[0_0_8px_#F03333] animate-pulse shrink-0" />
-              <span className="text-white text-sm font-medium">
-                {badgeText}
-              </span>
+      <div className="relative mx-auto grid min-h-[calc(100vh-81px)] w-full max-w-full grid-cols-1 items-center gap-14 px-6 py-14 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 xl:px-30">
+        {/* Left */}
+        <div className="flex max-w-2xl flex-col">
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-blue-400/20 bg-white/5 px-4 py-2 text-sm text-white/85 backdrop-blur-md">
+            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-red-500 shadow-[0_0_16px_rgba(239,68,68,0.9)]" />
+            <span>{badgeText}</span>
+          </div>
+
+          <div className="mt-6 space-y-6">
+            <div className="space-y-4">
+              <p className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.24em] text-blue-200/80">
+                <Sparkles className="h-4 w-4" />
+                Enterprise Resource Planning
+              </p>
+
+              <h1 className="max-w-4xl text-4xl font-bold leading-[1.02] tracking-[-0.04em] sm:text-5xl lg:text-6xl xl:text-[4.4rem]">
+                {title}{" "}
+                <span className="bg-gradient-to-r from-primary-cta to-primary-cta-800 bg-clip-text text-transparent">
+                  {highlight}
+                </span>{" "}
+                {titleSuffix}
+              </h1>
+
+              <p className="max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
+                {description}
+              </p>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.06] text-white">
-              {title} {" "}
-              <span className="text-primary-cta">{highlight}</span> {" "}
-              {titleSuffix}
-            </h1>
-
-            {/* Description */}
-            <p className="text-white/65 text-base leading-relaxed max-w-[440px]">
-              {description}
-            </p>
-
-            {/* CTA row */}
-            <div className="flex flex-wrap items-center gap-4">
-              {/* Primary red button */}
-              <Button variant="default" size="lg">
-                Get Started Free
-              </Button>
-
-              {/* Video button */}
-              <Button variant="ghost" size="lg" className="flex flex-row gap-2">
-                <Play className="w-3.5 h-3.5 fill-current" />
-                Watch Overview
-              </Button>
-            </div>
-
-            {/* Stats row */}
-            <div className="flex items-center mt-6">
-              {stats.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={[
-                    i !== 0 ? "pl-7 border-l border-white/10" : "",
-                    i !== stats.length - 1 ? "pr-7" : "",
-                  ].join(" ")}
+            <div className="flex flex-wrap gap-3">
+              {trustLogos.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-sm text-slate-200 backdrop-blur-sm transition duration-300 hover:border-blue-300/30 hover:bg-white/10"
                 >
-                  <div className="font-syne font-extrabold text-[1.8rem] leading-none tracking-[-0.03em]">
-                    {stat.value}
-                    <span className="text-[#F03333]">{stat.suffix}</span>
-                  </div>
-                  <div className="text-[0.78rem] text-[#8A9AC5] mt-1">
-                    {stat.label}
-                  </div>
-                </div>
+                  {item}
+                </span>
               ))}
             </div>
+
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
+              <Link
+                href={primaryCtaHref}
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary-cta px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-primary-cta-800"
+              >
+                Request a Demo
+                <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
+              </Link>
+
+              <Link
+                href={videoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:border-white/20 hover:bg-white/10 h-fit"
+              >
+                <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-white/10">
+                  <Play className="ml-0.5 h-3 w-3 fill-current" />
+                </span>
+                Watch Overview
+              </Link>
+            </div>
+
           </div>
         </div>
-      </section>
-    </div>
+
+        {/* Right */}
+        <div className="relative flex items-center justify-center lg:justify-end">
+          <div className="relative w-full max-w-[620px]">
+            {/* Floating card top */}
+            <div className="absolute -left-5 top-8 z-20 hidden rounded-2xl border border-white/10 bg-[#0f1b3d]/90 p-4 shadow-2xl backdrop-blur-xl transition duration-300 hover:-translate-y-1 xl:block">
+              <div className="flex items-start gap-3">
+                <div className="rounded-xl bg-blue-500/15 p-2 text-blue-300">
+                  <BarChart3 className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-white">
+                    Real-time visibility
+                  </p>
+                  <p className="mt-1 max-w-[180px] text-xs leading-5 text-slate-300">
+                    Track approvals, finance, and institutional activity from one dashboard.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating card bottom */}
+            <div className="absolute -right-4 bottom-8 z-20 hidden rounded-2xl border border-white/10 bg-[#101d42]/90 p-4 shadow-2xl backdrop-blur-xl transition duration-300 hover:-translate-y-1 xl:block">
+              <div className="flex items-start gap-3">
+                <div className="rounded-xl bg-emerald-500/15 p-2 text-emerald-300">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-white">
+                    Secure by design
+                  </p>
+                  <p className="mt-1 max-w-[180px] text-xs leading-5 text-slate-300">
+                    Role-based control, audit trails, and enterprise-grade reliability.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Main product frame */}
+            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.06] p-3 shadow-[0_30px_120px_rgba(2,6,23,0.55)] backdrop-blur-2xl">
+              <div className="rounded-[24px] border border-white/10 bg-[#0a1430]/95">
+                {/* Window top */}
+                <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex gap-2">
+                      <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-white">
+                        Ultimate ERP Console
+                      </p>
+                      <p className="text-xs text-slate-400">
+                        Unified operations workspace
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="hidden items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-300 sm:flex">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Live System
+                  </div>
+                </div>
+
+                {/* Product image */}
+                <div className="p-4">
+                  <div className="relative overflow-hidden rounded-[20px] border border-white/10 bg-slate-950/60">
+                    <div className="absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-blue-400/10 to-transparent" />
+                    <div className="relative aspect-[16/10] w-full">
+                      <Image
+                        src={imageSrc}
+                        alt="Ultimate ERP platform preview"
+                        fill
+                        className="object-cover transition duration-700 hover:scale-[1.03]"
+                        sizes="(max-width: 1024px) 100vw, 620px"
+                        priority
+                      />
+                    </div>
+                  </div>
+
+                  {/* Bottom info row */}
+                  <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                      <div className="flex items-center gap-2 text-blue-300">
+                        <Building2 className="h-4 w-4" />
+                        <span className="text-xs font-medium uppercase tracking-widest">
+                          Modules
+                        </span>
+                      </div>
+                      <p className="mt-3 text-base font-semibold text-white">30+</p>
+                      <p className="mt-1 text-xs leading-5 text-slate-400">
+                        Flexible modules across key departments.
+                      </p>
+                    </div>
+
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                      <div className="flex items-center gap-2 text-red-300">
+                        <ShieldCheck className="h-4 w-4" />
+                        <span className="text-xs font-medium uppercase tracking-widest">
+                          Control
+                        </span>
+                      </div>
+                      <p className="mt-3 text-base font-semibold text-white">Role-based</p>
+                      <p className="mt-1 text-xs leading-5 text-slate-400">
+                        Permissions, reviews, and audit visibility.
+                      </p>
+                    </div>
+
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                      <div className="flex items-center gap-2 text-emerald-300">
+                        <BarChart3 className="h-4 w-4" />
+                        <span className="text-xs font-medium uppercase tracking-widest">
+                          Insight
+                        </span>
+                      </div>
+                      <p className="mt-3 text-base font-semibold text-white">Live Reporting</p>
+                      <p className="mt-1 text-xs leading-5 text-slate-400">
+                        Faster decision-making with operational intelligence.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative ring */}
+            <div className="pointer-events-none absolute inset-0 -z-10 scale-110 rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.12)_0%,transparent_58%)] blur-2xl" />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -1,3 +1,4 @@
+import BadgePill from "@/components/ui/badge-pill";
 import {
   ArrowRight,
   BadgeCheck,
@@ -204,14 +205,14 @@ export default function IndustrySolutionsPageBody() {
           <div className="absolute bottom-[-8rem] left-1/3 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="relative w-full px-6 py-20 sm:px-16 lg:px-30 lg:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-200">
+              <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
                 Industry Solutions
               </span>
 
-              <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="mt-6 max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
                 ERP solutions shaped around how each industry actually operates.
               </h1>
 
@@ -225,7 +226,7 @@ export default function IndustrySolutionsPageBody() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#all-industries"
-                  className="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-red-950/30 transition duration-300 hover:bg-red-500"
+                  className="inline-flex items-center justify-center rounded-full bg-primary-cta px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-red-950/30 transition duration-300 hover:bg-primary-cta-800"
                 >
                   Explore industries
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -233,7 +234,7 @@ export default function IndustrySolutionsPageBody() {
 
                 <a
                   href="#capabilities"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:border-blue-300/40 hover:bg-white/10"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:border-blue-300/40 hover:bg-white/10"
                 >
                   View shared capabilities
                 </a>
@@ -304,10 +305,8 @@ export default function IndustrySolutionsPageBody() {
 
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
         <div className="max-w-3xl">
-          <span className="inline-flex items-center rounded-full border border-red-200 bg-red-50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-red-700">
-            Featured sectors
-          </span>
-          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+          <BadgePill label="Featured sectors" centered={false} />
+          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
             The page should speak differently to each buyer group.
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
@@ -322,13 +321,13 @@ export default function IndustrySolutionsPageBody() {
             <article
               key={segment.id}
               id={segment.id}
-              className="group rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-950/5"
+              className="group rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md"
             >
-              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">
+              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
                 {segment.eyebrow}
               </span>
 
-              <h3 className="mt-5 text-2xl font-semibold tracking-tight text-slate-950">
+              <h3 className="mt-5 text-xl font-semibold tracking-tight text-primary-cbe-500">
                 {segment.title}
               </h3>
 
@@ -356,10 +355,8 @@ export default function IndustrySolutionsPageBody() {
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center rounded-full border border-blue-200 bg-white px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-700">
-                Industries we serve
-              </span>
-              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+              <BadgePill label="Industries we serve" centered={false} />
+              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
                 Sector-specific messaging with a consistent premium structure.
               </h2>
             </div>
@@ -378,7 +375,7 @@ export default function IndustrySolutionsPageBody() {
               return (
                 <article
                   key={industry.title}
-                  className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-950/5"
+                  className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md"
                 >
                   <div
                     className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${industry.accentClass}`}
@@ -389,12 +386,12 @@ export default function IndustrySolutionsPageBody() {
                       <Icon className="h-6 w-6 text-blue-700" />
                     </div>
 
-                    <span className="rounded-full border border-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+                    <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-500">
                       Industry
                     </span>
                   </div>
 
-                  <h3 className="mt-6 text-xl font-semibold tracking-tight text-slate-950">
+                  <h3 className="mt-6 text-xl font-semibold tracking-tight text-primary-cbe-500">
                     {industry.title}
                   </h3>
 
@@ -427,10 +424,8 @@ export default function IndustrySolutionsPageBody() {
       <section id="capabilities" className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="max-w-xl">
-            <span className="inline-flex items-center rounded-full border border-red-200 bg-red-50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-red-700">
-              Shared capabilities
-            </span>
-            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+            <BadgePill label="Shared capabilities" centered={false} />
+            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
               Common strengths that support every industry solution.
             </h2>
             <p className="mt-5 text-base leading-8 text-slate-600">
@@ -455,13 +450,13 @@ export default function IndustrySolutionsPageBody() {
               return (
                 <article
                   key={capability.title}
-                  className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:border-red-200 hover:shadow-lg hover:shadow-red-950/5"
+                  className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:border-red-200 hover:shadow-md"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 transition duration-300 group-hover:border-red-200 group-hover:bg-red-50">
                     <Icon className="h-5 w-5 text-blue-700" />
                   </div>
 
-                  <h3 className="mt-5 text-lg font-semibold text-slate-950">
+                  <h3 className="mt-5 text-lg font-semibold text-primary-cbe-500">
                     {capability.title}
                   </h3>
 
@@ -475,13 +470,11 @@ export default function IndustrySolutionsPageBody() {
         </div>
       </section>
 
-      <section className="bg-slate-950">
+      <section className="bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
           <div className="grid gap-10 rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-sm lg:grid-cols-[1fr_0.9fr] lg:p-10">
             <div>
-              <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-200">
-                Why this structure works
-              </span>
+              <BadgePill label="Why this structure works" centered={false} />
 
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 A page architecture that balances breadth, clarity, and commercial trust.
@@ -524,7 +517,7 @@ export default function IndustrySolutionsPageBody() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4"
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4"
                   >
                     <BadgeCheck className="mt-0.5 h-4 w-4 flex-none text-red-400" />
                     <p className="text-sm leading-7 text-slate-200">{item}</p>
@@ -534,7 +527,7 @@ export default function IndustrySolutionsPageBody() {
 
               <a
                 href="/contact"
-                className="mt-8 inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-blue-600"
+                className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-primary-cta px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-primary-cta-800"
               >
                 Talk to Optimum
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -545,10 +538,10 @@ export default function IndustrySolutionsPageBody() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
-        <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-blue-700 via-blue-800 to-slate-950 shadow-xl shadow-blue-950/10">
+        <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 shadow-sm">
           <div className="grid gap-8 px-6 py-10 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-14">
             <div className="max-w-2xl">
-              <span className="inline-flex items-center rounded-full border border-white/10 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-100">
+              <span className="inline-flex items-center text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
                 Final call to action
               </span>
 
@@ -566,14 +559,14 @@ export default function IndustrySolutionsPageBody() {
             <div className="flex flex-col justify-center gap-3 sm:flex-row lg:flex-col">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-red-500"
+                className="inline-flex items-center justify-center rounded-full bg-primary-cta px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-primary-cta-800"
               >
                 Request a consultation
               </a>
 
               <a
                 href="/products"
-                className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-white/15"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-white/15"
               >
                 Explore products
               </a>

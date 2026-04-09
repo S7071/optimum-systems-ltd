@@ -1,78 +1,17 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Star, Quote, ArrowRight } from "lucide-react";
+import { ArrowRight, Quote, Star } from "lucide-react";
 import BadgePill from "@/components/ui/badge-pill";
 
-// type Testimonial = {
-//   id: number;
-//   name: string;
-//   role: string;
-//   school: string;
-//   image: string;
-//   content: string;
-//   rating: number;
-//   featured?: boolean;
-// };
-
-// const testimonials: Testimonial[] = [
-//   {
-//     id: 1,
-//     name: "James Mwangi",
-//     role: "Dean of Studies",
-//     school: "Nairobi Academy",
-//     image: "/images/clients/01.jpg",
-//     content:
-//       "Since implementing UltimateCBE, managing student assessments across all three pathways has become effortless. Competency tracking and automated report card generation have eliminated hours of manual paperwork every term.",
-//     rating: 5,
-//   },
-//   {
-//     id: 2,
-//     name: "Grace Achieng",
-//     role: "Principal",
-//     school: "St. Mary's Girls School",
-//     image: "/images/clients/02.jpg",
-//     content:
-//       "The live dashboards have completely transformed how we monitor student progress. What used to take our team weeks to compile now updates in real time, and the accuracy of our CBE reports has improved dramatically.",
-//     rating: 5,
-//     featured: true,
-//   },
-//   {
-//     id: 3,
-//     name: "David Kariuki",
-//     role: "School Administrator",
-//     school: "Moi Forces Academy",
-//     image: "/images/clients/03.jpg",
-//     content:
-//       "Coordinating between teachers, parents, and administrators was our biggest challenge. UltimateCBE connected everyone on one platform, eliminating data gaps and bringing our entire school community closer to each student's learning journey.",
-//     rating: 5,
-//   },
-// ];
-
-const stats = [
-  { value: "200+", label: "Schools onboarded" },
-  { value: "98%", label: "Satisfaction rate" },
-  { value: "40hrs", label: "Saved per term" },
-];
-
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-1 mt-4">
-      {Array.from({ length: rating }).map((_, index) => (
-        <Star key={index} className="w-4 h-4 fill-amber-400 text-amber-400" />
-      ))}
-    </div>
-  );
-}
-
-interface statProp {
+interface StatProp {
   value: string;
   label: string;
-};
+}
 
-interface testimonyProp {
+interface TestimonyProp {
   name: string;
   position: string;
   insitution: string;
@@ -80,115 +19,164 @@ interface testimonyProp {
   rating: number;
   testimony: string;
   featured: boolean;
-};
+}
 
-interface prop {
+interface Props {
   description: string;
-  stats: statProp[];
-  testimonies: testimonyProp[];
-};
+  stats: StatProp[];
+  testimonies: TestimonyProp[];
+}
 
-export default function SiteTestimonials(prop: prop) {
+function StarRating({ rating }: { rating: number }) {
   return (
-    <section className="w-full py-16 md:py-24 bg-primary-cbe-50 px-6 sm:px-30 overflow-hidden">
-      {/* Top brand stripe */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-cbe-800 via-primary-cbe-800 to-[#CC0000]" />
+    <div className="flex items-center gap-1.5">
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Star
+          key={index}
+          className={[
+            "h-4 w-4 transition-colors duration-300",
+            index < rating
+              ? "fill-amber-400 text-amber-400"
+              : "fill-transparent text-slate-300",
+          ].join(" ")}
+        />
+      ))}
+    </div>
+  );
+}
 
-      <div className="container flex flex-col gap-10 items-center max-w-full">
-        {/* Section Header */}
-        <div className="w-full mx-auto text-center flex items-center flex-col gap-3">
-          <BadgePill label="Client stories" centered={true} />
-          <h3 className="font-extrabold text-2xl sm:text-4xl text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
-            What Our <span className="text-primary-cta">Clients</span> Say
+export default function SiteTestimonials({
+  description,
+  stats,
+  testimonies,
+}: Props) {
+  return (
+    <section className="relative isolate overflow-hidden bg-background px-6 py-16 sm:px-8 md:py-24 lg:px-12 w-full">
+      {/* Top accent */}
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-cbe-700 via-primary-cbe-500 to-[#CC0000]" />
+
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-[-8%] top-16 h-64 w-64 rounded-full bg-primary-cbe-100/60 blur-3xl" />
+        <div className="absolute right-[-6%] top-24 h-72 w-72 rounded-full bg-red-50 blur-3xl" />
+      </div>
+
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-12">
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center flex flex-col gap-3 items-center">
+          <BadgePill label="Client Testimonies" centered={true} />
+
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
+            Trusted By Institutions <br />
+            That Expect{" "}
+            <span className="text-primary-cta">Reliability at Scale</span>
           </h3>
-          <p className="text-primary-cbe-800/60 leading-relaxed max-w-2xl line-clamp-3">
-            {prop.description}
+
+          <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+            {description}
           </p>
         </div>
-        {/* Social proof stats */}
-        <div className="flex justify-center items-stretch gap-10 mb-14 flex-wrap">
-          {prop.stats.map((stat, i) => (
-            <div key={stat.label}>
-              <div className="text-center">
-                <p className="text-3xl font-extrabold text-primary-cbe-500 line-clamp-1">
+
+        {/* Stats */}
+        <div className="max-w-5xl mx-auto mt-14 rounded-3xl border border-slate-200/80 bg-white/80 p-4 shadow-sm backdrop-blur sm:p-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-0">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={[
+                  "relative flex flex-col items-center justify-center px-6 py-4 text-center",
+                  index < stats.length - 1
+                    ? "sm:after:absolute sm:after:right-0 sm:after:top-1/2 sm:after:h-12 sm:after:w-px sm:after:-translate-y-1/2 sm:after:bg-slate-200"
+                    : "",
+                ].join(" ")}
+              >
+                <p className="text-3xl font-bold tracking-tight text-primary-cbe-600 sm:text-4xl">
                   {stat.value}
                 </p>
-                <p className="mt-1 text-xs font-medium text-primary-cbe-800/60 line-clamp-1">
+                <p className="mt-2 text-sm font-medium text-slate-500">
                   {stat.label}
                 </p>
               </div>
-              {i < stats.length - 1 && (
-                <div
-                  key={`sep-${i}`}
-                  className="w-px self-stretch bg-[#d0dce9]"
-                />
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        {/* Testimonials Grid */}
-        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {prop.testimonies.map((testimony) => (
-            <div key={testimony.name} className="relative flex flex-col">
-              {/* Featured badge */}
+
+        {/* Testimonials */}
+        <div className="grid gap-6 lg:grid-cols-3">
+          {testimonies.map((testimony) => (
+            <div key={testimony.name} className="relative h-full">
               {testimony.featured && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <span className="bg-primary-cbe-500 text-white text-[10px] font-semibold tracking-[1.5px] uppercase px-4 py-1 rounded-full whitespace-nowrap">
-                    Most helpful
+                <div className="absolute left-6 top-0 z-20 -translate-y-1/2">
+                  <span className="inline-flex items-center rounded-full border border-primary-cbe-200 bg-primary-cbe-600 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white shadow-md">
+                    Featured story
                   </span>
                 </div>
               )}
 
               <Card
                 className={[
-                  "w-full rounded-2xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg",
+                  "group relative h-full overflow-hidden rounded-[28px] border bg-white transition-all duration-300",
+                  "hover:-translate-y-1 hover:shadow-md",
                   testimony.featured
-                    ? "border-primary-cbe-500 border shadow-md"
-                    : "border border-[#e0e8f4] shadow-sm hover:border-primary-cbe-500",
+                    ? "border-primary-cbe-300 shadow-sm"
+                    : "border-slate-200 shadow-sm hover:border-primary-cbe-200",
                 ].join(" ")}
               >
-                <CardContent className="p-7 flex flex-col h-full">
-                  {/* Quote icon box */}
-                  <div className="w-9 h-9 rounded-lg bg-primary-cbe-50 flex items-center justify-center mb-5 shrink-0">
-                    <Quote className="w-4 h-4 text-primary-cbe-500" />
+                {/* subtle top glow */}
+                <div
+                  className={[
+                    "absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r",
+                    testimony.featured
+                      ? "from-primary-cbe-700 via-primary-cbe-500 to-[#CC0000]"
+                      : "from-primary-cbe-100 via-primary-cbe-300 to-red-200",
+                  ].join(" ")}
+                />
+
+                <CardContent className="flex h-full flex-col p-6 sm:p-7">
+                  {/* Quote icon */}
+                  <div className="mb-6 flex items-center justify-between">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-cbe-50 ring-1 ring-primary-cbe-100 transition-transform duration-300 group-hover:scale-105">
+                      <Quote className="h-5 w-5 text-primary-cbe-600" />
+                    </div>
+
+                    <StarRating rating={testimony.rating} />
                   </div>
 
-                  {/* Quote text */}
-                  <p className="text-sm leading-relaxed text-foreground/75 italic flex-1 line-clamp-5">
-                    &quot;{testimony.testimony}&quot;
-                  </p>
+                  {/* Content */}
+                  <blockquote className="flex-1 text-sm leading-7 text-slate-600 sm:text-[15px]">
+                    “{testimony.testimony}”
+                  </blockquote>
 
-                  <StarRating rating={testimony.rating} />
+                  {/* Footer */}
+                  <div className="mt-8 border-t border-slate-200 pt-5">
+                    <div className="flex items-center gap-4">
+                      <Avatar className="h-12 w-12 border-2 border-white shadow-sm ring-1 ring-slate-200">
+                        <AvatarImage
+                          src={testimony.avator}
+                          alt={testimony.name}
+                        />
+                        <AvatarFallback className="bg-primary-cbe-100 text-sm font-semibold text-primary-cbe-700">
+                          {testimony.name
+                            .split(" ")
+                            .map((part) => part[0])
+                            .join("")}
+                        </AvatarFallback>
+                      </Avatar>
 
-                  {/* Divider */}
-                  <div className="my-5 border-t border-[#e0e8f4]" />
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold text-slate-900">
+                          {testimony.name}
+                        </p>
 
-                  {/* Author — inside card */}
-                  <div className="flex items-center gap-3">
-                    <Avatar className="w-11 h-11 border-2 border-[#e0e8f4] shrink-0">
-                      <AvatarImage
-                        src={testimony.avator}
-                        alt={testimony.name}
-                      />
-                      <AvatarFallback className="bg-[#c8d8ee] text-primary-cbe-800 text-sm font-semibold">
-                        {testimony.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
+                        <div className="mt-1 flex items-center gap-2 text-xs text-slate-500">
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#CC0000]" />
+                          <span className="truncate">{testimony.position}</span>
+                        </div>
 
-                    <div className="min-w-0">
-                      <p className="text-sm font-semibold text-[#1a2a45] truncate">
-                        {testimony.name}
-                      </p>
-                      <p className="flex items-center gap-1.5 text-xs text-muted-foreground mt-0.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#CC0000] shrink-0" />
-                        {testimony.position}
-                      </p>
-                      <p className="text-xs font-medium text-primary-cbe-800 mt-0.5 truncate">
-                        {testimony.insitution}
-                      </p>
+                        <p className="mt-1 truncate text-xs font-medium text-primary-cbe-700">
+                          {testimony.insitution}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -196,11 +184,15 @@ export default function SiteTestimonials(prop: prop) {
             </div>
           ))}
         </div>
+
         {/* CTA */}
-        <div className="mt-14 flex justify-center">
-          <Button variant="default" size="lg">
-            Read more success stories
-            <ArrowRight className="w-4 h-4" />
+        <div className="flex justify-center pt-2">
+          <Button
+            size="lg"
+            className="group rounded-full px-6 shadow-sm"
+          >
+            View All Our Clients
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
         </div>
       </div>

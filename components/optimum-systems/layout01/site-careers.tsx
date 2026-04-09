@@ -2,21 +2,22 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Building2,
+  Laptop2,
+  MapPin,
+  Search,
+  Send,
+  SlidersHorizontal,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
+import BadgePill from "@/components/ui/badge-pill";
 
-// ─── Brand tokens (extend your Tailwind config with these if preferred) ───────
-const C = {
-  blueDeep: "#080817",
-  blueMid: "#201e5c",
-  blueLight: "#3e3ab1",
-  blueTint: "#f4f4fc",
-  red: "#ed1c24",
-  redHover: "#B01F1F",
-} as const;
-
-// ─── Types ────────────────────────────────────────────────────────────────────
 type WorkType = "Remote" | "Onsite" | "Hybrid";
+type SortMode = "featured" | "az";
 
 type Job = {
   id: string;
@@ -28,9 +29,7 @@ type Job = {
   href?: string;
 };
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
 const JOBS: Job[] = [
-  /* ENGINEERING & PLATFORM */
   {
     id: "eng-1",
     title: "Senior Software Engineer (Platform)",
@@ -72,8 +71,6 @@ const JOBS: Job[] = [
     workType: "Remote",
     href: "#",
   },
-
-  /* IT & INFRASTRUCTURE */
   {
     id: "infra-1",
     title: "Site Reliability Engineer (SRE)",
@@ -99,8 +96,6 @@ const JOBS: Job[] = [
     isNew: true,
     href: "#",
   },
-
-  /* CYBER SECURITY */
   {
     id: "soc-1",
     title: "SOC Analyst (Tier 1)",
@@ -141,8 +136,6 @@ const JOBS: Job[] = [
     workType: "Onsite",
     href: "#",
   },
-
-  /* PRODUCT MANAGEMENT */
   {
     id: "pm-1",
     title: "Product Manager (Medusa Platform)",
@@ -168,8 +161,6 @@ const JOBS: Job[] = [
     workType: "Remote",
     href: "#",
   },
-
-  /* DESIGN & UX */
   {
     id: "ux-1",
     title: "Product Designer (UX/UI)",
@@ -179,8 +170,6 @@ const JOBS: Job[] = [
     isNew: true,
     href: "#",
   },
-
-  /* SALES & MARKETING */
   {
     id: "sales-1",
     title: "Enterprise Sales Executive",
@@ -213,8 +202,6 @@ const JOBS: Job[] = [
     workType: "Hybrid",
     href: "#",
   },
-
-  /* LEGAL & COMPLIANCE */
   {
     id: "grc-1",
     title: "GRC Analyst",
@@ -239,8 +226,6 @@ const JOBS: Job[] = [
     workType: "Onsite",
     href: "#",
   },
-
-  /* OPERATIONS & LEADERSHIP */
   {
     id: "ops-1",
     title: "Head of Security Operations",
@@ -272,19 +257,46 @@ const DEPT_FILTERS: { label: string; value: string }[] = [
   { label: "Operations", value: "Operations & Leadership" },
 ];
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
+function StatCard({
+  icon: Icon,
+  value,
+  label,
+}: {
+  icon: LucideIcon;
+  value: string | number;
+  label: string;
+}) {
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/8 p-5 backdrop-blur-sm">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_35%)]" />
+      <div className="relative">
+        <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white">
+          <Icon className="h-5 w-5" />
+        </div>
+        <div className="text-3xl font-semibold tracking-tight text-white">
+          {value}
+        </div>
+        <div className="mt-1 text-sm text-white/70">{label}</div>
+      </div>
+    </div>
+  );
+}
 
 function WorkTypeBadge({ type }: { type?: WorkType }) {
   if (!type) return null;
-  const styles: Record<WorkType, React.CSSProperties> = {
-    Remote: { color: "#1A7A4A", background: "#E8F7EF" },
-    Onsite: { color: C.blueMid, background: C.blueTint },
-    Hybrid: { color: "#7A4A1A", background: "#FFF0E0" },
+
+  const badgeStyles: Record<WorkType, string> = {
+    Remote: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    Onsite: "border-indigo-200 bg-indigo-50 text-indigo-700",
+    Hybrid: "border-amber-200 bg-amber-50 text-amber-700",
   };
+
   return (
     <span
-      className="inline-block rounded px-2 py-0.5 text-[11px] font-medium leading-none"
-      style={styles[type]}
+      className={cn(
+        "inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold",
+        badgeStyles[type],
+      )}
     >
       {type}
     </span>
@@ -292,303 +304,285 @@ function WorkTypeBadge({ type }: { type?: WorkType }) {
 }
 
 function JobCard({ job }: { job: Job }) {
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <Link href={job.href ?? "#"}>
-      <div
-        className={cn(
-          "relative flex flex-col gap-3 rounded-xl border bg-white p-5 transition-all duration-200 overflow-hidden",
-          `${hovered ? "border-primary-cbe-200/50 shadow-primary-cta -translate-y-0.5" : "border-[#E4E8F2] shadow-none translate-y-0"}`,
-        )}
-        // className="relative flex flex-col gap-3 rounded-xl border bg-white p-5 transition-all duration-200"
-        //         {`
-        //   border
-        //   ${hovered ? "border-blue-300 shadow-[0_8px_32px_rgba(26,74,156,0.12)] -translate-y-0.5" : "border-[#E4E8F2] shadow-none translate-y-0"}
-        //   overflow-hidden
-        //   transition-all
-        // `}
-        // style={{
-        //   borderColor: hovered ? C.blueLight : "#E4E8F2",
-        //   boxShadow: hovered ? "0 8px 32px rgba(26,74,156,0.12)" : "none",
-        //   transform: hovered ? "translateY(-2px)" : "translateY(0)",
-        //   overflow: "hidden",
-        // }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        {/* Top accent bar */}
-        <div
-          className="absolute inset-x-0 top-0 h-[3px] transition-transform duration-300 origin-left"
-          style={{
-            background: `linear-gradient(90deg, ${C.blueMid}, ${C.blueLight})`,
-            transform: hovered ? "scaleX(1)" : "scaleX(0)",
-          }}
-        />
+    <Link href={job.href ?? "#"} className="group block h-full">
+      <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#cdd6ff] hover:shadow-md">
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#201e5c] via-[#3e3ab1] to-[#ed1c24] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-        {/* Title row */}
-        <div className="flex items-start justify-between gap-2">
-          <h3
-            className="flex-1 text-sm font-bold leading-snug transition-colors duration-200"
-            style={{
-              color: hovered ? C.blueDeep : "#0F1117",
-            }}
-          >
-            {job.title}
-          </h3>
-          {job.isNew && (
-            <span
-              className="mt-0.5 shrink-0 rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white"
-              style={{ background: C.red, letterSpacing: "0.8px" }}
-            >
-              New
+        <div className="relative flex h-full flex-col">
+          <div className="flex items-start justify-between gap-4">
+            <div className="space-y-3">
+              <div className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                Open Role
+              </div>
+              <h3 className="text-base font-semibold leading-6 text-slate-900 transition-colors duration-300 group-hover:text-[#201e5c]">
+                {job.title}
+              </h3>
+            </div>
+
+            {job.isNew && (
+              <span className="shrink-0 rounded-full bg-[#ed1c24]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#ed1c24]">
+                New
+              </span>
+            )}
+          </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-50 px-3 py-1.5 text-xs text-slate-600">
+              <MapPin className="h-3.5 w-3.5" />
+              {job.location}
             </span>
-          )}
-        </div>
 
-        {/* Meta row */}
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="flex items-center gap-1 text-[11.5px] text-gray-400">
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-              <path
-                d="M5.5 1C3.567 1 2 2.567 2 4.5 2 7.25 5.5 10 5.5 10S9 7.25 9 4.5C9 2.567 7.433 1 5.5 1z"
-                stroke="currentColor"
-                strokeWidth="1.2"
-              />
-              <circle
-                cx="5.5"
-                cy="4.5"
-                r="1.2"
-                stroke="currentColor"
-                strokeWidth="1.2"
-              />
-            </svg>
-            {job.location}
-          </span>
-          <span className="h-[3px] w-[3px] rounded-full bg-gray-300" />
-          <WorkTypeBadge type={job.workType} />
-        </div>
+            <WorkTypeBadge type={job.workType} />
 
-        {/* Footer row */}
-        <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-3">
-          <span className="text-[11.5px] font-light text-gray-400">
-            Full-time
-          </span>
-          <span
-            className="flex items-center gap-1 text-xs font-semibold transition-all duration-200"
-            style={{
-              color: C.red,
-              opacity: hovered ? 1 : 0,
-              transform: hovered ? "translateX(0)" : "translateX(-8px)",
-            }}
-          >
-            Apply now
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-              <path
-                d="M2.5 6.5h8M7.5 3.5l3 3-3 3"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
+            <span className="inline-flex items-center rounded-full bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-500">
+              Full-time
+            </span>
+          </div>
+
+          <div className="mt-6 border-t border-slate-100 pt-4">
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-sm leading-6 text-slate-500">
+                View full role details and submit your application.
+              </p>
+
+              <span className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-[#ed1c24] transition-transform duration-300 group-hover:translate-x-1">
+                Apply
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
+      </article>
     </Link>
   );
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
 export default function SiteCareer() {
   const [activeDept, setActiveDept] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortMode, setSortMode] = useState<SortMode>("featured");
 
   const grouped = useMemo(() => {
     const map = new Map<string, Job[]>();
+
     for (const job of JOBS) {
       if (!map.has(job.department)) map.set(job.department, []);
       map.get(job.department)!.push(job);
     }
+
     return map;
   }, []);
 
   const visibleSections = useMemo(() => {
-    const lc = searchTerm.toLowerCase();
+    const query = searchTerm.trim().toLowerCase();
+
     return Array.from(grouped.entries())
       .filter(([dept]) => activeDept === "all" || dept === activeDept)
-      .map(([dept, jobs]) => ({
-        dept,
-        jobs: jobs.filter((j) => j.title.toLowerCase().includes(lc)),
-      }))
-      .filter(({ jobs }) => jobs.length > 0);
-  }, [grouped, activeDept, searchTerm]);
+      .map(([dept, jobs]) => {
+        const filtered = jobs.filter((job) => {
+          const haystack =
+            `${job.title} ${job.department} ${job.location} ${job.workType ?? ""}`.toLowerCase();
+          return haystack.includes(query);
+        });
 
-  const totalVisible = useMemo(
-    () => visibleSections.reduce((n, s) => n + s.jobs.length, 0),
+        const sorted = [...filtered].sort((a, b) => {
+          if (sortMode === "az") return a.title.localeCompare(b.title);
+
+          const byNew = Number(Boolean(b.isNew)) - Number(Boolean(a.isNew));
+          if (byNew !== 0) return byNew;
+
+          return a.title.localeCompare(b.title);
+        });
+
+        return { dept, jobs: sorted };
+      })
+      .filter((section) => section.jobs.length > 0);
+  }, [activeDept, grouped, searchTerm, sortMode]);
+
+  const allVisibleJobs = useMemo(
+    () => visibleSections.flatMap((section) => section.jobs),
     [visibleSections],
   );
 
+  const totalVisible = allVisibleJobs.length;
+  const newRoles = allVisibleJobs.filter((job) => job.isNew).length;
+  const flexibleRoles = allVisibleJobs.filter(
+    (job) => job.workType === "Remote" || job.workType === "Hybrid",
+  ).length;
+  const flexiblePct =
+    totalVisible > 0 ? Math.round((flexibleRoles / totalVisible) * 100) : 0;
+
   return (
-    <section className="w-full min-h-screen" style={{ background: "#F5F7FC" }}>
-      {/* ── HERO BAND ──────────────────────────────────────────────────── */}
-      <div
-        className="relative w-full overflow-hidden px-6 pb-12 pt-14 sm:px-16"
-        style={{
-          background: `linear-gradient(135deg, ${C.blueDeep} 0%, ${C.blueMid} 60%, ${C.blueLight} 100%)`,
-        }}
-      >
-        {/* Subtle grid texture */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
+    <section className="min-h-screen bg-background text-slate-950 w-full">
+      {/* Hero */}
+      <div className="relative overflow-hidden border-b border-white/10 bg-[linear-gradient(135deg,#080817_0%,#15133d_38%,#201e5c_68%,#3e3ab1_100%)]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%)]" />
+        <div className="absolute -left-16 top-12 h-56 w-56 rounded-full bg-white/5 blur-3xl" />
+        <div className="absolute right-0 top-1/3 h-64 w-64 rounded-full bg-[#ed1c24]/10 blur-3xl" />
 
-        <div className="relative mx-auto max-w-5xl">
-          <p className="mb-3 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[1.5px] text-primary-cta">
-            <span className="block h-px w-4 bg-primary-cta" />
-            We&apos;re Hiring
-          </p>
-          <h1
-            className="mb-3 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl"
-            style={{ letterSpacing: "-1px" }}
-          >
-            Open <span style={{ color: C.red }}>Positions</span>
-          </h1>
-          <p className="mb-8 max-w-md text-sm font-light leading-relaxed text-white/65">
-            Join a team building the future of enterprise security. We&apos;re
-            looking for exceptional people across engineering, product, and
-            operations.
-          </p>
-
-          {/* Stats */}
-          <div className="flex gap-8">
-            {[
-              { value: totalVisible, label: "Open Roles" },
-              { value: grouped.size, label: "Departments" },
-              { value: "50%", label: "Remote Eligible" },
-            ].map(({ value, label }) => (
-              <div key={label} className="flex flex-col gap-0.5">
-                <span className="text-3xl font-extrabold leading-none text-white">
-                  {value}
-                </span>
-                <span className="text-xs font-light text-white/50">
-                  {label}
-                </span>
+        <div className="relative mx-auto max-w-7xl px-6 py-14 sm:px-10 lg:px-12 lg:py-20">
+          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+            <div className="max-w-3xl">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 backdrop-blur-sm">
+                <span className="h-2 w-2 rounded-full bg-[#ed1c24]" />
+                We&apos;re Hiring
               </div>
-            ))}
+
+              <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
+                Build the next chapter of{" "}
+                <span className="text-[#ff5b63]">enterprise security</span>.
+              </h1>
+
+              <p className="mt-5 max-w-2xl text-base leading-8 text-white/70 sm:text-lg">
+                Join a high-performance team across engineering, cyber security,
+                product, operations, and customer-facing functions. Explore open
+                roles designed for builders, operators, and leaders.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              <StatCard
+                icon={BriefcaseBusiness}
+                value={totalVisible}
+                label="Open roles"
+              />
+              <StatCard
+                icon={Building2}
+                value={grouped.size}
+                label="Departments"
+              />
+              <StatCard
+                icon={Laptop2}
+                value={`${flexiblePct}%`}
+                label="Flexible roles"
+              />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* ── STICKY TOOLBAR ─────────────────────────────────────────────── */}
-      <div className="sticky top-0 z-40 hidden sm:flex items-stretch border-b border-gray-200 bg-white shadow-sm px-6 sm:px-30">
-        {/* Search */}
-        <div className="flex items-center border-r border-gray-200 px-3 py-3 sm:w-64 gap-5">
-          <Search size={15} />
-          <input
-            type="text"
-            placeholder="Search roles…"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-transparent text-[13.5px] text-gray-900 outline-none placeholder:text-gray-400"
-          />
-        </div>
+      {/* Toolbar */}
+      <div className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75">
+        <div className="mx-auto max-w-7xl px-6 py-4 sm:px-10 lg:px-12">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <div className="relative w-full lg:max-w-md">
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search roles, departments, location..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="h-12 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-11 pr-4 text-sm text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 focus:border-[#3e3ab1]/40 focus:bg-white focus:ring-4 focus:ring-[#3e3ab1]/10"
+                />
+              </div>
 
-        {/* Chip filters */}
-        <div className="flex flex-1 items-center gap-1.5 overflow-x-auto px-4 py-3 scrollbar-hide">
-          {DEPT_FILTERS.map(({ label, value }) => (
-            <button
-              key={value}
-              onClick={() => setActiveDept(value)}
-              className="shrink-0 whitespace-nowrap rounded-full border px-3 py-1 text-[12.5px] font-medium transition-all duration-150"
-              style={{
-                borderColor: activeDept === value ? C.blueDeep : "#E4E8F2",
-                background: activeDept === value ? C.blueDeep : "transparent",
-                color: activeDept === value ? "#fff" : "#3B3F4C",
-              }}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setSortMode((prev) =>
+                      prev === "featured" ? "az" : "featured",
+                    )
+                  }
+                  className="inline-flex h-11 items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 transition duration-200 hover:border-slate-300 hover:bg-slate-50"
+                >
+                  <SlidersHorizontal className="h-4 w-4" />
+                  {sortMode === "featured" ? "Featured first" : "A–Z"}
+                </button>
 
-        {/* Actions */}
-        <div className="flex shrink-0 items-center gap-2 border-l border-gray-200 px-4 py-3">
-          <button className="flex items-center gap-1.5 rounded-md border border-gray-200 px-3 py-1.5 text-[13px] font-medium text-gray-600 transition-colors hover:border-blue-400 hover:text-blue-600">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path
-                d="M1 4h12M3 7h8M5 10h4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-            Sort
-          </button>
-          <button
-            className="flex items-center gap-1.5 rounded-md px-4 py-1.5 text-[13px] font-semibold text-white transition-all duration-150 hover:opacity-90"
-            style={{ background: C.red }}
-          >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path
-                d="M6 1.5v9M1.5 6h9"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-            Submit CV
-          </button>
+                <Link
+                  href="#"
+                  className="inline-flex h-11 items-center gap-2 rounded-2xl bg-[#ed1c24] px-4 text-sm font-semibold text-white transition duration-200 hover:bg-[#d81720] hover:shadow-[0_10px_25px_rgba(237,28,36,0.22)]"
+                >
+                  <Send className="h-4 w-4" />
+                  Submit CV
+                </Link>
+              </div>
+            </div>
+
+            <div className="overflow-x-auto">
+              <div className="flex min-w-max items-center gap-2 pb-1">
+                {DEPT_FILTERS.map(({ label, value }) => {
+                  const active = activeDept === value;
+
+                  return (
+                    <button
+                      key={value}
+                      type="button"
+                      onClick={() => setActiveDept(value)}
+                      className={cn(
+                        "rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200",
+                        active
+                          ? "border-[#201e5c] bg-[#201e5c] text-white shadow-[0_10px_24px_rgba(32,30,92,0.18)]"
+                          : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50",
+                      )}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* ── POSITIONS ──────────────────────────────────────────────────── */}
-      <div className="mx-auto max-w-6xl px-6 pb-20 pt-10 sm:px-12">
-        {visibleSections.length === 0 ? (
-          <div className="py-24 text-center">
-            <p className="text-lg font-semibold text-gray-700">
-              No matching positions
+      {/* Results */}
+      <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 lg:px-12 lg:py-14">
+        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-lg font-semibold tracking-tight text-slate-900">
+              {totalVisible} position{totalVisible === 1 ? "" : "s"} available
             </p>
-            <p className="mt-1 text-sm text-gray-400">
-              Try adjusting your search or filter.
+            <p className="mt-1 text-sm text-slate-500">
+              {activeDept === "all"
+                ? "Showing roles across all departments."
+                : "Filtered to the selected department."}
+            </p>
+          </div>
+
+          <div className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 shadow-sm">
+            {newRoles} new role{newRoles === 1 ? "" : "s"} in current view
+          </div>
+        </div>
+
+        {visibleSections.length === 0 ? (
+          <div className="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-20 text-center">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-500">
+              <Search className="h-6 w-6" />
+            </div>
+            <h3 className="mt-5 text-xl font-semibold tracking-tight text-slate-900">
+              No matching positions
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-500">
+              Try adjusting your keyword or switching to another department
+              filter.
             </p>
           </div>
         ) : (
-          <div className="flex flex-col gap-14">
-            {visibleSections.map(({ dept, jobs }, i) => (
-              <div
-                key={dept}
-                className="flex flex-col gap-5"
-                style={{ animationDelay: `${i * 55}ms` }}
-              >
-                {/* Section header */}
-                <div
-                  className="relative flex items-baseline gap-3 border-b-2 pb-3.5"
-                  style={{ borderColor: "#E4E8F2" }}
-                >
-                  {/* Red underline accent */}
-                  <span
-                    className="absolute bottom-[-2px] left-0 h-[2px] w-10 rounded"
-                    style={{ background: C.red }}
-                  />
-                  <h2
-                    className="text-[17px] font-bold leading-none tracking-tight"
-                    style={{
-                      color: C.blueDeep,
-                    }}
-                  >
-                    {dept}
-                  </h2>
-                  <span className="rounded-full bg-gray-200 px-2 py-0.5 text-[12px] font-medium text-gray-500">
-                    {jobs.length}
-                  </span>
+          <div className="space-y-12">
+            {visibleSections.map(({ dept, jobs }) => (
+              <div key={dept} className="space-y-5">
+                <div className="flex flex-col gap-3 border-b border-slate-200 pb-4 sm:flex-row sm:items-end sm:justify-between">
+                  <div className="relative">
+                    <span className="mb-2 block h-1 w-12 rounded-full bg-[#ed1c24]" />
+                    <h2 className="text-2xl font-semibold tracking-tight text-[#080817]">
+                      {dept}
+                    </h2>
+                    <p className="mt-1 text-sm text-slate-500">
+                      {jobs.length} open role{jobs.length === 1 ? "" : "s"} in
+                      this team
+                    </p>
+                  </div>
+
+                  <div className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-600">
+                    Hiring now
+                  </div>
                 </div>
 
-                {/* Job cards grid */}
-                <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                   {jobs.map((job) => (
                     <JobCard key={job.id} job={job} />
                   ))}
@@ -598,37 +592,33 @@ export default function SiteCareer() {
           </div>
         )}
 
-        {/* ── FOOTER CTA ─────────────────────────────────────────────── */}
-        <div className="relative mt-16 flex flex-col items-start justify-between gap-6 overflow-hidden rounded-2xl p-10 sm:flex-row sm:items-center bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800">
-          {/* Decorative circle */}
-          <div
-            className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full"
-            style={{ background: "rgba(255,255,255,0.04)" }}
-          />
-          <div>
-            <h3 className="mb-1.5 text-xl font-extrabold text-white">
-              Don&apos;t see the right fit?
-            </h3>
-            <p className="text-sm font-light text-white/55">
-              We&apos;re always looking for exceptional talent. Send us your CV
-              and we&apos;ll be in touch.
-            </p>
+        {/* Footer CTA */}
+        <div className="relative mt-16 overflow-hidden rounded-[28px] border border-slate-200 bg-[linear-gradient(135deg,#091124_0%,#1a1f4f_45%,#2a2f7f_100%)] p-8 shadow-[0_18px_50px_rgba(9,17,36,0.18)] sm:p-10">
+          <div className="absolute -right-14 -top-14 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-[#ed1c24]/10 blur-3xl" />
+
+          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl flex flex-col gap-3">
+              <BadgePill label="Talent Network" centered={false} />
+
+              <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                Don&apos;t see the right fit yet?
+              </h3>
+              <p className="mt-3 max-w-xl text-sm leading-7 text-white/70 sm:text-base">
+                Share your CV with us and we&apos;ll keep you in mind for future
+                opportunities across engineering, product, cyber security, and
+                enterprise operations.
+              </p>
+            </div>
+
+            <Link
+              href="#"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-primary-cta px-6 py-3.5 text-sm font-semibold text-white transition duration-200 hover:bg-primary-cta-800 hover:shadow-md"
+            >
+              Submit General Application
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-          <button
-            className="flex shrink-0 items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold text-white transition-all duration-150 hover:opacity-90 hover:shadow-lg"
-            style={{ background: C.red }}
-          >
-            Submit General Application
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path
-                d="M2.5 7h9M8.5 3.5l3.5 3.5-3.5 3.5"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </section>

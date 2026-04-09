@@ -73,7 +73,7 @@ const NAV_RESOURCES = [
     href: "/resources/case-studies",
   },
   {
-    label: "Support Center",
+    label: "Help Center",
     href: "/help-center",
   },
   {

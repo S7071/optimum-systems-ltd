@@ -22,7 +22,8 @@ export default function CaseStudyCard(prop: caseStudyProp, idx?: string | number
                 transition-all duration-300
                 before:content-[''] before:absolute before:inset-0 before:z-10
                 before:transition-all before:duration-300
-                hover:before:bg-primary-cbe-800/20
+                hover:before:bg-primary-cbe-800/10
+                hover:shadow-lg shadow-sm
                 after:content-[''] after:absolute after:top-0 after:left-0
                 after:z-20 after:w-1 after:h-full after:bg-[#D01F1F]
                 sm:aspect-square md:aspect-auto md:min-h-[30rem] md:max-w-[30rem]

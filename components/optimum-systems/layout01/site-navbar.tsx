@@ -21,13 +21,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   ArrowRight,
   ChevronRight,
-  Factory,
-  GraduationCap,
-  HeartPulse,
-  Landmark,
   Menu,
-  Milk,
-  ShoppingCart,
   Building2,
   Target,
   Users,
@@ -141,14 +135,14 @@ const FEATURED_SOLUTIONS: Solution[] = [
     href: "/ultimate-cbe",
     description:
       "30+ modules for universities, TVETs & polytechnics — from admissions to alumni.",
-    iconSrc: "/logos/ultimate-icon.svg",
+    iconSrc: "/logos/ultimate-cbe.svg",
   },
   {
     title: "Ultimate Supply Chain ERP",
     href: "/ultimate-scm",
     description:
       "End-to-end drug tracking for county health systems — KEMSA to patient.",
-    iconSrc: "/logos/ultimate-icon.svg",
+    iconSrc: "/logos/ultimate-supply-chain.svg",
     badge: "New",
   },
   {
@@ -156,28 +150,28 @@ const FEATURED_SOLUTIONS: Solution[] = [
     href: "/ultimate-mfg",
     description:
       "Full-cycle lending ERP with MPESA integration and automated appraisals.",
-    iconSrc: "/logos/ultimate-icon.svg",
+    iconSrc: "/logos/ultimate-manufacturing.svg",
   },
   {
     title: "Ultimate Hotel ERP",
     href: "/ultimate-hms",
     description:
       "Production planning, BOM, WIP costing and multi-plant scalability.",
-    iconSrc: "/logos/ultimate-icon.svg",
+    iconSrc: "/logos/ultimate-hotel.svg",
   },
   {
     title: "Ultimate POS",
     href: "/ultimate-pos",
     description:
       "SmartPOS, van sales, ETIMS/MPESA compliance and multi-branch inventory.",
-    iconSrc: "/logos/ultimate-icon.svg",
+    iconSrc: "/logos/ultimate-pos.svg",
   },
   {
     title: "Ultimate Conference ERP",
     href: "/ultimate-cms",
     description:
       "Farm-to-shelf ERP for cooperatives: milk intake, processing & payments.",
-    iconSrc: "/logos/ultimate-icon.svg",
+    iconSrc: "/logos/ultimate-conference.svg",
   },
 ];
 
@@ -261,7 +255,7 @@ export function SolutionsMenuItem() {
               <p className="text-sm leading-relaxed text-blue-100">
                 Kenya&apos;s most deployed ERP for higher education — live in{" "}
                 <span className="font-semibold text-white">
-                  186+ institutions
+                  200+ institutions
                 </span>{" "}
                 and counting.
               </p>
@@ -270,7 +264,7 @@ export function SolutionsMenuItem() {
             <div className="relative z-10 mt-6 space-y-2">
               {/* Stat pills */}
               <div className="flex flex-wrap gap-2">
-                {["150+ Institutions", "30+ Modules", "Category 1 ICT"].map(
+                {["200+ Institutions", "30+ Modules", "Category 1 ICT"].map(
                   (stat) => (
                     <span
                       key={stat}
@@ -307,13 +301,13 @@ export function SolutionsMenuItem() {
                   >
                     {/* Icon container */}
                     <span
-                      className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary-cbe-50 bg-background transition-transform group-hover:scale-105`}
+                      className={`mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-primary-cbe-50 bg-background transition-transform group-hover:scale-105`}
                     >
                       <Image
                         src={item.iconSrc}
                         alt="Optimum ERP"
-                        width={20}
-                        height={20}
+                        width={26}
+                        height={26}
                       />
                     </span>
 
@@ -561,7 +555,7 @@ export function AboutUsMenuItem() {
                 , we design and deploy tailored ERP systems that drive real
                 outcomes for{" "}
                 <span className="font-semibold text-white">
-                  150+ institutions
+                  200+ institutions
                 </span>{" "}
                 across East Africa.
               </p>
@@ -603,7 +597,7 @@ export function AboutUsMenuItem() {
               {/* Stat pills */}
               <div className="flex flex-wrap gap-2">
                 {[
-                  "50+ ICT Professionals",
+                  "60+ ICT Professionals",
                   "20+ Products",
                   "Category 1 ICT",
                 ].map((stat) => (
@@ -641,10 +635,10 @@ export function AboutUsMenuItem() {
                   >
                     {/* Icon container */}
                     <span
-                      className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${item.iconBg} transition-transform group-hover:scale-105`}
+                      className={`mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${item.iconBg} transition-transform group-hover:scale-105`}
                     >
                       <item.Icon
-                        className={`h-4.5 w-4.5 ${item.iconColor}`}
+                        className={`h-10 w-10 ${item.iconColor}`}
                         strokeWidth={1.8}
                       />
                     </span>

@@ -56,6 +56,7 @@
   --color-primary-cbe-800: var(--primary-cbe-800);
   --color-primary-cbe-900: var(--primary-cbe-900);
   --color-primary-cta: var(--primary-cta);
+  --color-primary-cta-800: var(--primary-cta-800);
 }
 
 :root {
@@ -68,6 +69,7 @@
   --popover-foreground: oklch(0.147 0.004 49.25);
   --primary: #201e5c;
   --primary-cta: #ed1c24;
+  --primary-cta-800: #bb1a20;
   --primary-cbe-50: #f4f4fc;
   --primary-cbe-100: #e8e8f7;
   --primary-cbe-200: #acaae3;
