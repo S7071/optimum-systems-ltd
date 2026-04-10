@@ -86,7 +86,7 @@ const PRODUCTS: Product[] = [
 
 const STATS: Stat[] = [
   { value: "200", suffix: "+", label: "Organizations" },
-  { value: "15", suffix: "+", label: "Years Active" },
+  { value: "8", suffix: "+", label: "Years Active" },
   { value: "30", suffix: "+", label: "Products" },
 ];
 
