@@ -49,7 +49,7 @@ const sectionLinks: SectionLink[] = [
 
 const stats: Stat[] = [
   {
-    value: "15+",
+    value: "8+",
     label: "Years of practical ERP experience",
     note: "Built around real operational demands across Kenyan institutions.",
   },

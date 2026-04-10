@@ -5,7 +5,7 @@ export default function SiteBanner() {
     <section className="flex items-center justify-between gap-2 bg-primary-cbe-500 border-b-5 border-primary-cta text-background border-t-3 border-t-primary bg-muted px-6 py-2 dark:bg-card w-full">
       <div className="flex flex-1 items-center gap-4 text-[10px] sm:text-sm font-medium md:justify-center text-center">
         <p>
-          ✨ We&apos;ve rebranded! Optimum Computer Systems is evolving. A new look, the same commitment to excellence.
+          ✨ We&apos;ve rebranded! Optimum ERP Systems is evolving. A new look, the same commitment to excellence.
           <a href="/changelog" className="ml-2 whitespace-nowrap underline md:hidden">
             <span>See the change →</span>
           </a>
