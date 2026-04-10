@@ -747,7 +747,7 @@ export default function SiteNavbar() {
             alt="Logo"
             width={170}
             height={32}
-            className="dark:hidden"
+            className="dark:hidden w-[140px] h-[48px] sm:w-[100%] sm:h-[54px]"
           />
           <Image
             src="/logo.svg"

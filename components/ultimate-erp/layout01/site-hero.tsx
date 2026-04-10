@@ -30,7 +30,7 @@ export default function SiteHeroEnhanced({
   description = "Ultimate ERP unifies finance, HR, academics, procurement, and operations in one intelligent platform built for institutions that need scale, control, and clarity.",
   primaryCtaHref = "#",
   videoUrl = "https://www.youtube.com/watch?v=Da1hUqzoiAo",
-  imageSrc = "/images/saas/laptop.png",
+  imageSrc = "/images/saas/original.png",
   badgeText = "Now available · Ultimate ERP v3.0",
   trustLogos = ["Finance", "Academics", "HR & Payroll", "Procurement"],
 }: Props) {

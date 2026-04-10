@@ -890,7 +890,7 @@ export default function UltimateCBEPage() {
 
                   <div className="relative overflow-hidden rounded-[1.4rem] bg-white">
                     <Image
-                      src="/images/saas/laptop.png"
+                      src="/images/saas/original.png"
                       alt="UltimateCBE product preview"
                       width={1400}
                       height={900}

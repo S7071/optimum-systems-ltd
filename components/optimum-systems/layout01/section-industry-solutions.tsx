@@ -44,74 +44,90 @@ type Segment = {
 
 const industries: Industry[] = [
   {
-    title: "TVETs, Colleges & Polytechnics",
+    title: "Universities",
     description:
-      "Digitize admissions, student finance, examinations, timetables, hostel workflows, and institutional reporting in one connected experience.",
-    highlights: ["Academic ERP", "Fee management", "Operational reporting"],
+      "Support complex academic structures, student finance, examinations, approvals, and executive reporting through one modular institutional platform.",
+    highlights: [
+      "Multi-department workflows",
+      "Finance & academics",
+      "Executive visibility",
+    ],
     icon: GraduationCap,
     accentClass: "from-blue-700/15 to-red-600/10",
   },
   {
-    title: "Universities",
+    title: "National Polytechnics",
     description:
-      "Support complex academic structures, finance, departmental approvals, and multi-campus coordination with enterprise-grade workflows.",
-    highlights: ["Multi-campus ready", "Workflow approvals", "Faculty operations"],
+      "Digitize admissions, CBET-aligned assessments, fee management, timetabling, and campus-wide administration with a system built for scale.",
+    highlights: ["CBET-CDACC ready", "Timetabling", "Student lifecycle"],
     icon: BookOpen,
     accentClass: "from-sky-700/15 to-blue-600/10",
   },
   {
-    title: "SACCOs",
+    title: "Technical & Vocational Colleges",
     description:
-      "Streamline member records, loan cycles, deposits, compliance processes, and decision-making through centralized SACCO operations.",
-    highlights: ["Member lifecycle", "Loan processing", "Financial visibility"],
+      "Streamline applications, registration, attendance, finance, examinations, and day-to-day institutional workflows in one connected environment.",
+    highlights: [
+      "Online applications",
+      "Attendance control",
+      "Operational reporting",
+    ],
     icon: Users,
     accentClass: "from-red-600/15 to-blue-700/10",
   },
   {
-    title: "Microfinance Institutions",
+    title: "Teachers' Colleges",
     description:
-      "Modernize collections, customer servicing, branch operations, and reporting with tools built for structured financial workflows.",
-    highlights: ["Branch operations", "Collections support", "Risk visibility"],
+      "Modernize academic administration, fee billing, staff operations, and student communication with intuitive tools that reduce manual workload.",
+    highlights: ["Academic records", "Fee billing", "SMS communication"],
     icon: Banknote,
     accentClass: "from-blue-800/15 to-cyan-500/10",
   },
   {
-    title: "Building Societies",
+    title: "Student Lifecycle Management",
     description:
-      "Coordinate member servicing, payment processes, records, and performance reporting through a consistent digital operating model.",
-    highlights: ["Member servicing", "Payment workflows", "Performance tracking"],
+      "Manage enrollment, demographic records, attendance, sponsorship details, notifications, and student engagement from application to graduation.",
+    highlights: ["Admissions", "Student records", "Communication tools"],
     icon: Landmark,
     accentClass: "from-rose-600/15 to-blue-700/10",
   },
   {
-    title: "Distributors & Retailers",
+    title: "Academic & Examination Management",
     description:
-      "Connect inventory, procurement, sales, fulfillment, and branch visibility so teams can move faster with fewer operational blind spots.",
-    highlights: ["Inventory control", "Sales operations", "Branch visibility"],
+      "Automate course registration, grading, transcripts, result computation, exam scheduling, and lecturer evaluation with institution-ready workflows.",
+    highlights: [
+      "Results & transcripts",
+      "Exam scheduling",
+      "Lecturer evaluation",
+    ],
     icon: ShoppingCart,
     accentClass: "from-blue-700/15 to-red-500/10",
   },
   {
-    title: "Manufacturers",
+    title: "Finance, Payroll & Procurement",
     description:
-      "Bring purchasing, stock movement, production planning, warehousing, and reporting together for more reliable execution.",
-    highlights: ["Production support", "Warehouse visibility", "Cost tracking"],
+      "Unify student finance, IPSAS-compliant accounting, payroll, budgeting, bank reconciliation, procurement, and stores oversight.",
+    highlights: [
+      "IPSAS-ready finance",
+      "Payroll automation",
+      "Bank integration",
+    ],
     icon: Factory,
     accentClass: "from-slate-700/15 to-blue-700/10",
   },
   {
-    title: "Secondary Schools",
+    title: "Campus Operations & Student Services",
     description:
-      "Simplify finance, student administration, communication, and day-to-day institutional workflows with a structured school system.",
-    highlights: ["Student administration", "Finance workflows", "Operational control"],
+      "Coordinate hostels, library, catering, clinic, student affairs, transport, and support services through digitally connected workflows.",
+    highlights: ["Hostels & library", "Clinic & catering", "Student affairs"],
     icon: School,
     accentClass: "from-blue-600/15 to-red-600/10",
   },
   {
-    title: "Construction Firms",
+    title: "Security, Access & Governance",
     description:
-      "Improve project oversight, purchasing, field coordination, and financial control with connected workflows across teams.",
-    highlights: ["Project oversight", "Procurement workflows", "Cost visibility"],
+      "Strengthen accountability with biometrics, audit trails, gate control, risk management, executive dashboards, and institutional oversight tools.",
+    highlights: ["Biometric control", "Audit & risk", "CEO dashboard"],
     icon: Wrench,
     accentClass: "from-red-500/15 to-blue-800/10",
   },
@@ -119,78 +135,81 @@ const industries: Industry[] = [
 
 const capabilities: Capability[] = [
   {
-    title: "Modular ERP Architecture",
+    title: "Modular Architecture & Flexible Rollout",
     description:
-      "Deploy only what each industry needs today, then expand cleanly as operational scope, teams, and reporting demands grow.",
+      "Implement only the modules your institution needs today, then expand progressively as priorities, budgets, and operational demands evolve.",
     icon: Blocks,
   },
   {
-    title: "Kenya-Focused Operational Fit",
+    title: "Hybrid Deployment Model",
     description:
-      "Position the platform around real institutional and business workflows instead of forcing organizations into generic templates.",
+      "Combine on-premise security with web accessibility so institutions maintain control of their data while enabling convenient remote access.",
     icon: Building2,
   },
   {
-    title: "Decision-Ready Reporting",
+    title: "Compliance-Ready Reporting",
     description:
-      "Turn day-to-day operational activity into dashboards, summaries, and actionable visibility for leadership and finance teams.",
+      "Support CBET-CDACC workflows, IPSAS-aligned finance reporting, and institutional reporting requirements through structured, decision-ready outputs.",
     icon: LineChart,
   },
   {
-    title: "Security, Control & Accountability",
+    title: "Security, Audit Trails & Biometrics",
     description:
-      "Use structured permissions, traceable workflows, and centralized controls to reduce operational friction and strengthen governance.",
+      "Use role-based access, encryption, indelible audit records, and biometric integrations to strengthen accountability and institutional control.",
     icon: ShieldCheck,
   },
   {
-    title: "Implementation & Training Support",
+    title: "Integration, Migration & Multi-Platform Access",
     description:
-      "Back the software with onboarding, process alignment, and continuous support so adoption is practical, not theoretical.",
+      "Connect with banks, E-Citizen, SMS, email, and existing systems while supporting secure access across Windows, Linux, Mac, and mobile devices.",
     icon: Handshake,
   },
   {
-    title: "Scalable Multi-Team Operations",
+    title: "Proven Delivery, Training & Support",
     description:
-      "Support growth across campuses, branches, departments, and operating units without fragmenting the core platform experience.",
+      "Back implementation with experienced technical teams, onboarding, process alignment, and long-term support that encourages sustained adoption.",
     icon: Layers3,
   },
 ];
 
 const featuredSegments: Segment[] = [
   {
-    id: "education",
-    eyebrow: "Education",
-    title: "Built for academic institutions managing scale, structure, and service delivery.",
+    id: "universities",
+    eyebrow: "Universities",
+    title:
+      "Built for institutions managing complex academic, financial, and multi-department operations.",
     description:
-      "From admissions and student finance to examinations, departments, hostels, and reporting, the page positions Optimum as a serious long-term education technology partner.",
+      "UltimateERP gives universities a modular academic management platform for admissions, examinations, finance, approvals, reporting, and executive oversight.",
     bullets: [
-      "Academic and administrative workflows in one ecosystem",
-      "Clear support for institutional scale and process complexity",
-      "Reporting layers designed for management visibility",
+      "Supports institution-wide academic and administrative workflows",
+      "Helps leadership gain visibility through dashboards and reports",
+      "Scales across departments, campuses, and operational units",
     ],
   },
   {
-    id: "financial-services",
-    eyebrow: "Financial Services",
-    title: "Tailored for member-based and regulated financial operations.",
+    id: "polytechnics",
+    eyebrow: "National Polytechnics & TVETs",
+    title:
+      "Designed for institutions that need CBET-ready workflows and disciplined operational control.",
     description:
-      "The layout gives SACCOs, MFIs, and building societies a dedicated message: operational efficiency, disciplined workflows, and stronger reporting without a fragmented toolset.",
+      "From online applications and student finance to examinations, timetabling, placement, and clearance, the platform aligns with the realities of TVET administration.",
     bullets: [
-      "Member and customer lifecycle visibility",
-      "Loan, servicing, and branch process support",
-      "Structured control for finance-led environments",
+      "CBET-CDACC compliant academic process support",
+      "Strong workflow coverage for finance, exams, and timetabling",
+      "Modular deployment that fits institutional budgets and priorities",
     ],
   },
   {
-    id: "enterprise-public",
-    eyebrow: "Enterprise & Institutions",
-    title: "Designed for retailers, manufacturers, construction firms, and operational institutions.",
+    id: "teachers-colleges",
+    eyebrow: "Teachers' Colleges & Learning Institutions",
+    title:
+      "Tailored for institutions that want reliable digital administration without unnecessary complexity.",
     description:
-      "This section frames Optimum as a flexible implementation partner able to adapt ERP capability to different operating models, teams, and reporting needs.",
+      "Optimum positions UltimateERP as a practical long-term partner for institutions seeking efficiency, accountability, and better service delivery.",
     bullets: [
-      "Inventory, procurement, and project-linked operations",
-      "Cross-team coordination with centralized oversight",
-      "Flexible deployment for evolving process demands",
+      "Intuitive workflows for students, staff, and administrators",
+      "Connected operations across finance, academics, and services",
+      "Trusted implementation partner with strong local institutional experience",
     ],
   },
 ];
@@ -198,7 +217,10 @@ const featuredSegments: Segment[] = [
 export default function IndustrySolutionsPageBody() {
   return (
     <main className="bg-white text-slate-900 w-full">
-      <section className="relative isolate overflow-hidden bg-slate-950">
+      <section
+        className="relative isolate overflow-hidden bg-slate-950"
+        id="is-hero"
+      >
         <div className="absolute inset-0">
           <div className="absolute left-[-8rem] top-[-6rem] h-72 w-72 rounded-full bg-blue-700/25 blur-3xl" />
           <div className="absolute right-[-6rem] top-20 h-72 w-72 rounded-full bg-red-600/20 blur-3xl" />
@@ -209,48 +231,54 @@ export default function IndustrySolutionsPageBody() {
           <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="max-w-3xl">
               <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
-                Industry Solutions
+                UltimateERP Solutions
               </span>
 
               <h1 className="mt-6 max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                ERP solutions shaped around how each industry actually operates.
+                UltimateERP for learning institutions that need control,
+                compliance, and operational excellence.
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                Present Optimum as more than a software vendor. This page positions
-                the company as a sector-aware implementation partner for education,
-                financial services, retail, manufacturing, construction, and
-                institutions that need structured digital operations.
+                Position Optimum as a trusted institutional technology partner
+                with a modular academic management system used by institutions
+                of higher learning to automate administration, improve
+                visibility, and strengthen accountability across operations.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="#all-industries"
+                  href="#is-all-industries"
                   className="inline-flex items-center justify-center rounded-full bg-primary-cta px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-red-950/30 transition duration-300 hover:bg-primary-cta-800"
                 >
-                  Explore industries
+                  Explore solution areas
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
 
                 <a
-                  href="#capabilities"
+                  href="#is-capabilities"
                   className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:border-blue-300/40 hover:bg-white/10"
                 >
-                  View shared capabilities
+                  View platform strengths
                 </a>
               </div>
 
               <div className="mt-10 flex flex-wrap gap-3">
-                {["Education", "Financial Services", "Retail & Distribution", "Manufacturing", "Construction", "Institutions"].map(
-                  (item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200"
-                    >
-                      {item}
-                    </span>
-                  )
-                )}
+                {[
+                  "Universities",
+                  "National Polytechnics",
+                  "TVET Colleges",
+                  "Teachers' Colleges",
+                  "CBET-CDACC",
+                  "Hybrid ERP",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -258,10 +286,10 @@ export default function IndustrySolutionsPageBody() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-blue-200">
-                    Sector coverage
+                    Platform coverage
                   </p>
                   <h2 className="mt-1 text-2xl font-semibold text-white">
-                    Where Optimum fits
+                    What UltimateERP covers
                   </h2>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
@@ -271,16 +299,16 @@ export default function IndustrySolutionsPageBody() {
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {[
-                  "TVETs & Colleges",
-                  "Universities",
-                  "SACCOs",
-                  "Microfinance",
-                  "Building Societies",
-                  "Retail & Distribution",
-                  "Manufacturing",
-                  "Secondary Schools",
-                  "Construction",
-                  "Institutions",
+                  "Admissions & applications",
+                  "Student management",
+                  "Academics & examinations",
+                  "Student finance",
+                  "Core finance & accounting",
+                  "HR & payroll",
+                  "Timetabling",
+                  "Library & hostels",
+                  "Biometrics & security",
+                  "Executive dashboards",
                 ].map((item) => (
                   <div
                     key={item}
@@ -293,9 +321,9 @@ export default function IndustrySolutionsPageBody() {
 
               <div className="mt-6 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5">
                 <p className="text-sm leading-7 text-slate-200">
-                  Use this hero card to quickly communicate breadth, while the
-                  sections below make the industry positioning feel specific,
-                  credible, and enterprise-ready.
+                  From admissions and examinations to IPSAS-ready finance,
+                  payroll, biometrics, and executive reporting, UltimateERP
+                  gives institutions one connected operating environment.
                 </p>
               </div>
             </div>
@@ -303,16 +331,19 @@ export default function IndustrySolutionsPageBody() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+      <section
+        className="w-full px-6 py-20 sm:px-16 lg:px-30"
+        id="is-featured-section"
+      >
         <div className="max-w-3xl">
-          <BadgePill label="Featured sectors" centered={false} />
+          <BadgePill label="Core institution segments" centered={false} />
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
-            The page should speak differently to each buyer group.
+            Purpose-built for the learning institutions Optimum serves best.
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
-            Instead of listing solutions generically, break the narrative into
-            high-value segments so visitors immediately recognize their operating
-            environment and understand how Optimum can support it.
+            Instead of using generic ERP language, this page should immediately
+            reflect the institutions highlighted in the brochure and show where
+            UltimateERP delivers the strongest operational fit.
           </p>
         </div>
 
@@ -337,7 +368,10 @@ export default function IndustrySolutionsPageBody() {
 
               <ul className="mt-6 space-y-3">
                 {segment.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3 text-sm text-slate-700">
+                  <li
+                    key={bullet}
+                    className="flex items-start gap-3 text-sm text-slate-700"
+                  >
                     <BadgeCheck className="mt-0.5 h-4 w-4 flex-none text-red-600" />
                     <span>{bullet}</span>
                   </li>
@@ -349,22 +383,23 @@ export default function IndustrySolutionsPageBody() {
       </section>
 
       <section
-        id="all-industries"
+        id="is-all-industries"
         className="border-y border-slate-200 bg-slate-50/80"
       >
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+        <div className="px-6 py-20 sm:px-16 lg:px-30">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
-              <BadgePill label="Industries we serve" centered={false} />
+              <BadgePill label="Core solution areas" centered={false} />
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
-                Sector-specific messaging with a consistent premium structure.
+                UltimateERP modules mapped to the realities of institutional
+                operations.
               </h2>
             </div>
 
             <p className="max-w-2xl text-sm leading-7 text-slate-600">
-              These cards are designed to feel practical and commercial, with enough
-              detail to establish relevance while keeping the page crisp and
-              conversion-oriented.
+              These cards translate brochure content into focused messaging for
+              the modules and operational areas that matter most to learning
+              institutions.
             </p>
           </div>
 
@@ -387,7 +422,7 @@ export default function IndustrySolutionsPageBody() {
                     </div>
 
                     <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-500">
-                      Industry
+                      Module area
                     </span>
                   </div>
 
@@ -411,7 +446,7 @@ export default function IndustrySolutionsPageBody() {
                   </div>
 
                   <div className="mt-8 inline-flex items-center text-sm font-semibold text-red-600 transition duration-300 group-hover:translate-x-1">
-                    Tailor modules for this industry
+                    Explore this solution area
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </div>
                 </article>
@@ -421,24 +456,25 @@ export default function IndustrySolutionsPageBody() {
         </div>
       </section>
 
-      <section id="capabilities" className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+      <section id="is-capabilities" className="px-6 py-20 sm:px-16 lg:px-30">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="max-w-xl">
-            <BadgePill label="Shared capabilities" centered={false} />
+            <BadgePill label="Platform strengths" centered={false} />
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
-              Common strengths that support every industry solution.
+              Why institutions choose Optimum and UltimateERP.
             </h2>
             <p className="mt-5 text-base leading-8 text-slate-600">
-              This section reassures buyers that while the messaging is
-              industry-specific, the core platform still delivers enterprise
-              fundamentals: scalability, control, modularity, reporting, and
-              implementation support.
+              This section should reinforce the brochure’s core differentiators:
+              modular deployment, hybrid architecture, strong security,
+              compliance readiness, integration capability, and long-term
+              institutional value.
             </p>
 
             <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50 p-6">
               <p className="text-sm leading-7 text-slate-700">
-                Keep the tone consultative. The goal is to show Optimum as a partner
-                that understands workflows, not just a vendor listing modules.
+                Keep the tone confident and institutional. The goal is to show
+                Optimum as a proven enterprise technology partner for learning
+                institutions, not just a software vendor.
               </p>
             </div>
           </div>
@@ -470,29 +506,34 @@ export default function IndustrySolutionsPageBody() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+      <section
+        className="bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
+        id="is-works"
+      >
+        <div className="w-full px-6 py-20 sm:px-16 lg:px-30">
           <div className="grid gap-10 rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-sm lg:grid-cols-[1fr_0.9fr] lg:p-10">
             <div>
-              <BadgePill label="Why this structure works" centered={false} />
+              <BadgePill label="Why UltimateERP stands out" centered={false} />
 
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                A page architecture that balances breadth, clarity, and commercial trust.
+                A single platform that connects institutional operations without
+                sacrificing control.
               </h2>
 
               <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
-                The content order moves from brand-level positioning into sector
-                relevance, then into shared operational strengths. That sequence
-                helps visitors understand both coverage and credibility without
-                overwhelming them with feature noise too early.
+                The brochure positions UltimateERP as a modular hybrid system
+                built for reliability, customization, accountability, and
+                long-term institutional value. It gives institutions a practical
+                path to automate processes across departments while maintaining
+                security and governance.
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {[
-                  "Clear segmentation for different buyer types",
-                  "Premium enterprise presentation without clutter",
-                  "Expandable foundation for future case studies",
-                  "Natural bridge into demos, quotations, and consultations",
+                  "Trusted by institutions of higher learning across Kenya",
+                  "Hybrid deployment with strong security and accessibility",
+                  "No per-user licensing and modular growth without budget strain",
+                  "Supports audit trails, biometrics, compliance, and reporting",
                 ].map((item) => (
                   <div
                     key={item}
@@ -506,14 +547,14 @@ export default function IndustrySolutionsPageBody() {
 
             <div className="rounded-[1.75rem] border border-white/10 bg-slate-900/70 p-6">
               <h3 className="text-xl font-semibold text-white">
-                Suggested conversion panel
+                What decision-makers can evaluate
               </h3>
 
               <div className="mt-6 space-y-4">
                 {[
-                  "Book an industry-specific product walkthrough",
-                  "Request a tailored quotation based on your workflows",
-                  "Talk to the team about modules, deployment, and support",
+                  "Book a personalized demonstration of the modules relevant to your institution",
+                  "Discuss rollout, training, support, and data migration requirements",
+                  "Request a quotation aligned to your scope, priorities, and budget",
                 ].map((item) => (
                   <div
                     key={item}
@@ -529,7 +570,7 @@ export default function IndustrySolutionsPageBody() {
                 href="/contact"
                 className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-primary-cta px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-primary-cta-800"
               >
-                Talk to Optimum
+                Request a demo
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </div>
@@ -537,7 +578,7 @@ export default function IndustrySolutionsPageBody() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+      <section className="w-full px-6 py-20 sm:px-16 lg:px-30" id="is-cta">
         <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 shadow-sm">
           <div className="grid gap-8 px-6 py-10 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-14">
             <div className="max-w-2xl">
@@ -546,13 +587,14 @@ export default function IndustrySolutionsPageBody() {
               </span>
 
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Industry-fit software starts with understanding how your operations work.
+                See how UltimateERP can modernize academic, financial, and
+                institutional operations.
               </h2>
 
               <p className="mt-5 text-base leading-8 text-slate-200">
-                Use this closing section to move buyers from exploration into
-                conversation with a stronger, more consultative message than a
-                generic “contact us” block.
+                Use this closing section to move institutions from interest to
+                action with a stronger invitation to explore a personalized
+                demonstration, consultation, or implementation discussion.
               </p>
             </div>
 
@@ -568,7 +610,7 @@ export default function IndustrySolutionsPageBody() {
                 href="/products"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-white/15"
               >
-                Explore products
+                Explore UltimateERP
               </a>
             </div>
           </div>

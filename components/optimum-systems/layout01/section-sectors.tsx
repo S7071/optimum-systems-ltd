@@ -2,7 +2,6 @@ import BadgePill from "@/components/ui/badge-pill";
 import {
   ArrowRight,
   BadgeCheck,
-  Banknote,
   Building2,
   Factory,
   GraduationCap,
@@ -17,7 +16,6 @@ import {
   Truck,
   University,
   Users,
-  Wrench,
   type LucideIcon,
 } from "lucide-react";
 
@@ -38,121 +36,169 @@ const sectors: Sector[] = [
   {
     title: "Education",
     description:
-      "Support schools, colleges, TVETs, and universities with connected workflows for admissions, academics, finance, communication, and administration.",
+      "Support universities, national polytechnics, TVET institutions, colleges, and training institutions with integrated platforms for academic, administrative, and operational management.",
     icon: GraduationCap,
-    highlights: ["Admissions", "Academics", "Fees & billing", "Institutional reporting"],
-  },
-  {
-    title: "SACCOs",
-    description:
-      "Digitize member management, savings, loans, approvals, collections, and servicing with structured workflows built for SACCO operations.",
-    icon: HandCoins,
-    highlights: ["Members", "Loans", "Collections", "Approvals"],
-  },
-  {
-    title: "Microfinance",
-    description:
-      "Improve operational discipline across branch activity, customer servicing, collections, and reporting with a unified digital platform.",
-    icon: Banknote,
-    highlights: ["Customer records", "Collections", "Branch workflows", "Risk visibility"],
-  },
-  {
-    title: "Retail & Distribution",
-    description:
-      "Connect stock movement, procurement, sales, warehousing, and branch oversight to reduce friction and improve commercial visibility.",
-    icon: ShoppingCart,
-    highlights: ["Stock control", "Sales operations", "Branches", "Procurement"],
+    highlights: [
+      "Student lifecycle",
+      "Finance & HR",
+      "Examinations",
+      "Institutional reporting",
+    ],
   },
   {
     title: "Manufacturing",
     description:
-      "Bring purchasing, inventory, production support, warehousing, and cost visibility into one structured operational environment.",
+      "Help manufacturing organizations manage production planning, inventory control, procurement, and operational efficiency through an integrated ERP environment.",
     icon: Factory,
-    highlights: ["Materials", "Production support", "Warehousing", "Cost tracking"],
+    highlights: [
+      "Production planning",
+      "Inventory control",
+      "Procurement",
+      "Operational efficiency",
+    ],
   },
   {
-    title: "Construction",
+    title: "Retail & Distribution",
     description:
-      "Coordinate project workflows, procurement, field operations, budget controls, and reporting with better cross-team visibility.",
-    icon: Wrench,
-    highlights: ["Projects", "Procurement", "Cost visibility", "Approvals"],
+      "Equip wholesalers, retailers, and distribution networks with modular systems for POS operations, inventory optimization, finance, and supply chain coordination.",
+    icon: ShoppingCart,
+    highlights: [
+      "POS systems",
+      "Inventory optimization",
+      "Financial management",
+      "Supply chain",
+    ],
+  },
+  {
+    title: "Hospitality",
+    description:
+      "Streamline reservations, restaurant operations, conference facilities, accounting, HR, and hospitality analytics within one connected management system.",
+    icon: Building2,
+    highlights: [
+      "Reservations",
+      "Restaurant operations",
+      "Conference facilities",
+      "Accounting & HR",
+    ],
+  },
+  {
+    title: "Financial Services",
+    description:
+      "Support microfinance and lending operations with platforms for loan products, customer profiles, repayment tracking, and financial reporting.",
+    icon: HandCoins,
+    highlights: [
+      "Loan products",
+      "Customer profiles",
+      "Repayment tracking",
+      "Financial reporting",
+    ],
   },
   {
     title: "Healthcare",
     description:
-      "Streamline patient-facing administration, billing workflows, records coordination, and operational reporting for healthcare environments.",
+      "Improve healthcare logistics and service support with pharmaceutical supply chain and healthcare-oriented systems built for visibility, control, and continuity.",
     icon: Stethoscope,
-    highlights: ["Billing", "Records", "Administration", "Reporting"],
+    highlights: [
+      "Drug distribution",
+      "Supply visibility",
+      "Facility support",
+      "Operational tracking",
+    ],
   },
   {
-    title: "Government & Institutions",
+    title: "Agriculture",
     description:
-      "Support structured service delivery, approvals, finance, records, and accountability with secure role-based workflows and reporting.",
+      "Digitize dairy and agri-enterprise workflows including intake, quality testing, farmer payments, production oversight, and distribution logistics.",
+    icon: Truck,
+    highlights: [
+      "Milk intake",
+      "Quality testing",
+      "Farmer payments",
+      "Distribution logistics",
+    ],
+  },
+  {
+    title: "Community Organizations",
+    description:
+      "Enable welfare groups and associations to manage contributions, financial transparency, and community support activities through structured digital governance.",
+    icon: Users,
+    highlights: [
+      "Contributions",
+      "Financial transparency",
+      "Member welfare",
+      "Activity tracking",
+    ],
+  },
+  {
+    title: "Real Estate",
+    description:
+      "Manage tenant lifecycle, lease agreements, rent billing, maintenance requests, and portfolio analytics with a property-focused enterprise platform.",
     icon: Landmark,
-    highlights: ["Governance", "Approvals", "Records", "Accountability"],
-  },
-  {
-    title: "Professional Services",
-    description:
-      "Unify finance, payroll, project coordination, client operations, and internal reporting across growing service-driven teams.",
-    icon: Building2,
-    highlights: ["Projects", "Payroll", "Client ops", "Internal controls"],
+    highlights: [
+      "Tenant lifecycle",
+      "Lease management",
+      "Rent billing",
+      "Portfolio analytics",
+    ],
   },
 ];
 
 const valueCards: ValueCard[] = [
   {
-    title: "Sector-aware implementations",
+    title: "Proven Institutional Impact",
     description:
-      "Each deployment is positioned around the actual workflow realities of the sector rather than a one-size-fits-all software rollout.",
+      "Over 180 institutions rely on Optimum systems to power daily operations, reinforcing a strong record of delivery in demanding environments.",
+    icon: University,
+  },
+  {
+    title: "Deep Sector Expertise",
+    description:
+      "Our team brings extensive experience in enterprise systems development, software engineering, and digital transformation across multiple sectors.",
     icon: LayoutGrid,
   },
   {
-    title: "Stronger operational control",
+    title: "Custom Enterprise Solutions",
     description:
-      "Structured permissions, approvals, and centralized data flows help reduce fragmentation while improving accountability.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Decision-ready visibility",
-    description:
-      "Dashboards and reports translate daily operational activity into meaningful insight for management and executive teams.",
+      "We work closely with clients to analyze operational realities and design practical, scalable systems aligned to their exact institutional processes.",
     icon: LineChart,
   },
   {
-    title: "Scalable digital foundations",
+    title: "Hybrid, Secure Delivery",
     description:
-      "Organizations can start with the modules they need now and extend the platform cleanly as their operations expand.",
-    icon: University,
+      "Optimum combines on-premise security with cloud accessibility, giving organizations protected data, broader access, and dependable continuity.",
+    icon: ShieldCheck,
   },
 ];
 
 const featuredSectors = [
   {
-    title: "Education",
-    subtitle: "For institutions managing scale, compliance, and service delivery.",
+    title: "Education & Institutions",
+    subtitle:
+      "For universities, national polytechnics, TVETs, colleges, and training institutions.",
     points: [
-      "Admissions and academic operations",
-      "Student finance and fee workflows",
-      "Departmental and institutional reporting",
+      "Academic, administrative, and operational process management",
+      "Comprehensive platforms for finance, HR, timetabling, exams, and reporting",
+      "Extended tools for attendance, access control, catering, and referral growth",
     ],
   },
   {
-    title: "Financial Services",
-    subtitle: "For SACCOs and MFIs requiring structure, control, and visibility.",
+    title: "Business & Enterprise",
+    subtitle:
+      "For manufacturers, retailers, distributors, hospitality teams, and commercial operators.",
     points: [
-      "Member and customer lifecycle support",
-      "Loans, servicing, and collections workflows",
-      "Branch and management-level reporting",
+      "Production, inventory, procurement, and service delivery workflows",
+      "POS, supply chain, reservations, restaurant, and conference operations",
+      "Integrated financial oversight and operational analytics",
     ],
   },
   {
-    title: "Enterprise Operations",
-    subtitle: "For retailers, manufacturers, contractors, and institutions.",
+    title: "Specialized Sector Platforms",
+    subtitle:
+      "For financial services, healthcare, agriculture, real estate, and community organizations.",
     points: [
-      "Inventory, procurement, and finance alignment",
-      "Cross-team coordination and approvals",
-      "Operational visibility at scale",
+      "Loan management, repayment tracking, and customer profile workflows",
+      "Healthcare and pharmaceutical supply chain coordination",
+      "Property, welfare, dairy, and sector-specific operational management",
     ],
   },
 ];
@@ -160,7 +206,10 @@ const featuredSectors = [
 export default function SectorsWeServePageBody() {
   return (
     <main className="bg-white text-slate-900 w-full">
-      <section className="relative isolate overflow-hidden bg-slate-950">
+      <section
+        className="relative isolate overflow-hidden bg-slate-950"
+        id="sws-hero"
+      >
         <div className="absolute inset-0">
           <div className="absolute left-[-7rem] top-[-6rem] h-72 w-72 rounded-full bg-blue-700/25 blur-3xl" />
           <div className="absolute right-[-5rem] top-20 h-72 w-72 rounded-full bg-red-600/20 blur-3xl" />
@@ -175,19 +224,20 @@ export default function SectorsWeServePageBody() {
               </span>
 
               <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Digital solutions tailored for the sectors that keep operations moving.
+                Sector-specific digital platforms for institutions and enterprises.
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                Optimum supports institutions and businesses across education,
-                financial services, retail, manufacturing, construction, healthcare,
-                and public-sector environments with systems built around real
-                operational workflows.
+                Optimum ERP Systems Ltd delivers tailored software solutions for
+                education, manufacturing, retail & distribution, hospitality,
+                financial services, healthcare, agriculture, community
+                organizations, and real estate—helping organizations improve
+                efficiency, productivity, and service delivery.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="#sectors-grid"
+                  href="#sws-sectors"
                   className="inline-flex items-center justify-center rounded-full bg-primary-cta px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:translate-y-[-1px] hover:bg-primary-cta-800"
                 >
                   Explore Sectors
@@ -195,7 +245,7 @@ export default function SectorsWeServePageBody() {
                 </a>
 
                 <a
-                  href="#why-optimum"
+                  href="#sws-why-optimum"
                   className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-blue-300/40 hover:bg-white/10"
                 >
                   Why Optimum
@@ -205,11 +255,13 @@ export default function SectorsWeServePageBody() {
               <div className="mt-10 flex flex-wrap gap-3">
                 {[
                   "Education",
-                  "SACCOs & Microfinance",
-                  "Retail & Distribution",
                   "Manufacturing",
-                  "Construction",
-                  "Institutions",
+                  "Retail & Distribution",
+                  "Hospitality",
+                  "Financial Services",
+                  "Healthcare",
+                  "Agriculture",
+                  "Real Estate",
                 ].map((item) => (
                   <span
                     key={item}
@@ -228,7 +280,7 @@ export default function SectorsWeServePageBody() {
                     Coverage overview
                   </p>
                   <h2 className="mt-1 text-2xl font-semibold text-white">
-                    Built for multi-sector execution
+                    Solutions across key sectors
                   </h2>
                 </div>
 
@@ -239,12 +291,12 @@ export default function SectorsWeServePageBody() {
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {[
-                  { label: "Schools & Universities", icon: School },
-                  { label: "SACCOs & MFIs", icon: HandCoins },
-                  { label: "Retailers & Distributors", icon: Truck },
-                  { label: "Manufacturers", icon: Factory },
-                  { label: "Construction Firms", icon: Wrench },
-                  { label: "Government & Institutions", icon: Landmark },
+                  { label: "Education & Training", icon: School },
+                  { label: "Manufacturing", icon: Factory },
+                  { label: "Retail & Distribution", icon: ShoppingCart },
+                  { label: "Hospitality", icon: Building2 },
+                  { label: "Financial Services", icon: HandCoins },
+                  { label: "Healthcare & Real Estate", icon: Landmark },
                 ].map(({ label, icon: Icon }) => (
                   <div
                     key={label}
@@ -262,9 +314,9 @@ export default function SectorsWeServePageBody() {
 
               <div className="mt-6 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5">
                 <p className="text-sm leading-7 text-slate-200">
-                  The objective of this page is to help visitors quickly recognize
-                  their sector and understand that Optimum can tailor solutions to
-                  their operational environment.
+                  From flagship education platforms to specialized enterprise
+                  systems, Optimum designs solutions around the actual workflows,
+                  controls, and reporting needs of each sector it serves.
                 </p>
               </div>
             </div>
@@ -272,15 +324,19 @@ export default function SectorsWeServePageBody() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+      <section
+        className="w-full px-6 py-20 sm:px-16 lg:px-30"
+        id="sws-focus-areas"
+      >
         <div className="max-w-3xl">
           <BadgePill label="Focus areas" centered={false} />
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
-            Speak to each sector with clearer commercial relevance.
+            Priority sectors backed by proven product depth.
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
-            Rather than presenting a generic software catalog, this section frames
-            Optimum around the operating environments it understands best.
+            Optimum’s sector positioning is anchored in a broad digital platform
+            ecosystem built for institutional management, enterprise operations,
+            and specialized industry workflows.
           </p>
         </div>
 
@@ -300,7 +356,10 @@ export default function SectorsWeServePageBody() {
 
               <ul className="mt-6 space-y-3">
                 {sector.points.map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-sm text-slate-700">
+                  <li
+                    key={point}
+                    className="flex items-start gap-3 text-sm text-slate-700"
+                  >
                     <BadgeCheck className="mt-0.5 h-4 w-4 flex-none text-red-600" />
                     <span>{point}</span>
                   </li>
@@ -312,21 +371,22 @@ export default function SectorsWeServePageBody() {
       </section>
 
       <section
-        id="sectors-grid"
+        id="sws-sectors"
         className="border-y border-slate-200 bg-slate-50/80"
       >
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+        <div className="w-full px-6 py-20 sm:px-16 lg:px-30">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
               <BadgePill label="All sectors" centered={false} />
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
-                Sector-ready solutions with a consistent premium presentation.
+                Tailored digital systems aligned to real sector operations.
               </h2>
             </div>
 
             <p className="max-w-2xl text-sm leading-7 text-slate-600">
-              Each card is built to feel credible and enterprise-ready while still
-              keeping the page lightweight, readable, and conversion-focused.
+              Across every sector, Optimum delivers practical, scalable solutions
+              designed to strengthen workflows, visibility, accountability, and
+              long-term operational performance.
             </p>
           </div>
 
@@ -382,25 +442,27 @@ export default function SectorsWeServePageBody() {
       </section>
 
       <section
-        id="why-optimum"
-        className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12"
+        id="sws-why-optimum"
+        className="w-full px-6 py-20 sm:px-16 lg:px-30"
       >
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="max-w-xl">
             <BadgePill label="Why Optimum" centered={false} />
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
-              Common strengths that translate across every sector.
+              What sets Optimum apart across the sectors it serves.
             </h2>
             <p className="mt-5 text-base leading-8 text-slate-600">
-              This section reinforces that although the messaging is sector-specific,
-              the underlying delivery model is still built on strong enterprise
-              fundamentals: modularity, control, visibility, and scalability.
+              Optimum combines proven implementation experience, sector-specific
+              understanding, tailored solution design, and dependable hybrid
+              architecture to deliver enterprise systems that perform in real
+              operational environments.
             </p>
 
             <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50 p-6">
               <p className="text-sm leading-7 text-slate-700">
-                Position Optimum as a sector-aware implementation partner, not just a
-                vendor listing software modules.
+                The focus is not just software delivery, but building practical
+                systems that improve productivity, service delivery, and long-term
+                organizational growth.
               </p>
             </div>
           </div>
@@ -432,28 +494,31 @@ export default function SectorsWeServePageBody() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+      <section
+        className="bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
+        id="sws-delivery-outcomes"
+      >
+        <div className="w-full px-6 py-20 sm:px-16 lg:px-30">
           <div className="grid gap-8 rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-sm lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
             <div>
               <BadgePill label="Delivery outcomes" centered={false} />
 
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Built to improve coordination, visibility, and long-term scalability.
+                Built to strengthen service delivery, control, and scalability.
               </h2>
 
               <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
-                The goal is not only to digitize tasks, but to create a more
-                structured operating environment across teams, branches,
-                institutions, and departments.
+                Optimum solutions are designed to reduce operational friction,
+                improve reporting visibility, and create structured digital
+                environments that support sustainable growth across sectors.
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {[
-                  "Reduced operational silos across teams and functions",
-                  "Stronger approval, reporting, and accountability structures",
-                  "More reliable data for managers and executive teams",
-                  "A scalable foundation for future digital expansion",
+                  "Improved productivity through automation of critical workflows",
+                  "Stronger financial transparency, oversight, and accountability",
+                  "Real-time reporting and analytics for better decision-making",
+                  "Scalable systems aligned to evolving operational needs",
                 ].map((item) => (
                   <div
                     key={item}
@@ -467,14 +532,14 @@ export default function SectorsWeServePageBody() {
 
             <div className="rounded-[1.75rem] border border-white/10 bg-slate-900/70 p-6">
               <h3 className="text-xl font-semibold text-white">
-                Suggested conversion panel
+                Engage Optimum
               </h3>
 
               <div className="mt-6 space-y-4">
                 {[
-                  "Book a sector-specific product walkthrough",
-                  "Request a tailored quotation for your organization",
-                  "Discuss deployment scope, modules, and support",
+                  "Book a sector-specific product demonstration",
+                  "Request a solution consultation based on your workflows",
+                  "Discuss modules, deployment model, and support requirements",
                 ].map((item) => (
                   <div
                     key={item}
@@ -490,7 +555,7 @@ export default function SectorsWeServePageBody() {
                 href="/contact"
                 className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-primary-cta px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-primary-cta-800"
               >
-                Talk to Optimum Support
+                Talk to Optimum Team
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </div>
@@ -498,7 +563,7 @@ export default function SectorsWeServePageBody() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+      <section className="w-full px-6 py-20 sm:px-16 lg:px-30" id="sws-cta">
         <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 shadow-sm shadow-blue-950/10">
           <div className="grid gap-8 px-6 py-10 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-14">
             <div className="max-w-2xl">
@@ -507,13 +572,13 @@ export default function SectorsWeServePageBody() {
               </span>
 
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Find the right solution stack for your sector.
+                Find the right Optimum platform for your sector.
               </h2>
 
               <p className="mt-5 text-base leading-8 text-slate-200">
-                Use this closing section to move visitors from exploration into a
-                more consultative conversation around their workflows, challenges,
-                and implementation priorities.
+                Whether you operate in education, enterprise, finance,
+                healthcare, agriculture, real estate, or community service,
+                Optimum can map the right solution to your operational priorities.
               </p>
             </div>
 

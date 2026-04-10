@@ -897,7 +897,7 @@ export default function UltimateConferencePage() {
 
                   <div className="relative overflow-hidden rounded-[1.4rem] bg-white">
                     <Image
-                      src="/images/saas/laptop.png"
+                      src="/images/saas/original.png"
                       alt="Ultimate ConferenceERP product preview"
                       width={1400}
                       height={900}

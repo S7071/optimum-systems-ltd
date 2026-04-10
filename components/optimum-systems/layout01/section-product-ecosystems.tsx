@@ -48,84 +48,84 @@ type FlowStep = {
 
 const ecosystemProducts: EcosystemCard[] = [
   {
-    title: "ERP Core Platform",
+    title: "UltimateERP",
     description:
-      "The operational backbone that unifies finance, procurement, payroll, inventory, approvals, and reporting into one controlled environment.",
+      "A comprehensive higher education ERP with over 30 modules covering student lifecycle management, finance, HR, procurement, timetabling, examinations, and institutional reporting.",
     icon: LayoutGrid,
-    tags: ["Finance", "Procurement", "Payroll", "Inventory"],
+    tags: ["30+ Modules", "Student Lifecycle", "Finance & HR", "Reporting"],
   },
   {
-    title: "School Management",
+    title: "UltimateCBE AssessmentERP",
     description:
-      "A connected ecosystem for admissions, academics, fees, exams, communication, and administration across education institutions.",
+      "A competency-based education platform built for senior secondary schools and training institutions, supporting continuous assessments, competency tracking, and learner progress analytics.",
     icon: School,
-    tags: ["Admissions", "Academics", "Fees", "Exams"],
+    tags: ["CBE", "Assessments", "Competency Tracking", "Learner Analytics"],
   },
   {
-    title: "TVET & Higher Education",
+    title: "Academic Governance Platforms",
     description:
-      "Structured tools for colleges, polytechnics, and universities managing complex departments, student operations, and institutional workflows.",
+      "Includes the Qualification Award Board System and Curriculum Management System for results validation, moderation workflows, grading standards, certification, and curriculum alignment.",
     icon: GraduationCap,
-    tags: ["Departments", "Hostels", "Timetables", "Institutional Reporting"],
+    tags: ["Validation", "Moderation", "Certification", "Curriculum"],
   },
   {
-    title: "SACCO & Microfinance",
+    title: "Campus Experience Systems",
     description:
-      "Digital support for member management, savings, loans, collections, servicing, approvals, and financial visibility.",
+      "An integrated layer of UltimateBio, Turnstile Gate Control, SmartDine, and Referral tools for attendance, access control, digital meal payments, and enrollment growth.",
     icon: HandCoins,
-    tags: ["Members", "Loans", "Collections", "Approvals"],
+    tags: ["Biometrics", "Access Control", "SmartDine", "Referrals"],
   },
   {
-    title: "Retail & Distribution",
+    title: "Business & Enterprise ERPs",
     description:
-      "A product ecosystem for stock movement, procurement, branches, sales operations, and commercial reporting at scale.",
+      "A portfolio of operational systems including UltimateManufacturingERP, UltimateSupplyChainERP, UltimateHotelERP, and UltimateConferenceERP for industry and enterprise execution.",
     icon: ShoppingCart,
-    tags: ["Branches", "Sales", "Stock Control", "Commercial Reporting"],
+    tags: ["Manufacturing", "Supply Chain", "Hospitality", "Conference"],
   },
   {
-    title: "Manufacturing & Projects",
+    title: "Sector-Specific Solutions",
     description:
-      "Connect warehousing, materials, purchasing, production support, project oversight, and cost visibility in one operational layer.",
+      "Purpose-built platforms such as Lend360, MedFlow, Dairy Management, Real Estate Management, WelfareTrack, NexusTrade, Poultry Farm, and ShopNearMe for specialized sectors.",
     icon: Wrench,
-    tags: ["Warehousing", "Materials", "Projects", "Cost Tracking"],
+    tags: ["Microfinance", "Healthcare", "Real Estate", "Agribusiness"],
   },
 ];
 
 const pillars: PillarCard[] = [
   {
-    title: "Single Source of Truth",
+    title: "Proven Institutional Impact",
     description:
-      "Every product in the ecosystem feeds into a centralized operating model, reducing fragmented data and improving accountability.",
+      "Over 200 institutions rely on Optimum systems to power daily operations, especially across universities, national polytechnics, TVET institutions, and colleges.",
     icon: Database,
   },
   {
-    title: "Modular by Design",
+    title: "Deep Sector Expertise",
     description:
-      "Organizations can deploy the modules they need now and expand later without rebuilding the entire digital foundation.",
+      "Optimum brings strong expertise in enterprise systems development, software engineering, and digital transformation across education and multiple industry sectors.",
     icon: Blocks,
   },
   {
-    title: "Workflow-Driven Operations",
+    title: "Custom Enterprise Solutions",
     description:
-      "Approvals, records, transactions, and reporting are structured around real organizational processes, not disconnected screens.",
+      "Every deployment is aligned to the client's operational realities, ensuring practical, scalable, and effective systems built around institution-specific processes.",
     icon: Workflow,
   },
   {
-    title: "Secure Role-Based Access",
+    title: "Commitment to Excellence",
     description:
-      "Granular permissions and structured access controls help maintain governance across departments, branches, and institutions.",
+      "Integrity, accountability, professionalism, and excellence shape every engagement, with delivery focused on exceeding expectations and sustaining long-term value.",
     icon: ShieldCheck,
   },
   {
-    title: "Cross-Department Visibility",
+    title: "Strong Technical Capability",
     description:
-      "Leadership teams gain a clearer operational picture through shared dashboards, reports, and synchronized data flows.",
+      "A multidisciplinary team of experienced technical professionals combines project management, systems development, and enterprise technology expertise.",
     icon: CircleGauge,
   },
   {
-    title: "Ready for Scale",
+    title: "Hybrid Architecture",
     description:
-      "The architecture supports growing institutions and enterprises with multiple teams, units, campuses, or branch operations.",
+      "Optimum combines on-premise security with cloud accessibility, giving organizations protected data environments while enabling secure access from anywhere.",
     icon: Layers3,
   },
 ];
@@ -133,49 +133,49 @@ const pillars: PillarCard[] = [
 const flowSteps: FlowStep[] = [
   {
     step: "01",
-    title: "Capture operational activity",
+    title: "Deploy the operational core",
     description:
-      "Transactions, records, approvals, service events, and department actions are created at the source within each product layer.",
+      "Start with core ERP capabilities such as student lifecycle, finance, HR, procurement, timetabling, examinations, and institutional reporting within one connected foundation.",
   },
   {
     step: "02",
-    title: "Sync across connected modules",
+    title: "Extend with specialized platforms",
     description:
-      "Data moves across finance, inventory, HR, academic, member, and reporting contexts so teams work from aligned information.",
+      "Add AssessmentERP, Curriculum Management, Qualification Award Board, biometric attendance, SmartDine, gate control, and referral modules as needs evolve.",
   },
   {
     step: "03",
-    title: "Control through workflows",
+    title: "Integrate control and compliance",
     description:
-      "Approvals, permissions, auditability, and routing logic ensure every process follows accountable operational paths.",
+      "Connect bank workflows, E-Citizen processes, access controls, audit trails, and secure role-based permissions to support accountable and compliant operations.",
   },
   {
     step: "04",
-    title: "Turn data into decisions",
+    title: "Turn operations into insight",
     description:
-      "Dashboards, summaries, and reports transform operational data into insight for management, administrators, and executives.",
+      "Use dashboards, analytics, and institutional reporting to strengthen decision-making, improve transparency, and optimize returns on technology investment.",
   },
 ];
 
 const integrationPoints = [
   {
-    label: "Finance & Accounting",
+    label: "Student Lifecycle",
     icon: ReceiptText,
   },
   {
-    label: "HR & Payroll",
+    label: "Finance & Accounting",
     icon: Users,
   },
   {
-    label: "Inventory & Warehousing",
+    label: "Procurement & Inventory",
     icon: Warehouse,
   },
   {
-    label: "Institutional Operations",
+    label: "Academic & Institutional Operations",
     icon: Building2,
   },
   {
-    label: "Member & Customer Services",
+    label: "Biometric Access & Attendance",
     icon: Fingerprint,
   },
   {
@@ -187,7 +187,10 @@ const integrationPoints = [
 export default function ProductEcosystemsPageBody() {
   return (
     <main className="bg-white text-slate-900 w-full">
-      <section className="relative isolate overflow-hidden bg-slate-950">
+      <section
+        className="relative isolate overflow-hidden bg-slate-950"
+        id="pes-hero"
+      >
         <div className="absolute inset-0">
           <div className="absolute left-[-6rem] top-[-5rem] h-72 w-72 rounded-full bg-blue-700/25 blur-3xl" />
           <div className="absolute right-[-4rem] top-20 h-72 w-72 rounded-full bg-red-600/20 blur-3xl" />
@@ -198,23 +201,24 @@ export default function ProductEcosystemsPageBody() {
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="max-w-3xl">
               <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
-                Product Ecosystems
+                Optimum Digital Platform Ecosystem
               </span>
 
               <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Connected product ecosystems built for real operational environments.
+                Connected platforms built for institutions, enterprises, and
+                sector-specific operations.
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                Position Optimum as more than a collection of software products.
-                This page presents a unified ecosystem where ERP, education,
-                financial, retail, and institutional solutions work together as one
-                scalable digital operating model.
+                Optimum delivers a unified ecosystem of education,
+                institutional, and enterprise platforms designed to improve
+                productivity, strengthen compliance, and drive sustainable
+                operational growth.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="#ecosystem-map"
+                  href="#pes-ecosystem-map"
                   className="inline-flex items-center justify-center rounded-full bg-primary-cta px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-red-950/30 transition duration-300 hover:bg-primary-cta-800"
                 >
                   Explore the ecosystem
@@ -222,19 +226,19 @@ export default function ProductEcosystemsPageBody() {
                 </a>
 
                 <a
-                  href="#ecosystem-pillars"
+                  href="#pes-ecosystem-pillars"
                   className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:border-blue-300/40 hover:bg-white/10"
                 >
-                  View platform strengths
+                  View Optimum strengths
                 </a>
               </div>
 
               <div className="mt-10 flex flex-wrap gap-3">
                 {[
-                  "Unified Architecture",
-                  "Modular Products",
-                  "Cross-Functional Workflows",
-                  "Enterprise Reporting",
+                  "180+ Institutions Powered",
+                  "200+ Trusted Clients",
+                  "11+ Years of Excellence",
+                  "Hybrid Architecture",
                 ].map((item) => (
                   <span
                     key={item}
@@ -253,7 +257,7 @@ export default function ProductEcosystemsPageBody() {
                     Ecosystem summary
                   </p>
                   <h2 className="mt-1 text-2xl font-semibold text-white">
-                    One platform, multiple product layers
+                    Education platforms and enterprise solutions
                   </h2>
                 </div>
 
@@ -280,9 +284,10 @@ export default function ProductEcosystemsPageBody() {
 
               <div className="mt-6 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5">
                 <p className="text-sm leading-7 text-slate-200">
-                  The product ecosystem message should show that Optimum solutions
-                  are interoperable, scalable, and structured around end-to-end
-                  organizational workflows.
+                  From UltimateERP and UltimateCBE to MedFlow, Lend360, Real
+                  Estate, Dairy, Hotel, Manufacturing, and Supply Chain
+                  platforms, Optimum delivers a scalable ecosystem built for
+                  end-to-end operational performance.
                 </p>
               </div>
             </div>
@@ -291,18 +296,19 @@ export default function ProductEcosystemsPageBody() {
       </section>
 
       <section
-        id="ecosystem-map"
-        className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12"
+        id="pes-ecosystem-map"
+        className="w-full px-6 py-20 sm:px-16 lg:px-30"
       >
         <div className="max-w-3xl">
           <BadgePill label="Ecosystem map" centered={false} />
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
-            A structured portfolio, not a disconnected product catalog.
+            A structured ecosystem spanning education, institutions, and
+            enterprise operations.
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
-            This section visually frames Optimum’s products as integrated solution
-            clusters. Each one serves a different operational context, but all of
-            them reinforce the same ecosystem foundation.
+            Optimum&apos;s platform portfolio brings together flagship education
+            systems, institutional extensions, and sector-focused enterprise
+            products that work together as one modular digital foundation.
           </p>
         </div>
 
@@ -323,7 +329,7 @@ export default function ProductEcosystemsPageBody() {
                   </div>
 
                   <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
-                    Product Layer
+                    Solution Cluster
                   </span>
                 </div>
 
@@ -347,7 +353,7 @@ export default function ProductEcosystemsPageBody() {
                 </div>
 
                 <div className="mt-8 inline-flex items-center text-sm font-semibold text-red-600 transition duration-300 group-hover:translate-x-1">
-                  See how it connects
+                  Explore the platform layer
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </div>
               </article>
@@ -356,21 +362,24 @@ export default function ProductEcosystemsPageBody() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50/80">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+      <section
+        className="border-y border-slate-200 bg-slate-50/80"
+        id="pes-how-it-works"
+      >
+        <div className="w-full px-6 py-20 sm:px-16 lg:px-30">
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
             <div>
               <BadgePill label="How the ecosystem works" centered={false} />
 
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
-                Designed to move from isolated operations to connected execution.
+                A modular ecosystem designed for progressive implementation.
               </h2>
 
               <p className="mt-5 text-base leading-8 text-slate-600">
-                This section helps explain the product strategy in operational
-                terms. It shows how different products plug into one another,
-                support process continuity, and feed the same reporting and control
-                layer.
+                Optimum supports phased deployment, allowing organizations to
+                start with core ERP functions and extend into specialized
+                digital systems while keeping operations synchronized across
+                departments, campuses, and business units.
               </p>
 
               <div className="mt-8 rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm">
@@ -383,8 +392,9 @@ export default function ProductEcosystemsPageBody() {
                       Connected by design
                     </h3>
                     <p className="mt-1 text-sm leading-7 text-slate-600">
-                      Each product can stand on its own, but the strongest value is
-                      created when modules and solution layers operate together.
+                      Optimum&apos;s modular architecture lets institutions and
+                      enterprises implement the capabilities they need now, then
+                      expand later without rebuilding the digital foundation.
                     </p>
                   </div>
                 </div>
@@ -419,21 +429,22 @@ export default function ProductEcosystemsPageBody() {
       </section>
 
       <section
-        id="ecosystem-pillars"
-        className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12"
+        id="pes-ecosystem-pillars"
+        className="w-full px-6 py-20 sm:px-16 lg:px-30"
       >
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <BadgePill label="Core strengths" centered={false} />
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
-              The architectural principles behind the ecosystem.
+              Why organizations trust the Optimum ecosystem.
             </h2>
           </div>
 
           <p className="max-w-2xl text-sm leading-7 text-slate-600">
-            These pillars give the page enterprise weight. They show that Optimum’s
-            ecosystem is not just broad, but intentionally engineered for control,
-            visibility, modularity, and scale.
+            These strengths reflect Optimum&apos;s company profile: proven
+            institutional reach, deep implementation experience, tailored
+            enterprise delivery, and a secure hybrid architecture designed for
+            scale.
           </p>
         </div>
 
@@ -463,40 +474,43 @@ export default function ProductEcosystemsPageBody() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
-          <div className="grid gap-8 rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-sm lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
+      <section
+        className="bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800"
+        id="pes-ecosystems-outcomes"
+      >
+        <div className="w-full px-6 py-20 sm:px-16 lg:px-30">
+          <div className="grid gap-8 rounded-[2rem] sm:border sm:border-white/10 sm:bg-white/5 p-none sm:p-8 backdrop-blur-sm lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
             <div>
               <BadgePill label="Ecosystem outcomes" centered={false} />
 
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                What organizations gain from a connected Optimum deployment.
+                Outcomes delivered by a connected Optimum deployment.
               </h2>
 
               <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
-                The value proposition should move beyond “features” and focus on
-                outcomes: better coordination, clearer reporting, fewer silos,
-                stronger control, and a scalable foundation for long-term digital
-                growth.
+                The Optimum ecosystem is designed to reduce administrative
+                workload, strengthen compliance, centralize operational
+                visibility, and create a scalable digital foundation for
+                long-term institutional and enterprise growth.
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {[
                   {
                     icon: CheckCircle2,
-                    text: "Reduced fragmentation across departments and products",
+                    text: "Reduced manual workload through integrated and automated operations",
                   },
                   {
                     icon: Cloud,
-                    text: "A cleaner digital foundation for scaling operations",
+                    text: "Secure hybrid access with protected data and anywhere accessibility",
                   },
                   {
                     icon: Briefcase,
-                    text: "More consistent execution across branches, campuses, and teams",
+                    text: "Better control across departments, campuses, branches, and service units",
                   },
                   {
                     icon: FileBarChart2,
-                    text: "Leadership visibility through centralized reporting and insight",
+                    text: "Stronger leadership insight through dashboards, reports, and analytics",
                   },
                 ].map(({ icon: Icon, text }) => (
                   <div
@@ -519,18 +533,18 @@ export default function ProductEcosystemsPageBody() {
                 {[
                   {
                     icon: School,
-                    label: "Education Stack",
-                    text: "School, college, and university operations linked to finance, reporting, and administration.",
+                    label: "Education & Institutional Platforms",
+                    text: "Flagship education systems including UltimateERP, UltimateCBE, Curriculum Management, and Qualification Award Board.",
                   },
                   {
                     icon: HandCoins,
-                    label: "Financial Services Stack",
-                    text: "SACCO and microfinance workflows connected to servicing, approvals, and operational visibility.",
+                    label: "Campus Operations Stack",
+                    text: "Biometric attendance, gate control, SmartDine, and referral tools that strengthen service delivery and student experience.",
                   },
                   {
                     icon: Building2,
-                    label: "Enterprise Operations Stack",
-                    text: "ERP, inventory, procurement, payroll, projects, and reporting under one controlled environment.",
+                    label: "Business & Sector Solutions",
+                    text: "Enterprise platforms for manufacturing, supply chain, hospitality, lending, healthcare, real estate, dairy, and community organizations.",
                   },
                 ].map(({ icon: Icon, label, text }) => (
                   <div
@@ -541,9 +555,13 @@ export default function ProductEcosystemsPageBody() {
                       <div className="rounded-xl border border-white/10 bg-white/5 p-2">
                         <Icon className="h-4 w-4 text-blue-300" />
                       </div>
-                      <h4 className="text-sm font-semibold text-white">{label}</h4>
+                      <h4 className="text-sm font-semibold text-white">
+                        {label}
+                      </h4>
                     </div>
-                    <p className="mt-3 text-sm leading-7 text-slate-300">{text}</p>
+                    <p className="mt-3 text-sm leading-7 text-slate-300">
+                      {text}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -560,7 +578,7 @@ export default function ProductEcosystemsPageBody() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12">
+      <section className="w-full px-6 py-20 sm:px-16 lg:px-30" id="pes-cta">
         <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 shadow-sm">
           <div className="grid gap-8 px-6 py-10 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-14">
             <div className="max-w-2xl">
@@ -569,13 +587,15 @@ export default function ProductEcosystemsPageBody() {
               </span>
 
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Build a product ecosystem that grows with your operations.
+                Build the right Optimum platform ecosystem for your
+                organization.
               </h2>
 
               <p className="mt-5 text-base leading-8 text-slate-200">
-                Close the page by inviting visitors into a more consultative
-                conversation around modules, workflows, implementation scope, and
-                how Optimum products should be combined for their environment.
+                Bring together flagship ERP, sector-specific platforms,
+                integrations, and analytics in a deployment scope tailored to
+                your workflows, compliance requirements, and long-term growth
+                plans.
               </p>
             </div>
 
@@ -591,7 +611,7 @@ export default function ProductEcosystemsPageBody() {
                 href="/products"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-white/15"
               >
-                Explore products
+                Explore Optimum products
               </a>
             </div>
           </div>

@@ -353,7 +353,7 @@ export default function Home() {
         ]}
         videoSrc="https://www.youtube.com/embed/Da1hUqzoiAo?autoplay=1"
         videoTitle="Optimum ERP System – Product Walkthrough"
-        mockupSrc="/images/saas/laptop.png"
+        mockupSrc="/images/saas/original.png"
         description="Built specifically for Kenya's universities, TVETs, and national polytechnics. Manage student lifecycles, automate finance and payroll, enforce compliance, and give administrators the tools they need to focus on what matters most: education."
         tags={[
           { label: "CBET-CDACC Compliance" },

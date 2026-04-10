@@ -151,7 +151,7 @@ export default function SiteFeatures() {
           {/* Image */}
           <div className="order-1 md:order-2">
             <Image
-              src="/images/saas/laptop.png"
+              src="/images/saas/original.png"
               alt="Email notification dashboard"
               width={600}
               height={450}
