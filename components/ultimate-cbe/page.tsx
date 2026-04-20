@@ -24,6 +24,7 @@ import {
   ArrowRight,
   Play,
 } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
 import { BadgePill } from "../ui/badge-pill";
 import { Button } from "../ui/button";
 import {
@@ -33,7 +34,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 type CardItem = {
@@ -126,41 +127,73 @@ const featureItems: CardItem[] = [
   },
 ];
 
-function SectionHeading({
-  eyebrow,
-  title,
-  description,
-  align = "left",
-}: {
-  eyebrow: string;
-  title: string;
-  description?: string;
-  align?: "left" | "center";
-}) {
-  return (
-    <div
-      className={[
-        "mx-auto max-w-3xl",
-        align === "center" ? "text-center" : "text-left",
-      ].join(" ")}
-    >
-      <BadgePill label={eyebrow} centered={false} />
-      <h2 className="mt-5 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
-        {title}
-      </h2>
-      {description ? (
-        <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
-          {description}
-        </p>
-      ) : null}
-    </div>
-  );
-}
+const PLATFORM_FEATURES = [
+  "Automated CBE Grading",
+  "Student Progress Tracking",
+  "Parent Portals",
+  "KNEC Reporting",
+  "Staff Management",
+];
+
+const viewport = { once: true, amount: 0.2 };
+
+const staggerContainer: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.04,
+    },
+  },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const fadeLeft: Variants = {
+  hidden: { opacity: 0, x: -32 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const fadeRight: Variants = {
+  hidden: { opacity: 0, x: 32 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const popIn: Variants = {
+  hidden: { opacity: 0, scale: 0.96, y: 18 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut" },
+  },
+};
+
 function FeatureCard({ item }: { item: CardItem }) {
   const Icon = item.icon;
 
   return (
-    <div className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-primary-cbe-300 hover:shadow-md">
+    <motion.div
+      variants={fadeUp}
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
+      className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:border-primary-cbe-300 hover:shadow-md"
+    >
       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#0a1b55] to-[#1f3f98] text-white transition duration-300 group-hover:scale-105">
         <Icon className="h-5 w-5" />
       </div>
@@ -170,7 +203,7 @@ function FeatureCard({ item }: { item: CardItem }) {
       <p className="mt-3 text-sm leading-6 text-slate-600">
         {item.description}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -178,8 +211,13 @@ function ComplianceCard({ item }: { item: CardItem }) {
   const Icon = item.icon;
 
   return (
-    <div className="group rounded-3xl border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-[#1f3f98]/20 hover:shadow-md">
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-red-600 transition duration-300 group-hover:bg-red-600 group-hover:text-white">
+    <motion.div
+      variants={fadeUp}
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
+      className="group rounded-3xl border border-slate-200 bg-white p-6 transition duration-300 hover:border-[#1f3f98]/20 hover:shadow-md"
+    >
+      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-red-600 transition duration-300 group-hover:bg-red-600 group-hover:text-white">
         <Icon className="h-5 w-5" />
       </div>
       <h3 className="mt-5 text-md font-semibold text-primary-cbe-500">
@@ -188,7 +226,7 @@ function ComplianceCard({ item }: { item: CardItem }) {
       <p className="mt-3 text-sm leading-6 text-slate-600">
         {item.description}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -202,27 +240,28 @@ interface CardProp {
 
 function Card(prop: CardProp) {
   return (
-    <div
+    <motion.div
+      variants={fadeUp}
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
       className={[
-        "relative flex flex-col overflow-hidden rounded-2xl border p-8 transition-all duration-200",
+        "relative flex flex-col overflow-hidden rounded-2xl border p-8 transition-all duration-200 shadow-sm",
         prop.featured
           ? "bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 border-primary-cbe-500"
-          : "bg-white border-primary-cbe-50 hover:border-primary-cbe-100 hover:shadow-[0_8px_32px_rgba(24,95,165,0.03)]",
+          : "bg-white border-primary-cbe-50 hover:border-primary-cbe-100 hover:shadow-md",
       ].join(" ")}
     >
-      {/* Corner accent */}
       <div
         className={[
-          "pointer-events-none absolute top-0 right-0 w-20 h-20 rounded-bl-full",
-          prop.featured ? "bg-white/10" : "bg-[#EBF1FA]",
+          "pointer-events-none absolute top-0 right-0 h-20 w-20 rounded-bl-full",
+          prop.featured ? "bg-white/10" : "bg-primary-cbe-50",
         ].join(" ")}
       />
 
-      {/* Icon */}
       <div
         className={[
           "relative z-10 mb-5 flex h-[52px] w-[52px] items-center justify-center rounded-[13px] flex-shrink-0",
-          prop.featured ? "bg-white/20" : "bg-[#EBF1FA]",
+          prop.featured ? "bg-white/20" : "bg-primary-cbe-50",
         ].join(" ")}
       >
         <prop.icon
@@ -231,28 +270,27 @@ function Card(prop: CardProp) {
         />
       </div>
 
-      {/* Text */}
       <h3
         className={[
           "mb-2.5 text-base font-bold leading-snug",
-          prop.featured ? "text-white" : "text-primary-cbe-800",
+          prop.featured ? "text-white" : "text-primary-cbe-500",
         ].join(" ")}
       >
         {prop.title}
       </h3>
+
       <p
         className={[
-          "flex-1 text-[13.5px] leading-relaxed mb-[22px]",
+          "mb-[22px] flex-1 text-sm leading-relaxed",
           prop.featured ? "text-white/75" : "text-[#5a6a7e]",
         ].join(" ")}
       >
         {prop.description}
       </p>
 
-      {/* Link */}
       <span
         className={[
-          "text-[11px] font-bold uppercase tracking-[1px] inline-flex items-center gap-1.5 cursor-pointer flex flex-row gap-2 items-center",
+          "inline-flex cursor-pointer items-center gap-2 text-[11px] font-bold uppercase tracking-[1px]",
           prop.featured
             ? "text-white/90 hover:text-white"
             : "text-primary-cta/90 hover:text-primary-cta",
@@ -261,17 +299,9 @@ function Card(prop: CardProp) {
         {prop.cta}
         <ArrowRight size={16} />
       </span>
-    </div>
+    </motion.div>
   );
 }
-
-const PLATFORM_FEATURES = [
-  "Automated CBE Grading",
-  "Student Progress Tracking",
-  "Parent Portals",
-  "KNEC Reporting",
-  "Staff Management",
-];
 
 function StarRating({ rating }: { rating: number }) {
   const full = Math.floor(rating);
@@ -287,7 +317,7 @@ function StarRating({ rating }: { rating: number }) {
         <svg
           key={`f${i}`}
           className="size-3"
-          viewBox="0 0 14 14"
+          viewBox="0 0 10 10"
           fill="#F5A623"
         >
           <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.436.59 3.439L7 8.885l-3.09 1.625L4.5 7.07 2 4.635l3.455-.505L7 1z" />
@@ -295,14 +325,14 @@ function StarRating({ rating }: { rating: number }) {
       ))}
       {frac > 0 && (
         <span className="relative inline-flex">
-          <svg className="size-3" viewBox="0 0 14 14" fill="#E0E0E0">
+          <svg className="size-3" viewBox="0 0 10 10" fill="#E0E0E0">
             <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.436.59 3.439L7 8.885l-3.09 1.625L4.5 7.07 2 4.635l3.455-.505L7 1z" />
           </svg>
           <span
             className="absolute inset-0 overflow-hidden"
             style={{ width: `${frac * 100}%` }}
           >
-            <svg className="size-3" viewBox="0 0 14 14" fill="#F5A623">
+            <svg className="size-3" viewBox="0 0 10 10" fill="#F5A623">
               <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.436.59 3.439L7 8.885l-3.09 1.625L4.5 7.07 2 4.635l3.455-.505L7 1z" />
             </svg>
           </span>
@@ -312,7 +342,7 @@ function StarRating({ rating }: { rating: number }) {
         <svg
           key={`e${i}`}
           className="size-3"
-          viewBox="0 0 14 14"
+          viewBox="0 0 10 10"
           fill="#E0E0E0"
         >
           <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.436.59 3.439L7 8.885l-3.09 1.625L4.5 7.07 2 4.635l3.455-.505L7 1z" />
@@ -323,78 +353,75 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function UltimateCBEPage() {
-  const [visible, setVisible] = useState(false);
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 80);
-    return () => clearTimeout(t);
-  }, []);
+
   return (
-    <main className="bg-white text-primary-cbe-500 w-full">
+    <main className="w-full bg-white text-primary-cbe-500">
       <section
-        className="relative flex flex-col w-full overflow-hidden bg-primary-cbe-50"
+        className="relative flex w-full flex-col overflow-hidden bg-primary-cbe-50"
         id="cbe-hero"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-64px)] max-h-[760px]">
-          {/* ── LEFT: White content panel ── */}
-          <div
-            className={[
-              "relative z-10 flex flex-col justify-center",
-              "px-6 lg:px-30 py-16 gap-7",
-              "transition-[opacity,transform] duration-700 ease-out",
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-7",
-            ].join(" ")}
+        <div className="grid min-h-[calc(100vh-64px)] grid-cols-1 md:grid-cols-2 md:max-h-[760px]">
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={staggerContainer}
+            className="relative z-10 flex flex-col justify-center gap-7 px-6 py-16 lg:px-30"
           >
-            {/* Logo + product badge */}
-            <div className="inline-flex items-center gap-3 w-fit">
-              <div className="size-12 rounded-lg bg-background flex items-center justify-center flex-shrink-0 p-1.5 border border-primary-cbe-100">
+            <motion.div
+              variants={fadeUp}
+              className="inline-flex w-fit items-center gap-3"
+            >
+              <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-lg border border-primary-cbe-100 bg-background p-1.5">
                 <Image
                   src="/logos/ultimate-cbe.svg"
                   alt="UltimateCBE"
                   width={12}
                   height={12}
-                  className="w-full h-full object-contain"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
-                <span className="text-primary-cta font-extrabold">
+                <span className="font-extrabold text-primary-cta">
                   Ultimate
                 </span>{" "}
                 CBE ASSESSMENT ERP
               </span>
-            </div>
+            </motion.div>
 
-            {/* Headline */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.18] text-primary-cbe-800 tracking-[-1px]">
+            <motion.h1
+              variants={fadeUp}
+              className="text-4xl font-bold leading-[1.18] tracking-[-1px] text-primary-cbe-500 lg:text-5xl xl:text-6xl"
+            >
               Competency Based ERP
               <br />
               for{" "}
-              <span className="text-primary-cbe-500 font-bold">
-                Senior Schools
-              </span>
-            </h1>
+              <span className="font-bold text-primary-cta">Senior Schools</span>
+            </motion.h1>
 
-            {/* Subtext */}
-            <p className="text-primary-cbe-800 text-base leading-relaxed max-w-[340px] sm:max-w-[440px]">
+            <motion.p
+              variants={fadeUp}
+              className="max-w-[340px] text-base leading-relaxed text-slate-600 sm:max-w-[440px]"
+            >
               Manage Grades 10–12 seamlessly with UltimateCBE — Kenya&apos;s
               most advanced CBE-aligned platform with real-time insights,{" "}
-              <strong className="text-primary-cbe-500 font-semibold">
+              <strong className="font-semibold text-primary-cbe-500">
                 automated grading
               </strong>
               , and{" "}
-              <strong className="text-primary-cbe-500 font-semibold">
+              <strong className="font-semibold text-primary-cbe-500">
                 KNEC syllabus integration
               </strong>
               . Completely built for your school.
-            </p>
+            </motion.p>
 
-            {/* CTAs */}
-            <div className="flex items-center gap-3 flex-wrap">
-              {/* Primary — red action */}
+            <motion.div
+              variants={fadeUp}
+              className="flex flex-wrap items-center gap-3"
+            >
               <Button
                 variant="default"
-                size="lg"
                 onClick={() => {
                   router.push("/ultimate-cbe/schedule-demo");
                 }}
@@ -403,17 +430,14 @@ export default function UltimateCBEPage() {
                 <ArrowRight className="size-4" />
               </Button>
 
-              {/* Ghost — secondary / video */}
               <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="ghost" size="lg">
-                    <span className="size-7 rounded-full bg-primary-cbe-800 flex items-center justify-center flex-shrink-0">
-                      <Play
-                        size={10}
-                        fill="white"
-                        color="white"
-                        className="ml-px"
-                      />
+                  <Button
+                    variant="ghost"
+                    className="hidden sm:inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors duration-300 hover:border-slate-400 hover:bg-slate-50"
+                  >
+                    <span className="flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary-cbe-800">
+                      <Play size={4} fill="white" color="white" />
                     </span>
                     Watch Overview
                   </Button>
@@ -433,133 +457,188 @@ export default function UltimateCBEPage() {
                   </div>
                 </DialogContent>
               </Dialog>
-            </div>
+            </motion.div>
 
-            {/* Rating social proof */}
-            <div className="flex items-center gap-2 pt-1">
+            <motion.div
+              variants={fadeUp}
+              className="flex items-center gap-3 pt-1"
+            >
               <StarRating rating={4.6} />
-              <span className="text-[13px] text-slate-500">
-                <strong className="text-slate-700 font-medium">
+              <span className="text-[13px] text-slate-600">
+                <strong className="font-medium text-primary-cbe-500">
                   Rated 4.6
                 </strong>{" "}
                 · trusted by{" "}
-                <strong className="text-slate-700 font-medium">500+</strong>{" "}
+                <strong className="font-medium text-primary-cbe-500">
+                  500+
+                </strong>{" "}
                 Kenyan schools
               </span>
-            </div>
-          </div>
-          {/* ── RIGHT: Photo ── */}
-          <div className="relative overflow-hidden hidden md:block">
-            {/* Hero photo */}
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={fadeRight}
+            className="relative hidden overflow-hidden md:block"
+          >
             <Image
               src="/images/cbe/hero.jpg"
               alt="Teacher working with students on CBE curriculum"
               fill
-              className="object-cover object-center z-[1]"
+              className="z-[1] object-cover object-center"
               priority
             />
 
-            {/*
-            Left-edge bleed — softens the hard cut between
-            white left panel and photo.
-          */}
             <div
-              className="absolute inset-0 z-[2] pointer-events-none"
+              className="pointer-events-none absolute inset-0 z-[2]"
               style={{
                 background: `
-                linear-gradient(to right, rgba(255,255,255,0.15) 0%, transparent 25%),
-                linear-gradient(135deg, rgba(11,61,145,0.15) 0%, transparent 55%)
-              `,
+                  linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, transparent 25%),
+                  linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, transparent 55%)
+                `,
               }}
               aria-hidden="true"
             />
 
-            {/* KNEC tag — top-right */}
-            <div className="absolute top-8 right-8 z-10 bg-primary-cbe-800 text-white text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full flex items-center gap-2">
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.5, ease: "easeOut" }}
+              className="absolute right-8 top-8 z-10 flex items-center gap-2 rounded-full bg-primary-cbe-800 px-3.5 py-1.5 text-sm font-bold uppercase tracking-widest text-white"
+            >
               <CheckCircle2 className="size-3" />
               KNEC Aligned
-            </div>
+            </motion.div>
 
-            {/* Floating activity badge — bottom-left */}
-            <div
-              className="absolute bottom-10 left-6 z-10 bg-white rounded-xl px-4 py-3 flex items-center gap-3 min-w-[230px]"
-              style={{
-                boxShadow:
-                  "0 8px 32px rgba(11,61,145,0.15), 0 2px 8px rgba(0,0,0,0.06)",
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.55, ease: "easeOut" }}
+              className="absolute bottom-10 left-6 z-10 flex min-w-[230px] items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-[0_8px_32px_rgba(11,61,145,0.15),0_2px_8px_rgba(0,0,0,0.06)]"
             >
-              <div className="size-10 rounded-lg bg-[#E8F0FC] flex items-center justify-center flex-shrink-0">
+              <div className="flex size-10 flex-shrink-0 items-center justify-center rounded-lg bg-[#E8F0FC]">
                 <CheckCircle2 className="size-5 text-primary-cbe-800" />
               </div>
               <div>
-                <p className="text-[13px] font-medium text-slate-800 leading-tight">
+                <p className="text-sm font-semibold leading-tight text-slate-800">
                   Auto-grading enabled
                 </p>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  47 assessments processed today
+                <p className="mt-0.5 text-sm text-slate-400">
+                  Automatic assessments processing
                 </p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-        <div className="relative z-20 bg-primary-cbe-500 px-6 sm:px-10 lg:px-16 py-4 flex items-center gap-6 flex-wrap">
-          <span className="text-xs uppercase tracking-widest text-white/60 whitespace-nowrap flex-shrink-0">
+
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={staggerContainer}
+          className="relative z-20 flex flex-wrap items-center gap-6 bg-primary-cbe-500 px-6 py-4 sm:px-10 lg:px-16"
+        >
+          <motion.span
+            variants={fadeUp}
+            className="whitespace-nowrap text-sm font-semibold uppercase tracking-widest text-white/80"
+          >
             Platform includes:
-          </span>
-          <div className="flex items-center gap-3 flex-wrap">
+          </motion.span>
+
+          <div className="flex flex-wrap items-center gap-3">
             {PLATFORM_FEATURES.map((feature) => (
-              <span
+              <motion.span
                 key={feature}
-                className="flex items-center gap-2 bg-white/8 border border-white/12 rounded-full px-3.5 py-1 text-xs text-white/80 whitespace-nowrap"
+                variants={fadeUp}
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
+                className="flex whitespace-nowrap items-center gap-2 rounded-full border border-white/12 bg-white/8 px-3.5 py-1 text-sm text-white/80"
               >
-                <span className="size-1.5 rounded-full bg-[#7AAFF5] flex-shrink-0" />
+                <span className="size-1.5 flex-shrink-0 rounded-full bg-[#7AAFF5]" />
                 {feature}
-              </span>
+              </motion.span>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
-      <section
+
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        variants={staggerContainer}
         className="w-full px-6 py-20 sm:px-16 lg:px-30"
         id="product-overview"
       >
         <div className="grid items-start gap-12 lg:grid-cols-[0.92fr_1.08fr]">
-          <div>
-            <SectionHeading
-              eyebrow="Platform overview"
-              title="What is UltimateCBE?"
-              description="An all-in-one ERP platform for competency-based assessment in Senior School, tailored for pathway-based learning across STEM, Arts & Sports, and Social Sciences."
-            />
+          <motion.div variants={fadeLeft}>
+            <div className="mx-auto max-w-3xl text-left">
+              <motion.div variants={fadeUp}>
+                <BadgePill label="Platform overview" centered={false} />
+              </motion.div>
+              <motion.h2
+                variants={fadeUp}
+                className="mt-5 text-2xl font-extrabold leading-tight tracking-tight text-primary-cbe-500 sm:text-4xl"
+              >
+                What is <span className="text-primary-cta">Ultimate</span>CBE?
+              </motion.h2>
+              <motion.p
+                variants={fadeUp}
+                className="mt-4 text-base leading-7 text-slate-600 sm:text-lg"
+              >
+                An all-in-one ERP platform for competency-based assessment in
+                Senior School, tailored for pathway-based learning across STEM,
+                Arts & Sports, and Social Sciences.
+              </motion.p>
+            </div>
 
-            <div className="mt-8 space-y-5 text-base leading-8 text-slate-600">
-              <p>
+            <motion.div
+              variants={staggerContainer}
+              className="mt-8 space-y-5 text-md leading-8 text-slate-600"
+            >
+              <motion.p variants={fadeUp}>
                 The platform is purpose-built for institutions delivering
                 competency-driven assessment and seeking better operational
                 control, stronger academic visibility, and standards-aligned
                 workflows.
-              </p>
-              <p>
+              </motion.p>
+              <motion.p variants={fadeUp}>
                 It transforms traditional grading into a more meaningful,
                 competency-focused evaluation model while centralizing the
                 assessment lifecycle inside one connected system.
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <motion.div
+              variants={staggerContainer}
+              className="mt-8 flex flex-wrap gap-3 text-xs font-medium text-slate-600 sm:text-sm"
+            >
               {["STEM", "Arts & Sports", "Social Sciences"].map((pathway) => (
-                <span
+                <motion.span
                   key={pathway}
-                  className="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-700"
+                  variants={fadeUp}
+                  whileHover={{ y: -3 }}
+                  transition={{ duration: 0.18 }}
+                  className="rounded-full border border-primary-cbe-100 bg-white/80 px-4 py-2 text-sm text-slate-600 shadow-sm"
                 >
                   {pathway}
-                </span>
+                </motion.span>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0a1b55] text-white">
+          <motion.div
+            variants={staggerContainer}
+            className="grid gap-5 sm:grid-cols-2"
+          >
+            <motion.div
+              variants={popIn}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.22 }}
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#0a1b55] text-white">
                 <GraduationCap className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-lg font-semibold text-primary-cbe-500">
@@ -569,10 +648,15 @@ export default function UltimateCBEPage() {
                 Built for structured senior school delivery across pathway
                 models with stronger assessment governance.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-600 text-white">
+            <motion.div
+              variants={popIn}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.22 }}
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-600 text-white">
                 <Layers3 className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-lg font-semibold text-primary-cbe-500">
@@ -582,9 +666,14 @@ export default function UltimateCBEPage() {
                 Converts academic tracking into measurable competency mapping,
                 evidence capture, and learner progression insight.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:col-span-2">
+            <motion.div
+              variants={popIn}
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.22 }}
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:col-span-2"
+            >
               <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <h3 className="text-lg font-semibold text-primary-cbe-500">
@@ -599,45 +688,96 @@ export default function UltimateCBEPage() {
                 </div>
 
                 <div className="grid shrink-0 grid-cols-2 gap-3">
-                  <div className="rounded-2xl bg-slate-50 px-4 py-3 text-center">
+                  <motion.div
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.18 }}
+                    className="rounded-xl bg-slate-50 px-4 py-3 text-center"
+                  >
                     <div className="text-xl font-extrabold text-primary-cbe-500">
                       CBE
                     </div>
-                    <div className="font-semibold mt-1 text-xs uppercase tracking-widest text-primary-cbe-400">
+                    <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
                       aligned
                     </div>
-                  </div>
-                  <div className="rounded-2xl bg-slate-50 px-4 py-3 text-center">
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.18 }}
+                    className="rounded-xl bg-slate-50 px-4 py-3 text-center"
+                  >
                     <div className="text-xl font-extrabold text-primary-cbe-500">
                       ERP
                     </div>
-                    <div className="font-semibold mt-1 text-xs uppercase tracking-widest text-primary-cbe-400">
+                    <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
                       connected
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
-      <section
-        className="w-full bg-background bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat overflow-hidden"
+      </motion.section>
+
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        variants={staggerContainer}
+        className="w-full overflow-hidden bg-background bg-[url('/patterns/content-pattern.png')] bg-cover-top bg-no-repeat"
         id="why-ultimatecbe"
       >
-        <div className="text-center flex flex-col gap-3 items-center px-6 sm:px-30 pt-16 sm:pt-32">
-          <BadgePill label="Why UltimateCBE" centered={true} />
-          <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
+        <motion.div
+          variants={staggerContainer}
+          className="hidden sm:flex flex-col items-center gap-3 px-6 pt-16 text-center sm:px-30 sm:pt-32"
+        >
+          <motion.div variants={fadeUp}>
+            <BadgePill label="Why UltimateCBE" centered={true} />
+          </motion.div>
+          <motion.h2
+            variants={fadeUp}
+            className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-primary-cbe-500 sm:text-4xl"
+          >
             A Platform Designed for Standards, <br />
             Structure, and <span className="text-primary-cta">Visibility.</span>
-          </h2>
-          <p className="mx-auto max-w-[600px] text-[15px] leading-[1.7] text-primary-cbe-800/60 line-clamp-3">
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto max-w-[600px] text-md leading-[1.7] text-primary-cbe-800/60 line-clamp-3"
+          >
             UltimateCBE combines regulatory alignment, assessment control,
             competency tracking, and real-time academic visibility in one
             product experience.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 bg-gradient-to-t from-background to-transparent via-background px-6 sm:px-30 w-full py-10 sm:py-16">
+          </motion.p>
+        </motion.div>
+        <motion.div
+          variants={staggerContainer}
+          className="sm:hidden flex flex-col items-start gap-3 px-6 pt-16 text-left sm:px-30 sm:pt-32"
+        >
+          <motion.div variants={fadeUp}>
+            <BadgePill label="Why UltimateCBE" centered={false} />
+          </motion.div>
+          <motion.h2
+            variants={fadeUp}
+            className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-primary-cbe-500 sm:text-4xl"
+          >
+            A Platform Designed for Standards, Structure, and{" "}
+            <span className="text-primary-cta">Visibility.</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto max-w-[600px] text-md leading-[1.7] text-primary-cbe-800/60 line-clamp-10"
+          >
+            UltimateCBE combines regulatory alignment, assessment control,
+            competency tracking, and real-time academic visibility in one
+            product experience.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          className="grid w-full grid-cols-1 gap-5 bg-gradient-to-t from-background via-background to-transparent px-6 py-10 sm:px-30 sm:py-16 md:grid-cols-2 lg:grid-cols-3"
+        >
           {[
             {
               title: "Designed for Competency-Based Education",
@@ -690,52 +830,119 @@ export default function UltimateCBEPage() {
           ].map((card) => (
             <Card key={card.title} {...card} />
           ))}
-        </div>
-      </section>
-      <section id="product-features" className="w-full px-6 py-20 sm:px-15 lg:px-30">
-        <div className="text-center flex flex-col gap-3 items-center px-6 sm:px-30 pt-16 sm:pt-32">
-          <BadgePill label="Key features" centered={true} />
-          <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
+        </motion.div>
+      </motion.section>
+
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        variants={staggerContainer}
+        id="product-features"
+        className="w-full px-6 py-20 sm:px-15 lg:px-30"
+      >
+        <motion.div
+          variants={staggerContainer}
+          className="hidden sm:flex flex-col items-center gap-3 px-6 pt-16 text-center sm:px-30 sm:pt-32"
+        >
+          <motion.div variants={fadeUp}>
+            <BadgePill label="Key features" centered={true} />
+          </motion.div>
+          <motion.h2
+            variants={fadeUp}
+            className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-primary-cbe-500 sm:text-4xl"
+          >
             Everything Needed to Run Modern <br />
             Competency-Based{" "}
             <span className="text-primary-cta">Assessment.</span>
-          </h2>
-          <p className="mx-auto max-w-[600px] text-[15px] leading-[1.7] text-primary-cbe-800/60 line-clamp-3">
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto max-w-[600px] text-md leading-[1.7] text-primary-cbe-800/60 line-clamp-3"
+          >
             From mapping learning outcomes to grading, reporting, parent
             communication, and national system integration, UltimateCBE
             centralizes the assessment stack.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
+        <motion.div
+          variants={staggerContainer}
+          className="sm:hidden flex flex-col items-start text-left gap-3 px-0 pt-12 sm:px-30 sm:pt-32"
+        >
+          <motion.div variants={fadeUp}>
+            <BadgePill label="Key features" centered={false} />
+          </motion.div>
+          <motion.h2
+            variants={fadeUp}
+            className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-primary-cbe-500 sm:text-4xl"
+          >
+            Everything Needed to Run Modern Competency-Based{" "}
+            <span className="text-primary-cta">Assessment.</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto max-w-[600px] text-md leading-[1.7] text-primary-cbe-800/60 line-clamp-10"
+          >
+            From mapping learning outcomes to grading, reporting, parent
+            communication, and national system integration, UltimateCBE
+            centralizes the assessment stack.
+          </motion.p>
+        </motion.div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <motion.div
+          variants={staggerContainer}
+          className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+        >
           {featureItems.map((item) => (
             <FeatureCard key={item.title} item={item} />
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      <section className="bg-[#f8fafc]" id="product-accreditation">
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        variants={staggerContainer}
+        className="bg-[#f8fafc]"
+        id="product-accreditation"
+      >
         <div className="w-full px-6 py-20 sm:px-15 lg:px-30">
           <div className="grid items-start gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-            <div>
-              <div className="text-left flex flex-col gap-3 justify-start items-start">
-                <BadgePill
-                  label="Accreditation & compliance"
-                  centered={false}
-                />
-                <h2 className="mb-4 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
-                  Designed to Operate Within Approved{" "}
-                  <span className="text-primary-cta">
-                    Academic and Data Standards.
-                  </span>
-                </h2>
-                <p className="mx-auto max-w-[600px] text-[15px] leading-[1.7] text-primary-cbe-800/60 line-clamp-3">
-                  UltimateCBE supports institutional compliance with core Kenyan
-                  education and data governance requirements.
-                </p>
+            <motion.div variants={fadeLeft}>
+              <div className="flex items-start justify-start gap-3 text-left">
+                <div className="flex flex-col items-start gap-3">
+                  <motion.div variants={fadeUp}>
+                    <BadgePill
+                      label="Accreditation & compliance"
+                      centered={false}
+                    />
+                  </motion.div>
+                  <motion.h2
+                    variants={fadeUp}
+                    className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-primary-cbe-500 sm:text-4xl"
+                  >
+                    Designed to Operate Within Approved{" "}
+                    <span className="text-primary-cta">
+                      Academic and Data Standards.
+                    </span>
+                  </motion.h2>
+                  <motion.p
+                    variants={fadeUp}
+                    className="mx-auto max-w-[600px] text-md leading-[1.7] text-primary-cbe-800/60 line-clamp-10"
+                  >
+                    UltimateCBE supports institutional compliance with core
+                    Kenyan education and data governance requirements.
+                  </motion.p>
+                </div>
               </div>
 
-              <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_60px_-40px_rgba(15,23,42,0.25)]">
+              <motion.div
+                variants={popIn}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.22 }}
+                className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_60px_-40px_rgba(15,23,42,0.25)]"
+              >
                 <ul className="space-y-4 text-sm leading-6 text-slate-600">
                   {[
                     "Competency-Based Education (CBE) Guidelines",
@@ -744,25 +951,36 @@ export default function UltimateCBEPage() {
                     "National Education Management Information System (NEMIS) Integration",
                     "Data Protection Act (Kenya)",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
+                    <motion.li
+                      key={item}
+                      variants={fadeUp}
+                      className="flex items-start gap-3"
+                    >
                       <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
                       <span>{item}</span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+            <motion.div
+              variants={staggerContainer}
+              className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3"
+            >
               {complianceItems.map((item) => (
                 <ComplianceCard key={item.title} item={item} />
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        variants={staggerContainer}
         id="product-demo"
         className="relative isolate w-full overflow-hidden px-6 py-20 sm:px-16 lg:px-30 lg:py-28"
       >
@@ -771,47 +989,64 @@ export default function UltimateCBEPage() {
 
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
-            <div className="flex flex-col gap-6">
-              <BadgePill label="Demo Preview" centered={false} />
+            <motion.div variants={fadeLeft} className="flex flex-col gap-6">
+              <motion.div variants={fadeUp}>
+                <BadgePill label="Demo Preview" centered={false} />
+              </motion.div>
 
-              <div className="space-y-4">
-                <h2 className="text-xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
+              <motion.div variants={staggerContainer} className="space-y-4">
+                <motion.h2
+                  variants={fadeUp}
+                  className="text-xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl"
+                >
                   Transform Competency-Based
                   <br />
                   Assessment with
                   <span className="text-primary-cta"> Ultimate</span>CBE
-                </h2>
+                </motion.h2>
 
-                <p className="max-w-xl text-base leading-8 text-white/72">
+                <motion.p
+                  variants={fadeUp}
+                  className="max-w-xl text-md leading-8 text-white/72"
+                >
                   Deliver structured, compliant, and efficient competency-based
                   assessments aligned with Kenya’s education framework. Built
                   for Senior School, UltimateCBE helps institutions manage
                   learner progression, competency mapping, continuous
                   assessments, and academic visibility from one connected
                   platform.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <motion.div
+                variants={staggerContainer}
+                className="grid gap-3 sm:grid-cols-2"
+              >
                 {[
                   "Competency Mapping & Alignment",
                   "Continuous & Formative Assessments",
                   "Student Performance Tracking",
                   "Parent Communication & Engagement",
                 ].map((item) => (
-                  <div
+                  <motion.div
                     key={item}
+                    variants={fadeUp}
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.18 }}
                     className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-sm text-white/85 backdrop-blur-sm transition duration-300 hover:bg-white/12"
                   >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/12 text-primary-cta">
-                      <CheckCircle2 className="h-4 w-4" />
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-cta/12 text-primary-cta">
+                      <CheckCircle2 className="h-6 w-6" />
                     </span>
                     <span className="leading-6">{item}</span>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <motion.div
+                variants={fadeUp}
+                className="flex flex-wrap items-center sm:gap-4 gap-2 pt-2"
+              >
                 <Button
                   variant="default"
                   size="lg"
@@ -850,36 +1085,64 @@ export default function UltimateCBEPage() {
                     </div>
                   </DialogContent>
                 </Dialog>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-wrap gap-3 pt-2">
+              <motion.div
+                variants={staggerContainer}
+                className="flex flex-wrap gap-3 pt-2"
+              >
                 {[
                   "Senior School (Grades 10–12)",
                   "MOE & KNEC Aligned",
                   "NEMIS Ready",
                 ].map((tag) => (
-                  <span
+                  <motion.span
                     key={tag}
-                    className="rounded-full border border-white/10 bg-white/8 px-3.5 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm"
+                    variants={fadeUp}
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.18 }}
+                    className="rounded-full border border-primary-cbe-100/10 bg-white/5 px-4 py-2 text-sm text-slate-200 shadow-sm"
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div className="relative mx-auto w-full max-w-[720px]">
-              <div className="absolute -left-6 top-8 h-28 w-28 rounded-full bg-primary-cta/20 blur-3xl" />
-              <div className="absolute -right-8 bottom-8 h-36 w-36 rounded-full bg-white/12 blur-3xl" />
+            <motion.div
+              variants={fadeRight}
+              className="relative mx-auto w-full max-w-[720px]"
+            >
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute -left-6 top-8 h-28 w-28 rounded-full bg-primary-cta/20 blur-3xl"
+              />
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute -right-8 bottom-8 h-36 w-36 rounded-full bg-white/12 blur-3xl"
+              />
 
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/8 p-3 shadow-[0_40px_120px_-40px_rgba(2,6,23,0.65)] backdrop-blur-md">
+              <motion.div
+                variants={popIn}
+                className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/8 p-3 shadow-[0_40px_120px_-40px_rgba(2,6,23,0.65)] backdrop-blur-md"
+              >
                 <div className="rounded-[1.6rem] border border-white/10 bg-slate-950/30 p-3">
                   <div className="mb-3 flex items-center justify-between rounded-2xl border border-white/10 bg-white/6 px-4 py-3">
                     <div>
                       <p className="text-sm font-semibold text-white">
                         UltimateCBE Dashboard Preview
                       </p>
-                      <p className="mt-1 text-xs text-white/55">
+                      <p className="mt-1 text-sm text-white/55">
                         Structured assessment management for senior schools
                       </p>
                     </div>
@@ -889,20 +1152,33 @@ export default function UltimateCBEPage() {
                   </div>
 
                   <div className="relative overflow-hidden rounded-[1.4rem] bg-white">
-                    <Image
-                      src="/images/saas/original.png"
-                      alt="UltimateCBE product preview"
-                      width={1400}
-                      height={900}
-                      priority
-                      className="h-auto w-full object-cover"
-                    />
+                    <motion.div
+                      initial={{ scale: 1.04 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true, amount: 0.4 }}
+                      transition={{ duration: 0.9, ease: "easeOut" }}
+                    >
+                      <Image
+                        src="/images/saas/original.png"
+                        alt="UltimateCBE product preview"
+                        width={1400}
+                        height={900}
+                        priority
+                        className="h-auto w-full object-cover"
+                      />
+                    </motion.div>
 
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-cbe-900/18 via-transparent to-transparent" />
                   </div>
                 </div>
 
-                <div className="absolute left-4 bottom-4 hidden max-w-[280px] rounded-2xl border border-white/10 bg-white p-4 shadow-xl lg:block">
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ delay: 0.2, duration: 0.45, ease: "easeOut" }}
+                  className="absolute bottom-4 left-4 hidden max-w-[280px] rounded-xl border border-white/10 bg-white p-3 shadow-xl lg:block"
+                >
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-cbe-50 text-primary-cbe-600">
                       <Layers3 className="h-5 w-5" />
@@ -911,15 +1187,21 @@ export default function UltimateCBEPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Competency Mapping
                       </p>
-                      <p className="mt-1 text-xs leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500">
                         Align assessments to competencies, values, and learning
                         outcomes.
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="absolute bottom-4 right-4 hidden max-w-[280px] rounded-2xl border border-white/10 bg-white p-4 shadow-xl lg:block">
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ delay: 0.32, duration: 0.45, ease: "easeOut" }}
+                  className="absolute bottom-4 right-4 hidden max-w-[280px] rounded-xl border border-white/10 bg-white p-3 shadow-xl lg:block"
+                >
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-cbe-50 text-primary-cbe-600">
                       <ClipboardCheck className="h-5 w-5" />
@@ -928,16 +1210,19 @@ export default function UltimateCBEPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Continuous Assessment
                       </p>
-                      <p className="mt-1 text-xs leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500">
                         Support practicals, portfolios, and formative
                         evaluations in one system.
                       </p>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
-              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <motion.div
+                variants={staggerContainer}
+                className="mt-5 grid gap-3 sm:grid-cols-3"
+              >
                 {[
                   {
                     label: "Assessment Flow",
@@ -952,8 +1237,11 @@ export default function UltimateCBEPage() {
                     value: "Real-Time",
                   },
                 ].map((item) => (
-                  <div
+                  <motion.div
                     key={item.label}
+                    variants={fadeUp}
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.18 }}
                     className="rounded-2xl border border-white/10 bg-white/8 px-4 py-4 text-center backdrop-blur-sm"
                   >
                     <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
@@ -962,41 +1250,64 @@ export default function UltimateCBEPage() {
                     <p className="mt-2 text-sm font-semibold text-white">
                       {item.value}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        variants={staggerContainer}
         id="contact-us"
-        className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-12"
+        className="w-full px-6 py-20 sm:px-15 lg:px-30"
       >
-        <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-50 to-white shadow-sm">
+        <motion.div
+          variants={popIn}
+          className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-50 to-white shadow-sm"
+        >
           <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
-              <div className="flex-1 flex flex-col justify-center">
-                <div className="inline-flex items-center text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
+            <motion.div
+              variants={fadeLeft}
+              className="flex flex-col justify-between p-6 sm:p-8 lg:p-10"
+            >
+              <div className="flex flex-1 flex-col justify-start pt-10">
+                <motion.div
+                  variants={fadeUp}
+                  className="inline-flex items-center text-xs font-semibold uppercase tracking-widest text-primary-cbe-400"
+                >
                   Request a demo
-                </div>
-                <h2 className="mt-5 max-w-2xl text-3xl font-extrabold tracking-tight text-primary-cbe-500 sm:text-4xl">
-                  Transform competency-based assessment with UltimateCBE.
-                </h2>
+                </motion.div>
+                <motion.h2
+                  variants={fadeUp}
+                  className="mt-5 max-w-2xl text-xl font-extrabold tracking-tight text-primary-cbe-500 sm:text-4xl"
+                >
+                  Transform Competency-based Assessment with{" "}
+                  <span className="text-primary-cta">Ultimate</span>CBE.
+                </motion.h2>
 
-                <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">
+                <motion.p
+                  variants={fadeUp}
+                  className="mt-5 max-w-2xl text-md leading-7 text-slate-600"
+                >
                   Deliver structured, compliant, and efficient competency-based
                   assessments aligned with Kenya’s education framework.
-                </p>
+                </motion.p>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <motion.div
+                variants={fadeUp}
+                className="mt-8 flex flex-wrap sm:gap-4 gap-2"
+              >
                 <a
                   href="mailto:info@optimumsystems.co.ke"
                   className="inline-flex items-center justify-center rounded-full bg-primary-cta px-6 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-primary-cta-800"
                 >
-                  Email Optimum
+                  Email Us
                 </a>
                 <a
                   href="tel:+254118859686"
@@ -1004,61 +1315,86 @@ export default function UltimateCBEPage() {
                 >
                   Call for Demo
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div className="border-t border-slate-200 bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 border-primary-cbe-500 p-8 text-white sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
-              <h3 className="text-xl font-semibold">
+            <motion.div
+              variants={fadeRight}
+              className="border-primary-cbe-500 border-t bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 p-6 text-white sm:p-8 lg:border-l lg:border-t-0 lg:p-10"
+            >
+              <motion.h3
+                variants={fadeUp}
+                className="text-md font-semibold sm:text-xl"
+              >
                 Optimum ERP Systems Ltd.
-              </h3>
+              </motion.h3>
 
-              <div className="mt-8 space-y-5 text-sm text-slate-300">
-                <div className="flex items-start gap-3">
-                  <Phone className="mt-0.5 h-5 w-5 text-red-400" />
-                  <span>0118 859 686 | 0118 859 685</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-5 w-5 text-red-400" />
-                  <span>info@optimumsystems.co.ke</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Globe className="mt-0.5 h-5 w-5 text-red-400" />
-                  <span>www.optimumsystems.co.ke</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 text-red-400" />
-                  <span>
-                    Crown Z Towers, 3rd Floor, Office B3
-                    <br />
-                    Eastern Bypass, near KCB Kamakis
-                  </span>
-                </div>
-              </div>
+              <motion.div
+                variants={staggerContainer}
+                className="mt-8 space-y-5 text-sm text-slate-200"
+              >
+                {[
+                  {
+                    icon: Phone,
+                    text: "0118 859 686 | 0118 859 685",
+                  },
+                  {
+                    icon: Mail,
+                    text: "info@optimumsystems.co.ke",
+                  },
+                  {
+                    icon: Globe,
+                    text: "www.optimumsystems.co.ke",
+                  },
+                  {
+                    icon: MapPin,
+                    text: "Crown Z Towers, 3rd Floor, Office B3 Eastern Bypass, near KCB Kamakis",
+                  },
+                ].map((item) => (
+                  <motion.div
+                    key={item.text}
+                    variants={fadeUp}
+                    className="flex items-center gap-3"
+                  >
+                    <div className="rounded-full border border-primary-cta/30 bg-primary-cta/20 p-2">
+                      <item.icon className="mt-0.5 h-5 w-5 text-primary-cta" />
+                    </div>
+                    <span className="whitespace-pre-line line-clamp-2">
+                      {item.text}
+                    </span>
+                  </motion.div>
+                ))}
+              </motion.div>
 
-              <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+              <motion.div
+                variants={fadeUp}
+                className="mt-10 flex flex-col items-start gap-6 rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur"
+              >
                 <div className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
                   Product focus
                 </div>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2">
                   {[
                     "Competency tracking",
                     "Continuous assessment",
                     "National standards",
                     "Parent engagement",
                   ].map((chip) => (
-                    <span
+                    <motion.span
                       key={chip}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-slate-200"
+                      whileHover={{ y: -3 }}
+                      transition={{ duration: 0.18 }}
+                      className="rounded-full border border-primary-cbe-100/10 bg-white/5 px-4 py-2 text-sm text-slate-200 shadow-sm"
                     >
                       {chip}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </main>
   );
 }

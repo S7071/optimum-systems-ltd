@@ -112,9 +112,9 @@ export default function SiteMainFeature() {
         <div className="absolute top-[-11%] right-0 h-72 w-72 rounded-full bg-primary-cta/5 blur-3xl" />
       </div>
 
-      <div className="relative w-full px-6 py-16 sm:px-10 sm:py-24 md:px-30">
+      <div className="relative w-full px-0 py-16 sm:px-10 sm:py-24 md:px-30">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center flex flex-col gap-3 items-center">
+        <div className="px-6 sm:px-0 w-full text-center flex flex-col gap-3 items-center">
           <BadgePill label="Our Flagship Product" centered={true} />
 
           <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
@@ -130,7 +130,7 @@ export default function SiteMainFeature() {
         </div>
 
         {/* Hero content */}
-        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="px-6 sm:px-0 mt-14 grid items-stretch gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           {/* Left panel */}
           <div className="relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white/90 p-7 shadow-sm backdrop-blur sm:p-9">
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-cbe-500 via-primary-cbe-400 to-primary-cta" />
@@ -182,7 +182,7 @@ export default function SiteMainFeature() {
                     </p>
                   </div>
 
-                  <div className="flex shrink-0 items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                  <div className="flex shrink-0 items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 w-fit">
                     <span className="h-2 w-2 rounded-full bg-emerald-500" />
                     Stable & secure
                   </div>
@@ -268,12 +268,12 @@ export default function SiteMainFeature() {
         </div>
 
         {/* Value proposition cards */}
-        <div className="mt-16 rounded-[32px] border border-slate-200 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-6 py-8 shadow-sm sm:px-8 sm:py-10 lg:px-10">
+        <div className="mt-16 sm:rounded-[32px] sm:border border-slate-200 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-6 py-8 sm:shadow-sm sm:px-8 sm:py-10 lg:px-10">
           <div className="mx-auto max-w-3xl text-center">
             <BadgePill label="Why Institutions Choose UltimateERP" centered />
             <h3 className="mt-5 text-2xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Operational depth with
-              <span className="text-primary-cta"> enterprise discipline</span>
+              Operational Depth with
+              <span className="text-primary-cta"> Enterprise Discipline</span>
             </h3>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
               A refined ERP foundation for institutions that need performance,
@@ -305,36 +305,38 @@ export default function SiteMainFeature() {
         </div>
 
         {/* Modules */}
-        <div className="mt-10 rounded-[28px] border border-slate-200 bg-white/90 p-6 shadow-sm backdrop-blur sm:p-8">
-          <div className="flex flex-col gap-4 border-b border-slate-200 pb-6 sm:flex-row sm:items-end sm:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.125rem] text-primary-cbe-400">
-                Operational Coverage
-              </p>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight text-primary-cbe-500 sm:text-3xl">
-                30+ integrated modules across the institution
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
-                Structured for real operational breadth, from academics and
-                finance to biometric controls, self-service portals, and
-                executive reporting.
-              </p>
-            </div>
-
-            <div className="inline-flex w-fit items-center rounded-full border border-primary-cbe-100 bg-primary-cbe-50 px-4 py-2 text-sm font-semibold text-primary-cbe-700">
-              Unified • Scalable • Connected
-            </div>
-          </div>
-
-          <div className="mt-6 flex flex-wrap gap-3">
-            {modules.map((module) => (
-              <div
-                key={module}
-                className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-cbe-200 hover:bg-primary-cbe-50 hover:text-primary-cbe-700"
-              >
-                {module}
+        <div className="px-6 sm:px-0">
+          <div className="mt-10 rounded-[28px] border border-slate-200 bg-white/90 p-6 shadow-sm backdrop-blur sm:p-8">
+            <div className="flex flex-col gap-4 border-b border-slate-200 pb-6 sm:flex-row sm:items-end sm:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.125rem] text-primary-cbe-400">
+                  Operational Coverage
+                </p>
+                <h3 className="mt-2 text-2xl font-bold tracking-tight text-primary-cbe-500 sm:text-3xl">
+                  30+ integrated modules across the institution
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
+                  Structured for real operational breadth, from academics and
+                  finance to biometric controls, self-service portals, and
+                  executive reporting.
+                </p>
               </div>
-            ))}
+
+              <div className="inline-flex w-fit items-center rounded-full border border-primary-cbe-100 bg-primary-cbe-50 px-4 py-2 text-sm font-semibold text-primary-cbe-700">
+                Unified • Scalable • Connected
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              {modules.map((module) => (
+                <div
+                  key={module}
+                  className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-cbe-200 hover:bg-primary-cbe-50 hover:text-primary-cbe-700"
+                >
+                  {module}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import BadgePill from "@/components/ui/badge-pill";
 import { motion, type Variants } from "framer-motion";
 import {
   ArrowRight,
@@ -13,7 +14,6 @@ import {
   Landmark,
   Layers3,
   ShieldCheck,
-  Sparkles,
   TrendingUp,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -80,8 +80,7 @@ const caseStudies: CaseStudy[] = [
       { label: "Finance visibility improvement", value: "Real-time" },
     ],
     icon: GraduationCap,
-    accent:
-      "from-blue-600/20 via-blue-500/10 to-red-500/10",
+    accent: "from-blue-600/20 via-blue-500/10 to-red-500/10",
   },
   {
     id: "county-operations-modernization",
@@ -102,8 +101,7 @@ const caseStudies: CaseStudy[] = [
       { label: "Audit readiness", value: "Improved" },
     ],
     icon: Landmark,
-    accent:
-      "from-red-600/20 via-red-500/10 to-blue-500/10",
+    accent: "from-red-600/20 via-red-500/10 to-blue-500/10",
   },
   {
     id: "manufacturing-control-suite",
@@ -124,8 +122,7 @@ const caseStudies: CaseStudy[] = [
       { label: "Reporting speed", value: "3x" },
     ],
     icon: Building2,
-    accent:
-      "from-slate-700/30 via-blue-600/15 to-red-600/10",
+    accent: "from-slate-700/30 via-blue-600/15 to-red-600/10",
   },
   {
     id: "retail-branch-visibility",
@@ -146,8 +143,7 @@ const caseStudies: CaseStudy[] = [
       { label: "Decision visibility", value: "Centralized" },
     ],
     icon: BarChart3,
-    accent:
-      "from-blue-700/20 via-sky-500/10 to-red-500/10",
+    accent: "from-blue-700/20 via-sky-500/10 to-red-500/10",
   },
 ];
 
@@ -191,14 +187,11 @@ function SectionHeading({
       viewport={{ once: true, amount: 0.3 }}
       className="mx-auto max-w-3xl text-center"
     >
-      <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-blue-700">
-        <Sparkles className="h-3.5 w-3.5" />
-        {eyebrow}
-      </div>
-      <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+      <BadgePill label={eyebrow} centered={true} />
+      <h2 className="mt-5 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
         {title}
       </h2>
-      <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
+      <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
         {description}
       </p>
     </motion.div>
@@ -208,7 +201,7 @@ function SectionHeading({
 function MetricPill({ metric }: { metric: Metric }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm shadow-slate-200/40">
-      <div className="text-2xl font-semibold tracking-tight text-slate-950">
+      <div className="text-2xl font-bold tracking-tight text-primary-cbe-500">
         {metric.value}
       </div>
       <div className="mt-1 text-sm text-slate-600">{metric.label}</div>
@@ -217,13 +210,16 @@ function MetricPill({ metric }: { metric: Metric }) {
 }
 
 export default function CaseStudiesPage() {
-    const router = useRouter();
+  const router = useRouter();
   return (
     <main className="relative isolate overflow-hidden bg-white text-slate-900 w-full">
       <div className="absolute inset-x-0 top-0 -z-10 h-[36rem] bg-[radial-gradient(circle_at_top,_rgba(29,78,216,0.14),_transparent_46%),radial-gradient(circle_at_top_right,_rgba(220,38,38,0.1),_transparent_30%)]" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.4),rgba(255,255,255,1))]" />
 
-      <section className="mx-auto max-w-7xl px-6 pb-16 pt-16 sm:px-8 sm:pt-24 lg:px-12">
+      <section
+        className="w-full px-6 sm:px-15 lg:px-30 py-8 sm:pt-24"
+        id="csp-hero"
+      >
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -233,29 +229,33 @@ export default function CaseStudiesPage() {
           <div>
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-1.5 text-sm font-medium text-red-700"
+              className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-2.5 sm:py-1.5 text-sm font-medium text-red-700"
             >
-              <CheckCircle2 className="h-4 w-4" />
-              Proven transformation across education, public sector, and enterprise operations
+              <CheckCircle2 className="h-4 w-4 hidden sm:block" />
+              Proven transformation across education, public sector, and
+              enterprise operations
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl"
+              className="mt-6 max-w-4xl text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.18] text-primary-cbe-500 tracking-[-1px]"
             >
-              Case studies that show how Optimum turns complex operations into measurable outcomes.
+              Case Studies That Show How We Turn Complex Operations into
+              Measurable Outcomes.
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg"
+              className="mt-6 max-w-2xl text-slate-600 text-base leading-relaxed"
             >
-              Explore selected implementation stories that highlight how Optimum helps organizations streamline workflows, improve visibility, strengthen controls, and scale with confidence.
+              Explore selected implementation stories that highlight how we help
+              organizations streamline workflows, improve visibility, strengthen
+              controls, and scale with confidence.
             </motion.p>
 
             <motion.div
               variants={fadeUp}
-              className="mt-8 flex flex-wrap gap-3"
+              className="mt-8 hidden sm:flex flex-wrap gap-3"
             >
               {[
                 "ERP Transformation",
@@ -275,12 +275,12 @@ export default function CaseStudiesPage() {
 
           <motion.div
             variants={fadeUp}
-            className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-950 p-7 shadow-[0_24px_70px_-24px_rgba(15,23,42,0.55)] sm:p-8"
+            className="relative overflow-hidden rounded-[2rem] bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 shadow-sm p-6 sm:p-8"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.35),_transparent_32%),radial-gradient(circle_at_bottom_right,_rgba(239,68,68,0.28),_transparent_28%)]" />
             <div className="relative">
-              <div className="flex items-center gap-3 text-sm font-medium text-blue-100">
-                <Clock3 className="h-4 w-4" />
+              <div className="flex items-center gap-3 text-sm font-medium text-primary-cbe-200">
+                <Clock3 className="h-6 w-6" />
                 Delivery built for speed, clarity, and scale
               </div>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -292,7 +292,7 @@ export default function CaseStudiesPage() {
                       className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
                     >
                       <Icon className="h-5 w-5 text-white/90" />
-                      <div className="mt-4 text-3xl font-semibold tracking-tight text-white">
+                      <div className="mt-4 text-3xl font-bold tracking-tight text-white">
                         {stat.value}
                       </div>
                       <div className="mt-2 text-sm leading-6 text-slate-300">
@@ -307,31 +307,44 @@ export default function CaseStudiesPage() {
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-12">
+      <section
+        className="w-full px-0 sm:px-15 lg:px-30 py-8 sm:py-12"
+        id="csp-featured"
+      >
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeUp}
-          className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-950 p-1 shadow-[0_30px_90px_-36px_rgba(15,23,42,0.65)]"
+          className="relative overflow-hidden sm:rounded-[2rem] sm:shadow-sm"
         >
-          <div className="relative overflow-hidden rounded-[calc(2rem-4px)] bg-slate-950">
-            <div className={`absolute inset-0 bg-gradient-to-br ${featuredStudy.accent}`} />
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.22),rgba(2,6,23,0.88))]" />
-
+          <div className="relative overflow-hidden sm:rounded-[calc(2rem-4px)] bg-gradient-to-tr from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800">
             <div className="relative grid gap-8 p-8 sm:p-10 lg:grid-cols-[1fr_0.95fr] lg:p-12">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-blue-100">
-                  Featured Case Study
+                <div className="hidden sm:flex flex-col">
+                  <BadgePill label="Featured Case Study" centered={false} />
+                  <div className="mt-6 w-fit flex items-center gap-4 rounded-full border border-primary-cbe-50/10 bg-primary-cbe-50/10 backdrop-blur-sm px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
+                    <GraduationCap className="h-5 w-5" />
+                    {featuredStudy.sector}
+                  </div>
+                  <h2 className="mt-4 max-w-2xl text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-white">
+                    {featuredStudy.title}
+                  </h2>
                 </div>
-                <div className="mt-6 flex items-center gap-3 text-sm font-medium text-slate-200">
-                  <featuredStudy.icon className="h-5 w-5 text-blue-300" />
-                  {featuredStudy.sector}
+                <div className="sm:hidden flex flex-col items-start">
+                  <div className="w-full flex flex-col items-center">
+                    <BadgePill label="Featured Case Study" centered={true} />
+                  </div>
+                  
+                  <div className="mt-6 w-fit flex items-center gap-4 rounded-full border border-primary-cbe-50/10 bg-primary-cbe-50/10 backdrop-blur-sm px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
+                    <GraduationCap className="h-5 w-5" />
+                    {featuredStudy.sector}
+                  </div>
+                  <h2 className="mt-4 max-w-2xl text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-white">
+                    {featuredStudy.title}
+                  </h2>
                 </div>
-                <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                  {featuredStudy.title}
-                </h2>
-                <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
                   {featuredStudy.summary}
                 </p>
 
@@ -341,10 +354,12 @@ export default function CaseStudiesPage() {
                       key={metric.label}
                       className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-sm"
                     >
-                      <div className="text-2xl font-semibold tracking-tight text-white">
+                      <div className="text-xl font-bold tracking-tight text-white">
                         {metric.value}
                       </div>
-                      <div className="mt-1 text-sm text-slate-300">{metric.label}</div>
+                      <div className="mt-1 text-sm text-slate-300">
+                        {metric.label}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -361,7 +376,7 @@ export default function CaseStudiesPage() {
                     key={item.label}
                     className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm"
                   >
-                    <div className="text-xs font-semibold uppercase tracking-[0.22em] text-red-200">
+                    <div className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
                       {item.label}
                     </div>
                     <p className="mt-3 text-sm leading-7 text-slate-200 sm:text-[15px]">
@@ -375,10 +390,13 @@ export default function CaseStudiesPage() {
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-12">
+      <section
+        className="w-full px-6 sm:px-15 lg:px-30 py-8 sm:py-12"
+        id="csp-success-stories"
+      >
         <SectionHeading
           eyebrow="Success Stories"
-          title="A closer look at how transformation gets delivered"
+          title="A Closer Look at How Transformation Gets Delivered"
           description="These case studies are structured to spotlight the operational challenge, the implementation approach, and the measurable business outcome created by Optimum’s delivery model."
         />
 
@@ -396,56 +414,65 @@ export default function CaseStudiesPage() {
               <motion.article
                 key={study.id}
                 variants={fadeUp}
-                className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 shadow-[0_18px_55px_-28px_rgba(15,23,42,0.28)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_65px_-32px_rgba(15,23,42,0.35)] sm:p-8"
+                className="flex flex-col justify-start items-start group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:p-8"
               >
-                <div
-                  className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${study.accent}`}
-                />
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-                      {study.sector}
-                    </div>
-                    <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">
-                      {study.title}
-                    </h3>
-                  </div>
-                  <div className="rounded-2xl border border-blue-100 bg-blue-50 p-3 text-blue-700">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                </div>
-
-                <p className="mt-4 text-base leading-7 text-slate-600">
-                  {study.summary}
-                </p>
-
-                <div className="mt-7 grid gap-4">
-                  {[
-                    ["Challenge", study.challenge],
-                    ["Solution", study.solution],
-                    ["Outcome", study.outcome],
-                  ].map(([label, value]) => (
-                    <div
-                      key={label}
-                      className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4"
-                    >
-                      <div className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                        {label}
+                <div className="w-full flex flex-col flex-1">
+                  <div
+                    className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${study.accent}`}
+                  />
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-600">
+                        {study.sector}
                       </div>
-                      <p className="mt-2 text-sm leading-7 text-slate-700">{value}</p>
+                      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-primary-cbe-500">
+                        {study.title}
+                      </h3>
                     </div>
-                  ))}
+                    <div className="rounded-xl border border-blue-100 bg-blue-50 p-3 text-blue-700">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                  </div>
+
+                  <p className="mt-4 text-base leading-7 text-slate-600">
+                    {study.summary}
+                  </p>
+
+                  <div className="mt-7 grid gap-4">
+                    {[
+                      ["Challenge", study.challenge],
+                      ["Solution", study.solution],
+                      ["Outcome", study.outcome],
+                    ].map(([label, value]) => (
+                      <div
+                        key={label}
+                        className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4"
+                      >
+                        <div className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
+                          {label}
+                        </div>
+                        <p className="mt-2 text-sm leading-7 text-slate-700">
+                          {value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                    {study.metrics.map((metric) => (
+                      <MetricPill key={metric.label} metric={metric} />
+                    ))}
+                  </div>
                 </div>
 
-                <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                  {study.metrics.map((metric) => (
-                    <MetricPill key={metric.label} metric={metric} />
-                  ))}
-                </div>
-
-                <div className="mt-7 flex items-center gap-2 text-sm font-semibold text-blue-700" onClick={() => {
-                    router.push("/resources/case-studies/engagement-summary-sample");
-                }}>
+                <div
+                  className="mt-7 flex items-center gap-2 text-sm font-semibold text-blue-700 cursor-pointer"
+                  onClick={() => {
+                    router.push(
+                      "/resources/case-studies/engagement-summary-sample",
+                    );
+                  }}
+                >
                   View engagement summary
                   <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </div>
@@ -455,23 +482,31 @@ export default function CaseStudiesPage() {
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-12">
+      <section className="w-full py-16" id="csp-delivery-approach">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.25 }}
-            className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8"
+            className="sm:rounded-[2rem] sm:border border-primary-cbe-100 sm:bg-primary-cbe-50 px-6 sm:p-8 lg:ml-30"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-blue-700">
-              Delivery Approach
+            <div className="hidden sm:flex flex-col">
+              <BadgePill label="Delivery Approach" centered={false} />
+              <h3 className="mt-5 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
+                Why Our Implementations Create Durable Results
+              </h3>
             </div>
-            <h3 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950">
-              Why Optimum implementations create durable results
-            </h3>
-            <p className="mt-4 text-base leading-8 text-slate-600">
-              Beyond software deployment, the implementation model focuses on business alignment, process clarity, user adoption, security, and long-term operational continuity.
+            <div className="sm:hidden flex flex-col text-center items-center">
+              <BadgePill label="Delivery Approach" centered={true} />
+              <h3 className="mt-5 text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500">
+                Why Our Implementations Create Durable Results
+              </h3>
+            </div>
+            <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+              Beyond software deployment, the implementation model focuses on
+              business alignment, process clarity, user adoption, security, and
+              long-term operational continuity.
             </p>
           </motion.div>
 
@@ -480,7 +515,7 @@ export default function CaseStudiesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.18 }}
-            className="grid gap-4 sm:grid-cols-2"
+            className="grid gap-4 sm:grid-cols-2 px-6 lg:pr-30"
           >
             {[
               {
@@ -507,9 +542,9 @@ export default function CaseStudiesPage() {
               <motion.div
                 key={item.title}
                 variants={fadeUp}
-                className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/50"
+                className="rounded-[1.75rem] border border-primary-cbe-100 bg-white p-6 shadow-sm"
               >
-                <h4 className="text-lg font-semibold tracking-tight text-slate-950">
+                <h4 className="text-lg font-semibold tracking-tight text-primary-cbe-500">
                   {item.title}
                 </h4>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
@@ -521,38 +556,44 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:px-8 lg:px-12">
+      <section
+        className="w-full px-6 sm:px-15 lg:px-30 pb-24 pt-10"
+        id="csp-cta"
+      >
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
           variants={fadeUp}
-          className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_24px_70px_-34px_rgba(15,23,42,0.32)] sm:p-10"
+          className="relative overflow-hidden rounded-[2rem] border border-primary-cbe-100 bg-white p-8 shadow-sm sm:p-10"
         >
           <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.12),_transparent_55%),radial-gradient(circle_at_bottom_right,_rgba(239,68,68,0.12),_transparent_40%)] lg:block" />
           <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-red-700">
-                Next Step
-              </div>
-              <h3 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                Ready to position your next implementation as a measurable success story?
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
+                Next Action
+              </p>
+              <h3 className="mt-5 text-2xl font-bold text-pretty leading-tight tracking-tight text-primary-cbe-500">
+                Ready to Position your Next Implementation as a Measurable
+                Success Story?
               </h3>
-              <p className="mt-4 text-base leading-8 text-slate-600">
-                Partner with Optimum to design, implement, and scale a solution that improves visibility, strengthens control, and drives operational performance.
+              <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+                Partner with Optimum ERP Systems Ltd to design, implement, and
+                scale a solution that improves visibility, strengthens control,
+                and drives operational performance.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-4">
               <a
-                href="#"
-                className="inline-flex items-center justify-center rounded-full bg-blue-700 px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-blue-800"
+                href="/contact-us"
+                className="inline-flex items-center justify-center rounded-full bg-primary-cta px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-primary-cta-800"
               >
                 Discuss Your Project
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="/products"
                 className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors duration-300 hover:border-slate-400 hover:bg-slate-50"
               >
                 Explore Solutions

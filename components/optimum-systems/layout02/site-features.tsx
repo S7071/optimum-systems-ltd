@@ -1,11 +1,9 @@
-"use client";
-
 /* eslint-disable @next/next/no-img-element */
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import BadgePill from "@/components/ui/badge-pill";
+import Link from "next/link";
 
 interface FeatureCard {
   id: number;
@@ -99,13 +97,11 @@ function ProductName({ name }: { name: string }) {
 }
 
 export default function SiteFeatures() {
-  const router = useRouter();
-
   return (
     <section className="relative w-full bg-white py-12 sm:py-16 lg:py-20">
-      <div className="w-full px-6 sm:px-16 lg:px-30">
+      <div className="w-full px-0 sm:px-16 lg:px-30">
         {/* Header */}
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-6 py-14 shadow-sm sm:px-10 sm:py-16 lg:px-14">
+        <div className="relative overflow-hidden sm:rounded-[2rem] sm:border border-white/10 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-6 py-14 sm:shadow-sm sm:px-10 sm:py-16 lg:px-14">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(230,51,41,0.16),transparent_22%)]" />
 
           <div className="relative z-10 mx-auto max-w-4xl text-center">
@@ -114,7 +110,8 @@ export default function SiteFeatures() {
 
               <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-50 mb-4">
                 Purpose-Built ERP <br />
-                Products for <span className="text-primary-cta">Every Industry</span>
+                Products for{" "}
+                <span className="text-primary-cta">Every Industry</span>
               </h3>
 
               <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
@@ -124,7 +121,7 @@ export default function SiteFeatures() {
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-8 hidden sm:flex flex-wrap items-center justify-center gap-3">
               {[
                 "Industry-specific design",
                 "Operationally integrated",
@@ -142,7 +139,7 @@ export default function SiteFeatures() {
         </div>
 
         {/* Cards */}
-        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="px-6 sm:px-0 mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {featureCards.map((card) => (
             <Card
               key={card.id}
@@ -208,32 +205,39 @@ export default function SiteFeatures() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-8 rounded-[1.75rem] border border-slate-200 bg-gradient-to-b from-white to-slate-50 px-6 py-8 shadow-sm sm:px-8">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
-                Product Ecosystem
-              </p>
-              <h3 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-slate-950">
-                Explore the Full Optimum ERP Portfolio
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                Discover additional product lines, modules, and enterprise
-                solutions tailored for institutions and growing organizations.
-              </p>
-            </div>
+        <div className="px-6 sm:px-0">
+          <div className="relative overflow-hidden mt-8 rounded-[1.75rem] border border-slate-200 bg-white px-6 py-8 shadow-sm sm:px-8">
+            <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.12),_transparent_55%),radial-gradient(circle_at_bottom_right,_rgba(239,68,68,0.12),_transparent_40%)] lg:block" />
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between relative">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-400">
+                  Product Ecosystem
+                </p>
+                <h3 className="mt-2 text-2xl font-bold text-pretty leading-tight tracking-tight text-primary-cbe-500">
+                  Explore the Full Optimum ERP Portfolio
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  Discover additional product lines, modules, and enterprise
+                  solutions tailored for institutions and growing organizations.
+                </p>
+              </div>
 
-            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <Button size="lg" onClick={() => router.push("/products")}>
-                Explore All Products
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                <Link
+                  href="/products"
+                  className="inline-flex items-center justify-center rounded-full bg-primary-cta px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-primary-cta-800"
+                >
+                  Explore All Products
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
 
-              <a href="/contact">
-                <Button size="lg" variant="outline">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors duration-300 hover:border-slate-400 hover:bg-slate-50"
+                >
                   Talk to Our Team
-                </Button>
-              </a>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

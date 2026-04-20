@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { BadgePill } from "@/components/ui/badge-pill";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 type CaseStudyProp = {
   id?: string | number;
@@ -75,7 +76,7 @@ function FeaturedCaseStudyCard({ study }: { study: CaseStudyProp }) {
           </span>
 
           {(study.institution || study.location) && (
-            <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-right text-[11px] font-medium text-white/90 backdrop-blur">
+            <div className="hidden sm:block rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-right text-[11px] font-medium text-white/90 backdrop-blur">
               {study.institution || study.location}
             </div>
           )}
@@ -130,7 +131,7 @@ function StandardCaseStudyCard({ study }: { study: CaseStudyProp }) {
           </span>
 
           {(study.metricLabel || study.metric) && (
-            <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1.5 text-[10px] font-medium text-white/90 backdrop-blur">
+            <span className="hidden sm:block rounded-full border border-white/10 bg-black/20 px-3 py-1.5 text-[10px] font-medium text-white/90 backdrop-blur">
               {study.metricLabel || study.metric}
             </span>
           )}
@@ -267,13 +268,13 @@ export default function SiteCaseStudies({ description, caseStudies }: Props) {
             polytechnics adopting enterprise systems at scale.
           </div>
 
-          <a
-            href="/case-studies"
+          <Link
+            href="/resources/case-studies"
             className="group inline-flex items-center gap-2 rounded-full bg-primary-cta px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-cta-800"
           >
             View all case studies
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

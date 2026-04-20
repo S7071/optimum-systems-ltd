@@ -1,5 +1,6 @@
 "use client";
 
+import BadgePill from "@/components/ui/badge-pill";
 import {
   ChartBarBigIcon,
   ChevronRight,
@@ -32,7 +33,6 @@ interface SearchHint {
 }
 
 interface HelpProps {
-  title?: string;
   subtitle?: string;
   categories?: HelpCategory[];
   popularTopics?: PopularTopic[];
@@ -44,37 +44,37 @@ interface HelpProps {
 
 const DEFAULT_CATEGORIES: HelpCategory[] = [
   {
-    icon: <GraduationCap className="size-5" />,
+    icon: <GraduationCap className="size-6" />,
     title: "Student Management",
     description: "Enroll, manage, and track student records across all classes.",
     articles: 14,
   },
   {
-    icon: <ChartBarBigIcon className="size-5" />,
+    icon: <ChartBarBigIcon className="size-6" />,
     title: "Assessment & Grading",
     description: "Set up assessments, rubrics, and generate report cards.",
     articles: 11,
   },
   {
-    icon: <ClipboardClock className="size-5" />,
+    icon: <ClipboardClock className="size-6" />,
     title: "Competency & Pathways",
     description: "CBE pathway setup, KNEC alignment, and curriculum mapping.",
     articles: 13,
   },
   {
-    icon: <Users className="size-5" />,
+    icon: <Users className="size-6" />,
     title: "Parent & Student Portal",
     description: "Accessing dashboards, profiles, and managing notifications.",
     articles: 10,
   },
   {
-    icon: <User className="size-5" />,
+    icon: <User className="size-6" />,
     title: "Account & Settings",
     description: "User roles, permissions, profile, and system configuration.",
     articles: 7,
   },
   {
-    icon: <ShoppingBag className="size-5" />,
+    icon: <ShoppingBag className="size-6" />,
     title: "Integrations",
     description: "NEMIS, e-learning tools, and third-party service connections.",
     articles: 10,
@@ -98,7 +98,6 @@ const DEFAULT_HINTS: SearchHint[] = [
 ];
 
 const SiteHelpCenter = ({
-  title = "Help Center",
   subtitle = "Browse articles, guides, and answers across all Optimum System modules.",
   categories = DEFAULT_CATEGORIES,
   popularTopics = DEFAULT_TOPICS,
@@ -119,18 +118,14 @@ const SiteHelpCenter = ({
           style={{ clipPath: "ellipse(55% 100% at 50% 100%)" }}
         />
 
-        {/* Badge */}
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-300 backdrop-blur-sm">
-          <span className="size-1.5 rounded-full bg-blue-400 inline-block" />
-          Support Center
-        </div>
+        <BadgePill label="Support Center" centered={true} />
 
         <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
           How can we{" "}
-          <em className="not-italic text-[#ff5555]">help</em>{" "}
+          <em className="not-italic text-primary-cta">help</em>{" "}
           you today?
         </h1>
-        <p className="mt-2 text-base text-white/60">{subtitle}</p>
+        <p className="mt-2 text-base text-slate-200">{subtitle}</p>
 
         {/* Search */}
         <div className="relative mx-auto mt-8 max-w-xl">
@@ -167,13 +162,10 @@ const SiteHelpCenter = ({
 
         {/* Section label */}
         <div className="mb-5 flex items-center justify-between">
-          <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#2556b8]">
-            <span className="inline-block h-0.5 w-4 rounded bg-[#e53535]" />
-            Browse by category
-          </span>
+          <BadgePill label="Browse by category" centered={false} />
           <a
             href="#"
-            className="flex items-center gap-1 text-xs font-semibold text-[#2556b8] transition hover:text-[#e53535]"
+            className="flex items-center gap-1 text-xs font-semibold text-primary-cta transition hover:text-primary-cta-800"
           >
             All categories <ChevronRight className="size-3.5" />
           </a>
@@ -185,13 +177,13 @@ const SiteHelpCenter = ({
             <a
               key={index}
               href="#"
-              className="group relative flex cursor-pointer flex-col gap-3 overflow-hidden rounded-2xl border border-[#e4e9f2] bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-[0_10px_40px_rgba(13,34,72,0.14)] no-underline"
+              className="group relative flex cursor-pointer flex-col gap-3 overflow-hidden rounded-xl border border-primary-cbe-50 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-primary-cbe-200 hover:shadow-md no-underline"
             >
               {/* Top accent bar on hover */}
-              <span className="pointer-events-none absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-[#2556b8] to-[#7eaaf5] transition-transform duration-300 group-hover:scale-x-100 rounded-t-2xl" />
+              <span className="pointer-events-none absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-primary-cbe-800 to-primary-cta transition-transform duration-300 group-hover:scale-x-100 rounded-t-2xl" />
 
               {/* Icon */}
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#e8f0fd] text-[#2556b8] transition duration-200 group-hover:bg-[#2556b8] group-hover:text-white">
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary-cbe-50 text-primary-cbe-500 transition duration-200 group-hover:bg-primary-cbe-500 group-hover:text-white">
                 {category.icon}
               </div>
 
@@ -201,7 +193,7 @@ const SiteHelpCenter = ({
                   <h3 className="text-sm font-semibold text-[#141820]">
                     {category.title}
                   </h3>
-                  <ChevronRight className="size-3.5 shrink-0 text-[#9aa5b8] transition duration-200 group-hover:translate-x-0.5 group-hover:text-[#2556b8]" />
+                  <ChevronRight className="size-3.5 shrink-0 text-[#9aa5b8] transition duration-200 group-hover:translate-x-0.5 group-hover:text-primary-cta" />
                 </div>
                 <p className="mt-1 text-xs leading-relaxed text-[#4a5568]">
                   {category.description}
@@ -210,7 +202,7 @@ const SiteHelpCenter = ({
 
               {/* Footer */}
               <div className="border-t border-[#e4e9f2] pt-3">
-                <span className="rounded-full bg-[#f2f6fe] px-2.5 py-0.5 text-[11px] font-semibold text-[#2556b8]">
+                <span className="rounded-full bg-[#f2f6fe] px-2.5 py-0.5 text-[11px] font-semibold text-primary-cta">
                   {category.articles} articles
                 </span>
               </div>
@@ -220,7 +212,7 @@ const SiteHelpCenter = ({
 
         {/* Popular topics */}
         <div className="mb-5 flex items-center gap-2">
-          <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#2556b8]">
+          <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary-cta">
             <span className="inline-block h-0.5 w-4 rounded bg-[#e53535]" />
             Popular topics
           </span>
@@ -238,7 +230,7 @@ const SiteHelpCenter = ({
                 href={topic.href}
                 className="flex items-center gap-2 rounded-lg border border-transparent bg-[#f3f6fb] px-3 py-2.5 text-xs font-medium text-[#4a5568] transition hover:border-blue-200 hover:bg-[#e8f0fd] hover:text-[#1a3a7c] no-underline"
               >
-                <ChevronRight className="size-3 shrink-0 text-[#2556b8]" />
+                <ChevronRight className="size-3 shrink-0 text-primary-cta" />
                 {topic.title}
               </a>
             ))}

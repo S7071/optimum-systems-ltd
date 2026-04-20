@@ -1,14 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  ArrowRight,
-  ChevronDown,
-  HelpCircle,
-  Search,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, ChevronDown, HelpCircle, Search } from "lucide-react";
 import BadgePill from "@/components/ui/badge-pill";
+import Link from "next/link";
 
 type Category = "all" | "general" | "platform" | "billing" | "support";
 
@@ -134,15 +129,15 @@ export default function SiteFaq() {
         <div className="absolute right-0 top-24 h-72 w-72 rounded-full bg-red-100 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-full px-6 md:px-30">
+      <div className="relative mx-auto max-w-full px-0 md:px-30">
         {/* Hero */}
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 shadow-sm">
+        <div className="relative overflow-hidden sm:rounded-[2rem] bg-gradient-to-br from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 shadow-sm">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
             <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-red-500/10 blur-3xl" />
           </div>
 
-          <div className="relative z-10 px-6 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
+          <div className="relative z-10 px-6 sm:px-10 lg:px-12 py-10 sm:py-12 lg:py-14">
             <div className="w-full flex flex-col items-center text-center gap-3">
               <BadgePill label="FAQ CENTER" centered={true} />
 
@@ -158,7 +153,7 @@ export default function SiteFaq() {
               </p>
             </div>
 
-            <div className="mt-14 rounded-2xl border border-white/10 bg-white/10 p-3 backdrop-blur-md">
+            <div className="mt-14 rounded-2xl border border-white/10 bg-white/10 p-3 backdrop-blur-md hidden sm:block">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
                 <div className="relative flex-1">
                   <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -192,7 +187,7 @@ export default function SiteFaq() {
               </div>
             </div>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="mt-6 hidden sm:grid gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 backdrop-blur-sm">
                 <p className="text-2xl font-semibold text-white">
                   {FAQS.length}
@@ -222,8 +217,8 @@ export default function SiteFaq() {
         {/* Main content */}
         <div className="mt-8 grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
           {/* Sidebar */}
-          <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_20px_60px_-32px_rgba(15,23,42,0.2)]">
+          <aside className="lg:sticky lg:top-24 lg:self-start hidden sm:block">
+            <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm">
               <div className="border-b border-slate-200 px-6 py-5">
                 <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-300">
                   Browse by Category
@@ -322,10 +317,10 @@ export default function SiteFaq() {
           </aside>
 
           {/* FAQ Panel */}
-          <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_20px_60px_-32px_rgba(15,23,42,0.2)]">
-            <div className="border-b border-slate-200 px-6 py-5 sm:px-8">
+          <div className="overflow-hidden sm:rounded-[1.75rem] sm:border border-slate-200 bg-white sm:shadow-sm">
+            <div className="sm:border-b border-slate-200 px-6 py-5 sm:px-8 hidden sm:block">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="w-[60%]">
+                <div className="sm:w-[60%] w-full">
                   <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-300">
                     {activeCategoryLabel}
                   </p>
@@ -338,7 +333,7 @@ export default function SiteFaq() {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">
+                <div className="sm:rounded-2xl sm:border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600 hidden sm:block">
                   Showing{" "}
                   <span className="font-semibold text-primary-cbe-500">
                     {filteredFaqs.length}
@@ -361,7 +356,7 @@ export default function SiteFaq() {
                           "overflow-hidden rounded-[1.5rem] border transition-all duration-300",
                           isOpen
                             ? "border-primary-cbe-200 bg-primary-cbe-50/60 shadow-sm"
-                            : "border-slate-200 bg-white hover:border-primary-cbe-100 hover:shadow-md",
+                            : "border-slate-200 bg-white hover:border-primary-cbe-100 hover:shadow-xs",
                         ].join(" ")}
                       >
                         <button
@@ -373,7 +368,7 @@ export default function SiteFaq() {
                         >
                           <div
                             className={[
-                              "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-all duration-300",
+                              "hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-all duration-300",
                               isOpen
                                 ? "bg-primary-cbe-500 text-white"
                                 : "bg-primary-cbe-100 text-primary-cbe-500",
@@ -384,11 +379,11 @@ export default function SiteFaq() {
 
                           <div className="min-w-0 flex-1">
                             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                              <h4 className="pr-4 text-base font-semibold leading-7 text-primary-cbe-500 sm:text-lg">
+                              <h4 className="pr-4 text-sm sm:text-base font-semibold leading-7 text-primary-cbe-500 sm:text-lg">
                                 {faq.question}
                               </h4>
 
-                              <span className="inline-flex w-fit rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium capitalize text-slate-600">
+                              <span className="hidden sm:inline-flex w-fit rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium capitalize text-slate-600">
                                 {faq.category}
                               </span>
                             </div>
@@ -422,7 +417,7 @@ export default function SiteFaq() {
                               id={`faq-answer-${faq.id}`}
                               className="border-t border-slate-200/80 px-5 pb-5 pt-4 sm:px-6 sm:pb-6"
                             >
-                              <div className="pl-[3.65rem]">
+                              <div className="sm:pl-[3.65rem]">
                                 <p className="max-w-3xl text-sm leading-7 text-slate-600 sm:text-[15px]">
                                   {faq.answer}
                                 </p>
@@ -463,33 +458,37 @@ export default function SiteFaq() {
         </div>
 
         {/* CTA */}
-        <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm">
-          <div className="relative grid gap-6 overflow-hidden bg-gradient-to-r from-primary-cbe-800 via-primary-cbe-500 to-primary-cbe-800 px-6 py-8 sm:px-8 lg:grid-cols-[1.35fr_auto] lg:items-center">
-            <div className="pointer-events-none absolute right-0 top-0 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
-            <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-red-500/10 blur-3xl" />
+        <div className="px-6 sm:px-0">
+          <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm">
+            <div className="relative grid gap-6 overflow-hidden bg-primary-cbe-500 px-6 py-8 sm:px-8 lg:grid-cols-[1.35fr_auto] lg:items-center">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.28),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(239,68,68,0.22),_transparent_32%)]" />
 
-            <div className="relative z-10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
-                Next step
-              </p>
-              <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white">
-                Still Have Questions?
-              </h3>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-white/70">
-                Pair the FAQ with a clear support escalation path so users can
-                move from self-service to direct assistance without losing
-                momentum.
-              </p>
-            </div>
+              <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+                <div className="max-w-2xl">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-primary-cbe-200">
+                    Next Action
+                  </p>
 
-            <div className="relative z-10">
-              <button
-                type="button"
-                className="inline-flex items-center gap-2 rounded-full bg-primary-cta hover:bg-primary-cta-800 px-5 py-3.5 text-sm font-semibold text-primary-cbe-50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
-              >
-                Contact Support
-                <ArrowRight className="h-4 w-4" />
-              </button>
+                  <h3 className="mt-5 text-2xl font-bold text-pretty leading-tight tracking-tight text-primary-cbe-50">
+                    Still Have Questions?
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
+                    Pair the FAQ with a clear support escalation path so users
+                    can move from self-service to direct assistance without
+                    losing momentum.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap">
+                  <Link
+                    href="/contact-us"
+                    className="inline-flex items-center justify-center rounded-full bg-primary-cta px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-primary-cta-800"
+                  >
+                    Contact Support
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

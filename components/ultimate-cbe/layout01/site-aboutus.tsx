@@ -40,8 +40,8 @@ type Commitment = {
 };
 
 const sectionLinks: SectionLink[] = [
-  { label: "Who We Are", href: "#who-we-are" },
-  { label: "Our Direction", href: "#our-direction" },
+  { label: "Who We Are", href: "#au-who-we-are" },
+  { label: "Our Direction", href: "#au-our-direction" },
   { label: "Our Focus", href: "#our-focus" },
   { label: "How We Deliver", href: "#how-we-deliver" },
   { label: "Our Commitment", href: "#our-commitment" },
@@ -155,11 +155,11 @@ export default function SiteAboutUs() {
         <div className="absolute bottom-[-8rem] left-1/3 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl animate-pulse" />
       </div>
 
-      <section className="relative isolate border-b border-slate-200/70 bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.16),_transparent_35%),linear-gradient(180deg,#f8fbff_0%,#ffffff_52%,#f8fafc_100%)]">
+      <section className="relative isolate border-b border-slate-200/70 bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.16),_transparent_35%),linear-gradient(180deg,#f8fbff_0%,#ffffff_52%,#f8fafc_100%)]" id="au-hero">
         <GridPattern />
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-24">
+        <div className="w-full px-6 py-20 sm:px-16 lg:px-30 lg:py-24">
           <div className="grid items-end gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="max-w-3xl">
+            <div className="w-full">
               <BadgePill label="About Optimum" centered={false} />
 
               <h1 className="mt-6 max-w-full text-4xl font-extrabold tracking-tight text-primary-cbe-500 sm:text-5xl lg:text-5xl lg:leading-[1.06]">
@@ -218,8 +218,8 @@ export default function SiteAboutUs() {
         </div>
       </section>
 
-      <section className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+      <section className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl" id="au-nav">
+        <div className="w-full px-6 sm:px-15 lg:px-30">
           <div className="no-scrollbar flex gap-3 overflow-x-auto py-4">
             {sectionLinks.map((link) => (
               <a
@@ -234,8 +234,8 @@ export default function SiteAboutUs() {
         </div>
       </section>
 
-      <section id="who-we-are" className="relative py-20 sm:py-24">
-        <div className="mx-auto grid max-w-7xl gap-14 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
+      <section id="au-who-we-are" className="relative py-20 sm:py-24">
+        <div className="w-full grid gap-14 px-6 sm:px-15 lg:px-30 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <BadgePill label="Who We Are" centered={false} />
             <h2 className="mt-6 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">
@@ -317,7 +317,7 @@ export default function SiteAboutUs() {
         </div>
       </section>
 
-      <section id="accreditations" className="relative py-20 sm:py-24">
+      <section id="au-accreditations" className="relative py-20 sm:py-24">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -326,7 +326,7 @@ export default function SiteAboutUs() {
           <div className="absolute right-0 bottom-30 h-64 w-64 rounded-full bg-primary-cta/10 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+        <div className="relative w-full px-6 sm:px-15 lg:px-30">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <BadgePill label="Accreditations" centered={false} />
@@ -498,10 +498,10 @@ export default function SiteAboutUs() {
       </section>
 
       <section
-        id="our-direction"
+        id="au-our-direction"
         className="relative border-y border-slate-200/80 bg-slate-50 py-20 sm:py-24"
       >
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+        <div className="w-full px-6 sm:px-15 lg:px-30">
           <div className="max-w-2xl">
             <BadgePill label="Our Direction" centered={false} />
             <h2 className="mt-6 text-3xl font-semibold tracking-tight text-primary-cbe-500 sm:text-4xl">

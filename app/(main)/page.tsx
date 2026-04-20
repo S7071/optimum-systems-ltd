@@ -50,7 +50,7 @@ export default function Home() {
             metricLabel:
               "Reduction in administrative workload institution-wide",
             image:
-              "https://www.kisiipoly.ac.ke/sites/default/files/inline-images/gate.png",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxZirPhbAqOhCxg8XPbqa805hR9IvbWlkmvQ&s",
             href: "#",
             institution: "Kisii National Polytechnic",
           },
