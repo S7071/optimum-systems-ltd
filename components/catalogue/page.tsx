@@ -305,7 +305,7 @@ const PROJECTS: ProjectType[] = [
     stars: 83,
     pulls: 46,
     industry: "Manufacturing",
-    href: "/dairy-management-system",
+    href: "/pfms",
     tags: [
       "Finance Management",
       "Inventory Management",

@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const WhatsAppIcon = () => (
@@ -18,6 +19,7 @@ export default function WhatsappButton() {
   const [mounted, setMounted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 300);
@@ -78,6 +80,9 @@ export default function WhatsappButton() {
               ? "opacity-100 scale-100 pointer-events-auto"
               : "opacity-0 scale-90 pointer-events-none",
           ].join(" ")}
+          onClick={() => {
+            router.push("https://api.whatsapp.com/send/?phone=254723653910&text=Hello+Optimum&type=phone_number&app_absent=0");
+          }}
         >
           <span
             className={[

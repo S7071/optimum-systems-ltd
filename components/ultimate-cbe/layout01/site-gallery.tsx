@@ -53,128 +53,117 @@ const CATEGORIES: GalleryCategory[] = [
 const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 1,
-    title: "Academic ERP Dashboard Walkthrough",
-    category: "Product UI",
-    sector: "Education",
+    title: "Education Leadership Engagement",
+    category: "Events",
+    sector: "Education Leadership",
     description:
-      "A clean overview of enrollment, billing, reporting, and operational controls presented in a modern enterprise interface.",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+      "Our CEO having a light moment with the Meru Governor H.E ... and The CS for Education Hon....",
+    image: "/gallery/G01.jpeg",
     location: "Nairobi",
     year: "2026",
-    highlight: "Unified student and finance workflows",
+    highlight: "Strengthening education partnerships",
     span: "wide",
   },
   {
     id: 2,
-    title: "Client Training Session",
-    category: "Training",
-    sector: "Operations",
-    description:
-      "Hands-on onboarding sessions focused on user adoption, reporting confidence, and team readiness across departments.",
-    image:
-      "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80",
+    title: "Strategic Partnership Signing",
+    category: "Events",
+    sector: "Partnerships",
+    description: "Partnership signing",
+    image: "/gallery/G02.jpg",
     location: "Thika Road",
     year: "2026",
-    highlight: "Structured knowledge transfer",
+    highlight: "Formalizing institutional collaboration",
     span: "default",
   },
   {
     id: 3,
-    title: "Financial Module Presentation",
-    category: "Product UI",
-    sector: "Finance",
-    description:
-      "Showcasing a reporting-first interface for approvals, reconciliation, analytics, and management visibility.",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    title: "Institutional Awards Ceremony",
+    category: "Events",
+    sector: "Recognition",
+    description: "Awards ceremony",
+    image: "/gallery/G03.jpg",
     location: "Kenya",
     year: "2026",
-    highlight: "Insight-led financial visibility",
+    highlight: "Celebrating excellence and impact",
     span: "default",
   },
   {
     id: 4,
-    title: "Enterprise Deployment Rollout",
-    category: "Deployments",
-    sector: "Implementation",
+    title: "Katine TTI Client Success Visit",
+    category: "Support",
+    sector: "TVET Education",
     description:
-      "A rollout environment capturing configuration, environment preparation, and coordinated go-live execution.",
-    image:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
-    location: "Regional",
+      "As the CEO, one of my key duties is to personally check on our valued clients  because their success is our success! I had the absolute pleasure of visiting Katine TTI, the 12th institution to embrace UltimateERP back in 2020. I was truly impressed by how exceptionally well they’ve been utilizing the system over the past 6 years. Their happiness and confidence in us led to an exciting upgrade to our powerful Modular version 🫡 We had a fantastic discussion with the warm and welcoming Principal about rolling out the Modular curriculum starting next week.  Moments like these strengthen our partnerships and remind us why we do what we do; delivering real value that drives institutional growth and efficiency.",
+    image: "/gallery/G04.jpg",
+    location: "Katine TTI",
     year: "2026",
-    highlight: "Deployment discipline at scale",
+    highlight: "Driving upgrades through client success",
     span: "tall",
   },
   {
     id: 5,
-    title: "Customer Support Operations",
+    title: "Gatundu South TVC Client Visit",
     category: "Support",
-    sector: "Service",
+    sector: "TVET Education",
     description:
-      "A visual look into responsive support, issue handling, and operational continuity for active clients.",
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
-    location: "Nairobi HQ",
+      "Today, I navigated the classic Nairobi-Gatundu traffic through the undulating highlands and finally arrived at Gatundu South Technical and Vocational College, nestled beautifully amid the gentle rolling hills, fertile plateaus, and lush green landscapes of Kiambu County. I was  impressed by how seamlessly the institution is thriving in this scenic highland setting, with *UltimateERP* running as smoothly as the slopes around it. I had a productive chat with the Principal, and we’re excited to rollout the modular curriculum starting next week. A happy customer will always upgrade 🫡",
+    image: "/gallery/G05.jpg",
+    location: "Gatundu South TVC",
     year: "2026",
-    highlight: "Fast, structured support delivery",
+    highlight: "Supporting modular curriculum rollout",
     span: "default",
   },
   {
     id: 6,
-    title: "Product Showcase Event",
-    category: "Events",
-    sector: "Brand",
+    title: "Kenyenya TTC ERP Commissioning",
+    category: "Deployments",
+    sector: "Teacher Training",
     description:
-      "A branded presentation environment used to demonstrate system capabilities and engage prospective clients.",
-    image:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
-    location: "Client Venue",
+      "Proud Milestone Achieved! We are delighted to announce the successful commissioning of UltimateERP at Kenyenya Teachers Training College* in Kisii County. This landmark event was gracefully officiated by the County Director of Education and the Board of Management  of Kenyenya TTC. For Kenyenya Teachers Training College, this commissioning marks a new era of digital transformation bringing efficiency, transparency, and modern management to all administrative and academic processes. For us Optimum ERP Systems, it represents another successful deployment of our robust UltimateERP solution, reaffirming our commitment to empowering educational institutions with cutting-edge technology that drives excellence and innovation. Together, we are building smarter, stronger institutions for the future!",
+    image: "/gallery/G06.jpg",
+    location: "Kenyenya TTC",
     year: "2026",
-    highlight: "High-impact product storytelling",
+    highlight: "Commissioning digital transformation",
     span: "wide",
   },
   {
     id: 7,
-    title: "Operations Monitoring Workspace",
-    category: "Support",
-    sector: "Performance",
+    title: "Education Leadership Courtesy Visit",
+    category: "Events",
+    sector: "Public Sector",
     description:
-      "A high-visibility workspace oriented around service continuity, monitoring, escalation, and response.",
-    image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
-    location: "Operations Center",
+      "Today, I had the profound honour of joining the CS for Education Hon. Migosi Ogamba on a visit to the residence of H.E. Governor Benjamin Cheboi in Kabarnet. In a moment that touched my heart deeply, H.E Cheboi recalled how he once offered me my very first job as a Data Entry Clerk at HELB, where he served as CEO. He fondly remembered how I carried out my duties with diligence and commitment. Sir, your memory of those early days means the world to me and thank you for believing in me then and for still remembering now. I'm truly grateful for your mentorship and kindness. Grateful hearts and cherished memories 🙏",
+    image: "/gallery/G07.jpg",
+    location: "Kabarnet",
     year: "2026",
-    highlight: "Reliable operational oversight",
+    highlight: "Honoring mentorship and leadership",
     span: "default",
   },
   {
     id: 8,
-    title: "Implementation Review Session",
-    category: "Deployments",
-    sector: "Consulting",
+    title: "Kenya Coast Polytechnic Visit",
+    category: "Events",
+    sector: "TVET Education",
     description:
-      "Post-implementation review moments focused on alignment, change control, and continuous optimization.",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
-    location: "Client Boardroom",
+      "Today, I was privileged to accompany the Cabinet Secretary for Education Hon. Julius Ogamba to the iconic Kenya Coast National Polytechnic in Mombasa, where he officially commissioned state-of-the-art buildings. These modern facilities are vital for the Polytechnic, enhancing training capacity, fostering innovation in TVET, and equipping our youth with world-class skills for the job market and national development. Together, we're building a brighter future for Kenya's technical education",
+    image: "/gallery/G08.jpg",
+    location: "Mombasa",
     year: "2026",
-    highlight: "Governed rollout refinement",
+    highlight: "Advancing TVET infrastructure growth",
     span: "default",
   },
   {
     id: 9,
-    title: "Reporting & Analytics Interface",
-    category: "Product UI",
-    sector: "Insights",
+    title: "Meru National Polytechnic Review",
+    category: "Deployments",
+    sector: "TVET Education",
     description:
-      "A polished analytics layer designed to help teams translate operational data into better decisions.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    location: "Web Platform",
+      "This morning, I had the pleasure of visiting The Meru National Polytechnic for a productive review meeting on the progress of UltimateERP implementation. As CEO, one of my key responsibilities is getting out there; visiting our clients on the ground to see firsthand how things are going. I'm  happy that the progress is solid and on the right track 🫡 Grateful to the team at Meru National Poly for hosting us so well🙏. Next destination? It could very well be your doorstep... keep an eye out! ",
+    image: "/gallery/G09.jpg",
+    location: "Meru National Polytechnic",
     year: "2026",
-    highlight: "Actionable performance insights",
+    highlight: "Reviewing ERP rollout progress",
     span: "default",
   },
 ];
@@ -190,7 +179,8 @@ const CATEGORY_COLOR_MAP: Record<
   { badge: string; dot: string }
 > = {
   "Product UI": {
-    badge: "bg-primary-cbe-500/15 text-primary-cbe-500 border-primary-cbe-500/20",
+    badge:
+      "bg-primary-cbe-500/15 text-primary-cbe-500 border-primary-cbe-500/20",
     dot: "bg-primary-cbe-500",
   },
   Training: {
@@ -223,11 +213,18 @@ interface StatCardProps {
 function StatCard({ icon, label, value, accent }: StatCardProps) {
   return (
     <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 backdrop-blur-sm transition-colors duration-200 hover:bg-white/8">
-      <div className={cn("flex h-10 w-10 items-center justify-center rounded-xl", accent)}>
+      <div
+        className={cn(
+          "flex h-10 w-10 items-center justify-center rounded-xl",
+          accent,
+        )}
+      >
         {icon}
       </div>
       <div className="min-w-0">
-        <p className="truncate text-xs font-medium tracking-wide text-slate-400 uppercase">{label}</p>
+        <p className="truncate text-xs font-medium tracking-wide text-slate-400 uppercase">
+          {label}
+        </p>
         <p className="mt-0.5 text-sm font-semibold text-white">{value}</p>
       </div>
     </div>
@@ -246,7 +243,9 @@ function CategoryBadge({ category, size = "sm" }: CategoryBadgeProps) {
       className={cn(
         "inline-flex items-center gap-1.5 rounded-full border font-medium",
         colors.badge,
-        size === "sm" ? "px-2.5 py-1 text-[10px] tracking-wide uppercase" : "px-3 py-1.5 text-xs"
+        size === "sm"
+          ? "px-2.5 py-1 text-[10px] tracking-wide uppercase"
+          : "px-3 py-1.5 text-xs",
       )}
     >
       <span className={cn("h-1.5 w-1.5 rounded-full", colors.dot)} />
@@ -267,7 +266,7 @@ function GalleryCard({ item, onClick }: GalleryCardProps) {
       onClick={() => onClick(item)}
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/60 bg-white text-left shadow-sm",
-        "transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/80 hover:border-primary-cbe-200",
+        "transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:border-primary-cbe-200",
         item.span === "wide" && "md:col-span-2",
         item.span === "tall" && "row-span-2",
       )}
@@ -283,7 +282,7 @@ function GalleryCard({ item, onClick }: GalleryCardProps) {
         <img
           src={item.image}
           alt={item.title}
-          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
           loading="lazy"
         />
         {/* Subtle gradient overlay */}
@@ -323,7 +322,9 @@ function GalleryCard({ item, onClick }: GalleryCardProps) {
           {item.title}
         </h3>
 
-        <p className="text-sm leading-6 text-slate-500 line-clamp-2">{item.description}</p>
+        <p className="text-sm leading-6 text-slate-500 line-clamp-2">
+          {item.description}
+        </p>
 
         <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-1.5 text-xs font-medium text-primary-cbe-500">
@@ -354,7 +355,7 @@ function GalleryModal({ item, onClose }: GalleryModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl shadow-slate-900/30"
+        className="relative w-full max-w-7xl overflow-hidden rounded-3xl bg-white shadow-md h-[90%]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -369,7 +370,7 @@ function GalleryModal({ item, onClose }: GalleryModalProps) {
 
         <div className="grid lg:grid-cols-[1.4fr_1fr]">
           {/* Image panel */}
-          <div className="relative min-h-[280px] lg:min-h-[540px]">
+          <div className="relative h-full">
             <img
               src={item.image}
               alt={item.title}
@@ -382,7 +383,7 @@ function GalleryModal({ item, onClose }: GalleryModalProps) {
               <div
                 className={cn(
                   "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur-sm",
-                  "bg-white/15 border-white/25 text-white"
+                  "bg-white/15 border-white/25 text-white",
                 )}
               >
                 <span className={cn("h-1.5 w-1.5 rounded-full", colors.dot)} />
@@ -410,7 +411,9 @@ function GalleryModal({ item, onClose }: GalleryModalProps) {
                 {item.title}
               </h2>
 
-              <p className="mt-4 text-sm leading-7 text-slate-500">{item.description}</p>
+              <p className="mt-4 text-sm leading-7 text-slate-500">
+                {item.description}
+              </p>
 
               {/* Meta grid */}
               <div className="mt-7 grid grid-cols-2 gap-3">
@@ -419,28 +422,36 @@ function GalleryModal({ item, onClose }: GalleryModalProps) {
                     <MapPin className="h-3 w-3" />
                     Location
                   </p>
-                  <p className="mt-2 text-sm font-semibold text-primary-cbe-800">{item.location}</p>
+                  <p className="mt-2 text-sm font-semibold text-primary-cbe-800">
+                    {item.location}
+                  </p>
                 </div>
                 <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-4">
                   <p className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                     <LayoutGrid className="h-3 w-3" />
                     Sector
                   </p>
-                  <p className="mt-2 text-sm font-semibold text-primary-cbe-800">{item.sector}</p>
+                  <p className="mt-2 text-sm font-semibold text-primary-cbe-800">
+                    {item.sector}
+                  </p>
                 </div>
                 <div className="col-span-2 rounded-xl border border-primary-cbe-100 bg-primary-cbe-50/60 p-4">
                   <p className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-primary-cbe-400">
                     <Tag className="h-3 w-3" />
                     Key Highlight
                   </p>
-                  <p className="mt-2 text-sm font-semibold text-primary-cbe-700">{item.highlight}</p>
+                  <p className="mt-2 text-sm font-semibold text-primary-cbe-700">
+                    {item.highlight}
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Footer */}
             <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-6">
-              <p className="text-xs text-slate-400">Optimum ERP Systems · {item.year}</p>
+              <p className="text-xs text-slate-400">
+                Optimum ERP Systems · {item.year}
+              </p>
               <button
                 type="button"
                 onClick={onClose}
@@ -500,18 +511,9 @@ export default function GalleryPageBody() {
             <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-primary-cbe-600/20 blur-3xl" />
             <div className="absolute -right-20 top-10 h-80 w-80 rounded-full bg-primary-cta/15 blur-3xl" />
             <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-primary-cbe-500/10 blur-2xl" />
-            {/* Subtle grid pattern */}
-            <div
-              className="absolute inset-0 opacity-[0.04]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-                backgroundSize: "48px 48px",
-              }}
-            />
           </div>
 
-          <div className="relative mx-auto max-w-7xl px-6 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+          <div className="relative w-full px-6 py-16 sm:px-15 sm:py-20 lg:px-30 lg:py-24">
             <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
               {/* Left: text */}
               <div className="max-w-2xl">
@@ -529,8 +531,9 @@ export default function GalleryPageBody() {
                 </h1>
 
                 <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">
-                  Explore product interfaces, live deployments, client engagements,
-                  and institutional outcomes across Kenya&apos;s leading ERP ecosystem.
+                  Explore product interfaces, live deployments, client
+                  engagements, and institutional outcomes across Kenya&apos;s
+                  leading ERP ecosystem.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -576,7 +579,10 @@ export default function GalleryPageBody() {
         </section>
 
         {/* ── Gallery Grid ──────────────────────────────────────────────────── */}
-        <section id="gallery-grid" className="mx-auto max-w-7xl px-6 py-14 sm:px-8 lg:px-12 lg:py-20">
+        <section
+          id="gallery-grid"
+          className="mx-auto max-w-7xl px-6 py-14 sm:px-8 lg:px-12 lg:py-20"
+        >
           {/* Section header + filters */}
           <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -588,10 +594,18 @@ export default function GalleryPageBody() {
               </h2>
               <p className="mt-1.5 text-sm text-slate-500">
                 Showing{" "}
-                <span className="font-semibold text-primary-cbe-700">{totalCount}</span>{" "}
+                <span className="font-semibold text-primary-cbe-700">
+                  {totalCount}
+                </span>{" "}
                 {totalCount === 1 ? "item" : "items"}
                 {activeCategory !== "All" && (
-                  <> in <span className="font-semibold text-primary-cbe-700">{activeCategory}</span></>
+                  <>
+                    {" "}
+                    in{" "}
+                    <span className="font-semibold text-primary-cbe-700">
+                      {activeCategory}
+                    </span>
+                  </>
                 )}
               </p>
             </div>
@@ -606,7 +620,7 @@ export default function GalleryPageBody() {
                     type="button"
                     onClick={() => setActiveCategory(category)}
                     className={cn(
-                      "rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200",
+                      "rounded-full px-4 py-2 text-sm font-medium transition-all duration-200",
                       isActive
                         ? "bg-primary-cbe-600 text-white shadow-md shadow-primary-cbe-200"
                         : "border border-slate-200 bg-white text-slate-600 hover:border-primary-cbe-200 hover:bg-primary-cbe-50 hover:text-primary-cbe-700",
@@ -630,7 +644,11 @@ export default function GalleryPageBody() {
           ) : (
             <div className="grid auto-rows-auto gap-5 md:grid-cols-2 xl:grid-cols-3">
               {filteredItems.map((item) => (
-                <GalleryCard key={item.id} item={item} onClick={setSelectedItem} />
+                <GalleryCard
+                  key={item.id}
+                  item={item}
+                  onClick={setSelectedItem}
+                />
               ))}
             </div>
           )}

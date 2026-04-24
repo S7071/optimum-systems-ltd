@@ -244,7 +244,7 @@ export default function SiteHero() {
 
           {/* Hero photo */}
           <Image
-            src="/images/cbe/hero.jpg"
+            src="/images/cbe/hero.png"
             alt="Teacher working with students on CBE curriculum"
             fill
             className="object-cover object-center z-[1]"

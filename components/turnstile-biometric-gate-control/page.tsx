@@ -23,7 +23,13 @@ import {
   ArrowRight,
   Play,
 } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import { BadgePill } from "../ui/badge-pill";
 import { Button } from "../ui/button";
 import {
@@ -305,6 +311,13 @@ function Card(prop: CardProp) {
 export default function TurnstileBiometricGateControlSystemPage() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const { scrollY } = useScroll();
+
+  const imageY = useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
+    stiffness: 120,
+    damping: 10,
+    mass: 1,
+  });
 
   return (
     <main className="w-full bg-white text-primary-cbe-500">
@@ -312,12 +325,12 @@ export default function TurnstileBiometricGateControlSystemPage() {
         className="relative flex w-full flex-col overflow-hidden bg-primary-cbe-50"
         id="turnstile-hero"
       >
-        <div className="grid min-h-[calc(100vh-64px)] grid-cols-1 md:grid-cols-2 md:max-h-[760px]">
+        <div className="grid min-h-[calc(100vh-284px)] grid-cols-1 md:grid-cols-2 md:max-h-[760px]">
           <motion.div
             initial="hidden"
             animate="show"
             variants={staggerContainer}
-            className="relative z-10 flex flex-col justify-center gap-7 px-6 py-16 lg:px-30"
+            className="relative z-10 flex flex-col justify-center gap-7 px-6 py-10 lg:px-30"
           >
             <motion.div
               variants={fadeUp}
@@ -332,11 +345,9 @@ export default function TurnstileBiometricGateControlSystemPage() {
                   className="h-full w-full object-contain"
                 />
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
-                <span className="font-extrabold text-primary-cta">
-                  Turnstile
-                </span>{" "}
-                BIOMETRIC GATE CONTROL SYSTEM
+              <span className="text-xs font-extrabold uppercase tracking-widest text-primary-cbe-500">
+                <span className="text-primary-cta">Turnstile</span> BIOMETRIC
+                GATE CONTROL SYSTEM
               </span>
             </motion.div>
 
@@ -344,9 +355,17 @@ export default function TurnstileBiometricGateControlSystemPage() {
               variants={fadeUp}
               className="text-4xl font-bold leading-[1.18] tracking-[-1px] text-primary-cbe-500 lg:text-5xl xl:text-6xl"
             >
-              Turnstile Biometric Gate Control for{" "}
-              <span className="font-bold text-primary-cta">
-                Secure Facilities
+              Biometric Turnstiles for{" "}
+              <span className="text-primary-cta relative inline-block">
+                Secure Entry
+                {/* underline accent */}
+                <span
+                  className="absolute left-0 -bottom-1 h-0.5 w-full rounded-full"
+                  style={{
+                    background:
+                      "linear-gradient(to right, #ed1c24, transparent)",
+                  }}
+                />
               </span>
             </motion.h1>
 
@@ -415,12 +434,12 @@ export default function TurnstileBiometricGateControlSystemPage() {
               variants={fadeUp}
               className="flex items-center gap-3 pt-1"
             >
-              <span className="text-[13px] text-slate-600">
-                <strong className="font-medium text-primary-cbe-500">
+              <span className="text-sm text-slate-600">
+                <strong className="font-semibold text-primary-cbe-500">
                   Biometric access control
                 </strong>{" "}
                 · strict entry integrity for{" "}
-                <strong className="font-medium text-primary-cbe-500">
+                <strong className="font-semibold text-primary-cbe-500">
                   multi-site facilities
                 </strong>
               </span>
@@ -433,24 +452,19 @@ export default function TurnstileBiometricGateControlSystemPage() {
             variants={fadeRight}
             className="relative hidden overflow-hidden md:block"
           >
-            <Image
-              src="/images/cbe/hero.jpg"
-              alt="Turnstile biometric access control system"
-              fill
-              className="z-[1] object-cover object-center"
-              priority
-            />
-
-            <div
-              className="pointer-events-none absolute inset-0 z-[2]"
-              style={{
-                background: `
-                  linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, transparent 25%),
-                  linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, transparent 55%)
-                `,
-              }}
-              aria-hidden="true"
-            />
+            <motion.div
+              style={{ y: imageY, scale: 1.08 }}
+              className="absolute inset-0 will-change-transform"
+            >
+              <Image
+                src="/heros/turnstile.png"
+                alt="Turnstile biometric access control system"
+                fill
+                priority
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover object-[35%_center]"
+              />
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: -12 }}
@@ -977,9 +991,9 @@ export default function TurnstileBiometricGateControlSystemPage() {
                 className="grid gap-3 sm:grid-cols-2"
               >
                 {[
-                  "Full-Height Anti-Tailgating Turnstiles",
-                  "Fingerprint & Facial Authentication",
-                  "Eligibility & Status Enforcement",
+                  "Anti-Tailgating Turnstiles",
+                  "Fingerprint & Facial ID",
+                  "Eligibility & Access Rules",
                   "Mobile Admin Dashboard",
                 ].map((item) => (
                   <motion.div
@@ -987,7 +1001,7 @@ export default function TurnstileBiometricGateControlSystemPage() {
                     variants={fadeUp}
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.18 }}
-                    className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-sm text-white/85 backdrop-blur-sm transition duration-300 hover:bg-white/12"
+                    className="group flex items-center gap-2 rounded-2xl border border-white/10 bg-white/8 px-3 py-3 text-sm text-white/85 backdrop-blur-sm transition duration-300 hover:bg-white/12"
                   >
                     <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-cta/12 text-primary-cta">
                       <CheckCircle2 className="h-6 w-6" />
@@ -1143,7 +1157,7 @@ export default function TurnstileBiometricGateControlSystemPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Eligibility Enforcement
                       </p>
-                      <p className="mt-1 text-sm leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500 line-clamp-2">
                         Allow entry only when fee, status, or other approved
                         access conditions are met.
                       </p>
@@ -1166,7 +1180,7 @@ export default function TurnstileBiometricGateControlSystemPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Entry & Exit Analytics
                       </p>
-                      <p className="mt-1 text-sm leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500 line-clamp-2">
                         Track movement trends, alerts, and access events in real
                         time across facilities.
                       </p>

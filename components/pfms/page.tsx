@@ -24,7 +24,13 @@ import {
   ArrowRight,
   Play,
 } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import { BadgePill } from "../ui/badge-pill";
 import { Button } from "../ui/button";
 import {
@@ -306,6 +312,13 @@ function Card(prop: CardProp) {
 export default function PFMSPage() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const { scrollY } = useScroll();
+
+  const imageY = useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
+    stiffness: 120,
+    damping: 10,
+    mass: 1,
+  });
 
   return (
     <main className="w-full bg-white text-primary-cbe-500">
@@ -313,12 +326,12 @@ export default function PFMSPage() {
         className="relative flex w-full flex-col overflow-hidden bg-primary-cbe-50"
         id="cbe-hero"
       >
-        <div className="grid min-h-[calc(100vh-64px)] grid-cols-1 md:grid-cols-2 md:max-h-[760px]">
+        <div className="grid min-h-[calc(100vh-284px)] grid-cols-1 md:grid-cols-2 md:max-h-[760px]">
           <motion.div
             initial="hidden"
             animate="show"
             variants={staggerContainer}
-            className="relative z-10 flex flex-col justify-center gap-7 px-6 py-16 lg:px-30"
+            className="relative z-10 flex flex-col justify-center gap-7 px-6 py-10 lg:px-30"
           >
             <motion.div
               variants={fadeUp}
@@ -333,11 +346,9 @@ export default function PFMSPage() {
                   className="h-full w-full object-contain"
                 />
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
-                <span className="font-extrabold text-primary-cta">
-                  Poultry Farm
-                </span>{" "}
-                MANAGEMENT SYSTEM
+              <span className="text-xs font-extrabold uppercase tracking-widest text-primary-cbe-500">
+                Poultry Farm Management System (
+                <span className="text-primary-cta">PFMS</span>)
               </span>
             </motion.div>
 
@@ -346,8 +357,16 @@ export default function PFMSPage() {
               className="text-4xl font-bold leading-[1.18] tracking-[-1px] text-primary-cbe-500 lg:text-5xl xl:text-6xl"
             >
               Poultry Farm Intelligence for{" "}
-              <span className="font-bold text-primary-cta">
+              <span className="text-primary-cta relative inline-block">
                 Layers & Broilers
+                {/* underline accent */}
+                <span
+                  className="absolute left-0 -bottom-1 h-0.5 w-full rounded-full"
+                  style={{
+                    background:
+                      "linear-gradient(to right, #ed1c24, transparent)",
+                  }}
+                />
               </span>
             </motion.h1>
 
@@ -412,14 +431,14 @@ export default function PFMSPage() {
 
             <motion.div
               variants={fadeUp}
-              className="flex items-center gap-3 pt-1"
+              className="flex items-start gap-3 pt-1"
             >
-              <span className="text-[13px] text-slate-600">
-                <strong className="font-medium text-primary-cbe-500">
+              <span className="text-sm text-slate-600">
+                <strong className="font-semibold text-primary-cbe-500">
                   Farm-ready visibility
                 </strong>{" "}
                 · built for{" "}
-                <strong className="font-medium text-primary-cbe-500">
+                <strong className="font-semibold text-primary-cbe-500">
                   layers, broilers & multi-site operations
                 </strong>
               </span>
@@ -432,24 +451,19 @@ export default function PFMSPage() {
             variants={fadeRight}
             className="relative hidden overflow-hidden md:block"
           >
-            <Image
-              src="/images/cbe/hero.jpg"
-              alt="PFMS poultry farm operations overview"
-              fill
-              className="z-[1] object-cover object-center"
-              priority
-            />
-
-            <div
-              className="pointer-events-none absolute inset-0 z-[2]"
-              style={{
-                background: `
-                  linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, transparent 25%),
-                  linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, transparent 55%)
-                `,
-              }}
-              aria-hidden="true"
-            />
+            <motion.div
+              style={{ y: imageY, scale: 1.08 }}
+              className="absolute inset-0 will-change-transform"
+            >
+              <Image
+                src="/heros/pfms.png"
+                alt="PFMS poultry farm operations overview"
+                fill
+                priority
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover object-[35%_center]"
+              />
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: -12 }}
@@ -969,10 +983,10 @@ export default function PFMSPage() {
                 className="grid gap-3 sm:grid-cols-2"
               >
                 {[
-                  "Feed procurement & FCR tracking",
-                  "Daily egg production & waste logging",
-                  "Flock health, mortality & vaccination",
-                  "Sales, expenses & P&L automation",
+                  "Feed & FCR Tracking",
+                  "Egg Output & Waste Logs",
+                  "Health, Mortality & Vaccines",
+                  "Sales, Costs & P&L Auto",
                 ].map((item) => (
                   <motion.div
                     key={item}
@@ -1133,7 +1147,7 @@ export default function PFMSPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Feed & FCR Tracking
                       </p>
-                      <p className="mt-1 text-sm leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500 line-clamp-2">
                         Monitor feed movement, usage efficiency, and cost
                         drivers from one dashboard.
                       </p>
@@ -1156,7 +1170,7 @@ export default function PFMSPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Flock Health Control
                       </p>
-                      <p className="mt-1 text-sm leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500 line-clamp-2">
                         Keep vaccination, mortality, and intervention records
                         organized for faster farm response.
                       </p>

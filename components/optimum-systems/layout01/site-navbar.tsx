@@ -218,7 +218,15 @@ const INDUSTRIES: Industry[] = [
 export function SolutionsMenuItem() {
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger className="text-sm font-medium text-primary-cbe-800 hover:text-primary-cbe-500 transition-colors data-[state=open]:text-[#1B3FA6]">
+      <NavigationMenuTrigger
+        className="text-sm font-medium text-primary-cbe-800 hover:text-primary-cbe-500 transition-colors data-[state=open]:text-[#1B3FA6]"
+        onPointerMove={(e) => {
+          e.preventDefault();
+        }}
+        onPointerLeave={(e) => {
+          e.preventDefault();
+        }}
+      >
         Ultimate Solutions
       </NavigationMenuTrigger>
 
@@ -513,7 +521,15 @@ const GALLERY_THUMBS = [
 export function AboutUsMenuItem() {
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger className="text-sm font-medium text-primary-cbe-800 hover:text-primary-cbe-500 transition-colors data-[state=open]:text-[#1B3FA6]">
+      <NavigationMenuTrigger
+        className="text-sm font-medium text-primary-cbe-800 hover:text-primary-cbe-500 transition-colors data-[state=open]:text-[#1B3FA6]"
+        onPointerMove={(e) => {
+          e.preventDefault();
+        }}
+        onPointerLeave={(e) => {
+          e.preventDefault();
+        }}
+      >
         Our Company
       </NavigationMenuTrigger>
 

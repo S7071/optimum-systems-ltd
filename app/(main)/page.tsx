@@ -38,7 +38,7 @@ export default function Home() {
             metricLabel: "Average bank reconciliation time, down from 3 days",
             image:
               "https://assets.citizen.digital/131897/conversions/WhatsApp-Image-2024-08-20-at-13.31.54-og_image.webp",
-            href: "/blog",
+            href: "https://citizen.digital/article/optimum-computer-systems-launches-ai-tool-to-revolutionize-financial-reporting-n347946",
             institution: "Optimum Computer Systems",
           },
           {
@@ -51,7 +51,7 @@ export default function Home() {
               "Reduction in administrative workload institution-wide",
             image:
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxZirPhbAqOhCxg8XPbqa805hR9IvbWlkmvQ&s",
-            href: "#",
+            href: "/resources/case-studies",
             institution: "Kisii National Polytechnic",
           },
           {
@@ -64,7 +64,7 @@ export default function Home() {
               "Regulatory audit pass rate since UltimateERP deployment",
             image:
               "https://tuc.ac.ke/wp-content/uploads/2021/10/university-photo-1.jpg",
-            href: "#",
+            href: "/resources/case-studies",
             institution: "Turkana University College",
           },
         ]}

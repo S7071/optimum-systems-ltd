@@ -109,7 +109,7 @@ export default function SiteFeatures() {
               <BadgePill label="Optimum ERP Systems Ltd" centered={true} />
 
               <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-50 mb-4">
-                Purpose-Built ERP <br />
+                Other Purpose-Built ERP <br />
                 Products for{" "}
                 <span className="text-primary-cta">Every Industry</span>
               </h3>

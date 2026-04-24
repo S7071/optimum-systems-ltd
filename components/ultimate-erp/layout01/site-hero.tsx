@@ -38,7 +38,6 @@ export default function SiteHeroEnhanced({
     <section className="relative isolate overflow-hidden bg-primary-cbe-500 text-white w-full">
       {/* Background image */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[url('/heros/ultimateERP.jpg')] bg-cover bg-center opacity-20" />
         <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(5,10,24,0.97)_0%,rgba(7,17,39,0.94)_40%,rgba(7,17,39,0.72)_72%,rgba(7,17,39,0.9)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.25),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(239,68,68,0.14),transparent_28%)]" />
       </div>

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import BadgePill from "@/components/ui/badge-pill";
 import { Quote } from "lucide-react";
 
@@ -16,18 +17,18 @@ const testimonies: Testimony[] = [
   {
     statement:
       "The audit has never been this fast and seamless—when auditors ask for a report, I simply click and it is ready instantly. Asante sana, Optimum.",
-    avatar: "/images/clients/01.jpg",
+    avatar: "",
     name: "Charity",
     position: "Accountant, Meru Teachers",
-    logo: "/images/clients/tuc.png",
+    logo: "/clients/TTC/11.jpeg",
   },
   {
     statement:
       "The system is working very well for us. Whenever we have any issue, your team is always there for us, and when we request support, an engineer is sent promptly. We sincerely appreciate Optimum.",
-    avatar: "/images/clients/02.jpg",
+    avatar: "",
     name: "Madam Hellen",
     position: "C.P Kwale TTC",
-    logo: "/images/clients/gatundu-south-technical-and-vocational-college.png",
+    logo: "/clients/TTC/12.png",
   },
 ];
 
@@ -88,11 +89,18 @@ export default function SiteTestimonials() {
                 <div className="flex items-end justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-primary-cta/20 ring-4 ring-primary-cbe-50">
-                      <img
-                        src={item.avatar}
-                        alt={item.name}
-                        className="h-full w-full object-cover"
-                      />
+                      <Avatar className="h-full w-full border-2 border-white shadow-sm ring-1 ring-slate-200">
+                        <AvatarImage
+                          src={item.avatar}
+                          alt={item.name}
+                        />
+                        <AvatarFallback className="bg-primary-cbe-100 text-sm font-semibold text-primary-cbe-700">
+                          {item.name
+                            .split(" ")
+                            .map((part) => part[0])
+                            .join("")}
+                        </AvatarFallback>
+                      </Avatar>
                     </div>
 
                     <div>

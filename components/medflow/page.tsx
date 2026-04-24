@@ -24,7 +24,13 @@ import {
   ArrowRight,
   Play,
 } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import { BadgePill } from "../ui/badge-pill";
 import { Button } from "../ui/button";
 import {
@@ -355,6 +361,13 @@ function StarRating({ rating }: { rating: number }) {
 export default function MedFlowPage() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const { scrollY } = useScroll();
+
+  const imageY = useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
+    stiffness: 120,
+    damping: 10,
+    mass: 1,
+  });
 
   return (
     <main className="w-full bg-white text-primary-cbe-500">
@@ -362,12 +375,12 @@ export default function MedFlowPage() {
         className="relative flex w-full flex-col overflow-hidden bg-primary-cbe-50"
         id="medflow-hero"
       >
-        <div className="grid min-h-[calc(100vh-64px)] grid-cols-1 md:grid-cols-2 md:max-h-[760px]">
+        <div className="grid min-h-[calc(100vh-284px)] grid-cols-1 md:grid-cols-2 md:max-h-[760px]">
           <motion.div
             initial="hidden"
             animate="show"
             variants={staggerContainer}
-            className="relative z-10 flex flex-col justify-center gap-7 px-6 py-16 lg:px-30"
+            className="relative z-10 flex flex-col justify-center gap-7 px-6 py-10 lg:px-30"
           >
             <motion.div
               variants={fadeUp}
@@ -382,7 +395,7 @@ export default function MedFlowPage() {
                   className="h-full w-full object-contain"
                 />
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-primary-cbe-500">
                 MedFlow Drug Tracking &amp; Management System
               </span>
             </motion.div>
@@ -392,8 +405,16 @@ export default function MedFlowPage() {
               className="text-4xl font-bold leading-[1.18] tracking-[-1px] text-primary-cbe-500 lg:text-5xl xl:text-6xl"
             >
               Smart Drug Tracking for{" "}
-              <span className="font-bold text-primary-cta">
-                County Health Systems
+              <span className="text-primary-cta relative inline-block">
+                County Health
+                {/* underline accent */}
+                <span
+                  className="absolute left-0 -bottom-1 h-0.5 w-full rounded-full"
+                  style={{
+                    background:
+                      "linear-gradient(to right, #ed1c24, transparent)",
+                  }}
+                />
               </span>
             </motion.h1>
 
@@ -458,15 +479,15 @@ export default function MedFlowPage() {
 
             <motion.div
               variants={fadeUp}
-              className="flex items-center gap-3 pt-1"
+              className="flex items-start gap-3 pt-1"
             >
               <StarRating rating={4.6} />
-              <span className="text-[13px] text-slate-600">
-                <strong className="font-medium text-primary-cbe-500">
+              <span className="text-sm text-slate-600">
+                <strong className="font-semibold text-primary-cbe-500">
                   Cloud-based
                 </strong>{" "}
                 · built for{" "}
-                <strong className="font-medium text-primary-cbe-500">
+                <strong className="font-semibold text-primary-cbe-500">
                   county health supply chains
                 </strong>
               </span>
@@ -479,24 +500,20 @@ export default function MedFlowPage() {
             variants={fadeRight}
             className="relative hidden overflow-hidden md:block"
           >
-            <Image
-              src="/images/cbe/hero.jpg"
-              alt="Healthcare supply chain operations dashboard and medicine logistics"
-              fill
-              className="z-[1] object-cover object-center"
-              priority
-            />
 
-            <div
-              className="pointer-events-none absolute inset-0 z-[2]"
-              style={{
-                background: `
-                  linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, transparent 25%),
-                  linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, transparent 55%)
-                `,
-              }}
-              aria-hidden="true"
-            />
+            <motion.div
+              style={{ y: imageY, scale: 1.08 }}
+              className="absolute inset-0 will-change-transform"
+            >
+              <Image
+                src="/heros/medflow.png"
+                alt="Healthcare supply chain operations dashboard and medicine logistics"
+                fill
+                priority
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover object-[35%_center]"
+              />
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: -12 }}
@@ -1181,7 +1198,7 @@ export default function MedFlowPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Drug Traceability
                       </p>
-                      <p className="mt-1 text-sm leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500 line-clamp-2">
                         Track medicine movement from supply receipt to facility
                         issue and patient-level accountability.
                       </p>
@@ -1204,7 +1221,7 @@ export default function MedFlowPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Automated Requisitions
                       </p>
-                      <p className="mt-1 text-sm leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500 line-clamp-2">
                         Streamline requests, approvals, and stock replenishment
                         across facilities.
                       </p>

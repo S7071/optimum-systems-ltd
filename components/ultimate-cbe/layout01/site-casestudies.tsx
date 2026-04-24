@@ -99,7 +99,7 @@ function FeaturedCaseStudyCard({ study }: { study: CaseStudyProp }) {
             </p>
           )}
 
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-primary-cbe-500 transition-all duration-300 group-hover:translate-x-1">
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary-cta hover:bg-primary-cta-800 px-4 py-2.5 text-sm font-semibold text-primary-cbe-50 transition-all duration-300 group-hover:translate-x-1">
             Read full story
             <ArrowRight className="h-4 w-4" />
           </div>

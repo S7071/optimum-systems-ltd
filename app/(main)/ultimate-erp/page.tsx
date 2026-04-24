@@ -385,30 +385,30 @@ export default function Home() {
         ]}
         testimonies={[
           {
-            name: "Dr. James Mwangi",
+            name: "Dr. CPA Jared Okello",
             position: "Finance Director",
-            insitution: "Kenya Technical Trainers College",
-            avator: "/images/clients/01.jpg",
+            insitution: "Turkana University College",
+            avator: "",
             rating: 4,
             testimony:
               "Since deploying UltimateERP, our finance team reconciles bank statements in minutes rather than days. The IPSAS-compliant reporting and automated fee collection have completely transformed how we run our institution.",
             featured: false,
           },
           {
-            name: "Prof. Grace Achieng",
+            name: "Sammy Chemoiwa",
             position: "Principal",
-            insitution: "Kisumu National Polytechnic",
-            avator: "/images/clients/02.jpg",
+            insitution: "Rift Valley National Polytechnic",
+            avator: "",
             rating: 5,
             testimony:
               "The CEO Dashboard has completely changed how I oversee our campuses. Enrollment trends, fee collection, HR data — all live, on my phone. What used to take our team weeks to compile now updates in real time, and the accuracy of our compliance reports has improved dramatically.",
             featured: true,
           },
           {
-            name: "David Kariuki",
-            position: "Registrar",
-            insitution: "Meru University of Science & Technology",
-            avator: "/images/clients/03.jpg",
+            name: "Kevin Musoli",
+            position: "ICT Officer",
+            insitution: "The Siaya National Polytechnic",
+            avator: "",
             rating: 3,
             testimony:
               "Coordinating admissions, exams, hostels, and payroll across departments was our biggest operational challenge. UltimateERP connected everything on one platform, eliminating data gaps and bringing our entire institution's administration under one roof.",
@@ -429,7 +429,7 @@ export default function Home() {
             metricLabel: "Average bank reconciliation time, down from 3 days",
             image:
               "https://assets.citizen.digital/131897/conversions/WhatsApp-Image-2024-08-20-at-13.31.54-og_image.webp",
-            href: "/blog",
+            href: "https://citizen.digital/article/optimum-computer-systems-launches-ai-tool-to-revolutionize-financial-reporting-n347946",
             institution: "Optimum Computer Systems",
           },
           {
@@ -441,8 +441,8 @@ export default function Home() {
             metricLabel:
               "Reduction in administrative workload institution-wide",
             image:
-              "https://www.kisiipoly.ac.ke/sites/default/files/inline-images/gate.png",
-            href: "#",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxZirPhbAqOhCxg8XPbqa805hR9IvbWlkmvQ&s",
+            href: "/resources/case-studies",
             institution: "Kisii National Polytechnic",
           },
           {
@@ -455,7 +455,7 @@ export default function Home() {
               "Regulatory audit pass rate since UltimateERP deployment",
             image:
               "https://tuc.ac.ke/wp-content/uploads/2021/10/university-photo-1.jpg",
-            href: "#",
+            href: "/resources/case-studies",
             institution: "Turkana University College",
           },
         ]}

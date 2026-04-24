@@ -121,9 +121,9 @@ export default function SiteStats() {
             <BadgePill label="What sets us apart" centered={true} />
 
             <h3 className="text-2xl sm:text-4xl font-extrabold text-pretty leading-tight tracking-tight text-primary-cbe-500 mb-4">
-              Why Leading Institutions <br />
+              Why Institutions <br />
               Choose{" "}
-              <span className="text-primary-cta">Optimum Systems Ltd</span>
+              <span className="text-primary-cta">Optimum ERP Systems Ltd</span>
             </h3>
 
             <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">

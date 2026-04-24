@@ -17,52 +17,52 @@ interface FaqItem {
 const FAQS: FaqItem[] = [
   {
     id: 1,
-    question: "What is a FAQ and why is it important?",
+    question: "Where are your offices located?",
     answer:
-      "FAQ stands for Frequently Asked Questions. It is a curated list that provides clear, instant answers to common questions people may have about a specific product, service, or topic — reducing friction and improving the overall user experience.",
+      "Our Head Office is located in Nairobi, Tripple Two Address Building,  Along Thika Road,",
     category: "general",
   },
   {
     id: 2,
-    question: "Why should I use a FAQ on my website or app?",
+    question: "How long is the implementation period?",
     answer:
-      "A FAQ section is a practical way to offer instant assistance to your users or customers. Instead of waiting for customer support responses, they can find quick answers to commonly asked questions — saving time and reducing your support load.",
+      "Implementation can beging immediately after signing the contract and usually takes 21 day depending on the magnitude of the project.",
     category: "platform",
   },
   {
     id: 3,
-    question: "How do I effectively create a FAQ section?",
+    question: "How many Modules does the ERP has?",
     answer:
-      "Start by gathering the most frequent questions you receive from your users or customers. Once you have a list, write clear, detailed, and helpful answers to each question. Review and update regularly as your product evolves.",
+      "We have 32 modules. These modules are pluggable meaning you can purchase as per your need and budget",
     category: "platform",
   },
   {
     id: 4,
-    question: "What are the benefits of having a well-maintained FAQ section?",
+    question: "Do you offer support after purchase?",
     answer:
-      "There are numerous advantages to maintaining a robust FAQ section. It provides immediate answers to common queries, improves the user experience, reduces support ticket volume, and builds trust by demonstrating transparency about your product or service.",
-    category: "general",
+      "we do provide support in two phases, the grace period phase which is normally inclusive of the cost and post grace period where you will be required to pay annual maintenance fee.",
+    category: "support",
   },
   {
     id: 5,
-    question: "How should I organize my FAQ for optimal usability?",
+    question: "Are your solutions tailorable?",
     answer:
-      'An organized FAQ is critical for user-friendliness. Start by grouping similar questions into categories, such as "Billing," "Account Setup," or "Technical Support." This way, users can quickly find the section that addresses their specific concerns.',
-    category: "support",
+      "Our solutions are developed by kenya and are customizable to suit the needs of clients without bending the rules on standard practices",
+    category: "general",
   },
   {
     id: 6,
-    question: "How often should I update my FAQ, and why is it necessary?",
+    question: "What range of software solutions do you provide?",
     answer:
-      "Regular updates to your FAQ are essential to keeping the information accurate and relevant. As your product or service evolves, so will the types of questions your users ask. A quarterly review cycle is a good baseline practice.",
-    category: "support",
+      "We provide a number of solutions which are broadly grouped into: ERP System for Colleges/ UniversitiesERP System for SACCOs, ERP System Micro-Finance Institutions, ERP System for Building Societies, ERP System Suitable Distributors/ Retailers, ERP System for Manufacturers, ERP System for Construction Firms and ERP System for Secondary Schools.",
+    category: "general",
   },
   {
     id: 7,
-    question: "What payment methods does Optimum Systems Ltd accept?",
+    question: "What is the architecture of your solutions?",
     answer:
-      "We accept major credit and debit cards, bank transfers, and select digital wallets. Enterprise clients may also request invoice-based billing with agreed commercial terms. Contact our billing team for account-specific guidance.",
-    category: "billing",
+      "We provide hybrid architecture, both for the desktop applications and the web based applications.",
+    category: "platform",
   },
 ];
 
@@ -484,7 +484,7 @@ export default function SiteFaq() {
                     href="/contact-us"
                     className="inline-flex items-center justify-center rounded-full bg-primary-cta px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-primary-cta-800"
                   >
-                    Contact Support
+                    Contact Us
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </div>

@@ -24,7 +24,13 @@ import {
   ArrowRight,
   Play,
 } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import { BadgePill } from "../ui/badge-pill";
 import { Button } from "../ui/button";
 import {
@@ -355,6 +361,13 @@ function StarRating({ rating }: { rating: number }) {
 export default function QABPage() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const { scrollY } = useScroll();
+
+  const imageY = useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
+    stiffness: 120,
+    damping: 10,
+    mass: 1,
+  });
 
   return (
     <main className="w-full bg-white text-primary-cbe-500">
@@ -362,12 +375,12 @@ export default function QABPage() {
         className="relative flex w-full flex-col overflow-hidden bg-primary-cbe-50"
         id="cbe-hero"
       >
-        <div className="grid min-h-[calc(100vh-64px)] grid-cols-1 md:grid-cols-2 md:max-h-[760px]">
+        <div className="grid min-h-[calc(100vh-284px)] grid-cols-1 md:grid-cols-2 md:max-h-[760px]">
           <motion.div
             initial="hidden"
             animate="show"
             variants={staggerContainer}
-            className="relative z-10 flex flex-col justify-center gap-7 px-6 py-16 lg:px-30"
+            className="relative z-10 flex flex-col justify-center gap-7 px-6 py-10 lg:px-30"
           >
             <motion.div
               variants={fadeUp}
@@ -382,7 +395,7 @@ export default function QABPage() {
                   className="h-full w-full object-contain"
                 />
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-primary-cbe-800">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-primary-cbe-500">
                 Qualification Award Board (
                 <span className="text-primary-cta">QAB</span>) System
               </span>
@@ -392,10 +405,17 @@ export default function QABPage() {
               variants={fadeUp}
               className="text-4xl font-bold leading-[1.18] tracking-[-1px] text-primary-cbe-500 lg:text-5xl xl:text-6xl"
             >
-              Qualification Award Board
-              <br />
-              <span className="font-bold text-primary-cta">
-                Governance System
+              Qualification Board Governance{" "}
+              <span className="text-primary-cta relative inline-block">
+                System
+                {/* underline accent */}
+                <span
+                  className="absolute left-0 -bottom-1 h-0.5 w-full rounded-full"
+                  style={{
+                    background:
+                      "linear-gradient(to right, #ed1c24, transparent)",
+                  }}
+                />
               </span>
             </motion.h1>
 
@@ -464,12 +484,12 @@ export default function QABPage() {
               className="flex items-center gap-3 pt-1"
             >
               <StarRating rating={4.6} />
-              <span className="text-[13px] text-slate-600">
-                <strong className="font-medium text-primary-cbe-500">
+              <span className="text-sm text-slate-600">
+                <strong className="font-semibold text-primary-cbe-500">
                   Rated 4.6
                 </strong>{" "}
                 · trusted by{" "}
-                <strong className="font-medium text-primary-cbe-500">
+                <strong className="font-semibold text-primary-cbe-500">
                   500+
                 </strong>{" "}
                 Kenyan schools
@@ -483,24 +503,19 @@ export default function QABPage() {
             variants={fadeRight}
             className="relative hidden overflow-hidden md:block"
           >
-            <Image
-              src="/images/cbe/hero.jpg"
-              alt="Academic governance and results review workflow"
-              fill
-              className="z-[1] object-cover object-center"
-              priority
-            />
-
-            <div
-              className="pointer-events-none absolute inset-0 z-[2]"
-              style={{
-                background: `
-                  linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, transparent 25%),
-                  linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, transparent 55%)
-                `,
-              }}
-              aria-hidden="true"
-            />
+            <motion.div
+              style={{ y: imageY, scale: 1.08 }}
+              className="absolute inset-0 will-change-transform"
+            >
+              <Image
+                src="/heros/qabs.png"
+                alt="Teacher working with students on CBE curriculum"
+                fill
+                priority
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover object-[35%_center]"
+              />
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: -12 }}
@@ -1036,7 +1051,7 @@ export default function QABPage() {
                     variants={fadeUp}
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.18 }}
-                    className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-sm text-white/85 backdrop-blur-sm transition duration-300 hover:bg-white/12"
+                    className="group flex items-center gap-2 rounded-2xl border border-white/10 bg-white/8 px-3 py-3 text-sm text-white/85 backdrop-blur-sm transition duration-300 hover:bg-white/12"
                   >
                     <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-cta/12 text-primary-cta">
                       <CheckCircle2 className="h-6 w-6" />
@@ -1191,7 +1206,7 @@ export default function QABPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Marks Validation
                       </p>
-                      <p className="mt-1 text-sm leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500 line-clamp-2">
                         Validate marks securely before moderation, processing,
                         and ratification.
                       </p>
@@ -1214,7 +1229,7 @@ export default function QABPage() {
                       <p className="text-sm font-semibold text-primary-cbe-500">
                         Results Ratification
                       </p>
-                      <p className="mt-1 text-sm leading-5 text-slate-500">
+                      <p className="mt-1 text-sm leading-5 text-slate-500 line-clamp-2">
                         Move reviewed results through transparent approval and
                         ratification workflows.
                       </p>

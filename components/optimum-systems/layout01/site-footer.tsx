@@ -13,7 +13,7 @@ function XIcon() {
 
 const NAV_COMPANY = [
   {
-    label: "About Optimum Systems Ltd",
+    label: "About Optimum ERP Systems Ltd",
     href: "/company",
   },
   {
@@ -24,10 +24,10 @@ const NAV_COMPANY = [
     label: "Our Vision & Mission",
     href: "/company",
   },
-  {
-    label: "Our Team",
-    href: "/company/team",
-  },
+  // {
+  //   label: "Our Team",
+  //   href: "/company/team",
+  // },
   {
     label: "Our Clients",
     href: "/company/partners",
@@ -76,10 +76,10 @@ const NAV_RESOURCES = [
     label: "Help Center",
     href: "/help-center",
   },
-  {
-    label: "Change Logs",
-    href: "/changelog",
-  },
+  // {
+  //   label: "Change Logs",
+  //   href: "/changelog",
+  // },
 ];
 
 export default function SiteFooter() {

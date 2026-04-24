@@ -231,7 +231,7 @@ export default function SiteHero() {
             </p>
 
             {/* Stats row */}
-            <div className="flex overflow-hidden rounded-xl border border-white/10 w-[440px]">
+            <div className="hidden sm:flex overflow-hidden rounded-xl border border-white/10 w-[440px]">
               {STATS.map((stat) => (
                 <StatBlock key={stat.label} stat={stat} />
               ))}
@@ -347,8 +347,6 @@ export default function SiteHero() {
                   <strong className="text-white font-medium">
                     200+ organizations
                   </strong>
-                  <br />
-                  across the World
                 </p>
 
                 {/* Arrow nudge */}
