@@ -430,7 +430,7 @@ const ABOUT_LINKS = [
     description: "Our guiding principles and long-term direction",
   },
   {
-    href: "/company/success-stories",
+    href: "/resources/case-studies",
     Icon: Star,
     iconBg: "bg-amber-50",
     iconColor: "text-amber-500",
@@ -438,14 +438,14 @@ const ABOUT_LINKS = [
     description: "Real results from institutions we've transformed",
     badge: "Hot",
   },
-  {
-    href: "/company/team",
-    Icon: Users,
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
-    title: "Our Team",
-    description: "Meet the 50+ ICT professionals behind our systems",
-  },
+  // {
+  //   href: "/company/team",
+  //   Icon: Users,
+  //   iconBg: "bg-violet-50",
+  //   iconColor: "text-violet-600",
+  //   title: "Our Team",
+  //   description: "Meet the 50+ ICT professionals behind our systems",
+  // },
   {
     href: "/company/careers",
     Icon: Briefcase,
