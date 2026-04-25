@@ -101,8 +101,8 @@ function ProductCard({ product }: { product: Product }) {
         "flex items-center gap-3 rounded-xl border p-3 cursor-pointer",
         "transition-all duration-200 hover:-translate-y-px",
         product.accent
-          ? "bg-primary-cbe-500/20 border-primary-cbe-500/25 hover:bg-primary-cbe-500/18 hover:border-primary-cbe-500/40"
-          : "bg-white/5 border-white/8 hover:bg-white/10 hover:border-white/18",
+          ? "bg-primary-cbe-500/20 border-primary-cbe-50/10 hover:bg-primary-cbe-500/18 hover:border-primary-cbe-500/40"
+          : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/18",
       ].join(" ")}
     >
       {/* icon wrapper */}

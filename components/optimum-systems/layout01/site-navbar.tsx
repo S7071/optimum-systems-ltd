@@ -422,7 +422,7 @@ const ABOUT_LINKS = [
     badge: "PDF",
   },
   {
-    href: "/company#vision",
+    href: "/company#au-our-direction",
     Icon: Target,
     iconBg: "bg-emerald-50",
     iconColor: "text-emerald-600",
@@ -456,7 +456,7 @@ const ABOUT_LINKS = [
     badge: "Hiring",
   },
   {
-    href: "/company#awards",
+    href: "/company#au-accreditations",
     Icon: Trophy,
     iconBg: "bg-orange-50",
     iconColor: "text-orange-500",
@@ -685,7 +685,7 @@ export function AboutUsMenuItem() {
                 Trusted across the World since our founding
               </span>
               <a
-                href="/about"
+                href="/company"
                 className="inline-flex items-center gap-1 text-xs font-semibold text-[#1B3FA6] hover:text-[#D42B2B] transition-colors group"
               >
                 Full about page

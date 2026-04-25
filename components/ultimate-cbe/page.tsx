@@ -507,7 +507,7 @@ export default function UltimateCBEPage() {
               className="absolute inset-0 will-change-transform"
             >
               <Image
-                src="/images/cbe/hero.png"
+                src="/heros/ultimate-cbe.png"
                 alt="Teacher working with students on CBE curriculum"
                 fill
                 priority

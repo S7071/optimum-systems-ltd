@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 type Partner = {
@@ -19,11 +20,21 @@ type Category = {
 
 const CATEGORIES: Category[] = [
   {
+    id: "government",
+    label: "SAGA's",
+    category: "government",
+    partners: [
+      { name: "", abbr: "/clients/SAGAs/1.png", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  {
     id: "education",
     label: "Universities",
     category: "education",
     partners: [
       { name: "", abbr: "/clients/UNI/1.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/UNI/2.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/UNI/3.png", bg: "#DBEAFE", fg: "#1E40AF" },
     ],
   },
   {
@@ -33,6 +44,21 @@ const CATEGORIES: Category[] = [
     partners: [
       { name: "", abbr: "/clients/POLY/1.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/POLY/2.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/3.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/4.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/5.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/6.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/7.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/8.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/9.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/10.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/11.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/12.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/13.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/14.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/15.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/16.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/POLY/17.png", bg: "#DBEAFE", fg: "#1E40AF" },
     ],
   },
   {
@@ -49,6 +75,22 @@ const CATEGORIES: Category[] = [
       { name: "", abbr: "/clients/TTI/7.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TTI/8.png", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TTI/9.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/10.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/11.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/12.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/13.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/14.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/15.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/16.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/17.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/18.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/19.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/20.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/21.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/22.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/23.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/24.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTI/25.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
     ],
   },
   {
@@ -58,6 +100,7 @@ const CATEGORIES: Category[] = [
     partners: [
       { name: "", abbr: "/clients/TVC/1.png", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/2.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/3.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/4.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/5.png", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/6.png", bg: "#DBEAFE", fg: "#1E40AF" },
@@ -85,7 +128,6 @@ const CATEGORIES: Category[] = [
       { name: "", abbr: "/clients/TVC/28.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/29.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/30.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
-      { name: "", abbr: "/clients/TVC/30.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/31.png", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/32.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/33.png", bg: "#DBEAFE", fg: "#1E40AF" },
@@ -96,7 +138,49 @@ const CATEGORIES: Category[] = [
       { name: "", abbr: "/clients/TVC/38.png", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/39.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TVC/40.png", bg: "#DBEAFE", fg: "#1E40AF" },
-      { name: "", abbr: "/clients/TVC/41.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/41.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/42.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/43.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/44.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/45.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/46.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/47.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/48.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/49.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/50.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/51.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/52.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/53.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/54.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/55.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/56.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/57.PNG", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/58.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/59.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/60.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/61.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/62.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/63.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/64.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/65.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/66.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/67.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/68.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/69.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/70.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/71.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/72.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/73.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/74.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/75.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/76.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/77.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/78.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/79.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/80.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/81.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/82.webp", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TVC/83.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
     ],
   },
   {
@@ -114,38 +198,63 @@ const CATEGORIES: Category[] = [
       { name: "", abbr: "/clients/TTC/8.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TTC/9.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
       { name: "", abbr: "/clients/TTC/10.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/11.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/12.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/13.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/14.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/15.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/16.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/17.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/18.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/19.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/TTC/20.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
     ],
   },
-  // {
-  //   id: "education",
-  //   label: "Secondary Schools",
-  //   category: "education",
-  //   partners: [],
-  // },
-  // {
-  //   id: "finance",
-  //   label: "Financial Institutions",
-  //   category: "finance",
-  //   partners: [],
-  // },
-  // {
-  //   id: "healthcare",
-  //   label: "Medical Facilities",
-  //   category: "healthcare",
-  //   partners: [],
-  // },
-  // {
-  //   id: "hospitality",
-  //   label: "Hospitality",
-  //   category: "hospitality",
-  //   partners: [],
-  // },
-  // {
-  //   id: "sme",
-  //   label: "SME",
-  //   category: "sme",
-  //   partners: [],
-  // },
+  {
+    id: "education",
+    label: "Secondary Schools",
+    category: "education",
+    partners: [
+      { name: "", abbr: "/clients/SEC/1.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/SEC/2.png", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  {
+    id: "finance",
+    label: "Finance",
+    category: "finance",
+    partners: [
+      { name: "", abbr: "/clients/FIN/1.png", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  {
+    id: "healthcare",
+    label: "Healthcare",
+    category: "healthcare",
+    partners: [
+      { name: "", abbr: "/clients/MED/1.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  {
+    id: "hospitality",
+    label: "Hospitality",
+    category: "hospitality",
+    partners: [
+      { name: "", abbr: "/clients/HOSP/1.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/HOSP/2.jpg", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/HOSP/3.jfif", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/HOSP/4.png", bg: "#DBEAFE", fg: "#1E40AF" },
+      { name: "", abbr: "/clients/HOSP/5.jpeg", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
+  {
+    id: "ngo",
+    label: "NGOs",
+    category: "ngo",
+    partners: [
+      { name: "", abbr: "/clients/NGO/1.png", bg: "#DBEAFE", fg: "#1E40AF" },
+    ],
+  },
 ];
 
 const TABS = [
@@ -156,6 +265,7 @@ const TABS = [
   { id: "hospitality", label: "Hospitality" },
   { id: "finance", label: "Finance" },
   { id: "sme", label: "SME's" },
+  { id: "ngo", label: "NGO's" },
 ] as const;
 
 function PartnerCard({ name, abbr, bg, fg }: Partner) {
@@ -239,19 +349,19 @@ export default function PartnersGrid() {
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div>
               <p className="mb-1 text-xs uppercase tracking-widest font-medium text-blue-200">
-                Optimum Computer Systems Ltd
+                Optimum ERP Systems Ltd
               </p>
               <p className="text-[17px] font-semibold text-white">
                 Grow your business with our integrated ERP ecosystem
               </p>
             </div>
 
-            <button
-              type="button"
+            <Link
+              href="/contact-us"
               className="rounded-full bg-primary-cta px-6 py-2.5 text-[13px] font-semibold text-primary-cbe-50 transition-colors duration-150 hover:bg-primary-cta-800"
             >
               Request a Demo →
-            </button>
+            </Link>
           </div>
         </section>
       </main>

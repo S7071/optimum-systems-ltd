@@ -40,12 +40,30 @@ const NAV_COMPANY = [
 ];
 
 const NAV_PRODUCTS = [
-  "Ultimate ERP",
-  "Ultimate CBE Assessment ERP",
-  "Ultimate Hotel ERP",
-  "Ultimate Manufacturing ERP",
-  "Ultimate Supply-Chain ERP",
-  "Ultimate Conference",
+  {
+    label: "Ultimate ERP",
+    href: "/ultimate-erp",
+  },
+  {
+    label: "Ultimate CBE Assessment ERP",
+    href: "/ultimate-cbe",
+  },
+  {
+    label: "Ultimate Hotel ERP",
+    href: "/ultimate-hms",
+  },
+  {
+    label: "Ultimate Manufacturing ERP",
+    href: "ultimate-mfg",
+  },
+  {
+    label: "Ultimate Supply-Chain ERP",
+    href: "ultimate-scm",
+  },
+  {
+    label: "Ultimate Conference",
+    href: "ultimate-cms",
+  },
 ];
 
 const NAV_SOLUTIONS = [
@@ -116,12 +134,12 @@ export default function SiteFooter() {
               </h3>
               <ul className="space-y-1 text-secondary/55">
                 {NAV_PRODUCTS.map((item) => (
-                  <li key={item}>
+                  <li key={item.label}>
                     <a
-                      href="#"
+                      href={item.href}
                       className="block py-1 text-sm transition-all duration-150 hover:text-white hover:pl-2"
                     >
-                      {item}
+                      {item.label}
                     </a>
                   </li>
                 ))}
