@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Optimum ERP Systems Ltd",
     images: [
       {
-        url: "https://optimumsystems.co.ke/og-image.png",
+        url: "https://optimumsystems.co.ke/og/og-image.png",
         width: 1200,
         height: 630,
         alt: "Optimum ERP Systems Ltd enterprise ERP software solutions in Kenya",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Optimum ERP Systems Ltd | Enterprise ERP Software in Kenya",
     description:
       "Customizable ERP software for education, healthcare, finance, retail, manufacturing, hospitality, government, SACCOs, and microfinance institutions in Kenya.",
-    images: ["https://optimumsystems.co.ke/og-image.png"],
+    images: ["https://optimumsystems.co.ke/og/og-image.png"],
   },
 };
 
