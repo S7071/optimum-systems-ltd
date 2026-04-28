@@ -102,7 +102,7 @@ export function productSchema(product: {
       url: `${SITE_URL}/${product.slug}`,
       priceCurrency: "KES",
       availability: "https://schema.org/InStock",
-      price: "",
+      price: 0,
       seller: {
         "@id": `${SITE_URL}/`,
       },
