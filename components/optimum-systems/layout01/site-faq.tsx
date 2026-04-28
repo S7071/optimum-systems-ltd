@@ -19,7 +19,7 @@ const FAQS: FaqItem[] = [
     id: 1,
     question: "Where are your offices located?",
     answer:
-      "Our Head Office is located in Nairobi, Tripple Two Address Building,  Along Thika Road,",
+      "Our Head Office is located in Nairobi, Tripple Two Address Building,  Along Thika Road.",
     category: "general",
   },
   {
@@ -33,7 +33,7 @@ const FAQS: FaqItem[] = [
     id: 3,
     question: "How many Modules does the ERP has?",
     answer:
-      "We have 32 modules. These modules are pluggable meaning you can purchase as per your need and budget",
+      "We have 32 modules. These modules are pluggable meaning you can purchase as per your need and budget.",
     category: "platform",
   },
   {
@@ -47,7 +47,7 @@ const FAQS: FaqItem[] = [
     id: 5,
     question: "Are your solutions tailorable?",
     answer:
-      "Our solutions are developed by kenya and are customizable to suit the needs of clients without bending the rules on standard practices",
+      "Our solutions are developed by kenya and are customizable to suit the needs of clients without bending the rules on standard practices.",
     category: "general",
   },
   {

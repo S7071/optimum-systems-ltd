@@ -14,17 +14,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Home - Optimum ERP Systems Ltd",
-  description: "",
+  title: {
+    default: "Optimum ERP Systems Ltd",
+    template: "Optimum ERP Systems Ltd | %s",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
       { url: "/icon.png", type: "image/png", sizes: "512x512" },
     ],
-    apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  keywords: [
+    "ERP Kenya",
+    "ERP Systems Nairobi",
+    "Enterprise Software Kenya",
+    "School ERP",
+    "Hospital Management System",
+  ],
+  metadataBase: new URL("https://optimumsystems.co.ke"),
 };
 
 export default function RootLayout({
