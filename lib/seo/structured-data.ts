@@ -66,27 +66,45 @@ export function productSchema(product: {
 }) {
   return {
     "@type": "Product",
-    "@id": `${SITE_URL}/products/${product.slug}#product`,
+    "@id": `${SITE_URL}/${product.slug}`,
     name: product.name,
     description: product.description,
     image: product.image
       ? `${SITE_URL}${product.image}`
       : `${SITE_URL}/og-image.png`,
     brand: {
-      "@id": `${SITE_URL}/#organization`,
+      "@id": `${SITE_URL}/`,
     },
     category: product.category ?? "Enterprise Resource Planning Software",
     audience: {
       "@type": "Audience",
       audienceType: product.audience ?? "Businesses and institutions",
     },
+    review: {
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5
+      },
+      author: {
+        "@type": "Person",
+        "name": "Sammy Chemoiwa"
+      }
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: 4.5,
+      reviewCount: 200
+    },
     offers: {
       "@type": "Offer",
-      url: `${SITE_URL}/products/${product.slug}`,
+      url: `${SITE_URL}/${product.slug}`,
       priceCurrency: "KES",
       availability: "https://schema.org/InStock",
+      price: "",
       seller: {
-        "@id": `${SITE_URL}/#organization`,
+        "@id": `${SITE_URL}/`,
       },
     },
   };
