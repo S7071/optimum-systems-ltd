@@ -155,13 +155,13 @@ const PROJECTS: ProjectType[] = [
   },
   {
     id: 6,
-    name: "Retail, Wholesale & Distribution Suite",
+    name: "Ultimate POS",
     description:
       "Modular ERP for agrisupplies, wholesalers, retail chains, and food businesses. Includes SmartPOS/van sales, supply chain optimization, and executive dashboards.",
     stars: 143,
     pulls: 88,
     industry: "Retail",
-    href: "/ultimate-sc",
+    href: "/ultimate-pos",
     tags: [
       "Finance Management",
       "Inventory Management",

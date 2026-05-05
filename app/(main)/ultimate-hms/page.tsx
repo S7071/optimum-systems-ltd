@@ -5,16 +5,86 @@ import HelpCenterButton from "@/components/optimum-systems/layout01/section-help
 import WhatsappButton from "@/components/optimum-systems/layout01/section-whatsapp";
 import UltimateHotelPage from "@/components/ultimate-hotel/page";
 import { Metadata } from "next";
+import {
+  createJsonLdGraph,
+  webPageSchema,
+  productSchema,
+  breadcrumbSchema,
+} from "@/lib/seo/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Ultimate Hotel Management System (UltimateHMS)",
+  title: "Ultimate Hotel ERP | Hotel Management System in Kenya",
   description:
-    "Et deserunt consequat minim veniam adipisicing pariatur mollit veniam ea aliquip laborum aliqua dolore Lorem. Culpa consectetur deserunt adipisicing amet ex in exercitation ut deserunt exercitation deserunt amet enim. Deserunt mollit occaecat aliquip excepteur velit esse dolor enim in esse aute elit ex officia. Culpa aliqua reprehenderit quis laborum non anim dolore in officia nulla.",
+    "Ultimate HotelERP helps hotels manage reservations, events, restaurant and bar POS, inventory, HR, payroll, finance, guest CRM, and real-time reporting.",
+  alternates: {
+    canonical: "https://optimumsystems.co.ke/ultimate-hms",
+  },
+  openGraph: {
+    title: "Ultimate Hotel ERP | Hotel Management System in Kenya",
+    description:
+      "Run hotel operations from one connected platform for reservations, rooms, events, restaurant and bar POS, inventory, procurement, HR, payroll, finance, and guest service.",
+    url: "https://optimumsystems.co.ke/ultimate-hms",
+    siteName: "Optimum ERP Systems Ltd",
+    images: [
+      {
+        url: "https://optimumsystems.co.ke/og/ultimatehms-og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ultimate Hotel ERP by Optimum ERP Systems Ltd",
+      },
+    ],
+    locale: "en_KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ultimate Hotel ERP",
+    description:
+      "Hotel management ERP for reservations, events, dining, inventory, HR, payroll, finance, guest CRM, and real-time reports.",
+    images: ["https://optimumsystems.co.ke/og/ultimatehms-og-image.png"],
+  },
 };
 
 export default function Home() {
+  const jsonLd = createJsonLdGraph([
+    webPageSchema({
+      title: "Ultimate Hotel ERP | Hotel Management System in Kenya",
+      path: "/ultimate-hms",
+      description:
+        "Ultimate HotelERP is a unified hotel management ERP that helps hotels manage reservations, room availability, guest service, events, restaurant and bar operations, inventory, procurement, HR, payroll, finance, reporting, and real-time operational visibility.",
+    }),
+
+    productSchema({
+      name: "Ultimate Hotel Management ERP",
+      slug: "ultimate-hms",
+      description:
+        "Ultimate HotelERP is an all-in-one hotel management platform for modern hospitality operations. It unifies reservations, rooms, check-ins, check-outs, housekeeping status, guest management, conference and events management, restaurant and bar POS, inventory, procurement, HR, payroll, financial reporting, guest CRM, and real-time hotel performance visibility in one connected system.",
+      image: "/og/ultimatehms-og-image.png",
+      category: "Hotel Management ERP Software",
+      audience:
+        "Hotels, resorts, lodges, conference venues, hospitality groups, restaurants, bars, and accommodation businesses",
+    }),
+
+    breadcrumbSchema([
+      {
+        name: "Home",
+        url: "https://optimumsystems.co.ke",
+      },
+      {
+        name: "Products",
+        url: "https://optimumsystems.co.ke/products",
+      },
+      {
+        name: "Ultimate Hotel ERP",
+        url: "https://optimumsystems.co.ke/ultimate-hms",
+      },
+    ]),
+  ]);
+
   return (
     <div className="flex flex-col min-h-screen w-full items-start justify-start bg-zinc-50 font-sans dark:bg-black">
+      <JsonLd data={jsonLd} />
       <HelpCenterButton />
       <WhatsappButton />
       <SiteBanner />
