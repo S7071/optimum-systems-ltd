@@ -412,7 +412,7 @@ const ABOUT_LINKS = [
     description: "Our history, values, and what drives us",
   },
   {
-    href: "/api/download/company-profile",
+    href: "/downloads/company-profile.pdf",
     Icon: FileText,
     iconBg: "bg-red-50",
     iconColor: "text-red-500",
