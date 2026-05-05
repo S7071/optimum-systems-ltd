@@ -18,7 +18,7 @@ const NAV_COMPANY = [
   },
   {
     label: "Company Profile",
-    href: "/company/company-profile",
+    href: "/api/download/company-profile",
   },
   {
     label: "Our Vision & Mission",
