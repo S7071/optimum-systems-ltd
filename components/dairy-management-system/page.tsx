@@ -441,7 +441,7 @@ export default function DairyManagementSystemPage() {
               <Button
                 variant="default"
                 onClick={() => {
-                  router.push("/ultimate-cbe/schedule-demo");
+                  router.push("/dairy-management-system/schedule-demo");
                 }}
               >
                 Book a Demo

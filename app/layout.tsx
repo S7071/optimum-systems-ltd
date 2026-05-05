@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     default: "Optimum ERP Systems Ltd",
-    template: "Optimum ERP Systems Ltd | %s",
+    template: "%s | Optimum ERP Systems Ltd",
   },
   icons: {
     icon: [

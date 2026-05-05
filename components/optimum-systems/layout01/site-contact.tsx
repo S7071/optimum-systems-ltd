@@ -138,8 +138,8 @@ export default function SiteContact() {
                 icon: <Phone size={18} className="stroke-[#0A2463]" />,
                 label: "Phone",
                 sub: "Mon–Fri, 9AM–6PM EST",
-                value: "+254 (723) 653 910",
-                href: "tel:+254723653910",
+                value: "0118 859 686 | 0118 859 685 ",
+                href: "tel:0118 859 686",
               },
               {
                 animClass: "card-animate-4",
@@ -404,7 +404,7 @@ export default function SiteContact() {
             </h3>
             {[
               { icon: <Mail size={14} className="stroke-[#0A2463]" />,  label: "Email",   value: "info@optimumsystems.co.ke" },
-              { icon: <Phone size={14} className="stroke-[#0A2463]" />, label: "Phone",   value: "+254 (723) 653-910" },
+              { icon: <Phone size={14} className="stroke-[#0A2463]" />, label: "Phone",   value: "0118 859 686 | 0118 859 685 " },
               { icon: <MapPin size={14} className="stroke-[#0A2463]" />,label: "Address", value: "Crown Z Towers, 3rd Floor, Office B3, Eastern Bypass, near KCB Kamakis" },
             ].map(({ icon, label, value }) => (
               <div

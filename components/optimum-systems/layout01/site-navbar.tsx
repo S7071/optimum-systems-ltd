@@ -24,7 +24,6 @@ import {
   Menu,
   Building2,
   Target,
-  Users,
   Briefcase,
   Trophy,
   Newspaper,
@@ -413,7 +412,7 @@ const ABOUT_LINKS = [
     description: "Our history, values, and what drives us",
   },
   {
-    href: "/company/company-profile",
+    href: "/api/download/company-profile",
     Icon: FileText,
     iconBg: "bg-red-50",
     iconColor: "text-red-500",

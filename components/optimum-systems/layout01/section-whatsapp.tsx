@@ -65,7 +65,7 @@ export default function WhatsappButton() {
   const shouldRender = mounted && isVisible;
 
   return (
-      <div className="fixed bottom-7 right-7 z-[9999] w-14 h-14">
+      <div className="fixed bottom-7 right-6 z-[9999] w-14 h-14">
         <button
           ref={buttonRef}
           className={[
@@ -81,7 +81,7 @@ export default function WhatsappButton() {
               : "opacity-0 scale-90 pointer-events-none",
           ].join(" ")}
           onClick={() => {
-            router.push("https://api.whatsapp.com/send/?phone=254723653910&text=Hello+Optimum&type=phone_number&app_absent=0");
+            router.push("https://api.whatsapp.com/send/?phone=254118859686&text=Hello+Optimum&type=phone_number&app_absent=0");
           }}
         >
           <span
