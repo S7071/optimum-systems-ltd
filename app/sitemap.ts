@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://optimumsystems.co.ke";
+const SITE_URL = "https://optimum-erp-systems.ssogroup.co.ke";
 
 /**
  * Keep this honest.
